@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>banditpylib.arms package &mdash; banditpylib 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="banditpylib.arms.bernoulli_arm module" href="banditpylib.arms.bernoulli_arm.html" />
+    <link rel="prev" title="banditpylib package" href="banditpylib.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> banditpylib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">banditpylib</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="banditpylib.html">banditpylib package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="banditpylib.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">banditpylib.arms package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="banditpylib.bandits.html">banditpylib.bandits package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="banditpylib.learners.html">banditpylib.learners package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="banditpylib.protocols.html">banditpylib.protocols package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">banditpylib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">banditpylib</a> &raquo;</li>
+        
+          <li><a href="banditpylib.html">banditpylib package</a> &raquo;</li>
+        
+      <li>banditpylib.arms package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/banditpylib.arms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-banditpylib.arms">
+<span id="banditpylib-arms-package"></span><h1>banditpylib.arms package<a class="headerlink" href="#module-banditpylib.arms" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="banditpylib.arms.Arm">
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.arms.</code><code class="sig-name descname">Arm</code><a class="reference internal" href="_modules/banditpylib/arms/utils.html#Arm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.Arm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Arm class</p>
+<dl class="method">
+<dt id="banditpylib.arms.Arm.pull">
+<em class="property">abstract </em><code class="sig-name descname">pull</code><span class="sig-paren">(</span><em class="sig-param">pulls=1</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/arms/utils.html#Arm.pull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.Arm.pull" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pulls</strong> – number of times to pull</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rewards</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="banditpylib.arms.BernoulliArm">
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.arms.</code><code class="sig-name descname">BernoulliArm</code><span class="sig-paren">(</span><em class="sig-param">mean: float</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/bernoulli_arm.html#BernoulliArm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.BernoulliArm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.arms.utils.Arm</span></code></a></p>
+<p>Bernoulli arm</p>
+<dl class="method">
+<dt id="banditpylib.arms.BernoulliArm.mean">
+<em class="property">property </em><code class="sig-name descname">mean</code><a class="headerlink" href="#banditpylib.arms.BernoulliArm.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>real mean of the arm</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.arms.BernoulliArm.pull">
+<code class="sig-name descname">pull</code><span class="sig-paren">(</span><em class="sig-param">pulls=1</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/arms/bernoulli_arm.html#BernoulliArm.pull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.BernoulliArm.pull" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pulls</strong> – number of times to pull</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rewards</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="banditpylib.arms.GaussianArm">
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.arms.</code><code class="sig-name descname">GaussianArm</code><span class="sig-paren">(</span><em class="sig-param">mu: float</em>, <em class="sig-param">var: float</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/gaussian_arm.html#GaussianArm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.GaussianArm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.arms.utils.Arm</span></code></a></p>
+<p>Gaussian arm or Normal arm</p>
+<dl class="method">
+<dt id="banditpylib.arms.GaussianArm.mean">
+<em class="property">property </em><code class="sig-name descname">mean</code><a class="headerlink" href="#banditpylib.arms.GaussianArm.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>mean of the arm</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.arms.GaussianArm.pull">
+<code class="sig-name descname">pull</code><span class="sig-paren">(</span><em class="sig-param">pulls=1</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/arms/gaussian_arm.html#GaussianArm.pull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.GaussianArm.pull" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pulls</strong> – number of times to pull</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rewards</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.arms.GaussianArm.var">
+<em class="property">property </em><code class="sig-name descname">var</code><a class="headerlink" href="#banditpylib.arms.GaussianArm.var" title="Permalink to this definition">¶</a></dt>
+<dd><p>variance of the arm</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="banditpylib.arms.PseudoArm">
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.arms.</code><code class="sig-name descname">PseudoArm</code><a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.PseudoArm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for pseudo arm</p>
+<p>This class is used to store empirical information of a general arm.</p>
+<dl class="method">
+<dt id="banditpylib.arms.PseudoArm.em_mean">
+<code class="sig-name descname">em_mean</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.em_mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.PseudoArm.em_mean" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>empirical mean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.arms.PseudoArm.em_var">
+<code class="sig-name descname">em_var</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.em_var"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.PseudoArm.em_var" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>empirical variance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.arms.PseudoArm.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.PseudoArm.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear records</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.arms.PseudoArm.total_pulls">
+<code class="sig-name descname">total_pulls</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.total_pulls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.PseudoArm.total_pulls" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>total number of pulls recorded</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.arms.PseudoArm.total_rewards">
+<code class="sig-name descname">total_rewards</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.total_rewards"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.PseudoArm.total_rewards" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>total rewards obtained so far</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.arms.PseudoArm.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">rewards: numpy.ndarray</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.PseudoArm.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update records</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rewards</strong> – empirical rewards</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="banditpylib.arms.bernoulli_arm.html">banditpylib.arms.bernoulli_arm module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banditpylib.arms.bernoulli_arm_test.html">banditpylib.arms.bernoulli_arm_test module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banditpylib.arms.gaussian_arm.html">banditpylib.arms.gaussian_arm module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banditpylib.arms.gaussian_arm_test.html">banditpylib.arms.gaussian_arm_test module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banditpylib.arms.pseudo_arm.html">banditpylib.arms.pseudo_arm module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banditpylib.arms.pseudo_arm_test.html">banditpylib.arms.pseudo_arm_test module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banditpylib.arms.utils.html">banditpylib.arms.utils module</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="banditpylib.arms.bernoulli_arm.html" class="btn btn-neutral float-right" title="banditpylib.arms.bernoulli_arm module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="banditpylib.html" class="btn btn-neutral float-left" title="banditpylib package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Chester Holtz, Chao Tao
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
