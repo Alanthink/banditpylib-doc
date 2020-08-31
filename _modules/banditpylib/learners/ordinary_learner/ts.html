@@ -25,7 +25,7 @@
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -164,20 +164,18 @@
 <span class="sd">  .. warning::</span>
 <span class="sd">    Reward should be Bernoulli when Beta prior is chosen.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="ThompsonSampling.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ts.html#banditpylib.learners.ordinary_learner.ThompsonSampling.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">prior_dist</span><span class="o">=</span><span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ThompsonSampling.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ts.html#banditpylib.learners.ordinary_learner.ThompsonSampling.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prior_dist</span><span class="o">=</span><span class="s1">&#39;beta&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      prior_dist: prior distribution of thompson sampling</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="n">name</span> <span class="k">if</span> <span class="n">name</span> <span class="k">else</span> <span class="s1">&#39;thompson_sampling&#39;</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">horizon</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">horizon</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">prior_dist</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="s1">&#39;beta&#39;</span><span class="p">]:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Prior distribution </span><span class="si">%s</span><span class="s1"> is not supported!&#39;</span> <span class="o">%</span> <span class="n">prior_dist</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__prior_dist</span> <span class="o">=</span> <span class="n">prior_dist</span></div>
 
-  <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;thompson_sampling&#39;</span>
 
 <div class="viewcode-block" id="ThompsonSampling.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ts.html#banditpylib.learners.ordinary_learner.ThompsonSampling.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())]</span>

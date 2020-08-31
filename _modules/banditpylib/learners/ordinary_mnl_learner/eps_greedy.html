@@ -25,7 +25,7 @@
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -165,27 +165,20 @@
                <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
                <span class="n">card_limit</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
-               <span class="n">eps</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-               <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+               <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+               <span class="n">eps</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
-<span class="sd">      revenues: product revenues</span>
-<span class="sd">      horizon: total number of time steps</span>
-<span class="sd">      reward: reward the learner wants to maximize</span>
-<span class="sd">      card_limit: cardinality constraint</span>
 <span class="sd">      eps: epsilon</span>
-<span class="sd">      name: alias name for the learner</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="n">name</span> <span class="k">if</span> <span class="n">name</span> <span class="k">else</span> <span class="s1">&#39;epsilon_greedy&#39;</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">revenues</span><span class="p">,</span> <span class="n">horizon</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">revenues</span><span class="p">,</span> <span class="n">horizon</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">eps</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Epsilon </span><span class="si">%.2f</span><span class="s1"> in </span><span class="si">%s</span><span class="s1"> is no greater than 0!&#39;</span> <span class="o">%</span> \
           <span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span> <span class="o">=</span> <span class="n">eps</span></div>
 
-  <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;epsilon_greedy&#39;</span>
 
 <div class="viewcode-block" id="EpsGreedy.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.eps_greedy.html#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="c1"># current time step</span>

@@ -25,7 +25,7 @@
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -165,7 +165,8 @@
                <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
-               <span class="n">card_limit</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,):</span>
+               <span class="n">card_limit</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
+               <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      revenues: product revenues</span>
@@ -173,6 +174,7 @@
 <span class="sd">      reward: reward the learner wants to maximize</span>
 <span class="sd">      card_limit: cardinality constraint</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">revenues</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of products </span><span class="si">%d</span><span class="s1"> is less then 2!&#39;</span> <span class="o">%</span>

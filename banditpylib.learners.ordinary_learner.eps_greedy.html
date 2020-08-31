@@ -25,7 +25,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -171,37 +171,31 @@
             
   <div class="section" id="module-banditpylib.learners.ordinary_learner.eps_greedy">
 <span id="banditpylib-learners-ordinary-learner-eps-greedy-module"></span><h1>banditpylib.learners.ordinary_learner.eps_greedy module<a class="headerlink" href="#module-banditpylib.learners.ordinary_learner.eps_greedy" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.eps_greedy.</code><code class="sig-name descname">EpsGreedy</code><span class="sig-paren">(</span><em class="sig-param">arm_num: int</em>, <em class="sig-param">horizon: int</em>, <em class="sig-param">eps=1.0</em>, <em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.eps_greedy.</code><code class="sig-name descname">EpsGreedy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">eps</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_learner.utils.html#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_learner.utils.OrdinaryLearner</span></code></a></p>
 <p>Epsilon-Greedy policy</p>
 <p>With probability <span class="math notranslate nohighlight">\(\frac{\epsilon}{t}\)</span> do uniform sampling and with the
 remaining probability play the arm with the maximum empirical mean.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">arm_num: int</em>, <em class="sig-param">horizon: int</em>, <em class="sig-param">eps=1.0</em>, <em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">eps</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Args:
 arm_num: number of arms
 horizon: total number of time steps</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.name">
-<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>name of the learner</p>
-</dd></dl>
-
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset of the learner</p>
 <p>This function should be called before the start of the game</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param">context=None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[int, int]]<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>arms to pull</p>
@@ -209,9 +203,9 @@ horizon: total number of time steps</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">feedback</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

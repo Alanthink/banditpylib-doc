@@ -25,7 +25,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -167,7 +167,7 @@
             
   <div class="section" id="module-banditpylib.bandits">
 <span id="banditpylib-bandits-package"></span><h1>banditpylib.bandits package<a class="headerlink" href="#module-banditpylib.bandits" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.bandits.Bandit">
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">Bandit</code><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
@@ -176,27 +176,27 @@
 environment. During each time step, <a class="reference internal" href="#banditpylib.bandits.Bandit.context" title="banditpylib.bandits.Bandit.context"><code class="xref py py-func docutils literal notranslate"><span class="pre">context()</span></code></a> will return the
 current state of the environment. <a class="reference internal" href="#banditpylib.bandits.Bandit.feed" title="banditpylib.bandits.Bandit.feed"><code class="xref py py-func docutils literal notranslate"><span class="pre">feed()</span></code></a> is used to pass the actions to
 the environment for execution.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.Bandit.name">
 <em class="property">abstract property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.Bandit.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.Bandit.reset">
 <em class="property">abstract </em><code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.Bandit.context">
 <em class="property">abstract </em><code class="sig-name descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit.context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Current state of the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.Bandit.feed">
-<em class="property">abstract </em><code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param">actions</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit.feed" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">actions</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit.feed" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>actions</strong> – actions to take</p>
@@ -209,27 +209,27 @@ the environment for execution.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.bandits.OrdinaryBandit">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">OrdinaryBandit</code><span class="sig-paren">(</span><em class="sig-param">arms: List[banditpylib.arms.utils.Arm]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">OrdinaryBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arms</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm">banditpylib.arms.utils.Arm</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf" title="banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf</span></code></a></p>
 <p>Class for ordinary bandit</p>
 <p>Arms are indexed from 0 by default.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">arms: List[banditpylib.arms.utils.Arm]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arms</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm">banditpylib.arms.utils.Arm</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.name">
 <em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.feed">
-<code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param">actions: List[Tuple[int, int]]</em><span class="sig-paren">)</span> &#x2192; List[Tuple[numpy.ndarray, None]]<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.feed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">actions</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.feed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pull multiple arms</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -241,31 +241,31 @@ the environment for execution.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.context">
 <code class="sig-name descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Current state of the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.arm_num">
 <code class="sig-name descname">arm_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.arm_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.arm_num" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total number of arms</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.total_pulls">
 <code class="sig-name descname">total_pulls</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.total_pulls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.total_pulls" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total number of pulls executed</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.regret">
 <code class="sig-name descname">regret</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -275,9 +275,9 @@ the environment for execution.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.best_arm_regret">
-<code class="sig-name descname">best_arm_regret</code><span class="sig-paren">(</span><em class="sig-param">arm_id: int</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.best_arm_regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.best_arm_regret" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">best_arm_regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.best_arm_regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.best_arm_regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>arm_id</strong> – best arm identified by the learner</p>
@@ -290,18 +290,18 @@ the environment for execution.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.bandits.OrdinaryBanditItf">
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">OrdinaryBanditItf</code><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit_itf.html#OrdinaryBanditItf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBanditItf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.utils.Bandit</span></code></a></p>
 <p>Ordinary bandit interface</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBanditItf.arm_num">
 <em class="property">abstract </em><code class="sig-name descname">arm_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit_itf.html#OrdinaryBanditItf.arm_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBanditItf.arm_num" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total number of arms</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBanditItf.total_pulls">
 <em class="property">abstract </em><code class="sig-name descname">total_pulls</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit_itf.html#OrdinaryBanditItf.total_pulls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBanditItf.total_pulls" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total number of pulls executed</p>
@@ -309,15 +309,15 @@ the environment for execution.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.bandits.LinearBandit">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">LinearBandit</code><span class="sig-paren">(</span><em class="sig-param">features: numpy.ndarray</em>, <em class="sig-param">theta: numpy.ndarray</em>, <em class="sig-param">var=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">LinearBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">var</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf" title="banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf</span></code></a>, <a class="reference internal" href="banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.linear_bandit_itf.LinearBanditItf" title="banditpylib.bandits.linear_bandit_itf.LinearBanditItf"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.linear_bandit_itf.LinearBanditItf</span></code></a></p>
 <p>Class for finite-armed linear bandit</p>
 <p>Arms are indexed from 0 by default.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBandit.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">features: numpy.ndarray</em>, <em class="sig-param">theta: numpy.ndarray</em>, <em class="sig-param">var=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">var</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -329,15 +329,15 @@ the environment for execution.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBandit.name">
 <em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.LinearBandit.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBandit.feed">
-<code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param">actions: List[Tuple[int, int]]</em><span class="sig-paren">)</span> &#x2192; List[Tuple[numpy.ndarray, None]]<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.feed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">actions</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.feed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pull multiple arms</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -349,31 +349,31 @@ the environment for execution.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBandit.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBandit.arm_num">
 <code class="sig-name descname">arm_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.arm_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.arm_num" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total number of arms</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBandit.total_pulls">
 <code class="sig-name descname">total_pulls</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.total_pulls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.total_pulls" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total number of pulls executed</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBandit.features">
 <code class="sig-name descname">features</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.features" title="Permalink to this definition">¶</a></dt>
 <dd><p>Feature vectors</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBandit.regret">
 <code class="sig-name descname">regret</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -383,9 +383,9 @@ the environment for execution.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBandit.best_arm_regret">
-<code class="sig-name descname">best_arm_regret</code><span class="sig-paren">(</span><em class="sig-param">arm_id</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.best_arm_regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.best_arm_regret" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">best_arm_regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_id</span></em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.best_arm_regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.best_arm_regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>arm_id</strong> – best arm identified by the learner</p>
@@ -398,30 +398,30 @@ the environment for execution.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.bandits.LinearBanditItf">
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">LinearBanditItf</code><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit_itf.html#LinearBanditItf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBanditItf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.utils.Bandit</span></code></a></p>
 <p>Linear bandit interface</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBanditItf.context">
 <code class="sig-name descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit_itf.html#LinearBanditItf.context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBanditItf.context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Current state of the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBanditItf.arm_num">
 <em class="property">abstract </em><code class="sig-name descname">arm_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit_itf.html#LinearBanditItf.arm_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBanditItf.arm_num" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total number of arms</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBanditItf.features">
 <em class="property">abstract </em><code class="sig-name descname">features</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit_itf.html#LinearBanditItf.features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBanditItf.features" title="Permalink to this definition">¶</a></dt>
 <dd><p>Feature vectors</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.LinearBanditItf.total_pulls">
 <em class="property">abstract </em><code class="sig-name descname">total_pulls</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit_itf.html#LinearBanditItf.total_pulls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBanditItf.total_pulls" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total number of pulls so far</p>
@@ -429,14 +429,14 @@ the environment for execution.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.bandits.Reward">
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">Reward</code><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Reward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Reward class</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.Reward.calc">
-<em class="property">abstract </em><code class="sig-name descname">calc</code><span class="sig-paren">(</span><em class="sig-param">assortment: List[int]</em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward.calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Reward.calc" title="Permalink to this definition">¶</a></dt>
+<em class="property">abstract </em><code class="sig-name descname">calc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">assortment</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward.calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Reward.calc" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>assortment</strong> – input assortment to calculate</p>
@@ -447,19 +447,19 @@ the environment for execution.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.Reward.preference_params">
 <em class="property">property </em><code class="sig-name descname">preference_params</code><a class="headerlink" href="#banditpylib.bandits.Reward.preference_params" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.Reward.revenues">
 <em class="property">property </em><code class="sig-name descname">revenues</code><a class="headerlink" href="#banditpylib.bandits.Reward.revenues" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.Reward.set_preference_params">
-<code class="sig-name descname">set_preference_params</code><span class="sig-paren">(</span><em class="sig-param">preference_params: numpy.ndarray</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward.set_preference_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Reward.set_preference_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_preference_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">preference_params</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward.set_preference_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Reward.set_preference_params" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>preference_params</strong> – preference parameters of products</p>
@@ -467,9 +467,9 @@ the environment for execution.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.Reward.set_revenues">
-<code class="sig-name descname">set_revenues</code><span class="sig-paren">(</span><em class="sig-param">revenues: numpy.ndarray</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward.set_revenues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Reward.set_revenues" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_revenues</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward.set_revenues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Reward.set_revenues" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>revenues</strong> – revenues of products</p>
@@ -479,14 +479,14 @@ the environment for execution.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.bandits.MeanReward">
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">MeanReward</code><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#MeanReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.MeanReward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></code></a></p>
 <p>Mean reward</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.MeanReward.calc">
-<code class="sig-name descname">calc</code><span class="sig-paren">(</span><em class="sig-param">assortment: List[int]</em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#MeanReward.calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.MeanReward.calc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">calc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">assortment</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#MeanReward.calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.MeanReward.calc" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>assortment</strong> – input assortment to calculate</p>
@@ -499,14 +499,14 @@ the environment for execution.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.bandits.CvarReward">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">CvarReward</code><span class="sig-paren">(</span><em class="sig-param">alpha: float</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#CvarReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.CvarReward" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">CvarReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#CvarReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.CvarReward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></code></a></p>
 <p>CVaR reward</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.CvarReward.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">alpha: float</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#CvarReward.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.CvarReward.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#CvarReward.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.CvarReward.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>alpha</strong> – percentile of cvar</p>
@@ -514,9 +514,9 @@ the environment for execution.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.CvarReward.calc">
-<code class="sig-name descname">calc</code><span class="sig-paren">(</span><em class="sig-param">assortment: List[int]</em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#CvarReward.calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.CvarReward.calc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">calc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">assortment</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#CvarReward.calc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.CvarReward.calc" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>assortment</strong> – input assortment to calculate</p>
@@ -529,9 +529,9 @@ the environment for execution.</p>
 
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="banditpylib.bandits.search_best_assortment">
-<code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">search_best_assortment</code><span class="sig-paren">(</span><em class="sig-param">reward: banditpylib.bandits.ordinary_mnl_bandit.Reward</em>, <em class="sig-param">card_limit=inf</em><span class="sig-paren">)</span> &#x2192; Tuple[float, List[int]]<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#search_best_assortment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.search_best_assortment" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">search_best_assortment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reward</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward">banditpylib.bandits.ordinary_mnl_bandit.Reward</a></span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#search_best_assortment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.search_best_assortment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Search assortment with the maximum reward</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -546,9 +546,9 @@ the environment for execution.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="banditpylib.bandits.local_search_best_assortment">
-<code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">local_search_best_assortment</code><span class="sig-paren">(</span><em class="sig-param">reward: banditpylib.bandits.ordinary_mnl_bandit.Reward</em>, <em class="sig-param">search_times: int</em>, <em class="sig-param">card_limit=inf</em>, <em class="sig-param">init_assortment=None</em><span class="sig-paren">)</span> &#x2192; Tuple[float, List[int]]<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#local_search_best_assortment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.local_search_best_assortment" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">local_search_best_assortment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reward</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward">banditpylib.bandits.ordinary_mnl_bandit.Reward</a></span></em>, <em class="sig-param"><span class="n">search_times</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">init_assortment</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#local_search_best_assortment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.local_search_best_assortment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Local search assortment with the maximum reward</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -569,17 +569,17 @@ the environment for execution.</p>
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">OrdinaryMNLBandit</code><span class="sig-paren">(</span><em class="sig-param">preference_params: numpy.ndarray</em>, <em class="sig-param">revenues: numpy.ndarray</em>, <em class="sig-param">card_limit=inf</em>, <em class="sig-param">reward=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">OrdinaryMNLBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">preference_params</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">reward</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.utils.Bandit</span></code></a></p>
 <p>Class for ordinary MNL bandit</p>
 <p>Products are numbered from 1 by default. 0 is reserved for non-purchase. The
 preference parameters are assumed to be between 0 and 1. And it is assumed
 that the preference parameter for non-purchase is 1.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">preference_params: numpy.ndarray</em>, <em class="sig-param">revenues: numpy.ndarray</em>, <em class="sig-param">card_limit=inf</em>, <em class="sig-param">reward=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">preference_params</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">reward</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -592,15 +592,15 @@ that the preference parameter for non-purchase is 1.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.name">
 <em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.feed">
-<code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param">actions: List[Tuple[List[int], int]]</em><span class="sig-paren">)</span> &#x2192; List[Tuple[numpy.ndarray, List[int]]]<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.feed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">actions</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.feed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Serve multiple assortments</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -612,34 +612,34 @@ that the preference parameter for non-purchase is 1.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.context">
 <code class="sig-name descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Current state of the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.revenues">
 <code class="sig-name descname">revenues</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.revenues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.revenues" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.product_num">
 <code class="sig-name descname">product_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.product_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.product_num" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.card_limit">
 <code class="sig-name descname">card_limit</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.card_limit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.card_limit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.regret">
 <code class="sig-name descname">regret</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">

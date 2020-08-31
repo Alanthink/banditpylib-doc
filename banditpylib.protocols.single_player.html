@@ -25,7 +25,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -169,16 +169,16 @@
             
   <div class="section" id="module-banditpylib.protocols.single_player">
 <span id="banditpylib-protocols-single-player-module"></span><h1>banditpylib.protocols.single_player module<a class="headerlink" href="#module-banditpylib.protocols.single_player" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.protocols.single_player.SinglePlayerProtocol">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.protocols.single_player.</code><code class="sig-name descname">SinglePlayerProtocol</code><span class="sig-paren">(</span><em class="sig-param">bandit: banditpylib.bandits.utils.Bandit</em>, <em class="sig-param">learner: banditpylib.learners.utils.Learner</em>, <em class="sig-param">intermediate_regrets=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.single_player.SinglePlayerProtocol" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.protocols.single_player.</code><code class="sig-name descname">SinglePlayerProtocol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learner</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a></span></em>, <em class="sig-param"><span class="n">intermediate_regrets</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.single_player.SinglePlayerProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.protocols.utils.html#banditpylib.protocols.utils.Protocol" title="banditpylib.protocols.utils.Protocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.protocols.utils.Protocol</span></code></a></p>
 <p>Single player protocol</p>
 <p>This protocol is used to simulate the game when the learner only has one
 player and the learner only interacts with one bandit environment.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.protocols.single_player.SinglePlayerProtocol.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">bandit: banditpylib.bandits.utils.Bandit</em>, <em class="sig-param">learner: banditpylib.learners.utils.Learner</em>, <em class="sig-param">intermediate_regrets=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.single_player.SinglePlayerProtocol.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learner</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a></span></em>, <em class="sig-param"><span class="n">intermediate_regrets</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.single_player.SinglePlayerProtocol.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -190,7 +190,7 @@ player and the learner only interacts with one bandit environment.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.protocols.single_player.SinglePlayerProtocol.name">
 <em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.protocols.single_player.SinglePlayerProtocol.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>protocol name</p>

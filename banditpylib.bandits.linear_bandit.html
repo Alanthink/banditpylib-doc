@@ -25,7 +25,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -169,15 +169,15 @@
             
   <div class="section" id="module-banditpylib.bandits.linear_bandit">
 <span id="banditpylib-bandits-linear-bandit-module"></span><h1>banditpylib.bandits.linear_bandit module<a class="headerlink" href="#module-banditpylib.bandits.linear_bandit" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.linear_bandit.</code><code class="sig-name descname">LinearBandit</code><span class="sig-paren">(</span><em class="sig-param">features: numpy.ndarray</em>, <em class="sig-param">theta: numpy.ndarray</em>, <em class="sig-param">var=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.linear_bandit.</code><code class="sig-name descname">LinearBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">var</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf" title="banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf</span></code></a>, <a class="reference internal" href="banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.linear_bandit_itf.LinearBanditItf" title="banditpylib.bandits.linear_bandit_itf.LinearBanditItf"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.linear_bandit_itf.LinearBanditItf</span></code></a></p>
 <p>Class for finite-armed linear bandit</p>
 <p>Arms are indexed from 0 by default.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">features: numpy.ndarray</em>, <em class="sig-param">theta: numpy.ndarray</em>, <em class="sig-param">var=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">var</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -189,15 +189,15 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.name">
 <em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.feed">
-<code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param">actions: List[Tuple[int, int]]</em><span class="sig-paren">)</span> &#x2192; List[Tuple[numpy.ndarray, None]]<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.feed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">actions</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.feed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pull multiple arms</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -209,31 +209,31 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.arm_num">
 <code class="sig-name descname">arm_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.arm_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.arm_num" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total number of arms</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.total_pulls">
 <code class="sig-name descname">total_pulls</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.total_pulls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.total_pulls" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total number of pulls executed</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.features">
 <code class="sig-name descname">features</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.features" title="Permalink to this definition">¶</a></dt>
 <dd><p>Feature vectors</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.regret">
 <code class="sig-name descname">regret</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -243,9 +243,9 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.best_arm_regret">
-<code class="sig-name descname">best_arm_regret</code><span class="sig-paren">(</span><em class="sig-param">arm_id</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.best_arm_regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.best_arm_regret" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">best_arm_regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_id</span></em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.best_arm_regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.best_arm_regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>arm_id</strong> – best arm identified by the learner</p>

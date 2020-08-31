@@ -25,7 +25,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -169,14 +169,14 @@
             
   <div class="section" id="module-banditpylib.arms.bernoulli_arm">
 <span id="banditpylib-arms-bernoulli-arm-module"></span><h1>banditpylib.arms.bernoulli_arm module<a class="headerlink" href="#module-banditpylib.arms.bernoulli_arm" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt id="banditpylib.arms.bernoulli_arm.BernoulliArm">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.arms.bernoulli_arm.</code><code class="sig-name descname">BernoulliArm</code><span class="sig-paren">(</span><em class="sig-param">mean: float</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/bernoulli_arm.html#BernoulliArm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.bernoulli_arm.BernoulliArm" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.arms.bernoulli_arm.</code><code class="sig-name descname">BernoulliArm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mean</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/bernoulli_arm.html#BernoulliArm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.bernoulli_arm.BernoulliArm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.arms.utils.Arm</span></code></a></p>
 <p>Bernoulli arm</p>
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.arms.bernoulli_arm.BernoulliArm.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">mean: float</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/bernoulli_arm.html#BernoulliArm.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.bernoulli_arm.BernoulliArm.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mean</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/bernoulli_arm.html#BernoulliArm.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.bernoulli_arm.BernoulliArm.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>mean</strong> – real mean of the arm</p>
@@ -184,15 +184,15 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.arms.bernoulli_arm.BernoulliArm.mean">
 <em class="property">property </em><code class="sig-name descname">mean</code><a class="headerlink" href="#banditpylib.arms.bernoulli_arm.BernoulliArm.mean" title="Permalink to this definition">¶</a></dt>
 <dd><p>real mean of the arm</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="banditpylib.arms.bernoulli_arm.BernoulliArm.pull">
-<code class="sig-name descname">pull</code><span class="sig-paren">(</span><em class="sig-param">pulls=1</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/arms/bernoulli_arm.html#BernoulliArm.pull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.bernoulli_arm.BernoulliArm.pull" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">pull</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pulls</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/arms/bernoulli_arm.html#BernoulliArm.pull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.bernoulli_arm.BernoulliArm.pull" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>pulls</strong> – number of times to pull</p>
