@@ -153,10 +153,10 @@
 <span class="kn">from</span> <span class="nn">.ucb</span> <span class="kn">import</span> <span class="n">UCB</span>
 
 
-<div class="viewcode-block" id="TestEpsGreedy"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucb_test.html#banditpylib.learners.ordinary_learner.ucb_test.TestEpsGreedy">[docs]</a><span class="k">class</span> <span class="nc">TestEpsGreedy</span><span class="p">:</span>
-  <span class="sd">&quot;&quot;&quot;Test epsilon greedy policy&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="TestUCB"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucb_test.html#banditpylib.learners.ordinary_learner.ucb_test.TestUCB">[docs]</a><span class="k">class</span> <span class="nc">TestUCB</span><span class="p">:</span>
+  <span class="sd">&quot;&quot;&quot;Test UCB policy&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="TestEpsGreedy.test_simple_run"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucb_test.html#banditpylib.learners.ordinary_learner.ucb_test.TestEpsGreedy.test_simple_run">[docs]</a>  <span class="k">def</span> <span class="nf">test_simple_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TestUCB.test_simple_run"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucb_test.html#banditpylib.learners.ordinary_learner.ucb_test.TestUCB.test_simple_run">[docs]</a>  <span class="k">def</span> <span class="nf">test_simple_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">arm_num</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="n">horizon</span> <span class="o">=</span> <span class="mi">30</span>
     <span class="n">learner</span> <span class="o">=</span> <span class="n">UCB</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">horizon</span><span class="o">=</span><span class="n">horizon</span><span class="p">)</span>

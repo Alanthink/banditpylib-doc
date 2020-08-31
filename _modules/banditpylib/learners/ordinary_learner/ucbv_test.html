@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>banditpylib.learners.ordinary_mnl_learner.ts_test &mdash; banditpylib 1.0.0 documentation</title>
+  <title>banditpylib.learners.ordinary_learner.ucbv_test &mdash; banditpylib 1.0.0 documentation</title>
   
 
   
@@ -130,7 +130,7 @@
         
           <li><a href="../../../index.html">Module code</a> &raquo;</li>
         
-      <li>banditpylib.learners.ordinary_mnl_learner.ts_test</li>
+      <li>banditpylib.learners.ordinary_learner.ucbv_test</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -145,34 +145,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for banditpylib.learners.ordinary_mnl_learner.ts_test</h1><div class="highlight"><pre>
+  <h1>Source code for banditpylib.learners.ordinary_learner.ucbv_test</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">MagicMock</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">CvarReward</span>
-<span class="kn">from</span> <span class="nn">.ts</span> <span class="kn">import</span> <span class="n">ThompsonSampling</span>
+<span class="kn">from</span> <span class="nn">.ucbv</span> <span class="kn">import</span> <span class="n">UCBV</span>
 
 
-<div class="viewcode-block" id="TestThompsonSampling"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts_test.html#banditpylib.learners.ordinary_mnl_learner.ts_test.TestThompsonSampling">[docs]</a><span class="k">class</span> <span class="nc">TestThompsonSampling</span><span class="p">:</span>
-  <span class="sd">&quot;&quot;&quot;Test thompson sampling policy&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="TestThompsonSampling.test_simple_run"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts_test.html#banditpylib.learners.ordinary_mnl_learner.ts_test.TestThompsonSampling.test_simple_run">[docs]</a>  <span class="k">def</span> <span class="nf">test_simple_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">revenues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-    <span class="n">horizon</span> <span class="o">=</span> <span class="mi">100</span>
-    <span class="n">reward</span> <span class="o">=</span> <span class="n">CvarReward</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
-    <span class="n">learner</span> <span class="o">=</span> <span class="n">ThompsonSampling</span><span class="p">(</span><span class="n">revenues</span><span class="o">=</span><span class="n">revenues</span><span class="p">,</span>
-                               <span class="n">horizon</span><span class="o">=</span><span class="n">horizon</span><span class="p">,</span>
-                               <span class="n">reward</span><span class="o">=</span><span class="n">reward</span><span class="p">)</span>
+<div class="viewcode-block" id="TestUCBV"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv_test.html#banditpylib.learners.ordinary_learner.ucbv_test.TestUCBV">[docs]</a><span class="k">class</span> <span class="nc">TestUCBV</span><span class="p">:</span>
+  <span class="sd">&quot;&quot;&quot;Test UCBV policy&quot;&quot;&quot;</span>
 
-    <span class="c1"># test warm start</span>
+<div class="viewcode-block" id="TestUCBV.test_simple_run"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv_test.html#banditpylib.learners.ordinary_learner.ucbv_test.TestUCBV.test_simple_run">[docs]</a>  <span class="k">def</span> <span class="nf">test_simple_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">arm_num</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">horizon</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">learner</span> <span class="o">=</span> <span class="n">UCBV</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">horizon</span><span class="o">=</span><span class="n">horizon</span><span class="p">)</span>
     <span class="n">learner</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-    <span class="k">assert</span> <span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span> <span class="o">==</span> <span class="p">[([</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)]</span>
+    <span class="n">mock_ucbv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">learner</span><span class="o">.</span><span class="n">UCBV</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">return_value</span><span class="o">=</span><span class="n">mock_ucbv</span><span class="p">)</span>
 
-    <span class="n">learner</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-    <span class="n">learner</span><span class="o">.</span><span class="n">within_warm_start</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">return_value</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">mock_preference_params</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="n">learner</span><span class="o">.</span><span class="n">thompson_sampling</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">return_value</span><span class="o">=</span><span class="n">mock_preference_params</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span> <span class="o">==</span> <span class="p">[([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">1</span><span class="p">)]</span></div></div>
+    <span class="c1"># during the first 5 time steps, each arm is pulled once</span>
+    <span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">arm_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="k">assert</span> <span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span> <span class="o">==</span> <span class="p">[((</span><span class="n">time</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">arm_num</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+      <span class="n">learner</span><span class="o">.</span><span class="n">update</span><span class="p">(([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])],</span> <span class="p">))</span>
+    <span class="c1"># for the left time steps, arm 0 is always the choice</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">arm_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">horizon</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="k">assert</span> <span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span> <span class="o">==</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+      <span class="n">learner</span><span class="o">.</span><span class="n">update</span><span class="p">(([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])],</span> <span class="p">))</span></div></div>
 </pre></div>
 
            </div>

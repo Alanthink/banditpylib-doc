@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>banditpylib.learners.ordinary_learner.utils module &mdash; banditpylib 1.0.0 documentation</title>
+  <title>banditpylib.learners.ordinary_learner.ucbv_test module &mdash; banditpylib 1.0.0 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="banditpylib.learners.ordinary_mnl_learner package" href="banditpylib.learners.ordinary_mnl_learner.html" />
-    <link rel="prev" title="banditpylib.learners.ordinary_learner.uniform_test module" href="banditpylib.learners.ordinary_learner.uniform_test.html" /> 
+    <link rel="next" title="banditpylib.learners.ordinary_learner.uniform module" href="banditpylib.learners.ordinary_learner.uniform.html" />
+    <link rel="prev" title="banditpylib.learners.ordinary_learner.ucbv module" href="banditpylib.learners.ordinary_learner.ucbv.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -150,13 +150,13 @@
         
           <li><a href="banditpylib.learners.ordinary_learner.html">banditpylib.learners.ordinary_learner package</a> &raquo;</li>
         
-      <li>banditpylib.learners.ordinary_learner.utils module</li>
+      <li>banditpylib.learners.ordinary_learner.ucbv_test module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/banditpylib.learners.ordinary_learner.utils.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/banditpylib.learners.ordinary_learner.ucbv_test.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -169,36 +169,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-banditpylib.learners.ordinary_learner.utils">
-<span id="banditpylib-learners-ordinary-learner-utils-module"></span><h1>banditpylib.learners.ordinary_learner.utils module<a class="headerlink" href="#module-banditpylib.learners.ordinary_learner.utils" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-banditpylib.learners.ordinary_learner.ucbv_test">
+<span id="banditpylib-learners-ordinary-learner-ucbv-test-module"></span><h1>banditpylib.learners.ordinary_learner.ucbv_test module<a class="headerlink" href="#module-banditpylib.learners.ordinary_learner.ucbv_test" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.utils.</code><code class="sig-name descname">OrdinaryLearner</code><span class="sig-paren">(</span><em class="sig-param">arm_num: int</em>, <em class="sig-param">horizon: int</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Learner</span></code></a></p>
-<p>Base class for learners in the ordinary multi-armed bandit</p>
+<dt id="banditpylib.learners.ordinary_learner.ucbv_test.TestUCBV">
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.ucbv_test.</code><code class="sig-name descname">TestUCBV</code><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv_test.html#TestUCBV"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucbv_test.TestUCBV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Test UCBV policy</p>
 <dl class="method">
-<dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.arm_num">
-<code class="sig-name descname">arm_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.arm_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.arm_num" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.horizon">
-<code class="sig-name descname">horizon</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.horizon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.horizon" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.regret">
-<code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param">bandit</em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.regret" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>regret compared with the optimal policy</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.set_horizon">
-<code class="sig-name descname">set_horizon</code><span class="sig-paren">(</span><em class="sig-param">horizon: int</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.set_horizon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.set_horizon" title="Permalink to this definition">¶</a></dt>
+<dt id="banditpylib.learners.ordinary_learner.ucbv_test.TestUCBV.test_simple_run">
+<code class="sig-name descname">test_simple_run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv_test.html#TestUCBV.test_simple_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucbv_test.TestUCBV.test_simple_run" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -213,10 +193,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="banditpylib.learners.ordinary_mnl_learner.html" class="btn btn-neutral float-right" title="banditpylib.learners.ordinary_mnl_learner package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="banditpylib.learners.ordinary_learner.uniform.html" class="btn btn-neutral float-right" title="banditpylib.learners.ordinary_learner.uniform module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="banditpylib.learners.ordinary_learner.uniform_test.html" class="btn btn-neutral float-left" title="banditpylib.learners.ordinary_learner.uniform_test module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="banditpylib.learners.ordinary_learner.ucbv.html" class="btn btn-neutral float-left" title="banditpylib.learners.ordinary_learner.ucbv module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
