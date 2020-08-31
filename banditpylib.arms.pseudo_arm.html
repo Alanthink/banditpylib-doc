@@ -176,6 +176,32 @@
 <p>Class for pseudo arm</p>
 <p>This class is used to store empirical information of a general arm.</p>
 <dl class="method">
+<dt id="banditpylib.arms.pseudo_arm.PseudoArm.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.arms.pseudo_arm.PseudoArm.total_pulls">
+<code class="sig-name descname">total_pulls</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.total_pulls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.total_pulls" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>total number of pulls recorded</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.arms.pseudo_arm.PseudoArm.total_rewards">
+<code class="sig-name descname">total_rewards</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.total_rewards"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.total_rewards" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>total rewards obtained so far</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="banditpylib.arms.pseudo_arm.PseudoArm.em_mean">
 <code class="sig-name descname">em_mean</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.em_mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.em_mean" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -199,26 +225,6 @@
 <dt id="banditpylib.arms.pseudo_arm.PseudoArm.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clear records</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.arms.pseudo_arm.PseudoArm.total_pulls">
-<code class="sig-name descname">total_pulls</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.total_pulls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.total_pulls" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>total number of pulls recorded</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.arms.pseudo_arm.PseudoArm.total_rewards">
-<code class="sig-name descname">total_rewards</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.total_rewards"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.total_rewards" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>total rewards obtained so far</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="method">

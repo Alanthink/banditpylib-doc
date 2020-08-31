@@ -154,7 +154,7 @@
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">OrdinaryLearner</span>
 
 
-<div class="viewcode-block" id="UCBV"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv.html#banditpylib.learners.ordinary_learner.ucbv.UCBV">[docs]</a><span class="k">class</span> <span class="nc">UCBV</span><span class="p">(</span><span class="n">OrdinaryLearner</span><span class="p">):</span>
+<div class="viewcode-block" id="UCBV"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv.html#banditpylib.learners.ordinary_learner.UCBV">[docs]</a><span class="k">class</span> <span class="nc">UCBV</span><span class="p">(</span><span class="n">OrdinaryLearner</span><span class="p">):</span>
   <span class="sa">r</span><span class="sd">&quot;&quot;&quot;UCBV policy :cite:`audibert2009exploration`</span>
 
 <span class="sd">  At time :math:`t`, play arm</span>
@@ -166,7 +166,7 @@
 <span class="sd">  .. note::</span>
 <span class="sd">    Reward has to be bounded within :math:`[0, b]`.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="UCBV.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv.html#banditpylib.learners.ordinary_learner.UCBV.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      b: upper bound of reward</span>
@@ -176,18 +176,18 @@
     <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: b is set to </span><span class="si">%.2f</span><span class="s1"> which is no greater than 0!&#39;</span> <span class="o">%</span>
                       <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__b</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__b</span> <span class="o">=</span> <span class="n">b</span></div>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
 
-<div class="viewcode-block" id="UCBV.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv.html#banditpylib.learners.ordinary_learner.ucbv.UCBV.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UCBV.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv.html#banditpylib.learners.ordinary_learner.UCBV.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())]</span>
     <span class="c1"># current time step</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span></div>
 
-<div class="viewcode-block" id="UCBV.UCBV"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv.html#banditpylib.learners.ordinary_learner.ucbv.UCBV.UCBV">[docs]</a>  <span class="k">def</span> <span class="nf">UCBV</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="UCBV.UCBV"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv.html#banditpylib.learners.ordinary_learner.UCBV.UCBV">[docs]</a>  <span class="k">def</span> <span class="nf">UCBV</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return:</span>
 <span class="sd">      optimistic estimate of arms&#39; real means using empirical variance</span>
@@ -200,7 +200,7 @@
     <span class="p">]</span>
     <span class="k">return</span> <span class="n">ucbv</span></div>
 
-<div class="viewcode-block" id="UCBV.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv.html#banditpylib.learners.ordinary_learner.ucbv.UCBV.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+<div class="viewcode-block" id="UCBV.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv.html#banditpylib.learners.ordinary_learner.UCBV.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return:</span>
 <span class="sd">      arms to pull</span>
@@ -214,7 +214,7 @@
       <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">UCBV</span><span class="p">()),</span> <span class="mi">1</span><span class="p">)]</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span></div>
 
-<div class="viewcode-block" id="UCBV.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv.html#banditpylib.learners.ordinary_learner.ucbv.UCBV.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
+<div class="viewcode-block" id="UCBV.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucbv.html#banditpylib.learners.ordinary_learner.UCBV.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">feedback</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">+=</span> <span class="mi">1</span></div></div>
 </pre></div>

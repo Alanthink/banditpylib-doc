@@ -155,7 +155,7 @@
   <span class="sd">&quot;&quot;&quot;Bernoulli arm</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<div class="viewcode-block" id="BernoulliArm.__init__"><a class="viewcode-back" href="../../../banditpylib.arms.bernoulli_arm.html#banditpylib.arms.BernoulliArm.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      mean: real mean of the arm</span>
@@ -164,7 +164,7 @@
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Mean of Bernoulli arm </span><span class="si">%.2f</span><span class="s1"> is less than 0!&#39;</span> <span class="o">%</span> <span class="n">mean</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">mean</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Mean of Bernoulli arm </span><span class="si">%.2f</span><span class="s1"> is greater than 1!&#39;</span> <span class="o">%</span> <span class="n">mean</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__mean</span> <span class="o">=</span> <span class="n">mean</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__mean</span> <span class="o">=</span> <span class="n">mean</span></div>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>

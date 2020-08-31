@@ -177,11 +177,19 @@
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner" title="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner</span></code></a></p>
 <p>Thompson sampling policy <a class="bibtex reference internal" href="bibliography.html#dblp-conf-colt-agrawalagz17" id="id1">[AAGZ17]</a></p>
 <dl class="method">
-<dt id="banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param">context=None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[List[int], int]]<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.actions" title="Permalink to this definition">¶</a></dt>
+<dt id="banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">revenues: numpy.ndarray</em>, <em class="sig-param">horizon: int</em>, <em class="sig-param">reward: banditpylib.bandits.ordinary_mnl_bandit.Reward</em>, <em class="sig-param">card_limit=inf</em>, <em class="sig-param">name=None</em>, <em class="sig-param">use_local_search=False</em>, <em class="sig-param">local_search_times=10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>assortments to serve</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>revenues</strong> – product revenues</p></li>
+<li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>reward</strong> – reward the learner wants to maximize</p></li>
+<li><p><strong>card_limit</strong> – cardinality constraint</p></li>
+<li><p><strong>name</strong> – alias name for the learner</p></li>
+<li><p><strong>use_local_search</strong> – whether to use local search for searching the best       assortment</p></li>
+<li><p><strong>local_search_times</strong> – number of local searches if local search is used</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -197,6 +205,27 @@
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset of the learner</p>
 <p>This function should be called before the start of the game</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.warm_start">
+<code class="sig-name descname">warm_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[Tuple[List[int], int]]<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.warm_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.warm_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initial warm start stage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>assortment to serve</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.within_warm_start">
+<code class="sig-name descname">within_warm_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.within_warm_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.within_warm_start" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>if the learner is still in warm start stage</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -220,33 +249,22 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.actions">
+<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param">context=None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[List[int], int]]<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.actions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>assortments to serve</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.update">
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">feedback</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>feedback</strong> – feedback of the bandit environment</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.warm_start">
-<code class="sig-name descname">warm_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[Tuple[List[int], int]]<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.warm_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.warm_start" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initial warm start stage</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>assortment to serve</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.within_warm_start">
-<code class="sig-name descname">within_warm_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.within_warm_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.within_warm_start" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>if the learner is still in warm start stage</p>
 </dd>
 </dl>
 </dd></dl>

@@ -181,6 +181,27 @@
 \[\mathrm{argmax}_{i \in [0, N-1]} \left\{ \hat{\mu}_i(t) + \sqrt{ \frac{
 \alpha  \ln(t) }{T_i(t)} } \right\}\]</div>
 <dl class="method">
+<dt id="banditpylib.learners.ordinary_learner.ucb.UCB.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">arm_num: int</em>, <em class="sig-param">horizon: int</em>, <em class="sig-param">alpha=2.0</em>, <em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucb.UCB.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Args:
+arm_num: number of arms
+horizon: total number of time steps</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_learner.ucb.UCB.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucb.UCB.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the learner</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_learner.ucb.UCB.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucb.UCB.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset of the learner</p>
+<p>This function should be called before the start of the game</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="banditpylib.learners.ordinary_learner.ucb.UCB.UCB">
 <code class="sig-name descname">UCB</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.UCB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucb.UCB.UCB" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -198,19 +219,6 @@
 <dd class="field-odd"><p>arms to pull</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_learner.ucb.UCB.name">
-<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucb.UCB.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>name of the learner</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_learner.ucb.UCB.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucb.UCB.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset of the learner</p>
-<p>This function should be called before the start of the game</p>
 </dd></dl>
 
 <dl class="method">

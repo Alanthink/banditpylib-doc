@@ -175,9 +175,28 @@
 <dd><p>Bases: <a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.arms.utils.Arm</span></code></a></p>
 <p>Gaussian arm or Normal arm</p>
 <dl class="method">
+<dt id="banditpylib.arms.gaussian_arm.GaussianArm.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">mu: float</em>, <em class="sig-param">var: float</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/gaussian_arm.html#GaussianArm.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.gaussian_arm.GaussianArm.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mu</strong> – mean of the arm</p></li>
+<li><p><strong>var</strong> – variance of the arm</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="banditpylib.arms.gaussian_arm.GaussianArm.mean">
 <em class="property">property </em><code class="sig-name descname">mean</code><a class="headerlink" href="#banditpylib.arms.gaussian_arm.GaussianArm.mean" title="Permalink to this definition">¶</a></dt>
 <dd><p>mean of the arm</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.arms.gaussian_arm.GaussianArm.var">
+<em class="property">property </em><code class="sig-name descname">var</code><a class="headerlink" href="#banditpylib.arms.gaussian_arm.GaussianArm.var" title="Permalink to this definition">¶</a></dt>
+<dd><p>variance of the arm</p>
 </dd></dl>
 
 <dl class="method">
@@ -191,12 +210,6 @@
 <dd class="field-even"><p>rewards</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.arms.gaussian_arm.GaussianArm.var">
-<em class="property">property </em><code class="sig-name descname">var</code><a class="headerlink" href="#banditpylib.arms.gaussian_arm.GaussianArm.var" title="Permalink to this definition">¶</a></dt>
-<dd><p>variance of the arm</p>
 </dd></dl>
 
 </dd></dl>

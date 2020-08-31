@@ -179,14 +179,19 @@
 <p>Product 0 is reserved for non-purchase. And it is assumed that the preference
 parameter for non-purchase is 1.</p>
 <dl class="method">
-<dt id="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.card_limit">
-<code class="sig-name descname">card_limit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.card_limit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.card_limit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.horizon">
-<code class="sig-name descname">horizon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.horizon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.horizon" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">revenues: numpy.ndarray</em>, <em class="sig-param">horizon: int</em>, <em class="sig-param">reward: banditpylib.bandits.ordinary_mnl_bandit.Reward</em>, <em class="sig-param">card_limit=inf</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>revenues</strong> – product revenues</p></li>
+<li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>reward</strong> – reward the learner wants to maximize</p></li>
+<li><p><strong>card_limit</strong> – cardinality constraint</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.product_num">
@@ -194,18 +199,18 @@ parameter for non-purchase is 1.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.regret">
-<code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param">bandit</em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.regret" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>regret compared with the optimal policy</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.revenues">
 <code class="sig-name descname">revenues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.revenues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.revenues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.card_limit">
+<code class="sig-name descname">card_limit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.card_limit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.card_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.horizon">
+<code class="sig-name descname">horizon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.horizon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.horizon" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -217,6 +222,16 @@ parameter for non-purchase is 1.</p>
 <dt id="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.set_horizon">
 <code class="sig-name descname">set_horizon</code><span class="sig-paren">(</span><em class="sig-param">horizon: int</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.set_horizon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.set_horizon" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.regret">
+<code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param">bandit</em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.regret" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>regret compared with the optimal policy</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

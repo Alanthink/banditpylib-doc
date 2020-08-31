@@ -169,6 +169,17 @@
             
   <div class="section" id="module-banditpylib.protocols.utils">
 <span id="banditpylib-protocols-utils-module"></span><h1>banditpylib.protocols.utils module<a class="headerlink" href="#module-banditpylib.protocols.utils" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="banditpylib.protocols.utils.time_seed">
+<code class="sig-prename descclassname">banditpylib.protocols.utils.</code><code class="sig-name descname">time_seed</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/protocols/utils.html#time_seed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.utils.time_seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate random seed using current time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>random seed</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="class">
 <dt id="banditpylib.protocols.utils.Protocol">
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.protocols.utils.</code><code class="sig-name descname">Protocol</code><span class="sig-paren">(</span><em class="sig-param">bandit: banditpylib.bandits.utils.Bandit</em>, <em class="sig-param">learner: banditpylib.learners.utils.Learner</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#Protocol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.utils.Protocol" title="Permalink to this definition">¶</a></dt>
@@ -178,6 +189,19 @@ between the learner and the bandit environment.</p>
 <p>For each setup, just call <a class="reference internal" href="#banditpylib.protocols.utils.Protocol.play" title="banditpylib.protocols.utils.Protocol.play"><code class="xref py py-func docutils literal notranslate"><span class="pre">play()</span></code></a> to start the game. A protocol should
 implement <code class="xref py py-func docutils literal notranslate"><span class="pre">_one_trial()</span></code> method to define how to run one trial of the
 game.</p>
+<dl class="method">
+<dt id="banditpylib.protocols.utils.Protocol.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">bandit: banditpylib.bandits.utils.Bandit</em>, <em class="sig-param">learner: banditpylib.learners.utils.Learner</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#Protocol.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.utils.Protocol.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bandit</strong> – bandit environment</p></li>
+<li><p><strong>learner</strong> – learner</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="banditpylib.protocols.utils.Protocol.name">
 <em class="property">abstract property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.protocols.utils.Protocol.name" title="Permalink to this definition">¶</a></dt>
@@ -201,17 +225,6 @@ game.</p>
 </dl>
 </dd></dl>
 
-</dd></dl>
-
-<dl class="function">
-<dt id="banditpylib.protocols.utils.time_seed">
-<code class="sig-prename descclassname">banditpylib.protocols.utils.</code><code class="sig-name descname">time_seed</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/protocols/utils.html#time_seed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.utils.time_seed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate random seed using current time</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>random seed</p>
-</dd>
-</dl>
 </dd></dl>
 
 </div>

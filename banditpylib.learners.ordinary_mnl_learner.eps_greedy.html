@@ -179,21 +179,18 @@
 <p>With probability <span class="math notranslate nohighlight">\(\frac{\epsilon}{t}\)</span> do uniform sampling and with the
 remaining probability serve the assortment with the maximum empirical reward.</p>
 <dl class="method">
-<dt id="banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param">context=None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[List[int], int]]<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.actions" title="Permalink to this definition">¶</a></dt>
+<dt id="banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">revenues: numpy.ndarray</em>, <em class="sig-param">horizon: int</em>, <em class="sig-param">reward: banditpylib.bandits.ordinary_mnl_bandit.Reward</em>, <em class="sig-param">card_limit=inf</em>, <em class="sig-param">eps=1.0</em>, <em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>assortments to serve</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.em_preference_params">
-<code class="sig-name descname">em_preference_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.em_preference_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.em_preference_params" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>empirical estimate of preference parameters</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>revenues</strong> – product revenues</p></li>
+<li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>reward</strong> – reward the learner wants to maximize</p></li>
+<li><p><strong>card_limit</strong> – cardinality constraint</p></li>
+<li><p><strong>eps</strong> – epsilon</p></li>
+<li><p><strong>name</strong> – alias name for the learner</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -212,9 +209,29 @@ remaining probability serve the assortment with the maximum empirical reward.</p
 </dd></dl>
 
 <dl class="method">
+<dt id="banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.em_preference_params">
+<code class="sig-name descname">em_preference_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.em_preference_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.em_preference_params" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>empirical estimate of preference parameters</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.select_ramdom_assort">
 <code class="sig-name descname">select_ramdom_assort</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[int]<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.select_ramdom_assort"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.select_ramdom_assort" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.actions">
+<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param">context=None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[List[int], int]]<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.actions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>assortments to serve</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.update">

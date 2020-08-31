@@ -177,6 +177,20 @@
 <p>This protocol is used to simulate the game when the learner only has one
 player and the learner only interacts with one bandit environment.</p>
 <dl class="method">
+<dt id="banditpylib.protocols.single_player.SinglePlayerProtocol.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">bandit: banditpylib.bandits.utils.Bandit</em>, <em class="sig-param">learner: banditpylib.learners.utils.Learner</em>, <em class="sig-param">intermediate_regrets=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.single_player.SinglePlayerProtocol.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bandit</strong> – bandit environment</p></li>
+<li><p><strong>learner</strong> – learner</p></li>
+<li><p><strong>intermediate_regrets</strong> – whether to record intermediate regrets</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="banditpylib.protocols.single_player.SinglePlayerProtocol.name">
 <em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.protocols.single_player.SinglePlayerProtocol.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>protocol name</p>

@@ -177,6 +177,37 @@
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner" title="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner</span></code></a></p>
 <p>UCB policy <a class="bibtex reference internal" href="bibliography.html#dblp-journals-ior-agrawalagz19" id="id1">[AAGZ19]</a></p>
 <dl class="method">
+<dt id="banditpylib.learners.ordinary_mnl_learner.ucb.UCB.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">revenues: numpy.ndarray</em>, <em class="sig-param">horizon: int</em>, <em class="sig-param">reward: banditpylib.bandits.ordinary_mnl_bandit.Reward</em>, <em class="sig-param">card_limit=inf</em>, <em class="sig-param">name=None</em>, <em class="sig-param">use_local_search=False</em>, <em class="sig-param">local_search_times=10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ucb.UCB.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>revenues</strong> – product revenues</p></li>
+<li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>reward</strong> – reward the learner wants to maximize</p></li>
+<li><p><strong>card_limit</strong> – cardinality constraint</p></li>
+<li><p><strong>name</strong> – alias name for the learner</p></li>
+<li><p><strong>use_local_search</strong> – whether to use local search for searching the best       assortment</p></li>
+<li><p><strong>local_search_times</strong> – number of local searches if local search is used</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_mnl_learner.ucb.UCB.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ucb.UCB.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the learner</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_mnl_learner.ucb.UCB.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ucb.UCB.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset of the learner</p>
+<p>This function should be called before the start of the game</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ucb.UCB.UCB">
 <code class="sig-name descname">UCB</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.UCB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ucb.UCB.UCB" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -194,19 +225,6 @@
 <dd class="field-odd"><p>assortments to serve</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_mnl_learner.ucb.UCB.name">
-<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ucb.UCB.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>name of the learner</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_mnl_learner.ucb.UCB.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ucb.UCB.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset of the learner</p>
-<p>This function should be called before the start of the game</p>
 </dd></dl>
 
 <dl class="method">

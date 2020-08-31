@@ -179,13 +179,11 @@
 <p>With probability <span class="math notranslate nohighlight">\(\frac{\epsilon}{t}\)</span> do uniform sampling and with the
 remaining probability play the arm with the maximum empirical mean.</p>
 <dl class="method">
-<dt id="banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param">context=None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[int, int]]<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.actions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>arms to pull</p>
-</dd>
-</dl>
+<dt id="banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">arm_num: int</em>, <em class="sig-param">horizon: int</em>, <em class="sig-param">eps=1.0</em>, <em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Args:
+arm_num: number of arms
+horizon: total number of time steps</p>
 </dd></dl>
 
 <dl class="method">
@@ -199,6 +197,16 @@ remaining probability play the arm with the maximum empirical mean.</p>
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset of the learner</p>
 <p>This function should be called before the start of the game</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.actions">
+<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param">context=None</em><span class="sig-paren">)</span> &#x2192; List[Tuple[int, int]]<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.eps_greedy.EpsGreedy.actions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>arms to pull</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">

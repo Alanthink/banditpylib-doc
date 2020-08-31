@@ -185,6 +185,29 @@
 <p>Reward has to be bounded within <span class="math notranslate nohighlight">\([0, b]\)</span>.</p>
 </div>
 <dl class="method">
+<dt id="banditpylib.learners.ordinary_learner.ucbv.UCBV.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">arm_num: int</em>, <em class="sig-param">horizon: int</em>, <em class="sig-param">b=1.0</em>, <em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucbv.UCBV.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>b</strong> – upper bound of reward</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_learner.ucbv.UCBV.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucbv.UCBV.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the learner</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="banditpylib.learners.ordinary_learner.ucbv.UCBV.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucbv.UCBV.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset of the learner</p>
+<p>This function should be called before the start of the game</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="banditpylib.learners.ordinary_learner.ucbv.UCBV.UCBV">
 <code class="sig-name descname">UCBV</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.UCBV"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucbv.UCBV.UCBV" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -202,19 +225,6 @@
 <dd class="field-odd"><p>arms to pull</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_learner.ucbv.UCBV.name">
-<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucbv.UCBV.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>name of the learner</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="banditpylib.learners.ordinary_learner.ucbv.UCBV.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucbv.UCBV.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset of the learner</p>
-<p>This function should be called before the start of the game</p>
 </dd></dl>
 
 <dl class="method">

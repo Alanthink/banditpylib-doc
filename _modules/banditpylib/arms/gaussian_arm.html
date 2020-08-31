@@ -156,7 +156,7 @@
   <span class="sd">&quot;&quot;&quot;Gaussian arm or Normal arm</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">var</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<div class="viewcode-block" id="GaussianArm.__init__"><a class="viewcode-back" href="../../../banditpylib.arms.gaussian_arm.html#banditpylib.arms.GaussianArm.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">var</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      mu: mean of the arm</span>
@@ -168,7 +168,7 @@
           <span class="s1">&#39;Variance of gaussian distribution </span><span class="si">%.2f</span><span class="s1"> is negative!&#39;</span> <span class="o">%</span> <span class="n">var</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__var</span> <span class="o">=</span> <span class="n">var</span>
     <span class="c1"># compute standard deviation</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__std</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__std</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var</span><span class="p">)</span></div>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
