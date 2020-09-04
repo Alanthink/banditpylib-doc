@@ -199,7 +199,7 @@
 
 <div class="viewcode-block" id="UCB.UCB"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ucb.html#banditpylib.learners.ordinary_mnl_learner.UCB.UCB">[docs]</a>  <span class="k">def</span> <span class="nf">UCB</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      optimistic estimate of preference parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># unbiased estimate of preference parameters</span>
@@ -214,7 +214,7 @@
 
 <div class="viewcode-block" id="UCB.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ucb.html#banditpylib.learners.ordinary_mnl_learner.UCB.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      assortments to serve</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">del</span> <span class="n">context</span>
@@ -229,14 +229,16 @@
       <span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="o">.</span><span class="n">set_preference_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">UCB</span><span class="p">())</span>
       <span class="c1"># calculate assortment with the maximum reward using optimistic</span>
       <span class="c1"># preference parameters</span>
-      <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">search_best_assortment</span><span class="p">(</span>
-          <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">(</span>
-          <span class="p">))</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__use_local_search</span> <span class="k">else</span> <span class="n">local_search_best_assortment</span><span class="p">(</span>
-              <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
-              <span class="n">search_times</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__local_search_times</span><span class="p">,</span>
-              <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">(),</span>
-              <span class="n">init_assortment</span><span class="o">=</span><span class="p">(</span>
-                  <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="k">else</span> <span class="kc">None</span><span class="p">))</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__use_local_search</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">local_search_best_assortment</span><span class="p">(</span>
+            <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
+            <span class="n">search_times</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__local_search_times</span><span class="p">,</span>
+            <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">(),</span>
+            <span class="n">init_assortment</span><span class="o">=</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="k">else</span> <span class="kc">None</span><span class="p">))</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">search_best_assortment</span><span class="p">(</span>
+            <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">())</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">best_assortment</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span></div>
 

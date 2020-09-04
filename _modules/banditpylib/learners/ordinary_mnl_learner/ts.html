@@ -199,12 +199,14 @@
     <span class="c1"># flag to denote whether the initial warm start stage has finished</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__done_warm_start</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="c1"># next product to try in the warm start stage</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__next_product_in_warm_start</span> <span class="o">=</span> <span class="mi">1</span></div>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__next_product_in_warm_start</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># whether it is the first step after warm start</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__first_step_after_warm_start</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="ThompsonSampling.warm_start"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.warm_start">[docs]</a>  <span class="k">def</span> <span class="nf">warm_start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;Initial warm start stage</span>
 
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      assortment to serve</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># check if last observation is a purchase</span>
@@ -217,14 +219,14 @@
 
 <div class="viewcode-block" id="ThompsonSampling.within_warm_start"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.within_warm_start">[docs]</a>  <span class="k">def</span> <span class="nf">within_warm_start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      if the learner is still in warm start stage</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__done_warm_start</span></div>
 
 <div class="viewcode-block" id="ThompsonSampling.sample_preference_params"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.sample_preference_params">[docs]</a>  <span class="k">def</span> <span class="nf">sample_preference_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      one time sampling of preference parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">product_num</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
@@ -239,7 +241,7 @@
 
 <div class="viewcode-block" id="ThompsonSampling.thompson_sampling"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.thompson_sampling">[docs]</a>  <span class="k">def</span> <span class="nf">thompson_sampling</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      virtual preference parameters sampled using thompson sampling</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">virtual_preference_params</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">product_num</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
@@ -252,7 +254,7 @@
 
 <div class="viewcode-block" id="ThompsonSampling.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      assortments to serve</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">del</span> <span class="n">context</span>
@@ -268,20 +270,28 @@
         <span class="c1"># continue serving the same assortment</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span>
 
-      <span class="c1"># When a non-purchase observation happens, a new episode is started and</span>
-      <span class="c1"># a new assortment to be served is calculated.</span>
+      <span class="c1"># When a non-purchase observation happens, a new episode is started. Also</span>
+      <span class="c1"># a new assortment to be served using new estimate of preference</span>
+      <span class="c1"># parameters is generated.</span>
+      <span class="c1"># set virtual preference parameters generated by thompson sampling</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="o">.</span><span class="n">set_preference_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">thompson_sampling</span><span class="p">())</span>
       <span class="c1"># calculate best assortment using the virtual preference parameters</span>
       <span class="c1"># sampled from a posterior distribution</span>
-      <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">search_best_assortment</span><span class="p">(</span>
-          <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">(</span>
-          <span class="p">))</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__use_local_search</span> <span class="k">else</span> <span class="n">local_search_best_assortment</span><span class="p">(</span>
-              <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
-              <span class="n">search_times</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__local_search_times</span><span class="p">,</span>
-              <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">(),</span>
-              <span class="n">init_assortment</span><span class="o">=</span><span class="p">(</span>
-                  <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="k">else</span> <span class="kc">None</span><span class="p">))</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__use_local_search</span><span class="p">:</span>
+        <span class="n">init_assortment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> \
+            <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__first_step_after_warm_start</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> \
+            <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">local_search_best_assortment</span><span class="p">(</span>
+            <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
+            <span class="n">search_times</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__local_search_times</span><span class="p">,</span>
+            <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">(),</span>
+            <span class="n">init_assortment</span><span class="o">=</span><span class="n">init_assortment</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">search_best_assortment</span><span class="p">(</span>
+            <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">())</span>
+
       <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">best_assortment</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__first_step_after_warm_start</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span></div>
 
 <div class="viewcode-block" id="ThompsonSampling.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
@@ -293,6 +303,7 @@
       <span class="c1"># check if it is the end of initial warm start stage</span>
       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__next_product_in_warm_start</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">product_num</span><span class="p">():</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__done_warm_start</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__first_step_after_warm_start</span> <span class="o">=</span> <span class="kc">True</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__episode</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__last_feedback</span> <span class="o">=</span> <span class="n">feedback</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">+=</span> <span class="mi">1</span></div></div>

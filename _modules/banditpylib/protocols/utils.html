@@ -162,7 +162,7 @@
 <div class="viewcode-block" id="time_seed"><a class="viewcode-back" href="../../../banditpylib.protocols.utils.html#banditpylib.protocols.time_seed">[docs]</a><span class="k">def</span> <span class="nf">time_seed</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
   <span class="sd">&quot;&quot;&quot;Generate random seed using current time</span>
 
-<span class="sd">  Return:</span>
+<span class="sd">  Returns:</span>
 <span class="sd">    random seed</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="n">tem_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -192,25 +192,30 @@
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;protocol name&quot;&quot;&quot;</span>
 
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">bandit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bandit</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__bandit</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">learner</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Learner</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__learner</span>
+
   <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span> <span class="n">learner</span><span class="p">:</span> <span class="n">Learner</span><span class="p">,</span>
-                 <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span> <span class="ow">or</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;One trial of the game</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      bandit: bandit environment</span>
-<span class="sd">      learner: learner</span>
 <span class="sd">      random_seed: random seed</span>
 
-<span class="sd">    Return:</span>
-<span class="sd">      result in dictionary</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      result of one trial</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
   <span class="k">def</span> <span class="nf">__write_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span> <span class="ow">or</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;Write the result of one trial to file</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      data: the result of one trial</span>
+<span class="sd">      data: result of one trial</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__output_filename</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
       <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
@@ -225,13 +230,16 @@
 <div class="viewcode-block" id="Protocol.play"><a class="viewcode-back" href="../../../banditpylib.protocols.utils.html#banditpylib.protocols.Protocol.play">[docs]</a>  <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trials</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">processes</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Start playing the game</span>
 
-<span class="sd">    By default, `output_filename` will be opened with mode `a`.</span>
-
 <span class="sd">    Args:</span>
 <span class="sd">      trials: number of repetitions</span>
 <span class="sd">      output_filename: file used to dump the results</span>
 <span class="sd">      processes: maximum number of processes to run. -1 means no limit</span>
-<span class="sd">      debug: play the game in debugging mode</span>
+<span class="sd">      debug: debug mode. When it is set to `True`, the game will stop if there \</span>
+<span class="sd">      is any error in subprocesses. Otherwise, the errors of subprocesses will \</span>
+<span class="sd">      be silenced.</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">      By default, `output_filename` will be opened with mode `a`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__output_filename</span> <span class="o">=</span> <span class="n">output_filename</span>
@@ -241,14 +249,7 @@
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">trials</span><span class="p">):</span>
       <span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span>
           <span class="bp">self</span><span class="o">.</span><span class="n">_one_trial</span><span class="p">,</span>
-          <span class="n">args</span><span class="o">=</span><span class="p">(</span>
-              <span class="c1"># bandit</span>
-              <span class="bp">self</span><span class="o">.</span><span class="n">__bandit</span><span class="p">,</span>
-              <span class="c1"># learner</span>
-              <span class="bp">self</span><span class="o">.</span><span class="n">__learner</span><span class="p">,</span>
-              <span class="c1"># random_seed</span>
-              <span class="n">time_seed</span><span class="p">(),</span>
-          <span class="p">),</span>
+          <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">time_seed</span><span class="p">()],</span>
           <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__write_to_file</span><span class="p">)</span>
 
       <span class="c1"># for debugging purpose</span>

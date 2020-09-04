@@ -146,8 +146,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.protocols.single_player</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">copy</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -159,8 +158,7 @@
 <div class="viewcode-block" id="SinglePlayerProtocol"><a class="viewcode-back" href="../../../banditpylib.protocols.single_player.html#banditpylib.protocols.SinglePlayerProtocol">[docs]</a><span class="k">class</span> <span class="nc">SinglePlayerProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Single player protocol</span>
 
-<span class="sd">  This protocol is used to simulate the game when the learner only has one</span>
-<span class="sd">  player and the learner only interacts with one bandit environment.</span>
+<span class="sd">  This protocol is used to simulate the ordinary single-player game.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="SinglePlayerProtocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.single_player.html#banditpylib.protocols.SinglePlayerProtocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span>
@@ -180,18 +178,12 @@
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="s1">&#39;single_player_protocol&#39;</span>
 
-  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span> <span class="n">learner</span><span class="p">:</span> <span class="n">Learner</span><span class="p">,</span>
-                 <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_seed</span><span class="p">)</span>
 
-    <span class="c1"># make sure not changing the behavior of outside bandit environment</span>
-    <span class="c1"># the learner</span>
-    <span class="n">bandit</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">bandit</span><span class="p">)</span>
-    <span class="n">learner</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">learner</span><span class="p">)</span>
-
     <span class="c1"># reset the bandit environment and the learner</span>
-    <span class="n">bandit</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-    <span class="n">learner</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
     <span class="n">one_trial_data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="c1"># number of rounds to communicate with the bandit environment</span>
@@ -199,8 +191,8 @@
     <span class="c1"># total actions executed by the bandit environment</span>
     <span class="n">total_actions</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-      <span class="n">context</span> <span class="o">=</span> <span class="n">bandit</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
-      <span class="n">actions</span> <span class="o">=</span> <span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+      <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+      <span class="n">actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
       <span class="c1"># stop the game if actions returned by the learner are None</span>
       <span class="k">if</span> <span class="ow">not</span> <span class="n">actions</span><span class="p">:</span>
@@ -210,15 +202,15 @@
       <span class="k">if</span> <span class="n">adaptive_rounds</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__intermediate_regrets</span><span class="p">:</span>
         <span class="n">one_trial_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
             <span class="nb">dict</span><span class="p">({</span>
-                <span class="s1">&#39;bandit&#39;</span><span class="p">:</span> <span class="n">bandit</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                <span class="s1">&#39;learner&#39;</span><span class="p">:</span> <span class="n">learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s1">&#39;bandit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s1">&#39;learner&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                 <span class="s1">&#39;rounds&#39;</span><span class="p">:</span> <span class="n">adaptive_rounds</span><span class="p">,</span>
                 <span class="s1">&#39;total_actions&#39;</span><span class="p">:</span> <span class="n">total_actions</span><span class="p">,</span>
-                <span class="s1">&#39;regret&#39;</span><span class="p">:</span> <span class="n">learner</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">bandit</span><span class="p">)</span>
+                <span class="s1">&#39;regret&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="p">)</span>
             <span class="p">}))</span>
 
-      <span class="n">feedback</span> <span class="o">=</span> <span class="n">bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
-      <span class="n">learner</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span>
+      <span class="n">feedback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span>
 
       <span class="c1"># information update</span>
       <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">:</span>
@@ -228,11 +220,11 @@
     <span class="c1"># record final regret</span>
     <span class="n">one_trial_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="nb">dict</span><span class="p">({</span>
-            <span class="s1">&#39;bandit&#39;</span><span class="p">:</span> <span class="n">bandit</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-            <span class="s1">&#39;learner&#39;</span><span class="p">:</span> <span class="n">learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;bandit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;learner&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
             <span class="s1">&#39;rounds&#39;</span><span class="p">:</span> <span class="n">adaptive_rounds</span><span class="p">,</span>
             <span class="s1">&#39;total_actions&#39;</span><span class="p">:</span> <span class="n">total_actions</span><span class="p">,</span>
-            <span class="s1">&#39;regret&#39;</span><span class="p">:</span> <span class="n">learner</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">bandit</span><span class="p">)</span>
+            <span class="s1">&#39;regret&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="p">)</span>
         <span class="p">}))</span>
     <span class="k">return</span> <span class="n">one_trial_data</span></div>
 </pre></div>

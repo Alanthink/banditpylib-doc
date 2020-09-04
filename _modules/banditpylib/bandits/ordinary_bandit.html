@@ -182,7 +182,7 @@
 <span class="sd">      arm_id: arm to pull</span>
 <span class="sd">      pulls: number of times to pull</span>
 
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      feedback where the first dimention is the stochstic rewards</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">arm_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span><span class="p">):</span>
@@ -202,7 +202,7 @@
 <span class="sd">      actions: for each tuple, the first dimension denotes the arm id and the \</span>
 <span class="sd">      second dimension is the number of times to pull.</span>
 
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      feedback where for each tuple, the first dimention is the stochstic \</span>
 <span class="sd">      rewards</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -229,7 +229,7 @@
 
 <div class="viewcode-block" id="OrdinaryBandit.regret"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.OrdinaryBandit.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      regret compared with the optimal policy</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span></div>
@@ -239,7 +239,7 @@
 <span class="sd">    Args:</span>
 <span class="sd">      arm_id: best arm identified by the learner</span>
 
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      regret compared with the best arm</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm_id</span> <span class="o">!=</span> <span class="n">arm_id</span></div></div>

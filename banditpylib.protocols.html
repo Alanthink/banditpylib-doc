@@ -196,20 +196,33 @@ game.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="banditpylib.protocols.Protocol.bandit">
+<em class="property">property </em><code class="sig-name descname">bandit</code><a class="headerlink" href="#banditpylib.protocols.Protocol.bandit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.protocols.Protocol.learner">
+<em class="property">property </em><code class="sig-name descname">learner</code><a class="headerlink" href="#banditpylib.protocols.Protocol.learner" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt id="banditpylib.protocols.Protocol.play">
 <code class="sig-name descname">play</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">trials</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">output_filename</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">processes</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">debug</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#Protocol.play"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.Protocol.play" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start playing the game</p>
-<p>By default, <cite>output_filename</cite> will be opened with mode <cite>a</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>trials</strong> – number of repetitions</p></li>
 <li><p><strong>output_filename</strong> – file used to dump the results</p></li>
 <li><p><strong>processes</strong> – maximum number of processes to run. -1 means no limit</p></li>
-<li><p><strong>debug</strong> – play the game in debugging mode</p></li>
+<li><p><strong>debug</strong> – debug mode. When it is set to <cite>True</cite>, the game will stop if there       is any error in subprocesses. Otherwise, the errors of subprocesses will       be silenced.</p></li>
 </ul>
 </dd>
 </dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>By default, <cite>output_filename</cite> will be opened with mode <cite>a</cite>.</p>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -219,8 +232,7 @@ game.</p>
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.protocols.</code><code class="sig-name descname">SinglePlayerProtocol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learner</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a></span></em>, <em class="sig-param"><span class="n">intermediate_regrets</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.SinglePlayerProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.protocols.utils.html#banditpylib.protocols.utils.Protocol" title="banditpylib.protocols.utils.Protocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.protocols.utils.Protocol</span></code></a></p>
 <p>Single player protocol</p>
-<p>This protocol is used to simulate the game when the learner only has one
-player and the learner only interacts with one bandit environment.</p>
+<p>This protocol is used to simulate the ordinary single-player game.</p>
 <dl class="py method">
 <dt id="banditpylib.protocols.SinglePlayerProtocol.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learner</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a></span></em>, <em class="sig-param"><span class="n">intermediate_regrets</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.SinglePlayerProtocol.__init__" title="Permalink to this definition">¶</a></dt>

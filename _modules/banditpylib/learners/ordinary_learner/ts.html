@@ -184,7 +184,7 @@
 
 <div class="viewcode-block" id="ThompsonSampling.actions_from_beta_prior"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ts.html#banditpylib.learners.ordinary_learner.ThompsonSampling.actions_from_beta_prior">[docs]</a>  <span class="k">def</span> <span class="nf">actions_from_beta_prior</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      arm to pull</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># the mean of each arm has a uniform prior Beta(1, 1)</span>
@@ -198,7 +198,7 @@
 
 <div class="viewcode-block" id="ThompsonSampling.actions_from_gaussian_prior"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ts.html#banditpylib.learners.ordinary_learner.ThompsonSampling.actions_from_gaussian_prior">[docs]</a>  <span class="k">def</span> <span class="nf">actions_from_gaussian_prior</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      arm to pull</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># the mean of each arm has a Gaussian prior Normal(0, 1)</span>
@@ -212,7 +212,7 @@
 
 <div class="viewcode-block" id="ThompsonSampling.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ts.html#banditpylib.learners.ordinary_learner.ThompsonSampling.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      arms to pull</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">del</span> <span class="n">context</span>

@@ -148,6 +148,7 @@
   <h1>Source code for banditpylib.learners.ordinary_mnl_learner.utils</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">copy</span>
 
+<span class="kn">from</span> <span class="nn">absl</span> <span class="kn">import</span> <span class="n">logging</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">Reward</span>
@@ -185,7 +186,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span> <span class="o">=</span> <span class="n">revenues</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span> <span class="o">=</span> <span class="n">card_limit</span>
     <span class="k">if</span> <span class="n">horizon</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Horizon </span><span class="si">%d</span><span class="s1"> is less than number of products </span><span class="si">%d</span><span class="s1">!&#39;</span> <span class="o">%</span> \
+      <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Horizon </span><span class="si">%d</span><span class="s1"> is less than number of products </span><span class="si">%d</span><span class="s1">!&#39;</span> <span class="o">%</span> \
           <span class="p">(</span><span class="n">horizon</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span> <span class="o">=</span> <span class="n">horizon</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>
@@ -212,7 +213,7 @@
 
 <div class="viewcode-block" id="OrdinaryMNLLearner.regret"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      regret compared with the optimal policy</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">()</span></div></div>

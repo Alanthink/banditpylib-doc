@@ -159,21 +159,21 @@
 
 <div class="viewcode-block" id="PseudoArm.total_pulls"><a class="viewcode-back" href="../../../banditpylib.arms.pseudo_arm.html#banditpylib.arms.PseudoArm.total_pulls">[docs]</a>  <span class="k">def</span> <span class="nf">total_pulls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      total number of pulls recorded</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span></div>
 
 <div class="viewcode-block" id="PseudoArm.total_rewards"><a class="viewcode-back" href="../../../banditpylib.arms.pseudo_arm.html#banditpylib.arms.PseudoArm.total_rewards">[docs]</a>  <span class="k">def</span> <span class="nf">total_rewards</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      total rewards obtained so far</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_rewards</span></div>
 
 <div class="viewcode-block" id="PseudoArm.em_mean"><a class="viewcode-back" href="../../../banditpylib.arms.pseudo_arm.html#banditpylib.arms.PseudoArm.em_mean">[docs]</a>  <span class="k">def</span> <span class="nf">em_mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      empirical mean</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -182,7 +182,7 @@
 
 <div class="viewcode-block" id="PseudoArm.em_var"><a class="viewcode-back" href="../../../banditpylib.arms.pseudo_arm.html#banditpylib.arms.PseudoArm.em_var">[docs]</a>  <span class="k">def</span> <span class="nf">em_var</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return:</span>
+<span class="sd">    Returns:</span>
 <span class="sd">      empirical variance</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
