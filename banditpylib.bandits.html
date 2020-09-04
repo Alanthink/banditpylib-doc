@@ -230,7 +230,10 @@ the environment for execution.</p>
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arms</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm">banditpylib.arms.utils.Arm</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>arms</strong> – arms in ordinary bandit</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arms</strong> – arms in ordinary bandit</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -332,6 +335,7 @@ the environment for execution.</p>
 <li><p><strong>features</strong> – features of the arms</p></li>
 <li><p><strong>theta</strong> – unknown parameter theta</p></li>
 <li><p><strong>var</strong> – variance of noise</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
 </dl>
@@ -611,6 +615,7 @@ that the preference parameter for non-purchase is 1.</p>
 <li><p><strong>card_limit</strong> – cardinality constraint of an assortment</p></li>
 <li><p><strong>reward</strong> – reward the learner wants to maximize</p></li>
 <li><p><strong>zero_best_reward</strong> – whether to set the reward of the best assortment to 0.       This is useful when data is too large to compute the best assortment.</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
 </dl>
