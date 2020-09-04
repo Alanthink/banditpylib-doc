@@ -171,7 +171,7 @@
 <span id="banditpylib-bandits-utils-module"></span><h1>banditpylib.bandits.utils module<a class="headerlink" href="#module-banditpylib.bandits.utils" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="banditpylib.bandits.utils.Bandit">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.utils.</code><code class="sig-name descname">Bandit</code><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.utils.Bandit" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.utils.</code><code class="sig-name descname">Bandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.utils.Bandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Class for bandit environment</p>
 <p>Before a game is run, one has to call <a class="reference internal" href="#banditpylib.bandits.utils.Bandit.reset" title="banditpylib.bandits.utils.Bandit.reset"><code class="xref py py-func docutils literal notranslate"><span class="pre">reset()</span></code></a> to initialize the
@@ -179,9 +179,19 @@ environment. During each time step, <a class="reference internal" href="#banditp
 current state of the environment. <a class="reference internal" href="#banditpylib.bandits.utils.Bandit.feed" title="banditpylib.bandits.utils.Bandit.feed"><code class="xref py py-func docutils literal notranslate"><span class="pre">feed()</span></code></a> is used to pass the actions to
 the environment for execution.</p>
 <dl class="py method">
+<dt id="banditpylib.bandits.utils.Bandit.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.utils.Bandit.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – alias name for the bandit environment.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="banditpylib.bandits.utils.Bandit.name">
-<em class="property">abstract property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.utils.Bandit.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of the bandit environment</p>
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.utils.Bandit.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the learner</p>
 </dd></dl>
 
 <dl class="py method">

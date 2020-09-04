@@ -160,7 +160,12 @@
 <span class="sd">  Arms are indexed from 0 by default.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="OrdinaryBandit.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.OrdinaryBandit.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arms</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Arm</span><span class="p">]):</span>
+<div class="viewcode-block" id="OrdinaryBandit.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.OrdinaryBandit.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arms</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Arm</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">      arms: arms in ordinary bandit</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;The number of arms </span><span class="si">%d</span><span class="s1"> is less than 2!&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__arms</span> <span class="o">=</span> <span class="n">arms</span>
@@ -171,8 +176,7 @@
         <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arms</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_arm_id</span><span class="p">]</span></div>
 
-  <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="s1">&#39;ordinary_bandit&#39;</span>
 
   <span class="k">def</span> <span class="nf">_take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">pulls</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>

@@ -169,7 +169,7 @@
 <span id="banditpylib-bandits-package"></span><h1>banditpylib.bandits package<a class="headerlink" href="#module-banditpylib.bandits" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="banditpylib.bandits.Bandit">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">Bandit</code><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">Bandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Class for bandit environment</p>
 <p>Before a game is run, one has to call <a class="reference internal" href="#banditpylib.bandits.Bandit.reset" title="banditpylib.bandits.Bandit.reset"><code class="xref py py-func docutils literal notranslate"><span class="pre">reset()</span></code></a> to initialize the
@@ -177,9 +177,19 @@ environment. During each time step, <a class="reference internal" href="#banditp
 current state of the environment. <a class="reference internal" href="#banditpylib.bandits.Bandit.feed" title="banditpylib.bandits.Bandit.feed"><code class="xref py py-func docutils literal notranslate"><span class="pre">feed()</span></code></a> is used to pass the actions to
 the environment for execution.</p>
 <dl class="py method">
+<dt id="banditpylib.bandits.Bandit.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – alias name for the bandit environment.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="banditpylib.bandits.Bandit.name">
-<em class="property">abstract property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.Bandit.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of the bandit environment</p>
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.Bandit.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the learner</p>
 </dd></dl>
 
 <dl class="py method">
@@ -211,20 +221,18 @@ the environment for execution.</p>
 
 <dl class="py class">
 <dt id="banditpylib.bandits.OrdinaryBandit">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">OrdinaryBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arms</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm">banditpylib.arms.utils.Arm</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">OrdinaryBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arms</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm">banditpylib.arms.utils.Arm</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf" title="banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf</span></code></a></p>
 <p>Class for ordinary bandit</p>
 <p>Arms are indexed from 0 by default.</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arms</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm">banditpylib.arms.utils.Arm</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="banditpylib.bandits.OrdinaryBandit.name">
-<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of the bandit environment</p>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arms</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm">banditpylib.arms.utils.Arm</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>arms</strong> – arms in ordinary bandit</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -292,7 +300,7 @@ the environment for execution.</p>
 
 <dl class="py class">
 <dt id="banditpylib.bandits.OrdinaryBanditItf">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">OrdinaryBanditItf</code><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit_itf.html#OrdinaryBanditItf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBanditItf" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">OrdinaryBanditItf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit_itf.html#OrdinaryBanditItf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBanditItf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.utils.Bandit</span></code></a></p>
 <p>Ordinary bandit interface</p>
 <dl class="py method">
@@ -311,13 +319,13 @@ the environment for execution.</p>
 
 <dl class="py class">
 <dt id="banditpylib.bandits.LinearBandit">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">LinearBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">var</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">LinearBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">var</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf" title="banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf</span></code></a>, <a class="reference internal" href="banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.linear_bandit_itf.LinearBanditItf" title="banditpylib.bandits.linear_bandit_itf.LinearBanditItf"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.linear_bandit_itf.LinearBanditItf</span></code></a></p>
 <p>Class for finite-armed linear bandit</p>
 <p>Arms are indexed from 0 by default.</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.LinearBandit.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">var</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">var</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -327,12 +335,6 @@ the environment for execution.</p>
 </ul>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="banditpylib.bandits.LinearBandit.name">
-<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.LinearBandit.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of the bandit environment</p>
 </dd></dl>
 
 <dl class="py method">
@@ -400,7 +402,7 @@ the environment for execution.</p>
 
 <dl class="py class">
 <dt id="banditpylib.bandits.LinearBanditItf">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">LinearBanditItf</code><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit_itf.html#LinearBanditItf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBanditItf" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">LinearBanditItf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit_itf.html#LinearBanditItf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBanditItf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.utils.Bandit</span></code></a></p>
 <p>Linear bandit interface</p>
 <dl class="py method">
@@ -588,7 +590,7 @@ the environment for execution.</p>
 
 <dl class="py class">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">OrdinaryMNLBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">preference_params</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">reward</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">zero_best_reward</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">OrdinaryMNLBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">preference_params</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">reward</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">zero_best_reward</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.utils.Bandit</span></code></a></p>
 <p>Class for ordinary MNL bandit</p>
 <p>Products are numbered from 1 by default. 0 is reserved for non-purchase. The
@@ -596,7 +598,7 @@ preference parameters are assumed to be between 0 and 1. And it is assumed
 that the preference parameter for non-purchase is 1.</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">preference_params</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">reward</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">zero_best_reward</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">preference_params</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">reward</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">zero_best_reward</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -608,12 +610,6 @@ that the preference parameter for non-purchase is 1.</p>
 </ul>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="banditpylib.bandits.OrdinaryMNLBandit.name">
-<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of the bandit environment</p>
 </dd></dl>
 
 <dl class="py method">
