@@ -169,6 +169,11 @@
                <span class="n">eps</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
+<span class="sd">      revenues: product revenues</span>
+<span class="sd">      horizon: total number of time steps</span>
+<span class="sd">      reward: reward the learner wants to maximize</span>
+<span class="sd">      card_limit: cardinality constraint</span>
+<span class="sd">      name: alias name</span>
 <span class="sd">      eps: epsilon</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">revenues</span><span class="p">,</span> <span class="n">horizon</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>

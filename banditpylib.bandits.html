@@ -244,10 +244,15 @@ the environment for execution.</p>
 <dd><p>Pull multiple arms</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actions</strong> – for each tuple, the first dimension denotes the arm id and the       second dimension is the number of times to pull.</p>
+<dd class="field-odd"><p><strong>actions</strong> – for each tuple, the first dimension denotes the arm id and the
+second dimension is the number of times to pull.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>feedback where for each tuple, the first dimention is the stochstic       rewards</p>
+<dd class="field-even"><p><dl class="simple">
+<dt>feedback where for each tuple, the first dimention is the stochstic</dt><dd><p>rewards</p>
+</dd>
+</dl>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -347,10 +352,15 @@ the environment for execution.</p>
 <dd><p>Pull multiple arms</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actions</strong> – for each tuple, the first dimension denotes the arm id and the       second dimension is the number of times this arm is going to be pulled.</p>
+<dd class="field-odd"><p><strong>actions</strong> – for each tuple, the first dimension denotes the arm id and the
+second dimension is the number of times this arm is going to be pulled.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>feedback where for each tuple, the first dimension is the stochatic       rewards</p>
+<dd class="field-even"><p><dl class="simple">
+<dt>feedback where for each tuple, the first dimension is the stochatic</dt><dd><p>rewards</p>
+</dd>
+</dl>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -456,6 +466,9 @@ the environment for execution.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>reward of the assortment</p>
 </dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -512,6 +525,9 @@ the environment for execution.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>reward of the assortment</p>
 </dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -547,6 +563,9 @@ the environment for execution.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>reward of the assortment</p>
 </dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -565,6 +584,9 @@ the environment for execution.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>assortment with the maximum reward</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[float, List[int]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -593,6 +615,9 @@ the environment for execution.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>local best assortment with its reward</p>
 </dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[float, List[int]]</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -614,7 +639,8 @@ that the preference parameter for non-purchase is 1.</p>
 <li><p><strong>revenue</strong> – revenue of products</p></li>
 <li><p><strong>card_limit</strong> – cardinality constraint of an assortment</p></li>
 <li><p><strong>reward</strong> – reward the learner wants to maximize</p></li>
-<li><p><strong>zero_best_reward</strong> – whether to set the reward of the best assortment to 0.       This is useful when data is too large to compute the best assortment.</p></li>
+<li><p><strong>zero_best_reward</strong> – whether to set the reward of the best assortment to 0.
+This is useful when data is too large to compute the best assortment.</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
@@ -627,10 +653,14 @@ that the preference parameter for non-purchase is 1.</p>
 <dd><p>Serve multiple assortments</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actions</strong> – for each tuple, the first dimension is the assortment to try       and the second dimension is the number of times.</p>
+<dd class="field-odd"><p><strong>actions</strong> – for each tuple, the first dimension is the assortment to try
+and the second dimension is the number of times.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>feedback where for each tuple, the first dimension is the stochatic       rewards, and the second dimension are the choices of the customer</p>
+<dd class="field-even"><p>feedback. For each tuple, the first       dimension is the stochatic rewards, and the second dimension is the       choices of the customer.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[Tuple[np.ndarray, List[int]]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -668,6 +698,9 @@ that the preference parameter for non-purchase is 1.</p>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>regret compared with the optimal policy</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
 </dd>
 </dl>
 </dd></dl>

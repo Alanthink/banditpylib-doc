@@ -186,6 +186,7 @@ parameter for non-purchase is 1.</p>
 <li><p><strong>horizon</strong> – total number of time steps</p></li>
 <li><p><strong>reward</strong> – reward the learner wants to maximize</p></li>
 <li><p><strong>card_limit</strong> – cardinality constraint</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
 </dl>
@@ -244,7 +245,13 @@ parameter for non-purchase is 1.</p>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>use_local_search</strong> – whether to use local search for searching the best       assortment</p></li>
+<li><p><strong>revenues</strong> – product revenues</p></li>
+<li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>reward</strong> – reward the learner wants to maximize</p></li>
+<li><p><strong>card_limit</strong> – cardinality constraint</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
+<li><p><strong>use_local_search</strong> – whether to use local search for searching the best
+assortment</p></li>
 <li><p><strong>local_search_times</strong> – number of local searches if local search is used</p></li>
 </ul>
 </dd>
@@ -303,7 +310,14 @@ remaining probability serve the assortment with the maximum empirical reward.</p
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">reward</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward">banditpylib.bandits.ordinary_mnl_bandit.Reward</a></span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">eps</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>eps</strong> – epsilon</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>revenues</strong> – product revenues</p></li>
+<li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>reward</strong> – reward the learner wants to maximize</p></li>
+<li><p><strong>card_limit</strong> – cardinality constraint</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
+<li><p><strong>eps</strong> – epsilon</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -364,7 +378,13 @@ remaining probability serve the assortment with the maximum empirical reward.</p
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>use_local_search</strong> – whether to use local search for searching the best       assortment</p></li>
+<li><p><strong>revenues</strong> – product revenues</p></li>
+<li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>reward</strong> – reward the learner wants to maximize</p></li>
+<li><p><strong>card_limit</strong> – cardinality constraint</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
+<li><p><strong>use_local_search</strong> – whether to use local search for searching the best
+assortment</p></li>
 <li><p><strong>local_search_times</strong> – number of local searches if local search is used</p></li>
 </ul>
 </dd>
