@@ -208,7 +208,10 @@ assortment</p></li>
 <dd><p>Initial warm start stage</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>assortment to serve</p>
+<dd class="field-odd"><p>assortments and their serving times</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[Tuple[List[int], int]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -218,7 +221,10 @@ assortment</p></li>
 <code class="sig-name descname">within_warm_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.within_warm_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.within_warm_start" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>if the learner is still in warm start stage</p>
+<dd class="field-odd"><p><cite>True</cite> if the learner is still in warm start stage</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -238,7 +244,10 @@ assortment</p></li>
 <code class="sig-name descname">thompson_sampling</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.thompson_sampling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ts.ThompsonSampling.thompson_sampling" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>virtual preference parameters sampled using thompson sampling</p>
+<dd class="field-odd"><p>preference parameters sampled by thompson sampling</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
 </dd>
 </dl>
 </dd></dl>

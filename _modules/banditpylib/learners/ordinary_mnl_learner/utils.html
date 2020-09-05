@@ -200,7 +200,7 @@
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLLearner.card_limit"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.card_limit">[docs]</a>  <span class="k">def</span> <span class="nf">card_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span></div>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLLearner.horizon"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.horizon">[docs]</a>  <span class="k">def</span> <span class="nf">horizon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span></div>
