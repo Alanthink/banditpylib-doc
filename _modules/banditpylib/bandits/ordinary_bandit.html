@@ -196,7 +196,8 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">+=</span> <span class="n">pulls</span>
     <span class="c1"># empirical rewards when arm `arm_id` is pulled for `pulls` times</span>
     <span class="n">em_rewards</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">pulls</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="n">pulls</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">em_rewards</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">em_rewards</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="n">pulls</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">em_rewards</span><span class="p">))</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">em_rewards</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
 <div class="viewcode-block" id="OrdinaryBandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.OrdinaryBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> \
@@ -239,7 +240,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span></div>
 
-<div class="viewcode-block" id="OrdinaryBandit.best_arm_regret"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.OrdinaryBandit.best_arm_regret">[docs]</a>  <span class="k">def</span> <span class="nf">best_arm_regret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<div class="viewcode-block" id="OrdinaryBandit.best_arm_regret"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.OrdinaryBandit.best_arm_regret">[docs]</a>  <span class="k">def</span> <span class="nf">best_arm_regret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      arm_id: best arm identified by the learner</span>
@@ -247,7 +248,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">      regret compared with the best arm</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm_id</span> <span class="o">!=</span> <span class="n">arm_id</span></div></div>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_arm_id</span> <span class="o">!=</span> <span class="n">arm_id</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
