@@ -183,30 +183,30 @@
     <span class="k">assert</span> <span class="n">best_revenue</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="mf">0.41</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TestOrdinaryMNLBandit.test_local_search_best_assortment"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit_test.html#banditpylib.bandits.ordinary_mnl_bandit_test.TestOrdinaryMNLBandit.test_local_search_best_assortment">[docs]</a>  <span class="k">def</span> <span class="nf">test_local_search_best_assortment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">reward</span> <span class="o">=</span> <span class="n">CvarReward</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">reward</span> <span class="o">=</span> <span class="n">MeanReward</span><span class="p">()</span>
     <span class="n">reward</span><span class="o">.</span><span class="n">set_preference_params</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
             <span class="mi">1</span><span class="p">,</span> <span class="mf">0.41796638065213765</span><span class="p">,</span> <span class="mf">0.640233815546399</span><span class="p">,</span> <span class="mf">0.8692331344533714</span><span class="p">,</span>
-            <span class="mf">0.6766260654759216</span><span class="p">,</span> <span class="mf">0.7388897283940284</span><span class="p">,</span> <span class="mf">0.6995225221701101</span><span class="p">,</span>
-            <span class="mf">0.44577179791896593</span><span class="p">,</span> <span class="mf">0.12871019989950505</span><span class="p">,</span> <span class="mf">0.9006827155203128</span><span class="p">,</span>
-            <span class="mf">0.9638849244678077</span>
+            <span class="mf">0.6766260654759216</span><span class="p">,</span> <span class="mf">0.7388897283940284</span>
         <span class="p">]))</span>
     <span class="n">reward</span><span class="o">.</span><span class="n">set_revenues</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
             <span class="mi">0</span><span class="p">,</span> <span class="mf">0.6741252008863028</span><span class="p">,</span> <span class="mf">0.16873112382668315</span><span class="p">,</span> <span class="mf">0.3056694804088398</span><span class="p">,</span>
-            <span class="mf">0.9369761261650644</span><span class="p">,</span> <span class="mf">0.9444412097177997</span><span class="p">,</span> <span class="mf">0.6459778680040282</span><span class="p">,</span>
-            <span class="mf">0.1391433754809273</span><span class="p">,</span> <span class="mf">0.7529605722204439</span><span class="p">,</span> <span class="mf">0.24240120158588363</span><span class="p">,</span>
-            <span class="mf">0.9428414848973209</span>
+            <span class="mf">0.9369761261650644</span><span class="p">,</span> <span class="mf">0.9444412097177997</span>
         <span class="p">]))</span>
     <span class="n">product_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">reward</span><span class="o">.</span><span class="n">revenues</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="n">card_limit</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="n">best_revenue</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">local_search_best_assortment</span><span class="p">(</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">search_best_assortment</span><span class="p">(</span>
         <span class="n">reward</span><span class="o">=</span><span class="n">reward</span><span class="p">,</span>
-        <span class="n">search_times</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">card_limit</span><span class="o">=</span><span class="n">card_limit</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">card_limit</span>
-    <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">product_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
-    <span class="k">assert</span> <span class="n">best_revenue</span> <span class="o">&gt;</span> <span class="mi">0</span></div>
+        <span class="n">card_limit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">local_best_assortment</span> <span class="o">=</span> <span class="n">local_search_best_assortment</span><span class="p">(</span>
+        <span class="n">reward</span><span class="o">=</span><span class="n">reward</span><span class="p">,</span>
+        <span class="n">random_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">card_limit</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">init_assortment</span><span class="o">=</span><span class="n">best_assortment</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">local_best_assortment</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">product_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
+    <span class="c1"># When reward is MeanReward, local search guarantees to output the best</span>
+    <span class="c1"># assortment.</span>
+    <span class="k">assert</span> <span class="n">best_assortment</span> <span class="o">==</span> <span class="n">local_best_assortment</span></div>
 
 
 <div class="viewcode-block" id="TestOrdinaryMNLBandit.test_cvar_calculation"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit_test.html#banditpylib.bandits.ordinary_mnl_bandit_test.TestOrdinaryMNLBandit.test_cvar_calculation">[docs]</a>  <span class="k">def</span> <span class="nf">test_cvar_calculation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

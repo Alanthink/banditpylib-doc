@@ -150,7 +150,8 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">search_best_assortment</span><span class="p">,</span> <span class="n">Reward</span><span class="p">,</span> <span class="n">search</span>
+<span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">search_best_assortment</span><span class="p">,</span> <span class="n">Reward</span><span class="p">,</span> <span class="n">search</span><span class="p">,</span> \
+    <span class="n">local_search_best_assortment</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">OrdinaryMNLLearner</span>
 
 
@@ -166,6 +167,8 @@
                <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
                <span class="n">card_limit</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
                <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+               <span class="n">use_local_search</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+               <span class="n">random_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                <span class="n">eps</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
@@ -174,9 +177,20 @@
 <span class="sd">      reward: reward the learner wants to maximize</span>
 <span class="sd">      card_limit: cardinality constraint</span>
 <span class="sd">      name: alias name</span>
+<span class="sd">      use_local_search: whether to use local search for searching the best</span>
+<span class="sd">        assortment</span>
+<span class="sd">      random_neighbors: number of random neighbors to look up if local search is</span>
+<span class="sd">        used</span>
 <span class="sd">      eps: epsilon</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">revenues</span><span class="p">,</span> <span class="n">horizon</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="n">revenues</span><span class="o">=</span><span class="n">revenues</span><span class="p">,</span>
+        <span class="n">horizon</span><span class="o">=</span><span class="n">horizon</span><span class="p">,</span>
+        <span class="n">reward</span><span class="o">=</span><span class="n">reward</span><span class="p">,</span>
+        <span class="n">card_limit</span><span class="o">=</span><span class="n">card_limit</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">use_local_search</span><span class="o">=</span><span class="n">use_local_search</span><span class="p">,</span>
+        <span class="n">random_neighbors</span><span class="o">=</span><span class="n">random_neighbors</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">eps</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Epsilon </span><span class="si">%.2f</span><span class="s1"> in </span><span class="si">%s</span><span class="s1"> is no greater than 0!&#39;</span> <span class="o">%</span> \
           <span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">))</span>
@@ -240,9 +254,16 @@
       <span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="o">.</span><span class="n">set_preference_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">em_preference_params</span><span class="p">())</span>
       <span class="c1"># calculate assortment with the maximum reward using optimistic</span>
       <span class="c1"># preference parameters</span>
-      <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">search_best_assortment</span><span class="p">(</span>
-          <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
-          <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">())</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_local_search</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">local_search_best_assortment</span><span class="p">(</span>
+            <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
+            <span class="n">random_neighbors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_neighbors</span><span class="p">,</span>
+            <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">(),</span>
+            <span class="n">init_assortment</span><span class="o">=</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="k">else</span> <span class="kc">None</span><span class="p">))</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">search_best_assortment</span><span class="p">(</span>
+            <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">())</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">best_assortment</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span></div>
 

@@ -347,7 +347,7 @@
 
 <div class="viewcode-block" id="local_search_best_assortment"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.local_search_best_assortment">[docs]</a><span class="k">def</span> <span class="nf">local_search_best_assortment</span><span class="p">(</span>
     <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
-    <span class="n">search_times</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">random_neighbors</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">card_limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">init_assortment</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
   <span class="sd">&quot;&quot;&quot;Local search assortment with the maximum reward</span>
@@ -360,35 +360,32 @@
 
 <span class="sd">  Args:</span>
 <span class="sd">    reward: reward definition</span>
-<span class="sd">    search_times: number of local search times</span>
+<span class="sd">    random_neighbors: number of random neighbors to look up</span>
 <span class="sd">    card_limit: cardinality constraint</span>
 <span class="sd">    init_assortment: initial assortment to start</span>
 
 <span class="sd">  Returns:</span>
 <span class="sd">    Tuple[float, List[int]]: local best assortment with its reward</span>
 <span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">random_neighbors</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of neighbors to look up </span><span class="si">%d</span><span class="s1"> is no greater than 0!&#39;</span> \
+        <span class="o">%</span> <span class="n">random_neighbors</span><span class="p">)</span>
+
   <span class="n">product_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">reward</span><span class="o">.</span><span class="n">revenues</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
   <span class="c1"># all available products</span>
   <span class="n">all_products</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">product_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-
-  <span class="c1"># randomly generate an assortment initially</span>
-  <span class="n">best_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
-      <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
-          <span class="nb">list</span><span class="p">(</span><span class="n">all_products</span><span class="p">),</span>
-          <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">card_limit</span><span class="p">,</span> <span class="n">product_num</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
-          <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-  <span class="n">best_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">init_assortment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">init_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">init_assortment</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">init_reward</span> <span class="o">&gt;</span> <span class="n">best_reward</span><span class="p">:</span>
-      <span class="n">best_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">init_assortment</span><span class="p">)</span>
-      <span class="n">best_reward</span> <span class="o">=</span> <span class="n">init_reward</span>
-
+  <span class="k">if</span> <span class="n">init_assortment</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># randomly generate an assortment initially</span>
+    <span class="n">best_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">all_products</span><span class="p">),</span> <span class="n">card_limit</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="n">best_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">best_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">init_assortment</span><span class="p">)</span>
+    <span class="n">best_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span>
   <span class="n">remaining_products</span> <span class="o">=</span> <span class="n">all_products</span> <span class="o">-</span> <span class="n">best_assortment</span>
 
-  <span class="n">times_of_local_search</span> <span class="o">=</span> <span class="mi">0</span>
-  <span class="k">while</span> <span class="n">times_of_local_search</span> <span class="o">&lt;</span> <span class="n">search_times</span><span class="p">:</span>
+  <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">available_operations</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">remaining_products</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
       <span class="n">available_operations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
@@ -396,41 +393,45 @@
       <span class="n">available_operations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;remove&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">remaining_products</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">card_limit</span><span class="p">:</span>
       <span class="n">available_operations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
-    <span class="c1"># pylint: disable=E1101</span>
-    <span class="n">operation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">available_operations</span><span class="p">)</span>
 
-    <span class="n">new_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">operation</span> <span class="o">==</span> <span class="s1">&#39;replace&#39;</span><span class="p">:</span>
-      <span class="c1"># replace one product</span>
-      <span class="n">product_to_remove</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">))</span>
-      <span class="n">product_to_add</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">remaining_products</span><span class="p">))</span>
-      <span class="n">new_assortment</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">product_to_remove</span><span class="p">)</span>
-      <span class="n">new_assortment</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">product_to_add</span><span class="p">)</span>
-      <span class="n">new_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">new_assortment</span><span class="p">)</span>
-      <span class="k">if</span> <span class="n">new_reward</span> <span class="o">&gt;</span> <span class="n">best_reward</span><span class="p">:</span>
-        <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">new_assortment</span>
-        <span class="n">best_reward</span> <span class="o">=</span> <span class="n">new_reward</span>
-        <span class="n">remaining_products</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">product_to_add</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">operation</span> <span class="o">==</span> <span class="s1">&#39;remove&#39;</span><span class="p">:</span>
-      <span class="c1"># remove one product</span>
-      <span class="n">product_to_remove</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">))</span>
-      <span class="n">new_assortment</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">product_to_remove</span><span class="p">)</span>
-      <span class="n">new_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">new_assortment</span><span class="p">)</span>
-      <span class="k">if</span> <span class="n">new_reward</span> <span class="o">&gt;</span> <span class="n">best_reward</span><span class="p">:</span>
-        <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">new_assortment</span>
-        <span class="n">best_reward</span> <span class="o">=</span> <span class="n">new_reward</span>
-        <span class="n">remaining_products</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">product_to_remove</span><span class="p">)</span>
+    <span class="n">local_best_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">local_best_reward</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">random_neighbors</span><span class="p">):</span>
+      <span class="c1"># pylint: disable=E1101</span>
+      <span class="n">operation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">available_operations</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="n">operation</span> <span class="o">==</span> <span class="s1">&#39;replace&#39;</span><span class="p">:</span>
+        <span class="c1"># replace one product</span>
+        <span class="n">product_to_remove</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">))</span>
+        <span class="n">product_to_add</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">remaining_products</span><span class="p">))</span>
+        <span class="n">new_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span>
+        <span class="n">new_assortment</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">product_to_remove</span><span class="p">)</span>
+        <span class="n">new_assortment</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">product_to_add</span><span class="p">)</span>
+        <span class="n">new_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">new_assortment</span><span class="p">)</span>
+      <span class="k">elif</span> <span class="n">operation</span> <span class="o">==</span> <span class="s1">&#39;remove&#39;</span><span class="p">:</span>
+        <span class="c1"># remove one product</span>
+        <span class="n">product_to_remove</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">))</span>
+        <span class="n">new_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span>
+        <span class="n">new_assortment</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">product_to_remove</span><span class="p">)</span>
+        <span class="n">new_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">new_assortment</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># operation = &#39;add&#39;</span>
+        <span class="c1"># add one product</span>
+        <span class="n">product_to_add</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">remaining_products</span><span class="p">))</span>
+        <span class="n">new_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span>
+        <span class="n">new_assortment</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">product_to_add</span><span class="p">)</span>
+        <span class="n">new_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">new_assortment</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="n">new_reward</span> <span class="o">&gt;</span> <span class="n">local_best_reward</span><span class="p">:</span>
+        <span class="n">local_best_assortment</span> <span class="o">=</span> <span class="n">new_assortment</span>
+        <span class="n">local_best_reward</span> <span class="o">=</span> <span class="n">new_reward</span>
+
+    <span class="k">if</span> <span class="n">local_best_reward</span> <span class="o">&gt;</span> <span class="n">best_reward</span><span class="p">:</span>
+      <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">local_best_assortment</span>
+      <span class="n">best_reward</span> <span class="o">=</span> <span class="n">local_best_reward</span>
+      <span class="n">remaining_products</span> <span class="o">=</span> <span class="n">all_products</span> <span class="o">-</span> <span class="n">best_assortment</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="c1"># operation == &#39;add&#39;</span>
-      <span class="n">product_to_add</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">remaining_products</span><span class="p">))</span>
-      <span class="n">new_assortment</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">product_to_add</span><span class="p">)</span>
-      <span class="n">new_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">new_assortment</span><span class="p">)</span>
-      <span class="k">if</span> <span class="n">new_reward</span> <span class="o">&gt;</span> <span class="n">best_reward</span><span class="p">:</span>
-        <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">new_assortment</span>
-        <span class="n">best_reward</span> <span class="o">=</span> <span class="n">new_reward</span>
-        <span class="n">remaining_products</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">product_to_add</span><span class="p">)</span>
-
-    <span class="n">times_of_local_search</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="k">break</span>
 
   <span class="k">return</span> <span class="p">(</span><span class="n">best_reward</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)))</span></div>
 

@@ -166,8 +166,10 @@
                <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
-               <span class="n">card_limit</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
-               <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+               <span class="n">card_limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+               <span class="n">use_local_search</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+               <span class="n">random_neighbors</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      revenues: product revenues</span>
@@ -175,6 +177,10 @@
 <span class="sd">      reward: reward the learner wants to maximize</span>
 <span class="sd">      card_limit: cardinality constraint</span>
 <span class="sd">      name: alias name</span>
+<span class="sd">      use_local_search: whether to use local search for searching the best</span>
+<span class="sd">        assortment</span>
+<span class="sd">      random_neighbors: number of random neighbors to look up if local search is</span>
+<span class="sd">        used</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">revenues</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
@@ -185,13 +191,20 @@
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
           <span class="s1">&#39;The revenue of product 0 i.e., </span><span class="si">%.2f</span><span class="s1"> is not 0!&#39;</span> <span class="o">%</span> <span class="n">revenues</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span> <span class="o">=</span> <span class="n">revenues</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span> <span class="o">=</span> <span class="n">card_limit</span>
+    <span class="k">if</span> <span class="n">card_limit</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Cardinality limit </span><span class="si">%d</span><span class="s1"> is less than 1!&#39;</span> <span class="o">%</span> <span class="n">card_limit</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">card_limit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">horizon</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">:</span>
       <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Horizon </span><span class="si">%d</span><span class="s1"> is less than number of products </span><span class="si">%d</span><span class="s1">!&#39;</span> <span class="o">%</span> \
           <span class="p">(</span><span class="n">horizon</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span> <span class="o">=</span> <span class="n">horizon</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">set_revenues</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span><span class="p">)</span></div>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">set_revenues</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__use_local_search</span> <span class="o">=</span> <span class="n">use_local_search</span>
+    <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">random_neighbors</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Times of local search </span><span class="si">%d</span><span class="s1"> is less than 3!&#39;</span> <span class="o">%</span>
+                      <span class="n">random_neighbors</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__random_neighbors</span> <span class="o">=</span> <span class="n">random_neighbors</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLLearner.product_num"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.product_num">[docs]</a>  <span class="k">def</span> <span class="nf">product_num</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span></div>
@@ -200,17 +213,25 @@
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLLearner.card_limit"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.card_limit">[docs]</a>  <span class="k">def</span> <span class="nf">card_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLLearner.horizon"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.horizon">[docs]</a>  <span class="k">def</span> <span class="nf">horizon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span></div>
 
   <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">reward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">reward</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Reward</span><span class="p">:</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span>
 
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">use_local_search</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__use_local_search</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">random_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__random_neighbors</span>
+
 <div class="viewcode-block" id="OrdinaryMNLLearner.set_horizon"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.set_horizon">[docs]</a>  <span class="k">def</span> <span class="nf">set_horizon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_horizon</span> <span class="o">=</span> <span class="n">horizon</span></div>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span> <span class="o">=</span> <span class="n">horizon</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLLearner.regret"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
