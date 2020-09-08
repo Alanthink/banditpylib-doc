@@ -173,7 +173,7 @@
 <span id="banditpylib-learners-ordinary-learner-moss-module"></span><h1>banditpylib.learners.ordinary_learner.moss module<a class="headerlink" href="#module-banditpylib.learners.ordinary_learner.moss" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_learner.moss.MOSS">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.moss.</code><code class="sig-name descname">MOSS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.moss.MOSS" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.moss.</code><code class="sig-name descname">MOSS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.moss.MOSS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_learner.utils.html#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_learner.utils.OrdinaryLearner</span></code></a></p>
 <p>MOSS policy <a class="bibtex reference internal" href="bibliography.html#audibert2009minimax" id="id1">[AB09]</a></p>
 <p>At time <span class="math notranslate nohighlight">\(t\)</span>, play arm</p>
@@ -187,17 +187,23 @@ in [0, 1].</p>
 </div>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.moss.MOSS.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.moss.MOSS.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Args:
-arm_num: number of arms
-horizon: total number of time steps</p>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.moss.MOSS.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arm_num</strong> – number of arms</p></li>
+<li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.moss.MOSS.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.moss.MOSS.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset of the learner</p>
-<p>This function should be called before the start of the game</p>
+<dd><p>Learner reset</p>
+<p>Initialization. This function should be called before the start of the game.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -205,7 +211,7 @@ horizon: total number of time steps</p>
 <code class="sig-name descname">MOSS</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.MOSS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.moss.MOSS.MOSS" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>optimistic estimate of arms’ real means using time horizon</p>
+<dd class="field-odd"><p>optimistic estimate of arms’ real means using horizon</p>
 </dd>
 </dl>
 </dd></dl>
@@ -214,19 +220,23 @@ horizon: total number of time steps</p>
 <dt id="banditpylib.learners.ordinary_learner.moss.MOSS.actions">
 <code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.moss.MOSS.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>arms to pull</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>arms to pull</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.moss.MOSS.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.moss.MOSS.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.moss.MOSS.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback of the bandit environment</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
+<cite>self.__last_actions</cite>.</p>
 </dd>
 </dl>
 </dd></dl>

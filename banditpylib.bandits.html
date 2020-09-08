@@ -171,7 +171,7 @@
 <dt id="banditpylib.bandits.Bandit">
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">Bandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>Class for bandit environment</p>
+<p>Bandit environment</p>
 <p>Before a game is run, one has to call <a class="reference internal" href="#banditpylib.bandits.Bandit.reset" title="banditpylib.bandits.Bandit.reset"><code class="xref py py-func docutils literal notranslate"><span class="pre">reset()</span></code></a> to initialize the
 environment. During each time step, <a class="reference internal" href="#banditpylib.bandits.Bandit.context" title="banditpylib.bandits.Bandit.context"><code class="xref py py-func docutils literal notranslate"><span class="pre">context()</span></code></a> will return the
 current state of the environment. <a class="reference internal" href="#banditpylib.bandits.Bandit.feed" title="banditpylib.bandits.Bandit.feed"><code class="xref py py-func docutils literal notranslate"><span class="pre">feed()</span></code></a> is used to pass the actions to
@@ -189,19 +189,24 @@ the environment for execution.</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.Bandit.name">
 <em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.Bandit.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>name of the learner</p>
+<dd><p>Bandit name</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.Bandit.reset">
 <em class="property">abstract </em><code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
+<p>Initialization. This function should be called before the start of the game.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.Bandit.context">
 <em class="property">abstract </em><code class="sig-name descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit.context" title="Permalink to this definition">¶</a></dt>
-<dd><p>Current state of the bandit environment</p>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>current state of the bandit environment</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -209,10 +214,10 @@ the environment for execution.</p>
 <em class="property">abstract </em><code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">actions</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit.feed" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actions</strong> – actions to take</p>
+<dd class="field-odd"><p><strong>actions</strong> – actions for the bandit environment to take</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>feedback after actions are taken</p>
+<dd class="field-even"><p>feedback after executing actions <cite>actions</cite></p>
 </dd>
 </dl>
 </dd></dl>
@@ -248,10 +253,7 @@ the environment for execution.</p>
 second dimension is the number of times to pull.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>feedback. For each tuple, the first       dimention is the stochstic rewards</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[Tuple[np.ndarray, None]]</p>
+<dd class="field-even"><p>feedback by pulling arms <cite>actions</cite>. For each tuple, the first       dimention is the stochstic rewards</p>
 </dd>
 </dl>
 </dd></dl>
@@ -260,12 +262,14 @@ second dimension is the number of times to pull.</p>
 <dt id="banditpylib.bandits.OrdinaryBandit.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
+<p>Initialization. This function should be called before the start of the game.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.context">
 <code class="sig-name descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.context" title="Permalink to this definition">¶</a></dt>
-<dd><p>Current state of the bandit environment</p>
+<dd><p>Returns:
+current state of the bandit environment</p>
 </dd></dl>
 
 <dl class="py method">
@@ -367,6 +371,7 @@ second dimension is the number of times this arm is going to be pulled.</p>
 <dt id="banditpylib.bandits.LinearBandit.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
+<p>Initialization. This function should be called before the start of the game.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -420,7 +425,8 @@ second dimension is the number of times this arm is going to be pulled.</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.LinearBanditItf.context">
 <code class="sig-name descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit_itf.html#LinearBanditItf.context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBanditItf.context" title="Permalink to this definition">¶</a></dt>
-<dd><p>Current state of the bandit environment</p>
+<dd><p>Returns:
+current state of the bandit environment</p>
 </dd></dl>
 
 <dl class="py method">
@@ -583,9 +589,6 @@ second dimension is the number of times this arm is going to be pulled.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>assortment with the maximum reward</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Tuple[float, List[int]]</p>
-</dd>
 </dl>
 </dd></dl>
 
@@ -612,9 +615,6 @@ second dimension is the number of times this arm is going to be pulled.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>local best assortment with its reward</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Tuple[float, List[int]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -651,14 +651,11 @@ This is useful when data is too large to compute the best assortment.</p></li>
 <dd><p>Serve multiple assortments</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actions</strong> – for each tuple, the first dimension is the assortment to try
-and the second dimension is the number of times.</p>
+<dd class="field-odd"><p><strong>actions</strong> – for each tuple, the first dimension is the assortment to serve
+and the second dimension is the number of serving times.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>feedback. For each tuple, the first       dimension is the stochatic rewards, and the second dimension is the       choices of the customer.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[Tuple[np.ndarray, List[int]]]</p>
+<dd class="field-even"><p>feedback by serving assortments <cite>actions</cite>. For each tuple, the first       dimension is the stochatic rewards, and the second dimension is the       choices of the customer.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -667,12 +664,14 @@ and the second dimension is the number of times.</p>
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
+<p>Initialization. This function should be called before the start of the game.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.context">
 <code class="sig-name descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.context" title="Permalink to this definition">¶</a></dt>
-<dd><p>Current state of the bandit environment</p>
+<dd><p>Returns:
+current state of the bandit environment</p>
 </dd></dl>
 
 <dl class="py method">
@@ -696,9 +695,6 @@ and the second dimension is the number of times.</p>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>regret compared with the optimal policy</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>float</p>
 </dd>
 </dl>
 </dd></dl>

@@ -163,22 +163,25 @@
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;name of the learner&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Learner name&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
 
   <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Internal name of the learner&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      default learner name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Learner.reset"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.Learner.reset">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Reset of the learner</span>
+    <span class="sd">&quot;&quot;&quot;Learner reset</span>
 
-<span class="sd">    This function should be called before the start of the game</span>
+<span class="sd">    Initialization. This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="Learner.actions"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.Learner.actions">[docs]</a>  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Actions of the learner for one round</span>
 
 <span class="sd">    Args:</span>
@@ -193,7 +196,8 @@
     <span class="sd">&quot;&quot;&quot;Learner update</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      feedback: feedback of the bandit environment</span>
+<span class="sd">      feedback: feedback returned by the bandit environment by executing actions</span>
+<span class="sd">        returned by :func:`actions`.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div></div>
 </pre></div>
 

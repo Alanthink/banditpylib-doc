@@ -276,8 +276,8 @@ used</p></li>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.UCB.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset of the learner</p>
-<p>This function should be called before the start of the game</p>
+<dd><p>Learner reset</p>
+<p>Initialization. This function should be called before the start of the game.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -294,19 +294,23 @@ used</p></li>
 <dt id="banditpylib.learners.ordinary_mnl_learner.UCB.actions">
 <code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">, </span>int<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>assortments to serve</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> – context of the ordinary mnl bandit which should be <cite>None</cite></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>assortments to serve</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.UCB.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback of the bandit environment</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
+<cite>self.__last_actions</cite>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -344,8 +348,8 @@ used</p></li>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.EpsGreedy.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset of the learner</p>
-<p>This function should be called before the start of the game</p>
+<dd><p>Learner reset</p>
+<p>Initialization. This function should be called before the start of the game.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -375,11 +379,12 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.EpsGreedy.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback of the bandit environment</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
+<cite>self.__last_actions</cite>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -414,8 +419,8 @@ used</p></li>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset of the learner</p>
-<p>This function should be called before the start of the game</p>
+<dd><p>Learner reset</p>
+<p>Initialization. This function should be called before the start of the game.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -424,10 +429,7 @@ used</p></li>
 <dd><p>Initial warm start stage</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>assortments and their serving times</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>List[Tuple[List[int], int]]</p>
+<dd class="field-odd"><p>assortments to serve in the warm start stage</p>
 </dd>
 </dl>
 </dd></dl>
@@ -438,9 +440,6 @@ used</p></li>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><cite>True</cite> if the learner is still in warm start stage</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -459,19 +458,23 @@ used</p></li>
 <dt id="banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.actions">
 <code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">, </span>int<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>assortments to serve</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> – context of the ordinary mnl bandit which should be <cite>None</cite></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>assortments to serve</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback of the bandit environment</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
+<cite>self.__last_actions</cite>.</p>
 </dd>
 </dl>
 </dd></dl>

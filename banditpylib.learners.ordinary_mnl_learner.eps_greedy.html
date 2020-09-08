@@ -202,8 +202,8 @@ used</p></li>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset of the learner</p>
-<p>This function should be called before the start of the game</p>
+<dd><p>Learner reset</p>
+<p>Initialization. This function should be called before the start of the game.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -233,11 +233,12 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.eps_greedy.EpsGreedy.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback of the bandit environment</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
+<cite>self.__last_actions</cite>.</p>
 </dd>
 </dl>
 </dd></dl>

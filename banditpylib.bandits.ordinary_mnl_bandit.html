@@ -327,9 +327,6 @@
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>assortment with the maximum reward</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Tuple[float, List[int]]</p>
-</dd>
 </dl>
 </dd></dl>
 
@@ -356,9 +353,6 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>local best assortment with its reward</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Tuple[float, List[int]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -395,14 +389,11 @@ This is useful when data is too large to compute the best assortment.</p></li>
 <dd><p>Serve multiple assortments</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actions</strong> – for each tuple, the first dimension is the assortment to try
-and the second dimension is the number of times.</p>
+<dd class="field-odd"><p><strong>actions</strong> – for each tuple, the first dimension is the assortment to serve
+and the second dimension is the number of serving times.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>feedback. For each tuple, the first       dimension is the stochatic rewards, and the second dimension is the       choices of the customer.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[Tuple[np.ndarray, List[int]]]</p>
+<dd class="field-even"><p>feedback by serving assortments <cite>actions</cite>. For each tuple, the first       dimension is the stochatic rewards, and the second dimension is the       choices of the customer.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -411,12 +402,14 @@ and the second dimension is the number of times.</p>
 <dt id="banditpylib.bandits.ordinary_mnl_bandit.OrdinaryMNLBandit.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.OrdinaryMNLBandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
+<p>Initialization. This function should be called before the start of the game.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.ordinary_mnl_bandit.OrdinaryMNLBandit.context">
 <code class="sig-name descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.OrdinaryMNLBandit.context" title="Permalink to this definition">¶</a></dt>
-<dd><p>Current state of the bandit environment</p>
+<dd><p>Returns:
+current state of the bandit environment</p>
 </dd></dl>
 
 <dl class="py method">
@@ -440,9 +433,6 @@ and the second dimension is the number of times.</p>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>regret compared with the optimal policy</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>float</p>
 </dd>
 </dl>
 </dd></dl>

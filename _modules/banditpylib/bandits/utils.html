@@ -150,7 +150,7 @@
 
 
 <div class="viewcode-block" id="Bandit"><a class="viewcode-back" href="../../../banditpylib.bandits.utils.html#banditpylib.bandits.Bandit">[docs]</a><span class="k">class</span> <span class="nc">Bandit</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Class for bandit environment</span>
+  <span class="sd">&quot;&quot;&quot;Bandit environment</span>
 
 <span class="sd">  Before a game is run, one has to call :func:`reset` to initialize the</span>
 <span class="sd">  environment. During each time step, :func:`context` will return the</span>
@@ -166,29 +166,38 @@
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;name of the learner&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Bandit name&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
 
   <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Internal name of the bandit environment&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      default bandit name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Bandit.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.utils.html#banditpylib.bandits.Bandit.reset">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Reset the bandit environment&quot;&quot;&quot;</span></div>
+    <span class="sd">&quot;&quot;&quot;Reset the bandit environment</span>
+
+<span class="sd">    Initialization. This function should be called before the start of the game.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="Bandit.context"><a class="viewcode-back" href="../../../banditpylib.bandits.utils.html#banditpylib.bandits.Bandit.context">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Current state of the bandit environment&quot;&quot;&quot;</span></div>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      current state of the bandit environment</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="Bandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.utils.html#banditpylib.bandits.Bandit.feed">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
-<span class="sd">      actions: actions to take</span>
+<span class="sd">      actions: actions for the bandit environment to take</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      feedback after actions are taken</span>
+<span class="sd">      feedback after executing actions `actions`</span>
 <span class="sd">    &quot;&quot;&quot;</span></div></div>
 </pre></div>
 

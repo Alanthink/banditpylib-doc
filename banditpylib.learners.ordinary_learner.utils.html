@@ -173,17 +173,18 @@
 <span id="banditpylib-learners-ordinary-learner-utils-module"></span><h1>banditpylib.learners.ordinary_learner.utils module<a class="headerlink" href="#module-banditpylib.learners.ordinary_learner.utils" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.utils.</code><code class="sig-name descname">OrdinaryLearner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.utils.</code><code class="sig-name descname">OrdinaryLearner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Learner</span></code></a></p>
 <p>Base class for learners in the ordinary multi-armed bandit</p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
 <li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
 </dl>
@@ -192,24 +193,43 @@
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.arm_num">
 <code class="sig-name descname">arm_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.arm_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.arm_num" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of arms</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.horizon">
 <code class="sig-name descname">horizon</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.horizon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.horizon" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>horizon of the game</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.set_horizon">
 <code class="sig-name descname">set_horizon</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.set_horizon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.set_horizon" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Reset the horizon</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>horizon</strong> – new horizon of the game</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.regret">
 <code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>regret compared with the optimal policy</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bandit</strong> – bandit environment</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>regret compared with the optimal policy</p>
 </dd>
 </dl>
 </dd></dl>

@@ -306,7 +306,7 @@
 <span class="sd">    card_limit: cardinality constraint</span>
 
 <span class="sd">  Returns:</span>
-<span class="sd">    Tuple[float, List[int]]: assortment with the maximum reward</span>
+<span class="sd">    assortment with the maximum reward</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="n">product_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">reward</span><span class="o">.</span><span class="n">revenues</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
   <span class="n">restricted_products</span> <span class="o">=</span> <span class="kc">None</span>
@@ -365,7 +365,7 @@
 <span class="sd">    init_assortment: initial assortment to start</span>
 
 <span class="sd">  Returns:</span>
-<span class="sd">    Tuple[float, List[int]]: local best assortment with its reward</span>
+<span class="sd">    local best assortment with its reward</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="k">if</span> <span class="n">random_neighbors</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of neighbors to look up </span><span class="si">%d</span><span class="s1"> is no greater than 0!&#39;</span> \
@@ -506,7 +506,11 @@
       <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Assortment </span><span class="si">%s</span><span class="s1"> has best reward </span><span class="si">%.2f</span><span class="s1">.&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_assort</span><span class="p">,</span>
                    <span class="bp">self</span><span class="o">.</span><span class="n">__best_reward</span><span class="p">)</span></div>
 
-  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      default bandit name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;ordinary_mnl_bandit&#39;</span>
 
   <span class="k">def</span> <span class="nf">_take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">times</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> \
@@ -514,11 +518,11 @@
     <span class="sd">&quot;&quot;&quot;Serve one assortment</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      assortment: assortment to try</span>
-<span class="sd">      times: number of times</span>
+<span class="sd">      assortment: assortment to serve</span>
+<span class="sd">      times: number of serving times</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      Tuple[np.ndarray, List[int]]: feedback. The first dimension is the \</span>
+<span class="sd">      feedback by serving `assortment`. The first dimension is the \</span>
 <span class="sd">      stochatic rewards, and the second dimension is the choices of the \</span>
 <span class="sd">      customer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -560,11 +564,11 @@
     <span class="sd">&quot;&quot;&quot;Serve multiple assortments</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      actions: for each tuple, the first dimension is the assortment to try</span>
-<span class="sd">        and the second dimension is the number of times.</span>
+<span class="sd">      actions: for each tuple, the first dimension is the assortment to serve</span>
+<span class="sd">        and the second dimension is the number of serving times.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      List[Tuple[np.ndarray, List[int]]]: feedback. For each tuple, the first \</span>
+<span class="sd">      feedback by serving assortments `actions`. For each tuple, the first \</span>
 <span class="sd">      dimension is the stochatic rewards, and the second dimension is the \</span>
 <span class="sd">      choices of the customer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -574,6 +578,10 @@
     <span class="k">return</span> <span class="n">feedback</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLBandit.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reset the bandit environment</span>
+
+<span class="sd">    Initialization. This function should be called before the start of the game.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">=</span> <span class="mf">0.0</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLBandit.context"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.context">[docs]</a>  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -591,7 +599,7 @@
 <div class="viewcode-block" id="OrdinaryMNLBandit.regret"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
-<span class="sd">      float: regret compared with the optimal policy</span>
+<span class="sd">      regret compared with the optimal policy</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span></div></div>
 </pre></div>

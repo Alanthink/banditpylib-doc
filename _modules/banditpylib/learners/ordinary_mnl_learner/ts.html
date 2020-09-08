@@ -186,10 +186,18 @@
         <span class="n">use_local_search</span><span class="o">=</span><span class="n">use_local_search</span><span class="p">,</span>
         <span class="n">random_neighbors</span><span class="o">=</span><span class="n">random_neighbors</span><span class="p">)</span></div>
 
-  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      default learner name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;thompson_sampling&#39;</span>
 
 <div class="viewcode-block" id="ThompsonSampling.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Learner reset</span>
+
+<span class="sd">    Initialization. This function should be called before the start of the game.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># current time step</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="c1"># current episode</span>
@@ -210,7 +218,7 @@
     <span class="sd">&quot;&quot;&quot;Initial warm start stage</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      List[Tuple[List[int], int]]: assortments and their serving times</span>
+<span class="sd">      assortments to serve in the warm start stage</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># check if last observation is a purchase</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_feedback</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_feedback</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -223,7 +231,7 @@
 <div class="viewcode-block" id="ThompsonSampling.within_warm_start"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.within_warm_start">[docs]</a>  <span class="k">def</span> <span class="nf">within_warm_start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
-<span class="sd">      bool: `True` if the learner is still in warm start stage</span>
+<span class="sd">      `True` if the learner is still in warm start stage</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__done_warm_start</span></div>
 
@@ -246,6 +254,9 @@
 
 <div class="viewcode-block" id="ThompsonSampling.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">      context: context of the ordinary mnl bandit which should be `None`</span>
+
 <span class="sd">    Returns:</span>
 <span class="sd">      assortments to serve</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -287,7 +298,13 @@
       <span class="bp">self</span><span class="o">.</span><span class="n">__first_step_after_warm_start</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span></div>
 
-<div class="viewcode-block" id="ThompsonSampling.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
+<div class="viewcode-block" id="ThompsonSampling.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.ts.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]):</span>
+    <span class="sd">&quot;&quot;&quot;Learner update</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      feedback: feedback returned by the ordinary bandit by executing</span>
+<span class="sd">        `self.__last_actions`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__product_picks</span><span class="p">[</span><span class="n">feedback</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="c1"># no purchase is observed</span>
     <span class="k">if</span> <span class="n">feedback</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
