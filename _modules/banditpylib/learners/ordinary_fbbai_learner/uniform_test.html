@@ -165,7 +165,7 @@
       <span class="k">if</span> <span class="n">actions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">break</span>
 
-      <span class="c1"># pylint: disable=E1101</span>
+      <span class="c1"># pylint: disable=no-member</span>
       <span class="n">learner</span><span class="o">.</span><span class="n">update</span><span class="p">([(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">pulls</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
                       <span class="k">for</span> <span class="p">(</span><span class="n">arm_id</span><span class="p">,</span> <span class="n">pulls</span><span class="p">)</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">])</span>
 

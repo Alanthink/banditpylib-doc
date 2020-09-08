@@ -200,7 +200,7 @@
 <span class="sd">      optimistic estimate of arms&#39; real means</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ucb</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">arm</span><span class="o">.</span><span class="n">em_mean</span><span class="p">()</span> <span class="o">+</span>
+        <span class="n">arm</span><span class="o">.</span><span class="n">em_mean</span> <span class="o">+</span>
         <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__alpha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__time</span><span class="p">)</span> <span class="o">/</span> <span class="n">arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">())</span>
         <span class="k">for</span> <span class="n">arm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span>
     <span class="p">]</span>

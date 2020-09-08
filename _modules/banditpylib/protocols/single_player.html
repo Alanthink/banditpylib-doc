@@ -146,7 +146,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.protocols.single_player</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -163,16 +163,17 @@
 <div class="viewcode-block" id="SinglePlayerProtocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.single_player.html#banditpylib.protocols.SinglePlayerProtocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span>
                <span class="n">learner</span><span class="p">:</span> <span class="n">Learner</span><span class="p">,</span>
-               <span class="n">intermediate_regrets</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+               <span class="n">intermediate_regrets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      bandit: bandit environment</span>
 <span class="sd">      learner: learner</span>
-<span class="sd">      intermediate_regrets: whether to record intermediate regrets</span>
+<span class="sd">      intermediate_regrets: a list of intermediate times to record</span>
+<span class="sd">        intermediate regrets</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bandit</span><span class="p">,</span> <span class="n">learner</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__intermediate_regrets</span> <span class="o">=</span> \
-        <span class="n">intermediate_regrets</span> <span class="k">if</span> <span class="n">intermediate_regrets</span> <span class="k">else</span> <span class="p">[]</span></div>
+        <span class="n">intermediate_regrets</span> <span class="k">if</span> <span class="n">intermediate_regrets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span></div>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -195,7 +196,7 @@
       <span class="n">actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
       <span class="c1"># stop the game if actions returned by the learner are None</span>
-      <span class="k">if</span> <span class="ow">not</span> <span class="n">actions</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">actions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">break</span>
 
       <span class="c1"># record intermediate regrets</span>
