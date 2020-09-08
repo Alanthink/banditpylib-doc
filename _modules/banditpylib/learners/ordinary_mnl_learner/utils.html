@@ -206,24 +206,42 @@
                       <span class="n">random_neighbors</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__random_neighbors</span> <span class="o">=</span> <span class="n">random_neighbors</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLLearner.product_num"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.product_num">[docs]</a>  <span class="k">def</span> <span class="nf">product_num</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="OrdinaryMNLLearner.product_num"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.product_num">[docs]</a>  <span class="k">def</span> <span class="nf">product_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      product numbers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLLearner.revenues"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.revenues">[docs]</a>  <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="OrdinaryMNLLearner.revenues"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.revenues">[docs]</a>  <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      revenues of products (product 0 is included)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLLearner.card_limit"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.card_limit">[docs]</a>  <span class="k">def</span> <span class="nf">card_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="OrdinaryMNLLearner.card_limit"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.card_limit">[docs]</a>  <span class="k">def</span> <span class="nf">card_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      cardinality limit</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLLearner.horizon"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.horizon">[docs]</a>  <span class="k">def</span> <span class="nf">horizon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="OrdinaryMNLLearner.horizon"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.horizon">[docs]</a>  <span class="k">def</span> <span class="nf">horizon</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      horizon of the learner</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span></div>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">reward</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Reward</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;goal of the learner&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">use_local_search</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;if local search is enabled&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__use_local_search</span>
 
   <span class="nd">@property</span>
@@ -231,6 +249,10 @@
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__random_neighbors</span>
 
 <div class="viewcode-block" id="OrdinaryMNLLearner.set_horizon"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.set_horizon">[docs]</a>  <span class="k">def</span> <span class="nf">set_horizon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">      horizon: new horizon of the learner</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span> <span class="o">=</span> <span class="n">horizon</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLLearner.regret"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
