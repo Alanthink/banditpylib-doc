@@ -162,7 +162,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      arm_num: number of arms</span>
-<span class="sd">      horizon: total number of time steps</span>
+<span class="sd">      budget: total number of pulls</span>
 <span class="sd">      name: alias name</span>
 <span class="sd">      threshold: do uniform sampling when the number of arms left is no greater</span>
 <span class="sd">        than threshold</span>
@@ -202,7 +202,7 @@
 <span class="sd">      arms to pull</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">del</span> <span class="n">context</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__budget_left</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_round</span><span class="p">:</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__threshold</span><span class="p">:</span>
       <span class="c1"># uniform sampling</span>

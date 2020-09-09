@@ -171,18 +171,19 @@
 <span id="banditpylib-learners-ordinary-fbbai-learner-package"></span><h1>banditpylib.learners.ordinary_fbbai_learner package<a class="headerlink" href="#module-banditpylib.learners.ordinary_fbbai_learner" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_fbbai_learner.</code><code class="sig-name descname">OrdinaryFBBAILearner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_fbbai_learner.</code><code class="sig-name descname">OrdinaryFBBAILearner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Learner</span></code></a></p>
 <p>Base class for bai learners in the ordinary multi-armed bandit</p>
 <p>This learner aims to identify the best arm with fixed budget.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
 <li><p><strong>budget</strong> – total number of pulls</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
 </dl>
@@ -254,7 +255,7 @@ empirical mean.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>budget</strong> – total number of pulls</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
@@ -322,7 +323,7 @@ mean.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>budget</strong> – total number of pulls</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 <li><p><strong>threshold</strong> – do uniform sampling when the number of arms left is no greater
 than threshold</p></li>
@@ -392,7 +393,7 @@ mean.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>horizon</strong> – total number of time steps</p></li>
+<li><p><strong>budget</strong> – total number of pulls</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
