@@ -176,6 +176,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.utils.</code><code class="sig-name descname">OrdinaryLearner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Learner</span></code></a></p>
 <p>Base class for learners in the ordinary multi-armed bandit</p>
+<p>This type of learners aim to maximize the expected total rewards.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.__init__" title="Permalink to this definition">¶</a></dt>
@@ -188,6 +189,13 @@
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.running_environment">
+<em class="property">property </em><code class="sig-name descname">running_environment</code><a class="headerlink" href="#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner.running_environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+environment class the learner works with</p>
 </dd></dl>
 
 <dl class="py method">

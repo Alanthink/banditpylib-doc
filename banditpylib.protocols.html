@@ -169,7 +169,7 @@
 <span id="banditpylib-protocols-package"></span><h1>banditpylib.protocols package<a class="headerlink" href="#module-banditpylib.protocols" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="banditpylib.protocols.Protocol">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.protocols.</code><code class="sig-name descname">Protocol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learner</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#Protocol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.Protocol" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.protocols.</code><code class="sig-name descname">Protocol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learners</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#Protocol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.Protocol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Abstract class for the protocol which is used to coordinate the interactions
 between the learner and the bandit environment.</p>
@@ -178,12 +178,12 @@ implement <code class="xref py py-func docutils literal notranslate"><span class
 game.</p>
 <dl class="py method">
 <dt id="banditpylib.protocols.Protocol.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learner</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#Protocol.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.Protocol.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learners</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#Protocol.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.Protocol.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>bandit</strong> – bandit environment</p></li>
-<li><p><strong>learner</strong> – learner</p></li>
+<li><p><strong>learners</strong> – learners to be compared with</p></li>
 </ul>
 </dd>
 </dl>
@@ -192,18 +192,22 @@ game.</p>
 <dl class="py method">
 <dt id="banditpylib.protocols.Protocol.name">
 <em class="property">abstract property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.protocols.Protocol.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>protocol name</p>
+<dd><p>Protocol name</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.protocols.Protocol.bandit">
 <em class="property">property </em><code class="sig-name descname">bandit</code><a class="headerlink" href="#banditpylib.protocols.Protocol.bandit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns:
+bandit environment the simulator is running on</p>
+</dd></dl>
 
 <dl class="py method">
-<dt id="banditpylib.protocols.Protocol.learner">
-<em class="property">property </em><code class="sig-name descname">learner</code><a class="headerlink" href="#banditpylib.protocols.Protocol.learner" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="banditpylib.protocols.Protocol.current_learner">
+<em class="property">property </em><code class="sig-name descname">current_learner</code><a class="headerlink" href="#banditpylib.protocols.Protocol.current_learner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+current learner the simulator is running</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.protocols.Protocol.play">
@@ -231,18 +235,18 @@ be silenced.</p></li>
 
 <dl class="py class">
 <dt id="banditpylib.protocols.SinglePlayerProtocol">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.protocols.</code><code class="sig-name descname">SinglePlayerProtocol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learner</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a></span></em>, <em class="sig-param"><span class="n">intermediate_regrets</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.SinglePlayerProtocol" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.protocols.</code><code class="sig-name descname">SinglePlayerProtocol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learners</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">intermediate_regrets</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.SinglePlayerProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.protocols.utils.html#banditpylib.protocols.utils.Protocol" title="banditpylib.protocols.utils.Protocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.protocols.utils.Protocol</span></code></a></p>
 <p>Single player protocol</p>
 <p>This protocol is used to simulate the ordinary single-player game.</p>
 <dl class="py method">
 <dt id="banditpylib.protocols.SinglePlayerProtocol.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learner</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a></span></em>, <em class="sig-param"><span class="n">intermediate_regrets</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.SinglePlayerProtocol.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit">banditpylib.bandits.utils.Bandit</a></span></em>, <em class="sig-param"><span class="n">learners</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner">banditpylib.learners.utils.Learner</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">intermediate_regrets</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.protocols.SinglePlayerProtocol.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>bandit</strong> – bandit environment</p></li>
-<li><p><strong>learner</strong> – learner</p></li>
+<li><p><strong>learner</strong> – learners to be compared with</p></li>
 <li><p><strong>intermediate_regrets</strong> – a list of intermediate times to record
 intermediate regrets</p></li>
 </ul>
@@ -253,7 +257,7 @@ intermediate regrets</p></li>
 <dl class="py method">
 <dt id="banditpylib.protocols.SinglePlayerProtocol.name">
 <em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.protocols.SinglePlayerProtocol.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>protocol name</p>
+<dd><p>Protocol name</p>
 </dd></dl>
 
 </dd></dl>

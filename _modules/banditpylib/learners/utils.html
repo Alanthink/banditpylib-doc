@@ -173,11 +173,19 @@
 <span class="sd">      default learner name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+  <span class="nd">@property</span>
+  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">running_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      environment class the learner works with</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="Learner.reset"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.Learner.reset">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Learner reset</span>
+    <span class="sd">&quot;&quot;&quot;Learner initialization</span>
 
-<span class="sd">    Initialization. This function should be called before the start of the game.</span>
+<span class="sd">    This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="Learner.actions"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.Learner.actions">[docs]</a>  <span class="nd">@abstractmethod</span>
