@@ -166,8 +166,8 @@
 <span class="sd">      name: alias name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">arm_num</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of arms </span><span class="si">%d</span><span class="s1"> is less then 3!&#39;</span> <span class="o">%</span> <span class="n">arm_num</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">arm_num</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of arms </span><span class="si">%d</span><span class="s1"> is less then 2!&#39;</span> <span class="o">%</span> <span class="n">arm_num</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span> <span class="o">=</span> <span class="n">arm_num</span>
     <span class="k">if</span> <span class="n">budget</span> <span class="o">&lt;</span> <span class="n">arm_num</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Budget </span><span class="si">%d</span><span class="s1"> is less than number of arms </span><span class="si">%d</span><span class="s1">!&#39;</span> <span class="o">%</span> \
