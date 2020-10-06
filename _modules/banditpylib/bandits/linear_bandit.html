@@ -159,17 +159,23 @@
 
 
 <div class="viewcode-block" id="LinearBandit"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit.html#banditpylib.bandits.LinearBandit">[docs]</a><span class="k">class</span> <span class="nc">LinearBandit</span><span class="p">(</span><span class="n">OrdinaryBanditItf</span><span class="p">,</span> <span class="n">LinearBanditItf</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Class for finite-armed linear bandit</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Finite-armed linear bandit</span>
 
-<span class="sd">  Arms are indexed from 0 by default.</span>
+<span class="sd">  Arms are indexed from 0 by default. Each pull of arm :math:`i` will generate</span>
+<span class="sd">  an `i.i.d.` reward from distribution :math:`\langle \theta, v_i \rangle</span>
+<span class="sd">  + \epsilon`, where :math:`v_i` is the feature of arm :math:`i`, :math:`\theta`</span>
+<span class="sd">  is an unknown parameter and :math:`\epsilon` is a zero-mean noise.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="LinearBandit.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit.html#banditpylib.bandits.LinearBandit.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-               <span class="n">features</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+               <span class="n">features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+               <span class="n">theta</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+               <span class="n">var</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+               <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      features: features of the arms</span>
-<span class="sd">      theta: unknown parameter theta</span>
+<span class="sd">      theta: parameter theta</span>
 <span class="sd">      var: variance of noise</span>
 <span class="sd">      name: alias name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -187,7 +193,7 @@
     <span class="k">if</span> <span class="n">var</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Variance of noise </span><span class="si">%d</span><span class="s1"> is less than 0!&#39;</span> <span class="o">%</span> <span class="n">var</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__var</span> <span class="o">=</span> <span class="n">var</span>
-    <span class="c1"># each arm in linear bandit can be seen as a gaussian arm</span>
+    <span class="c1"># each arm in linear bandit can be seen as a Gaussian arm</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">GaussianArm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__theta</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__var</span><span class="p">)</span> \
                    <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__features</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
@@ -207,7 +213,7 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">      arm_id: arm id</span>
-<span class="sd">      pulls: number of pulls to apply</span>
+<span class="sd">      pulls: number of times to pull</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">      feedback where the first dimension denotes the stochastic rewards</span>
@@ -215,9 +221,10 @@
     <span class="k">if</span> <span class="n">arm_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span><span class="p">):</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Arm id </span><span class="si">%d</span><span class="s1"> is out of range [0, </span><span class="si">%d</span><span class="s1">)!&#39;</span> <span class="o">%</span> \
           <span class="p">(</span><span class="n">arm_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">+=</span> <span class="n">pulls</span>
     <span class="n">em_rewards</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">pulls</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="n">pulls</span> <span class="o">-</span> <span class="n">em_rewards</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">em_rewards</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="n">pulls</span> <span class="o">-</span> <span class="n">em_rewards</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">+=</span> <span class="n">pulls</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">em_rewards</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
 <div class="viewcode-block" id="LinearBandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit.html#banditpylib.bandits.LinearBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -226,7 +233,7 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">      actions: for each tuple, the first dimension denotes the arm id and the</span>
-<span class="sd">        second dimension is the number of times this arm is going to be pulled.</span>
+<span class="sd">        second dimension is the number of times this arm will be pulled</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">      feedback. For each tuple, the first dimension is the stochatic rewards.</span>
@@ -239,20 +246,31 @@
 <div class="viewcode-block" id="LinearBandit.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit.html#banditpylib.bandits.LinearBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Reset the bandit environment</span>
 
-<span class="sd">    Initialization. This function should be called before the start of the game.</span>
+<span class="sd">    .. warning::</span>
+<span class="sd">      This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">=</span> <span class="mf">0.0</span></div>
 
-  <span class="c1"># methods of ordinary bandit</span>
 <div class="viewcode-block" id="LinearBandit.arm_num"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit.html#banditpylib.bandits.LinearBandit.arm_num">[docs]</a>  <span class="k">def</span> <span class="nf">arm_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      total number of arms</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span></div>
 
 <div class="viewcode-block" id="LinearBandit.total_pulls"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit.html#banditpylib.bandits.LinearBandit.total_pulls">[docs]</a>  <span class="k">def</span> <span class="nf">total_pulls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      total number of pulls so far</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span></div>
 
-  <span class="c1"># methods of linear bandit</span>
-<div class="viewcode-block" id="LinearBandit.features"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit.html#banditpylib.bandits.LinearBandit.features">[docs]</a>  <span class="k">def</span> <span class="nf">features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="LinearBandit.features"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit.html#banditpylib.bandits.LinearBandit.features">[docs]</a>  <span class="k">def</span> <span class="nf">features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      feature vectors</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__features</span></div>
 
 <div class="viewcode-block" id="LinearBandit.regret"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit.html#banditpylib.bandits.LinearBandit.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -270,7 +288,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">      regret compared with the best arm</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm_id</span> <span class="o">!=</span> <span class="n">arm_id</span></div></div>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_arm_id</span> <span class="o">!=</span> <span class="n">arm_id</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

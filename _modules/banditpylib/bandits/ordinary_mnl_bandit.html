@@ -458,11 +458,28 @@
 
 
 <div class="viewcode-block" id="OrdinaryMNLBandit"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit">[docs]</a><span class="k">class</span> <span class="nc">OrdinaryMNLBandit</span><span class="p">(</span><span class="n">Bandit</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Ordinary MNL bandit</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Ordinary MNL bandit</span>
 
-<span class="sd">  Products are numbered from 1 by default. 0 is reserved for non-purchase. The</span>
-<span class="sd">  preference parameters are assumed to be between 0 and 1. And it is assumed</span>
-<span class="sd">  that the preference parameter for non-purchase is 1.</span>
+<span class="sd">  There are a total of :math:`N` products, where products are numbered from 1 by</span>
+<span class="sd">  default. During each time step :math:`t`, when an assortment :math:`S_t` which</span>
+<span class="sd">  is a subset of products is served, the online customer will make a choice</span>
+<span class="sd">  i.e., whether to buy a product or purchase nothing. The choice is modeled by</span>
+
+<span class="sd">  .. math::</span>
+<span class="sd">    \mathbb{P}(c_t = i) = \frac{v_i}{\sum_{i \in S_t \cup \{0\} } v_i}</span>
+
+<span class="sd">  where 0 is reserved for non-purchase and :math:`v_0 = 1`. It is also assumed</span>
+<span class="sd">  that preference parameters are within the range :math:`[0, 1]`.</span>
+
+<span class="sd">  Suppose the rewards are :math:`(r_0, \dots, r_N)`, where :math:`r_0` is always</span>
+<span class="sd">  0. Let :math:`F(S)` be the cumulative function of the rewards when :math:`S`</span>
+<span class="sd">  is served. Let :math:`U` be a quasiconvex function denoting the reward the</span>
+<span class="sd">  learner wants to maximize. The regret is defined as</span>
+
+<span class="sd">  .. math::</span>
+<span class="sd">    T U(F(S^*)) - \sum_{t = 1}^T U(F(S_t))</span>
+
+<span class="sd">  where :math:`S^*` is the optimal assortment.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="OrdinaryMNLBandit.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                <span class="n">preference_params</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -473,12 +490,16 @@
                <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
-<span class="sd">      preference_params: preference parameters (product 0 is included)</span>
-<span class="sd">      revenue: revenue of products (product 0 is included)</span>
-<span class="sd">      card_limit: cardinality constraint of an assortment</span>
-<span class="sd">      reward: reward the learner wants to maximize</span>
+<span class="sd">      preference_params: preference parameters (product 0 should be included)</span>
+<span class="sd">      revenue: revenue of products (product 0 should be included)</span>
+<span class="sd">      card_limit: cardinality constraint of an assortment meaning the total</span>
+<span class="sd">        number of products provided at a time is no greater than this number</span>
+<span class="sd">      reward: reward the learner wants to maximize. The default goal is mean of</span>
+<span class="sd">        rewards</span>
 <span class="sd">      zero_best_reward: whether to set the reward of the best assortment to 0.</span>
 <span class="sd">        This is useful when data is too large to compute the best assortment.</span>
+<span class="sd">        When best reward is set to zero, the regret equals to the minus total</span>
+<span class="sd">        revenue.</span>
 <span class="sd">      name: alias name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
@@ -505,15 +526,14 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span> <span class="o">=</span> <span class="n">revenues</span>
     <span class="c1"># product 0 is reserved for non-purchase</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of products </span><span class="si">%d</span><span class="s1"> is less than 1!&#39;</span> <span class="o">%</span>
-                      <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of products </span><span class="si">%d</span><span class="s1"> is 0!&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">card_limit</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Cardinality limit </span><span class="si">%d</span><span class="s1"> is less than 1!&#39;</span> <span class="o">%</span>
                       <span class="n">card_limit</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">card_limit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">)</span>
 
-    <span class="c1"># maximizing MeanReward is the default goal</span>
+    <span class="c1"># maximizing the mean of rewards is the default goal</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span> <span class="o">=</span> <span class="n">MeanReward</span><span class="p">()</span> <span class="k">if</span> <span class="n">reward</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">set_preference_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">set_revenues</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span><span class="p">)</span>
@@ -547,9 +567,9 @@
 <span class="sd">      times: number of serving times</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      feedback by serving `assortment`. The first dimension is the \</span>
-<span class="sd">      stochatic rewards, and the second dimension is the choices of the \</span>
-<span class="sd">      customer.</span>
+<span class="sd">      feedback by serving `assortment`. The first dimension is the</span>
+<span class="sd">        stochatic rewards, and the second dimension is the choices of the</span>
+<span class="sd">        customer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">assortment</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Empty assortment!&#39;</span><span class="p">)</span>
@@ -588,12 +608,12 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">      actions: for each tuple, the first dimension is the assortment to serve</span>
-<span class="sd">        and the second dimension is the number of serving times.</span>
+<span class="sd">        and the second dimension is the number of serving times</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      feedback by serving `actions`. For each tuple, the first dimension is \</span>
-<span class="sd">      the stochatic rewards, and the second dimension is the choices of the \</span>
-<span class="sd">      customer.</span>
+<span class="sd">      feedback by taking `actions`. For each tuple, the first dimension is</span>
+<span class="sd">        the stochatic rewards, and the second dimension is the choices of the</span>
+<span class="sd">        customer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">feedback</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">assortment</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">:</span>
@@ -603,21 +623,22 @@
 <div class="viewcode-block" id="OrdinaryMNLBandit.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Reset the bandit environment</span>
 
-<span class="sd">    This function should be called before the start of the game.</span>
+<span class="sd">    .. warning::</span>
+<span class="sd">      This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">=</span> <span class="mf">0.0</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLBandit.context"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.context">[docs]</a>  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
-<span class="sd">      current state of the mnl bandit</span>
+<span class="sd">      current state of the ordinary mnl bandit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLBandit.revenues"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.revenues">[docs]</a>  <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
-<span class="sd">      revenues of products (product 0 is included)</span>
+<span class="sd">      revenues of products (product 0 is included, which is always 0.0)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span></div>
 

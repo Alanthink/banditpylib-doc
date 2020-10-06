@@ -155,16 +155,28 @@
 
 
 <div class="viewcode-block" id="OrdinaryBanditItf"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.OrdinaryBanditItf">[docs]</a><span class="k">class</span> <span class="nc">OrdinaryBanditItf</span><span class="p">(</span><span class="n">Bandit</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Ordinary bandit interface</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;Ordinary bandit interface&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="OrdinaryBanditItf.context"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.OrdinaryBanditItf.context">[docs]</a>  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      current state of the bandit environment</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="OrdinaryBanditItf.arm_num"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.OrdinaryBanditItf.arm_num">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">arm_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Total number of arms&quot;&quot;&quot;</span></div>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      total number of arms</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="OrdinaryBanditItf.total_pulls"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.OrdinaryBanditItf.total_pulls">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">total_pulls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Total number of pulls executed&quot;&quot;&quot;</span></div></div>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      total number of pulls</span>
+<span class="sd">    &quot;&quot;&quot;</span></div></div>
 </pre></div>
 
            </div>

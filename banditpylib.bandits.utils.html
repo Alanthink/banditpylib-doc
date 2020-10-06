@@ -186,7 +186,7 @@ the environment for execution.</p>
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.utils.Bandit.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – alias name for the bandit environment.</p>
+<dd class="field-odd"><p><strong>name</strong> – alias name for the bandit environment</p>
 </dd>
 </dl>
 </dd></dl>
@@ -201,7 +201,10 @@ the environment for execution.</p>
 <dt id="banditpylib.bandits.utils.Bandit.reset">
 <em class="property">abstract </em><code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.utils.Bandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
-<p>Initialization. This function should be called before the start of the game.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function should be called before the start of the game.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -219,10 +222,10 @@ the environment for execution.</p>
 <em class="property">abstract </em><code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">actions</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.utils.Bandit.feed" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actions</strong> – actions for the bandit environment to take</p>
+<dd class="field-odd"><p><strong>actions</strong> – actions for the bandit environment to execute</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>feedback after executing actions <cite>actions</cite></p>
+<dd class="field-even"><p>feedback after <cite>actions</cite> are executed</p>
 </dd>
 </dl>
 </dd></dl>

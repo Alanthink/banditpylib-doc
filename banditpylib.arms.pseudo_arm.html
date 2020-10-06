@@ -174,14 +174,20 @@
 <span id="banditpylib-arms-pseudo-arm-module"></span><h1>banditpylib.arms.pseudo_arm module<a class="headerlink" href="#module-banditpylib.arms.pseudo_arm" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="banditpylib.arms.pseudo_arm.PseudoArm">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.arms.pseudo_arm.</code><code class="sig-name descname">PseudoArm</code><a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.arms.pseudo_arm.</code><code class="sig-name descname">PseudoArm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class for pseudo arm</p>
-<p>This class is used to store empirical information of a general arm.</p>
+<p>Pseudo arm</p>
+<p>This class is used to store empirical information of an arm.</p>
 <dl class="py method">
 <dt id="banditpylib.arms.pseudo_arm.PseudoArm.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.arms.pseudo_arm.PseudoArm.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>arm name</p>
 </dd></dl>
 
 <dl class="py method">
@@ -189,7 +195,7 @@
 <code class="sig-name descname">total_pulls</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.total_pulls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.total_pulls" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>total number of pulls recorded</p>
+<dd class="field-odd"><p>total number of pulls</p>
 </dd>
 </dl>
 </dd></dl>
@@ -207,25 +213,25 @@
 <dl class="py method">
 <dt id="banditpylib.arms.pseudo_arm.PseudoArm.em_mean">
 <em class="property">property </em><code class="sig-name descname">em_mean</code><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.em_mean" title="Permalink to this definition">¶</a></dt>
-<dd><p>empirical mean</p>
+<dd><p>empirical mean of rewards</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.arms.pseudo_arm.PseudoArm.em_var">
 <em class="property">property </em><code class="sig-name descname">em_var</code><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.em_var" title="Permalink to this definition">¶</a></dt>
-<dd><p>empirical variance</p>
+<dd><p>empirical variance of rewards</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.arms.pseudo_arm.PseudoArm.reset">
 <code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clear records</p>
+<dd><p>Clear information</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.arms.pseudo_arm.PseudoArm.update">
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rewards</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.pseudo_arm.PseudoArm.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update records</p>
+<dd><p>Update information</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>rewards</strong> – empirical rewards</p>

@@ -164,7 +164,7 @@
 <div class="viewcode-block" id="Bandit.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.utils.html#banditpylib.bandits.Bandit.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
-<span class="sd">      name: alias name for the bandit environment.</span>
+<span class="sd">      name: alias name for the bandit environment</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span></div>
 
@@ -184,7 +184,8 @@
   <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Reset the bandit environment</span>
 
-<span class="sd">    Initialization. This function should be called before the start of the game.</span>
+<span class="sd">    .. warning::</span>
+<span class="sd">      This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="Bandit.context"><a class="viewcode-back" href="../../../banditpylib.bandits.utils.html#banditpylib.bandits.Bandit.context">[docs]</a>  <span class="nd">@abstractmethod</span>
@@ -198,10 +199,10 @@
   <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
-<span class="sd">      actions: actions for the bandit environment to take</span>
+<span class="sd">      actions: actions for the bandit environment to execute</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      feedback after executing actions `actions`</span>
+<span class="sd">      feedback after `actions` are executed</span>
 <span class="sd">    &quot;&quot;&quot;</span></div></div>
 </pre></div>
 

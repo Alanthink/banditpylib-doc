@@ -157,7 +157,7 @@
 
 <div class="viewcode-block" id="TestBernoulliArm.test_reward_range"><a class="viewcode-back" href="../../../banditpylib.arms.bernoulli_arm_test.html#banditpylib.arms.bernoulli_arm_test.TestBernoulliArm.test_reward_range">[docs]</a>  <span class="k">def</span> <span class="nf">test_reward_range</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">ber_arm</span> <span class="o">=</span> <span class="n">BernoulliArm</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="n">set_of_rewards</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ber_arm</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+    <span class="n">set_of_rewards</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ber_arm</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
     <span class="k">assert</span> <span class="n">set_of_rewards</span> <span class="o">==</span> <span class="nb">set</span><span class="p">({</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">}),</span> \
         <span class="s2">&quot;Some rewards are out of range {0, 1}!&quot;</span></div></div>
 </pre></div>
