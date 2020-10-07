@@ -161,21 +161,18 @@
   <span class="sd">&quot;&quot;&quot;Test single player protocol&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="TestSinglePlayer.test_simple_run"><a class="viewcode-back" href="../../../banditpylib.protocols.single_player_test.html#banditpylib.protocols.single_player_test.TestSinglePlayer.test_simple_run">[docs]</a>  <span class="k">def</span> <span class="nf">test_simple_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]</span>
     <span class="n">arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">BernoulliArm</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span> <span class="k">for</span> <span class="n">mean</span> <span class="ow">in</span> <span class="n">means</span><span class="p">]</span>
     <span class="n">ordinary_bandit</span> <span class="o">=</span> <span class="n">OrdinaryBandit</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span>
-    <span class="n">eps_greedy_learner</span> <span class="o">=</span> <span class="n">EpsGreedy</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">horizon</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">eps_greedy_learner</span> <span class="o">=</span> <span class="n">EpsGreedy</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">horizon</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
     <span class="n">single_player</span> <span class="o">=</span> <span class="n">SinglePlayerProtocol</span><span class="p">(</span><span class="n">bandit</span><span class="o">=</span><span class="n">ordinary_bandit</span><span class="p">,</span>
                                          <span class="n">learners</span><span class="o">=</span><span class="p">[</span><span class="n">eps_greedy_learner</span><span class="p">])</span>
     <span class="n">temp_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">()</span>
-    <span class="n">single_player</span><span class="o">.</span><span class="n">play</span><span class="p">(</span>
-        <span class="n">trials</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">output_filename</span><span class="o">=</span><span class="n">temp_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-        <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">single_player</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">trials</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">output_filename</span><span class="o">=</span><span class="n">temp_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">temp_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-      <span class="c1"># check number of records is 10</span>
+      <span class="c1"># check number of records is 3</span>
       <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-      <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span></div></div>
+      <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span></div></div>
 </pre></div>
 
            </div>

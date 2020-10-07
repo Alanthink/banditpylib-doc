@@ -229,7 +229,7 @@
     <span class="k">assert</span> <span class="n">cvar_alpha</span> <span class="o">&lt;=</span> <span class="mi">1</span>
 
     <span class="c1"># equivalent to MeanReward</span>
-    <span class="n">reward</span> <span class="o">=</span> <span class="n">CvarReward</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+    <span class="n">reward</span> <span class="o">=</span> <span class="n">CvarReward</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
     <span class="n">reward</span><span class="o">.</span><span class="n">set_preference_params</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
     <span class="n">reward</span><span class="o">.</span><span class="n">set_revenues</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
     <span class="c1"># calculate cvar under percentile 0.25</span>

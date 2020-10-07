@@ -172,13 +172,19 @@
 
 <dl class="py class">
 <dt id="banditpylib.bandits.ordinary_mnl_bandit.Reward">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.ordinary_mnl_bandit.</code><code class="sig-name descname">Reward</code><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.ordinary_mnl_bandit.</code><code class="sig-name descname">Reward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>General reward class</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.ordinary_mnl_bandit.Reward.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.Reward.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.Reward.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.ordinary_mnl_bandit.Reward.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.Reward.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>reward name</p>
 </dd></dl>
 
 <dl class="py method">
@@ -229,13 +235,17 @@
 
 <dl class="py class">
 <dt id="banditpylib.bandits.ordinary_mnl_bandit.MeanReward">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.ordinary_mnl_bandit.</code><code class="sig-name descname">MeanReward</code><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#MeanReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.MeanReward" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.ordinary_mnl_bandit.</code><code class="sig-name descname">MeanReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#MeanReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.MeanReward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></code></a></p>
 <p>Mean reward</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.ordinary_mnl_bandit.MeanReward.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#MeanReward.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.MeanReward.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#MeanReward.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.MeanReward.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – alias name</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -255,15 +265,18 @@
 
 <dl class="py class">
 <dt id="banditpylib.bandits.ordinary_mnl_bandit.CvarReward">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.ordinary_mnl_bandit.</code><code class="sig-name descname">CvarReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#CvarReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.CvarReward" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.ordinary_mnl_bandit.</code><code class="sig-name descname">CvarReward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#CvarReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.CvarReward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></code></a></p>
 <p>CVaR reward</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.ordinary_mnl_bandit.CvarReward.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#CvarReward.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.CvarReward.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#CvarReward.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_mnl_bandit.CvarReward.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>alpha</strong> – percentile of cvar</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha</strong> – percentile of cvar</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

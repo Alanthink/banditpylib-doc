@@ -152,7 +152,7 @@
 <span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
 
 <span class="kn">import</span> <span class="nn">copy</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Set</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">absl</span> <span class="kn">import</span> <span class="n">logging</span>
 
@@ -192,9 +192,22 @@
 
 <div class="viewcode-block" id="Reward"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.Reward">[docs]</a><span class="k">class</span> <span class="nc">Reward</span><span class="p">:</span>
   <span class="sd">&quot;&quot;&quot;General reward class&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Reward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.Reward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Reward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.Reward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;reward name&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+
+  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      default reward name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Reward.calc"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.Reward.calc">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -237,8 +250,19 @@
 
 <div class="viewcode-block" id="MeanReward"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.MeanReward">[docs]</a><span class="k">class</span> <span class="nc">MeanReward</span><span class="p">(</span><span class="n">Reward</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Mean reward&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="MeanReward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.MeanReward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>
+<div class="viewcode-block" id="MeanReward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.MeanReward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">      name: alias name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      default reward name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s1">&#39;mean_reward&#39;</span>
 
 <div class="viewcode-block" id="MeanReward.calc"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.MeanReward.calc">[docs]</a>  <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -259,12 +283,13 @@
 
 <div class="viewcode-block" id="CvarReward"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.CvarReward">[docs]</a><span class="k">class</span> <span class="nc">CvarReward</span><span class="p">(</span><span class="n">Reward</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;CVaR reward&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="CvarReward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.CvarReward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<div class="viewcode-block" id="CvarReward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.CvarReward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      alpha: percentile of cvar</span>
+<span class="sd">      name: alias name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">alpha</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Alpha </span><span class="si">%.2f</span><span class="s1"> is no greater than 0!&#39;</span> <span class="o">%</span> <span class="n">alpha</span><span class="p">)</span>
     <span class="c1"># alpha is at most 1.0</span>
@@ -272,6 +297,13 @@
       <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
           <span class="s1">&#39;Alpha </span><span class="si">%.2f</span><span class="s1"> is greater than 1! I am setting it to 1.&#39;</span> <span class="o">%</span> <span class="n">alpha</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__alpha</span> <span class="o">=</span> <span class="n">alpha</span> <span class="k">if</span> <span class="n">alpha</span> <span class="o">&lt;=</span> <span class="mf">1.0</span> <span class="k">else</span> <span class="mf">1.0</span></div>
+
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      default reward name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s1">&#39;cvar_reward&#39;</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">alpha</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
