@@ -174,12 +174,10 @@
 
 <div class="viewcode-block" id="Protocol"><a class="viewcode-back" href="../../../banditpylib.protocols.utils.html#banditpylib.protocols.Protocol">[docs]</a><span class="k">class</span> <span class="nc">Protocol</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Abstract class for the protocol which is used to coordinate the interactions</span>
+<span class="sd">  Abstract class for a protocol which is used to coordinate the interactions</span>
 <span class="sd">  between the learner and the bandit environment.</span>
 
-<span class="sd">  For each setup, just call :func:`play` to start the game. A protocol should</span>
-<span class="sd">  implement :func:`_one_trial` method to define how to run one trial of the</span>
-<span class="sd">  game.</span>
+<span class="sd">  For each setup, just call :func:`play` to start the game.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Protocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.utils.html#banditpylib.protocols.Protocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span>
@@ -226,6 +224,8 @@
   <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;One trial of the game</span>
+
+<span class="sd">    This method defines how to run one trial of the game.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      random_seed: random seed</span>

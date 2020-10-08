@@ -193,6 +193,10 @@
 <div class="viewcode-block" id="Reward"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.Reward">[docs]</a><span class="k">class</span> <span class="nc">Reward</span><span class="p">:</span>
   <span class="sd">&quot;&quot;&quot;General reward class&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Reward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.Reward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">      name: alias name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span> <span class="o">=</span> <span class="kc">None</span></div>

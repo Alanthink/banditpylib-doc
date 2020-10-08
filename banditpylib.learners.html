@@ -174,8 +174,9 @@
 <dt id="banditpylib.learners.Learner">
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.</code><code class="sig-name descname">Learner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.Learner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>Learner class</p>
-<p>Before a game runs, a learner should be initialized with <a class="reference internal" href="#banditpylib.learners.Learner.reset" title="banditpylib.learners.Learner.reset"><code class="xref py py-func docutils literal notranslate"><span class="pre">reset()</span></code></a>.</p>
+<p>Abstract class for learners</p>
+<p><a class="reference internal" href="#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> returns the actions the learner wants to take. <a class="reference internal" href="#banditpylib.learners.Learner.update" title="banditpylib.learners.Learner.update"><code class="xref py py-func docutils literal notranslate"><span class="pre">update()</span></code></a>
+is used to pass the feedback of the environment to the learner.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.Learner.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.Learner.__init__" title="Permalink to this definition">¶</a></dt>
@@ -195,14 +196,17 @@
 <dl class="py method">
 <dt id="banditpylib.learners.Learner.running_environment">
 <em class="property">abstract property </em><code class="sig-name descname">running_environment</code><a class="headerlink" href="#banditpylib.learners.Learner.running_environment" title="Permalink to this definition">¶</a></dt>
-<dd><p>type of environment the learner works with</p>
+<dd><p>type of environment the learner is running in</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.Learner.reset">
 <em class="property">abstract </em><code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.Learner.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner initialization</p>
+<dd><p>Reset the learner</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>This function should be called before the start of the game.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -211,7 +215,7 @@
 <dd><p>Actions of the learner for one round</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – context of the bandit environment</p>
+<dd class="field-odd"><p><strong>context</strong> – state of the bandit environment</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>actions to take</p>
@@ -225,8 +229,8 @@
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing actions
-returned by <a class="reference internal" href="#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a>.</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a>.</p>
 </dd>
 </dl>
 </dd></dl>

@@ -172,10 +172,8 @@
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.</code><code class="sig-name descname">Bandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Bandit environment</p>
-<p>Before a game is run, one has to call <a class="reference internal" href="#banditpylib.bandits.Bandit.reset" title="banditpylib.bandits.Bandit.reset"><code class="xref py py-func docutils literal notranslate"><span class="pre">reset()</span></code></a> to initialize the
-environment. During each time step, <a class="reference internal" href="#banditpylib.bandits.Bandit.context" title="banditpylib.bandits.Bandit.context"><code class="xref py py-func docutils literal notranslate"><span class="pre">context()</span></code></a> will return the
-current state of the environment. <a class="reference internal" href="#banditpylib.bandits.Bandit.feed" title="banditpylib.bandits.Bandit.feed"><code class="xref py py-func docutils literal notranslate"><span class="pre">feed()</span></code></a> is used to pass the actions to
-the environment for execution.</p>
+<p><a class="reference internal" href="#banditpylib.bandits.Bandit.context" title="banditpylib.bandits.Bandit.context"><code class="xref py py-func docutils literal notranslate"><span class="pre">context()</span></code></a> is used to fetch the current state of the environment.
+<a class="reference internal" href="#banditpylib.bandits.Bandit.feed" title="banditpylib.bandits.Bandit.feed"><code class="xref py py-func docutils literal notranslate"><span class="pre">feed()</span></code></a> is used to pass the actions to the environment for execution.</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.Bandit.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit.__init__" title="Permalink to this definition">¶</a></dt>
@@ -518,7 +516,11 @@ second dimension is the number of times this arm will be pulled</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.Reward.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#Reward.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Reward.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – alias name</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">

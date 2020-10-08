@@ -154,9 +154,10 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
 <div class="viewcode-block" id="Learner"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.Learner">[docs]</a><span class="k">class</span> <span class="nc">Learner</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Learner class</span>
+  <span class="sd">&quot;&quot;&quot;Abstract class for learners</span>
 
-<span class="sd">  Before a game runs, a learner should be initialized with :func:`reset`.</span>
+<span class="sd">  :func:`actions` returns the actions the learner wants to take. :func:`update`</span>
+<span class="sd">  is used to pass the feedback of the environment to the learner.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Learner.__init__"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.Learner.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -180,13 +181,14 @@
   <span class="nd">@property</span>
   <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">running_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;type of environment the learner works with&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;type of environment the learner is running in&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Learner.reset"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.Learner.reset">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Learner initialization</span>
+    <span class="sd">&quot;&quot;&quot;Reset the learner</span>
 
-<span class="sd">    This function should be called before the start of the game.</span>
+<span class="sd">    .. warning::</span>
+<span class="sd">      This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="Learner.actions"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.Learner.actions">[docs]</a>  <span class="nd">@abstractmethod</span>
@@ -194,7 +196,7 @@
     <span class="sd">&quot;&quot;&quot;Actions of the learner for one round</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      context: context of the bandit environment</span>
+<span class="sd">      context: state of the bandit environment</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">      actions to take</span>
@@ -205,8 +207,8 @@
     <span class="sd">&quot;&quot;&quot;Learner update</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      feedback: feedback returned by the bandit environment by executing actions</span>
-<span class="sd">        returned by :func:`actions`.</span>
+<span class="sd">      feedback: feedback returned by the bandit environment by executing</span>
+<span class="sd">        :func:`actions`.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div></div>
 </pre></div>
 

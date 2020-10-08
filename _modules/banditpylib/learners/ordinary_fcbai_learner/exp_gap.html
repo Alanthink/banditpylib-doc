@@ -186,9 +186,10 @@
     <span class="k">return</span> <span class="s1">&#39;exp_gap&#39;</span>
 
 <div class="viewcode-block" id="ExpGap.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.exp_gap.html#banditpylib.learners.ordinary_fcbai_learner.ExpGap.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Learner reset</span>
+    <span class="sd">&quot;&quot;&quot;Reset the learner</span>
 
-<span class="sd">    Initialization. This function should be called before the start of the game.</span>
+<span class="sd">    .. warning::</span>
+<span class="sd">      This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">=</span> <span class="kc">None</span>

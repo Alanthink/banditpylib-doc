@@ -161,7 +161,18 @@
 <div class="viewcode-block" id="SinglePlayerProtocol"><a class="viewcode-back" href="../../../banditpylib.protocols.single_player.html#banditpylib.protocols.SinglePlayerProtocol">[docs]</a><span class="k">class</span> <span class="nc">SinglePlayerProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Single player protocol</span>
 
-<span class="sd">  This protocol is used to simulate the ordinary single-player game.</span>
+<span class="sd">  This protocol is used to simulate the ordinary single-player game. It runs in</span>
+<span class="sd">  rounds. During each round, the protocol runs the following steps in sequence.</span>
+
+<span class="sd">  * fetch the state of the environment and ask the learner for actions</span>
+<span class="sd">  * send the actions to the enviroment for execution</span>
+<span class="sd">  * update the learner with the feedback of the environment</span>
+
+<span class="sd">  The simulation stops when actions returned by the learner is `None`.</span>
+
+<span class="sd">  .. note::</span>
+<span class="sd">    The total number of rounds shows how adaptive the learner is and it is at</span>
+<span class="sd">    most the total number of actions.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="SinglePlayerProtocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.single_player.html#banditpylib.protocols.SinglePlayerProtocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span>
@@ -185,6 +196,8 @@
 
   <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;One trial of the game</span>
+
+<span class="sd">    This method defines how to run one trial of the game.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      random_seed: random seed</span>
@@ -218,7 +231,7 @@
       <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
       <span class="n">actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">actions</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
-      <span class="c1"># stop the game if actions returned by the learner are None</span>
+      <span class="c1"># stop the game if actions returned by the learner is None</span>
       <span class="k">if</span> <span class="n">actions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">break</span>
 
