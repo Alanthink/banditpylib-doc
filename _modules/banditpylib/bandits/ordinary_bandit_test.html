@@ -150,6 +150,7 @@
             
   <h1>Source code for banditpylib.bandits.ordinary_bandit_test</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">BernoulliArm</span>
+<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">MaxReward</span><span class="p">,</span> <span class="n">BestArmId</span>
 <span class="kn">from</span> <span class="nn">.ordinary_bandit</span> <span class="kn">import</span> <span class="n">OrdinaryBandit</span>
 
 
@@ -163,8 +164,8 @@
     <span class="n">ordinary_bandit</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
     <span class="c1"># pull arm 0 for 100 times</span>
     <span class="n">ordinary_bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)])</span>
-    <span class="k">assert</span> <span class="n">ordinary_bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">()</span> <span class="o">==</span> <span class="mi">100</span>
-    <span class="k">assert</span> <span class="n">ordinary_bandit</span><span class="o">.</span><span class="n">best_arm_regret</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span></div></div>
+    <span class="k">assert</span> <span class="n">ordinary_bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">MaxReward</span><span class="p">())</span> <span class="o">==</span> <span class="mi">100</span>
+    <span class="k">assert</span> <span class="n">ordinary_bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">BestArmId</span><span class="p">(</span><span class="n">best_arm</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span></div></div>
 </pre></div>
 
            </div>

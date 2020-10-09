@@ -153,6 +153,94 @@
   <div class="section" id="module-banditpylib.learners.utils">
 <span id="banditpylib-learners-utils-module"></span><h1>banditpylib.learners.utils module<a class="headerlink" href="#module-banditpylib.learners.utils" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
+<dt id="banditpylib.learners.utils.Goal">
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.utils.</code><code class="sig-name descname">Goal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Goal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.utils.Goal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base class for the goal of a learner</p>
+<dl class="py method">
+<dt id="banditpylib.learners.utils.Goal.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Goal.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.utils.Goal.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – value of the goal</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.utils.Goal.name">
+<em class="property">abstract </em><code class="sig-name descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/banditpylib/learners/utils.html#Goal.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.utils.Goal.name" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>name of the goal</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.utils.Goal.value">
+<em class="property">property </em><code class="sig-name descname">value</code><a class="headerlink" href="#banditpylib.learners.utils.Goal.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+value of the goal</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="banditpylib.learners.utils.BestArmId">
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.utils.</code><code class="sig-name descname">BestArmId</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">best_arm</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#BestArmId"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.utils.BestArmId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#banditpylib.learners.utils.Goal" title="banditpylib.learners.utils.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Goal</span></code></a></p>
+<p>Best arm identification</p>
+<dl class="py method">
+<dt id="banditpylib.learners.utils.BestArmId.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">best_arm</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#BestArmId.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.utils.BestArmId.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>best_arm</strong> – best arm identified by the learner</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.utils.BestArmId.name">
+<code class="sig-name descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/banditpylib/learners/utils.html#BestArmId.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.utils.BestArmId.name" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>name of the goal</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="banditpylib.learners.utils.MaxReward">
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.utils.</code><code class="sig-name descname">MaxReward</code><a class="reference internal" href="_modules/banditpylib/learners/utils.html#MaxReward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.utils.MaxReward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#banditpylib.learners.utils.Goal" title="banditpylib.learners.utils.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Goal</span></code></a></p>
+<p>Reward maximization</p>
+<dl class="py method">
+<dt id="banditpylib.learners.utils.MaxReward.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#MaxReward.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.utils.MaxReward.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rewards</strong> – rewards obtained by the learner</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.utils.MaxReward.name">
+<code class="sig-name descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/banditpylib/learners/utils.html#MaxReward.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.utils.MaxReward.name" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>name of the goal</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt id="banditpylib.learners.utils.Learner">
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.utils.</code><code class="sig-name descname">Learner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.utils.Learner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
@@ -212,9 +300,16 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<a class="reference internal" href="#banditpylib.learners.utils.Learner.actions" title="banditpylib.learners.utils.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a>.</p>
+<a class="reference internal" href="#banditpylib.learners.utils.Learner.actions" title="banditpylib.learners.utils.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.utils.Learner.goal">
+<em class="property">abstract property </em><code class="sig-name descname">goal</code><a class="headerlink" href="#banditpylib.learners.utils.Learner.goal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+goal of the learner</p>
 </dd></dl>
 
 </dd></dl>

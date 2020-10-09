@@ -177,8 +177,7 @@
 <div class="viewcode-block" id="SinglePlayerProtocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.single_player.html#banditpylib.protocols.SinglePlayerProtocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span>
                <span class="n">learners</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Learner</span><span class="p">],</span>
-               <span class="n">intermediate_regrets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-               <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+               <span class="n">intermediate_regrets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      bandit: bandit environment</span>
@@ -186,11 +185,12 @@
 <span class="sd">      intermediate_regrets: a list of intermediate times to record</span>
 <span class="sd">        intermediate regrets</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bandit</span><span class="o">=</span><span class="n">bandit</span><span class="p">,</span> <span class="n">learners</span><span class="o">=</span><span class="n">learners</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bandit</span><span class="o">=</span><span class="n">bandit</span><span class="p">,</span> <span class="n">learners</span><span class="o">=</span><span class="n">learners</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__intermediate_regrets</span> <span class="o">=</span> \
         <span class="n">intermediate_regrets</span> <span class="k">if</span> <span class="n">intermediate_regrets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span></div>
 
-  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;default protocol name&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;single_player_protocol&#39;</span>
 
@@ -224,7 +224,7 @@
               <span class="s1">&#39;learner&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
               <span class="s1">&#39;rounds&#39;</span><span class="p">:</span> <span class="n">adaptive_rounds</span><span class="p">,</span>
               <span class="s1">&#39;total_actions&#39;</span><span class="p">:</span> <span class="n">total_actions</span><span class="p">,</span>
-              <span class="s1">&#39;regret&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="p">)</span>
+              <span class="s1">&#39;regret&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">goal</span><span class="p">)</span>
           <span class="p">}))</span>
 
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>

@@ -256,16 +256,10 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="banditpylib.learners.ordinary_learner.OrdinaryLearner.regret">
-<code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.regret" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>bandit</strong> – bandit environment</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>regret compared with the optimal policy</p>
-</dd>
-</dl>
+<dt id="banditpylib.learners.ordinary_learner.OrdinaryLearner.goal">
+<em class="property">property </em><code class="sig-name descname">goal</code><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.goal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+goal of the learner</p>
 </dd></dl>
 
 </dd></dl>
@@ -321,8 +315,8 @@ remaining probability play the arm with the maximum empirical mean.</p>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
-<cite>self.__last_actions</cite>.</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.ordinary_learner.EpsGreedy.actions" title="banditpylib.learners.ordinary_learner.EpsGreedy.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -392,8 +386,8 @@ remaining probability play the arm with the maximum empirical mean.</p>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
-<cite>self.__last_actions</cite>.</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.ordinary_learner.UCB.actions" title="banditpylib.learners.ordinary_learner.UCB.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -477,8 +471,8 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
-<cite>self.__last_actions</cite>.</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.actions" title="banditpylib.learners.ordinary_learner.ThompsonSampling.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -534,8 +528,8 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
-<cite>self.__last_actions</cite>.</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.ordinary_learner.Uniform.actions" title="banditpylib.learners.ordinary_learner.Uniform.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -609,8 +603,8 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
-<cite>self.__last_actions</cite>.</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.ordinary_learner.UCBV.actions" title="banditpylib.learners.ordinary_learner.UCBV.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -684,8 +678,8 @@ in [0, 1].</p>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
-<cite>self.__last_actions</cite>.</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.ordinary_learner.MOSS.actions" title="banditpylib.learners.ordinary_learner.MOSS.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>

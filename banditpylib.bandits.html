@@ -223,6 +223,19 @@
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt id="banditpylib.bandits.Bandit.regret">
+<em class="property">abstract </em><code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">goal</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Goal" title="banditpylib.learners.utils.Goal">banditpylib.learners.utils.Goal</a></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.Bandit.regret" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>goal</strong> – goal of the learner</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>regret of the learner</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -297,23 +310,13 @@ second dimension is the number of times to pull</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryBandit.regret">
-<code class="sig-name descname">regret</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.regret" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>regret compared with the optimal policy i.e., always pulling the best arm</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="banditpylib.bandits.OrdinaryBandit.best_arm_regret">
-<code class="sig-name descname">best_arm_regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.best_arm_regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.best_arm_regret" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">goal</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Goal" title="banditpylib.learners.utils.Goal">banditpylib.learners.utils.Goal</a></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>arm_id</strong> – best arm identified by the learner</p>
+<dd class="field-odd"><p><strong>goal</strong> – goal of the learner</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>regret compared with the best arm</p>
+<dd class="field-even"><p>regret of the learner</p>
 </dd>
 </dl>
 </dd></dl>
@@ -438,23 +441,13 @@ second dimension is the number of times this arm will be pulled</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.LinearBandit.regret">
-<code class="sig-name descname">regret</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.regret" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>regret compared with the optimal policy</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="banditpylib.bandits.LinearBandit.best_arm_regret">
-<code class="sig-name descname">best_arm_regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_id</span></em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.best_arm_regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.best_arm_regret" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">goal</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Goal" title="banditpylib.learners.utils.Goal">banditpylib.learners.utils.Goal</a></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.LinearBandit.regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>arm_id</strong> – best arm identified by the learner</p>
+<dd class="field-odd"><p><strong>goal</strong> – goal of the learner</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>regret compared with the best arm</p>
+<dd class="field-even"><p>regret of the learner</p>
 </dd>
 </dl>
 </dd></dl>
@@ -802,10 +795,13 @@ customer.</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.OrdinaryMNLBandit.regret">
-<code class="sig-name descname">regret</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.regret" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">goal</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Goal" title="banditpylib.learners.utils.Goal">banditpylib.learners.utils.Goal</a></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>regret compared with the optimal policy</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>goal</strong> – goal of the learner</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>regret of the learner</p>
 </dd>
 </dl>
 </dd></dl>

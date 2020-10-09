@@ -239,17 +239,10 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.regret">
-<code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span></em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.regret" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><dl class="simple">
-<dt>best arm regret. 0 when the leaner identified the best arm and 1</dt><dd><p>otherwise.</p>
-</dd>
-</dl>
-</p>
-</dd>
-</dl>
+<dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.goal">
+<em class="property">property </em><code class="sig-name descname">goal</code><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.goal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+goal of the learner</p>
 </dd></dl>
 
 </dd></dl>
@@ -304,8 +297,8 @@ empirical mean.</p>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
-<cite>self.__last_actions</cite>.</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.actions" title="banditpylib.learners.ordinary_fbbai_learner.Uniform.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -377,8 +370,8 @@ than threshold</p></li>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
-<cite>self.__last_actions</cite>.</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.SH.actions" title="banditpylib.learners.ordinary_fbbai_learner.SH.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -448,8 +441,8 @@ mean.</p>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the ordinary bandit by executing
-<cite>self.__last_actions</cite>.</p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.SR.actions" title="banditpylib.learners.ordinary_fbbai_learner.SR.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
