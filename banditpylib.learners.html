@@ -180,26 +180,21 @@
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Goal.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.Goal.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> – value of the goal</p>
+<dd class="field-odd"><p><strong>value</strong> – value obtained by the learner</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.Goal.name">
-<em class="property">abstract </em><code class="sig-name descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/banditpylib/learners/utils.html#Goal.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.Goal.name" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>name of the goal</p>
-</dd>
-</dl>
+<em class="property">abstract property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.learners.Goal.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the goal</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.Goal.value">
 <em class="property">property </em><code class="sig-name descname">value</code><a class="headerlink" href="#banditpylib.learners.Goal.value" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns:
-value of the goal</p>
+<dd><p>value obtained by the learner</p>
 </dd></dl>
 
 </dd></dl>
@@ -221,12 +216,8 @@ value of the goal</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.BestArmId.name">
-<code class="sig-name descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/banditpylib/learners/utils.html#BestArmId.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.BestArmId.name" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>name of the goal</p>
-</dd>
-</dl>
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.learners.BestArmId.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the goal</p>
 </dd></dl>
 
 </dd></dl>
@@ -248,12 +239,8 @@ value of the goal</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.MaxReward.name">
-<code class="sig-name descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/banditpylib/learners/utils.html#MaxReward.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.MaxReward.name" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>name of the goal</p>
-</dd>
-</dl>
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.learners.MaxReward.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the goal</p>
 </dd></dl>
 
 </dd></dl>
@@ -326,8 +313,7 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.Learner.goal">
 <em class="property">abstract property </em><code class="sig-name descname">goal</code><a class="headerlink" href="#banditpylib.learners.Learner.goal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns:
-goal of the learner</p>
+<dd><p>goal of the learner</p>
 </dd></dl>
 
 </dd></dl>
