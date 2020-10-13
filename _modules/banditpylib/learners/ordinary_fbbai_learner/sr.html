@@ -167,7 +167,11 @@
 <span class="sd">      budget: total number of pulls</span>
 <span class="sd">      name: alias name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="c1"># calculate bar_log_K</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__bar_log_K</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)])</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">budget</span> <span class="o">-</span> <span class="n">arm_num</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">arm_num</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__bar_log_K</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Budget is too small.&#39;</span><span class="p">)</span></div>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -183,10 +187,6 @@
 <span class="sd">      This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())]</span>
-    <span class="c1"># calculate bar_log_K</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__bar_log_K</span> <span class="o">=</span> <span class="mf">0.5</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">__bar_log_K</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">i</span><span class="p">)</span>
     <span class="c1"># calculate pulls_per_round</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__pulls_per_round</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">nk</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -241,7 +241,6 @@
                            <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">arm_id_to_remove</span><span class="p">)</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__round</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-      <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__round</span> <span class="o">+=</span> <span class="mi">1</span></div>
 
@@ -249,10 +248,6 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      best arm identified by the learner</span>
-
-<span class="sd">    .. todo::</span>
-<span class="sd">      Randomize the output when there are multiple arms with the same empirical</span>
-<span class="sd">      mean.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: I don</span><span class="se">\&#39;</span><span class="s1">t have an answer yet!&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>

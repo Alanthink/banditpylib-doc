@@ -185,7 +185,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>confidence</strong> – confidence level. It should be within (0, 1).</p></li>
+<li><p><strong>confidence</strong> – confidence level. It should be within (0, 1). The algorithm
+should output the best arm with probability at least this value.</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
@@ -248,20 +249,21 @@
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_fcbai_learner.ExpGap">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_fcbai_learner.</code><code class="sig-name descname">ExpGap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">confidence</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">3</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/exp_gap.html#ExpGap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.ExpGap" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_fcbai_learner.</code><code class="sig-name descname">ExpGap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">confidence</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/exp_gap.html#ExpGap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.ExpGap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_fcbai_learner.utils.html#banditpylib.learners.ordinary_fcbai_learner.utils.OrdinaryFCBAILearner" title="banditpylib.learners.ordinary_fcbai_learner.utils.OrdinaryFCBAILearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_fcbai_learner.utils.OrdinaryFCBAILearner</span></code></a></p>
 <p>Exponential-gap elimination policy <a class="bibtex reference internal" href="bibliography.html#karnin2013almost" id="id1">[KKS13]</a></p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fcbai_learner.ExpGap.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">confidence</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">3</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/exp_gap.html#ExpGap.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.ExpGap.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">confidence</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/exp_gap.html#ExpGap.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.ExpGap.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>confidence</strong> – confidence level. It should be within (0, 1).</p></li>
-<li><p><strong>name</strong> – alias name</p></li>
+<li><p><strong>confidence</strong> – confidence level. It should be within (0, 1). The algorithm
+should output the best arm with probability at least this value.</p></li>
 <li><p><strong>threshold</strong> – do uniform sampling when the active arms are no greater than
 the threshold within median elimination</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
 </dl>
@@ -326,11 +328,6 @@ the threshold within median elimination</p></li>
 <dd class="field-odd"><p>best arm identified by the learner</p>
 </dd>
 </dl>
-<div class="admonition-todo admonition" id="id2">
-<p class="admonition-title">Todo</p>
-<p>Randomize the output when there are multiple arms with the same empirical
-mean.</p>
-</div>
 </dd></dl>
 
 </dd></dl>
@@ -339,7 +336,7 @@ mean.</p>
 <dt id="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic">
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_fcbai_learner.</code><code class="sig-name descname">LilUCBHeuristic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">confidence</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_fcbai_learner.utils.html#banditpylib.learners.ordinary_fcbai_learner.utils.OrdinaryFCBAILearner" title="banditpylib.learners.ordinary_fcbai_learner.utils.OrdinaryFCBAILearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_fcbai_learner.utils.OrdinaryFCBAILearner</span></code></a></p>
-<p>lilUCB heuristic policy <a class="bibtex reference internal" href="bibliography.html#jamieson2014lil" id="id3">[JMNB14]</a></p>
+<p>lilUCB heuristic policy <a class="bibtex reference internal" href="bibliography.html#jamieson2014lil" id="id2">[JMNB14]</a></p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">confidence</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.__init__" title="Permalink to this definition">¶</a></dt>
@@ -347,7 +344,8 @@ mean.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>confidence</strong> – confidence level. It should be within (0, 1).</p></li>
+<li><p><strong>confidence</strong> – confidence level. It should be within (0, 1). The algorithm
+should output the best arm with probability at least this value.</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
@@ -420,11 +418,6 @@ mean.</p>
 <dd class="field-odd"><p>best arm identified by the learner</p>
 </dd>
 </dl>
-<div class="admonition-todo admonition" id="id4">
-<p class="admonition-title">Todo</p>
-<p>Randomize the output when there are multiple arms with the same empirical
-mean.</p>
-</div>
 </dd></dl>
 
 </dd></dl>

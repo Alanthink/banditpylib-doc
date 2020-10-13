@@ -156,7 +156,7 @@
 <dt id="banditpylib.learners.ordinary_fbbai_learner.uniform.Uniform">
 <em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_fbbai_learner.uniform.</code><code class="sig-name descname">Uniform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.uniform.Uniform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_fbbai_learner.utils.html#banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner" title="banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner</span></code></a></p>
-<p>Uniform policy</p>
+<p>Uniform sampling policy</p>
 <p>Play each arm the same number of times and then output the arm with the best
 empirical mean.</p>
 <dl class="py method">
@@ -203,7 +203,7 @@ empirical mean.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.uniform.Uniform.actions" title="banditpylib.learners.ordinary_fbbai_learner.uniform.Uniform.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
+<cite>self.__last_actions</cite></p>
 </dd>
 </dl>
 </dd></dl>
@@ -216,11 +216,6 @@ empirical mean.</p>
 <dd class="field-odd"><p>best arm identified by the learner</p>
 </dd>
 </dl>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>Randomize the output when there are multiple arms with the same empirical
-mean.</p>
-</div>
 </dd></dl>
 
 </dd></dl>
