@@ -194,7 +194,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__bandit</span> <span class="o">=</span> <span class="n">bandit</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__learners</span> <span class="o">=</span> <span class="n">learners</span>
     <span class="c1"># learner the simulator is currently running</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span><span class="p">:</span> <span class="n">Learner</span></div>
 
   <span class="nd">@property</span>
   <span class="nd">@abstractmethod</span>
@@ -212,13 +212,15 @@
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span>
 
   <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]]:</span>
+  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> \
+      <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;One trial of the game</span>
 
 <span class="sd">    This method defines how to run one trial of the game.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      random_seed: random seed</span>
+<span class="sd">      debug: whether to run the trial in debug mode</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">      result of one trial</span>
@@ -247,34 +249,44 @@
 <span class="sd">      trials: number of repetitions</span>
 <span class="sd">      output_filename: file used to dump the results</span>
 <span class="sd">      processes: maximum number of processes to run. -1 means no limit</span>
-<span class="sd">      debug: debug mode. When it is set to `True`, the game will stop if there</span>
-<span class="sd">        is any error in subprocesses. Otherwise, the errors of subprocesses will</span>
-<span class="sd">        be silenced.</span>
+<span class="sd">      debug: debug mode. When it is set to `True`, `trials` will be</span>
+<span class="sd">        automatically set to 1 and debug information of the trial will be</span>
+<span class="sd">        printed out.</span>
 
 <span class="sd">    .. warning::</span>
 <span class="sd">      By default, `output_filename` will be opened with mode `a`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+      <span class="n">trials</span> <span class="o">=</span> <span class="mi">1</span>
+
     <span class="k">for</span> <span class="n">learner</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__learners</span><span class="p">:</span>
       <span class="c1"># set current learner</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span> <span class="o">=</span> <span class="n">learner</span>
+
+      <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;start </span><span class="si">%s</span><span class="se">\&#39;</span><span class="s1">s play with </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+                   <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__bandit</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
       <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__output_filename</span> <span class="o">=</span> <span class="n">output_filename</span>
       <span class="n">pool</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="p">(</span>
           <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="k">if</span> <span class="n">processes</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">processes</span><span class="p">))</span>
 
+      <span class="n">trial_results</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">trials</span><span class="p">):</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_one_trial</span><span class="p">,</span>
-                                   <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">time_seed</span><span class="p">()],</span>
-                                   <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__write_to_file</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_one_trial</span><span class="p">,</span>
+                                  <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">time_seed</span><span class="p">(),</span> <span class="n">debug</span><span class="p">],</span>
+                                  <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__write_to_file</span><span class="p">)</span>
 
-        <span class="c1"># for debugging purpose</span>
-        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-          <span class="n">results</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">trial_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
       <span class="c1"># can not apply for processes any more</span>
       <span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
       <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+      <span class="c1"># check if there are exceptions during the trials</span>
+      <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">trial_results</span><span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
       <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="se">\&#39;</span><span class="s1">s play with </span><span class="si">%s</span><span class="s1"> runs </span><span class="si">%.2f</span><span class="s1"> seconds.&#39;</span><span class="p">,</span>
                    <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__bandit</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                    <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span></div></div>

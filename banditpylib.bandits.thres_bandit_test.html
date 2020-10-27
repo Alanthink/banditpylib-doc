@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>banditpylib.arms.utils module &mdash; banditpylib 1.0.0 documentation</title>
+  <title>banditpylib.bandits.thres_bandit_test module &mdash; banditpylib 1.0.0 documentation</title>
   
 
   
@@ -131,13 +131,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>banditpylib.arms.utils module</li>
+      <li>banditpylib.bandits.thres_bandit_test module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/banditpylib.arms.utils.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/banditpylib.bandits.thres_bandit_test.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -150,47 +150,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-banditpylib.arms.utils">
-<span id="banditpylib-arms-utils-module"></span><h1>banditpylib.arms.utils module<a class="headerlink" href="#module-banditpylib.arms.utils" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-banditpylib.bandits.thres_bandit_test">
+<span id="banditpylib-bandits-thres-bandit-test-module"></span><h1>banditpylib.bandits.thres_bandit_test module<a class="headerlink" href="#module-banditpylib.bandits.thres_bandit_test" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="banditpylib.arms.utils.Arm">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.arms.utils.</code><code class="sig-name descname">Arm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/utils.html#Arm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.utils.Arm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dt id="banditpylib.bandits.thres_bandit_test.TestOrdinaryBandit">
+<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.thres_bandit_test.</code><code class="sig-name descname">TestOrdinaryBandit</code><a class="reference internal" href="_modules/banditpylib/bandits/thres_bandit_test.html#TestOrdinaryBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.thres_bandit_test.TestOrdinaryBandit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Test ordinary bandit</p>
 <dl class="py method">
-<dt id="banditpylib.arms.utils.Arm.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/arms/utils.html#Arm.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.utils.Arm.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – alias name for the arm</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="banditpylib.arms.utils.Arm.name">
-<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#banditpylib.arms.utils.Arm.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>arm name</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="banditpylib.arms.utils.Arm.mean">
-<em class="property">abstract property </em><code class="sig-name descname">mean</code><a class="headerlink" href="#banditpylib.arms.utils.Arm.mean" title="Permalink to this definition">¶</a></dt>
-<dd><p>mean of rewards</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="banditpylib.arms.utils.Arm.pull">
-<em class="property">abstract </em><code class="sig-name descname">pull</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pulls</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/arms/utils.html#Arm.pull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.arms.utils.Arm.pull" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pull the arm</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>pulls</strong> – number of times to pull</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>rewards</p>
-</dd>
-</dl>
-</dd></dl>
+<dt id="banditpylib.bandits.thres_bandit_test.TestOrdinaryBandit.test_simple_run">
+<code class="sig-name descname">test_simple_run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/thres_bandit_test.html#TestOrdinaryBandit.test_simple_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.thres_bandit_test.TestOrdinaryBandit.test_simple_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
