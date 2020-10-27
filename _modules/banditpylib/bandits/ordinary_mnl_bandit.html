@@ -575,6 +575,8 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">set_preference_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">set_revenues</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span><span class="p">)</span>
 
+    <span class="bp">self</span><span class="o">.</span><span class="n">__best_assort</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+
     <span class="k">if</span> <span class="n">zero_best_reward</span><span class="p">:</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__best_reward</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_assort</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nb">set</span><span class="p">()</span>
       <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Best reward is set to zero. Now the regret equals to the&#39;</span>
