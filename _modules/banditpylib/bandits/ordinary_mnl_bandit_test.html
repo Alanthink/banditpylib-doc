@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>banditpylib.bandits.ordinary_mnl_bandit_test &mdash; banditpylib 1.0.0 documentation</title>
+  <title>banditpylib.bandits.ordinary_mnl_bandit_test &mdash; banditpylib 0.9.0 documentation</title>
   
 
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -29,8 +32,6 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> banditpylib
+            <a href="../../../index.html" class="icon icon-home"> banditpylib
           
 
           
@@ -125,6 +126,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -160,7 +163,6 @@
 
 <div class="viewcode-block" id="TestOrdinaryMNLBandit"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit_test.html#banditpylib.bandits.ordinary_mnl_bandit_test.TestOrdinaryMNLBandit">[docs]</a><span class="k">class</span> <span class="nc">TestOrdinaryMNLBandit</span><span class="p">:</span>
   <span class="sd">&quot;&quot;&quot;Tests in ordinary mnl bandit&quot;&quot;&quot;</span>
-
 <div class="viewcode-block" id="TestOrdinaryMNLBandit.test_search_unrestricted"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit_test.html#banditpylib.bandits.ordinary_mnl_bandit_test.TestOrdinaryMNLBandit.test_search_unrestricted">[docs]</a>  <span class="k">def</span> <span class="nf">test_search_unrestricted</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">search</span><span class="p">(</span><span class="n">assortments</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
@@ -206,9 +208,7 @@
             <span class="mf">0.9369761261650644</span><span class="p">,</span> <span class="mf">0.9444412097177997</span>
         <span class="p">]))</span>
     <span class="n">product_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">reward</span><span class="o">.</span><span class="n">revenues</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">search_best_assortment</span><span class="p">(</span>
-        <span class="n">reward</span><span class="o">=</span><span class="n">reward</span><span class="p">,</span>
-        <span class="n">card_limit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">best_assortment</span> <span class="o">=</span> <span class="n">search_best_assortment</span><span class="p">(</span><span class="n">reward</span><span class="o">=</span><span class="n">reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">local_best_assortment</span> <span class="o">=</span> <span class="n">local_search_best_assortment</span><span class="p">(</span>
         <span class="n">reward</span><span class="o">=</span><span class="n">reward</span><span class="p">,</span>
         <span class="n">random_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
@@ -218,7 +218,6 @@
     <span class="c1"># When reward is MeanReward, local search guarantees to output the best</span>
     <span class="c1"># assortment.</span>
     <span class="k">assert</span> <span class="n">best_assortment</span> <span class="o">==</span> <span class="n">local_best_assortment</span></div>
-
 
 <div class="viewcode-block" id="TestOrdinaryMNLBandit.test_cvar_calculation"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit_test.html#banditpylib.bandits.ordinary_mnl_bandit_test.TestOrdinaryMNLBandit.test_cvar_calculation">[docs]</a>  <span class="k">def</span> <span class="nf">test_cvar_calculation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">reward</span> <span class="o">=</span> <span class="n">CvarReward</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -262,28 +261,25 @@
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Chester Holtz, Chao Tao
+        &#169; Copyright 2020, Chester Holtz, Chao Tao, Guangyu Xi.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

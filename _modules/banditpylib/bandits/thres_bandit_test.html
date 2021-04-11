@@ -1,0 +1,214 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>banditpylib.bandits.thres_bandit_test &mdash; banditpylib 0.9.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> banditpylib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">banditpylib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>banditpylib.bandits.thres_bandit_test</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for banditpylib.bandits.thres_bandit_test</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">BernoulliArm</span>
+<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">MaxCorrectAnswers</span><span class="p">,</span> <span class="n">AllCorrect</span>
+<span class="kn">from</span> <span class="nn">.thres_bandit</span> <span class="kn">import</span> <span class="n">ThresholdingBandit</span>
+
+
+<div class="viewcode-block" id="TestThresholdingBandit"><a class="viewcode-back" href="../../../banditpylib.bandits.thres_bandit_test.html#banditpylib.bandits.thres_bandit_test.TestThresholdingBandit">[docs]</a><span class="k">class</span> <span class="nc">TestThresholdingBandit</span><span class="p">:</span>
+  <span class="sd">&quot;&quot;&quot;Test thresholding bandit&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="TestThresholdingBandit.test_simple_run"><a class="viewcode-back" href="../../../banditpylib.bandits.thres_bandit_test.html#banditpylib.bandits.thres_bandit_test.TestThresholdingBandit.test_simple_run">[docs]</a>  <span class="k">def</span> <span class="nf">test_simple_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]</span>
+    <span class="n">arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">BernoulliArm</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span> <span class="k">for</span> <span class="n">mean</span> <span class="ow">in</span> <span class="n">means</span><span class="p">]</span>
+    <span class="n">thres_bandit</span> <span class="o">=</span> <span class="n">ThresholdingBandit</span><span class="p">(</span><span class="n">arms</span><span class="o">=</span><span class="n">arms</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">thres_bandit</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">thres_bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">MaxCorrectAnswers</span><span class="p">(</span><span class="n">answers</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="n">thres_bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">AllCorrect</span><span class="p">(</span><span class="n">answers</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span> <span class="o">==</span> <span class="mi">1</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Chester Holtz, Chao Tao, Guangyu Xi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

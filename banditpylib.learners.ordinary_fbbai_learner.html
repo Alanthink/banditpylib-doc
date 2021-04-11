@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>banditpylib.learners.ordinary_fbbai_learner package &mdash; banditpylib 1.0.0 documentation</title>
+  <title>banditpylib.learners.ordinary_fbbai_learner package &mdash; banditpylib 0.9.0 documentation</title>
   
 
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -29,8 +32,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -52,7 +53,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> banditpylib
+            <a href="index.html" class="icon icon-home"> banditpylib
           
 
           
@@ -139,6 +140,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -156,7 +159,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/banditpylib.learners.ordinary_fbbai_learner.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -174,13 +177,13 @@
 <span id="banditpylib-learners-ordinary-fbbai-learner-package"></span><h1>banditpylib.learners.ordinary_fbbai_learner package<a class="headerlink" href="#module-banditpylib.learners.ordinary_fbbai_learner" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_fbbai_learner.</code><code class="sig-name descname">OrdinaryFBBAILearner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_fbbai_learner.</span></code><code class="sig-name descname"><span class="pre">OrdinaryFBBAILearner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Learner</span></code></a></p>
 <p>Base class for bai learners in the ordinary multi-armed bandit</p>
 <p>This learner aims to identify the best arm with fixed budget.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -194,13 +197,13 @@
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.running_environment">
-<em class="property">property </em><code class="sig-name descname">running_environment</code><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.running_environment" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">running_environment</span></code><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.running_environment" title="Permalink to this definition">¶</a></dt>
 <dd><p>type of environment the learner works with</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.arm_num">
-<code class="sig-name descname">arm_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.arm_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.arm_num" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">arm_num</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.arm_num"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.arm_num" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>number of arms</p>
@@ -210,7 +213,7 @@
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.budget">
-<code class="sig-name descname">budget</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.budget"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.budget" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">budget</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.budget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.budget" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>budget of the learner</p>
@@ -220,7 +223,7 @@
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.set_budget">
-<code class="sig-name descname">set_budget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.set_budget"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.set_budget" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_budget</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.set_budget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.set_budget" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>budget</strong> – new budget of the learner</p>
@@ -230,7 +233,7 @@
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.best_arm">
-<em class="property">abstract </em><code class="sig-name descname">best_arm</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.best_arm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.best_arm" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">best_arm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.best_arm" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>index of the best arm identified by the learner</p>
@@ -240,7 +243,7 @@
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.goal">
-<em class="property">property </em><code class="sig-name descname">goal</code><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.goal" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">goal</span></code><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.goal" title="Permalink to this definition">¶</a></dt>
 <dd><p>goal of the learner</p>
 </dd></dl>
 
@@ -248,14 +251,14 @@
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.Uniform">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_fbbai_learner.</code><code class="sig-name descname">Uniform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_fbbai_learner.</span></code><code class="sig-name descname"><span class="pre">Uniform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_fbbai_learner.utils.html#banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner" title="banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner</span></code></a></p>
 <p>Uniform sampling policy</p>
 <p>Play each arm the same number of times and then output the arm with the best
 empirical mean.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.Uniform.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -269,7 +272,7 @@ empirical mean.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.Uniform.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -279,7 +282,7 @@ empirical mean.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.Uniform.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
@@ -292,7 +295,7 @@ empirical mean.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.Uniform.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -304,7 +307,7 @@ empirical mean.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.Uniform.best_arm">
-<code class="sig-name descname">best_arm</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.best_arm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.best_arm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">best_arm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.best_arm" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>best arm identified by the learner</p>
@@ -316,12 +319,12 @@ empirical mean.</p>
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SH">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_fbbai_learner.</code><code class="sig-name descname">SH</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_fbbai_learner.</span></code><code class="sig-name descname"><span class="pre">SH</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_fbbai_learner.utils.html#banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner" title="banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner</span></code></a></p>
-<p>Sequential halving policy <a class="bibtex reference internal" href="bibliography.html#karnin2013almost" id="id1">[KKS13]</a></p>
+<p>Sequential halving policy <span id="id1">[<a class="reference internal" href="bibliography.html#id8">KKS13</a>]</span></p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SH.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -337,7 +340,7 @@ than this number</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SH.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -347,7 +350,7 @@ than this number</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SH.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
@@ -360,7 +363,7 @@ than this number</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SH.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>Optional<span class="p">[</span>numpy.ndarray<span class="p">]</span><span class="p">, </span>None<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -372,7 +375,7 @@ than this number</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SH.best_arm">
-<code class="sig-name descname">best_arm</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.best_arm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.best_arm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">best_arm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.best_arm" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>best arm identified by the learner</p>
@@ -384,12 +387,12 @@ than this number</p></li>
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SR">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_fbbai_learner.</code><code class="sig-name descname">SR</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_fbbai_learner.</span></code><code class="sig-name descname"><span class="pre">SR</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_fbbai_learner.utils.html#banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner" title="banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner</span></code></a></p>
-<p>Successive rejects policy <a class="bibtex reference internal" href="bibliography.html#audibert2010best" id="id2">[AB10]</a></p>
+<p>Successive rejects policy <span id="id2">[<a class="reference internal" href="bibliography.html#id7">AB10</a>]</span></p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SR.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">budget</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -403,7 +406,7 @@ than this number</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SR.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -413,7 +416,7 @@ than this number</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SR.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
@@ -426,7 +429,7 @@ than this number</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SR.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>Optional<span class="p">[</span>numpy.ndarray<span class="p">]</span><span class="p">, </span>None<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -438,7 +441,7 @@ than this number</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fbbai_learner.SR.best_arm">
-<code class="sig-name descname">best_arm</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.best_arm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.best_arm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">best_arm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.best_arm" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>best arm identified by the learner</p>
@@ -455,37 +458,29 @@ than this number</p></li>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="banditpylib.learners.ordinary_fcbai_learner.html" class="btn btn-neutral float-right" title="banditpylib.learners.ordinary_fcbai_learner package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="banditpylib.learners.html" class="btn btn-neutral float-left" title="banditpylib.learners package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="banditpylib.learners.ordinary_fcbai_learner.html" class="btn btn-neutral float-right" title="banditpylib.learners.ordinary_fcbai_learner package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="banditpylib.learners.html" class="btn btn-neutral float-left" title="banditpylib.learners package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Chester Holtz, Chao Tao
+        &#169; Copyright 2020, Chester Holtz, Chao Tao, Guangyu Xi.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

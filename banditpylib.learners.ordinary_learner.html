@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>banditpylib.learners.ordinary_learner package &mdash; banditpylib 1.0.0 documentation</title>
+  <title>banditpylib.learners.ordinary_learner package &mdash; banditpylib 0.9.0 documentation</title>
   
 
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -29,7 +32,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -52,7 +54,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> banditpylib
+            <a href="index.html" class="icon icon-home"> banditpylib
           
 
           
@@ -139,6 +141,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -156,7 +160,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/banditpylib.learners.ordinary_learner.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -182,7 +186,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(T\)</span></p></td>
-<td><p>time horizon</p></td>
+<td><p>game horizon</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(N\)</span></p></td>
 <td><p>total number of arms</p></td>
@@ -190,28 +194,27 @@
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(T_i(t)\)</span></p></td>
 <td><p>number of times arm <span class="math notranslate nohighlight">\(i\)</span> is played before time <span class="math notranslate nohighlight">\(t\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\hat{\mu}_i(t)\)</span></p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\bar{\mu}_i(t)\)</span></p></td>
 <td><p>empirical mean of arm <span class="math notranslate nohighlight">\(i\)</span> before time <span class="math notranslate nohighlight">\(t\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\hat{V}_i(t)\)</span></p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\bar{V}_i(t)\)</span></p></td>
 <td><p>empirical variance of arm <span class="math notranslate nohighlight">\(i\)</span> before time <span class="math notranslate nohighlight">\(t\)</span></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_learner.OrdinaryLearner">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.</code><code class="sig-name descname">OrdinaryLearner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_learner.</span></code><code class="sig-name descname"><span class="pre">OrdinaryLearner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Learner</span></code></a></p>
 <p>Base class for learners in the ordinary multi-armed bandit</p>
-<p>This type of learners aim to maximize the expected total rewards.</p>
+<p>This type of learners aim to maximize the total rewards.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.OrdinaryLearner.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>horizon</strong> – total number of time steps</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
@@ -220,13 +223,13 @@
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.OrdinaryLearner.running_environment">
-<em class="property">property </em><code class="sig-name descname">running_environment</code><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.running_environment" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">running_environment</span></code><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.running_environment" title="Permalink to this definition">¶</a></dt>
 <dd><p>type of environment the learner works with</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.OrdinaryLearner.arm_num">
-<code class="sig-name descname">arm_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.arm_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.arm_num" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">arm_num</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.arm_num"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.arm_num" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>number of arms</p>
@@ -235,29 +238,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="banditpylib.learners.ordinary_learner.OrdinaryLearner.horizon">
-<code class="sig-name descname">horizon</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.horizon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.horizon" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>horizon of the game</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="banditpylib.learners.ordinary_learner.OrdinaryLearner.set_horizon">
-<code class="sig-name descname">set_horizon</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner.set_horizon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.set_horizon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset the horizon</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>horizon</strong> – new horizon of the game</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.OrdinaryLearner.goal">
-<em class="property">property </em><code class="sig-name descname">goal</code><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.goal" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">goal</span></code><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.goal" title="Permalink to this definition">¶</a></dt>
 <dd><p>goal of the learner</p>
 </dd></dl>
 
@@ -265,19 +247,18 @@
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_learner.EpsGreedy">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.</code><code class="sig-name descname">EpsGreedy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">eps</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EpsGreedy" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_learner.</span></code><code class="sig-name descname"><span class="pre">EpsGreedy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EpsGreedy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_learner.utils.html#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_learner.utils.OrdinaryLearner</span></code></a></p>
 <p>Epsilon-Greedy policy</p>
 <p>With probability <span class="math notranslate nohighlight">\(\frac{\epsilon}{t}\)</span> do uniform sampling and with the
 remaining probability play the arm with the maximum empirical mean.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.EpsGreedy.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">eps</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EpsGreedy.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EpsGreedy.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>horizon</strong> – total number of time steps</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 <li><p><strong>eps</strong> – epsilon</p></li>
 </ul>
@@ -287,7 +268,7 @@ remaining probability play the arm with the maximum empirical mean.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.EpsGreedy.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EpsGreedy.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EpsGreedy.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -297,7 +278,7 @@ remaining probability play the arm with the maximum empirical mean.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.EpsGreedy.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EpsGreedy.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EpsGreedy.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
@@ -310,7 +291,7 @@ remaining probability play the arm with the maximum empirical mean.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.EpsGreedy.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EpsGreedy.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/eps_greedy.html#EpsGreedy.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EpsGreedy.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -324,21 +305,20 @@ remaining probability play the arm with the maximum empirical mean.</p>
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_learner.UCB">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.</code><code class="sig-name descname">UCB</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">2.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_learner.</span></code><code class="sig-name descname"><span class="pre">UCB</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_learner.utils.html#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_learner.utils.OrdinaryLearner</span></code></a></p>
-<p>Upper confidence bound policy <a class="bibtex reference internal" href="bibliography.html#auer2002finite" id="id1">[ACBF02]</a></p>
+<p>Upper Confidence Bound policy <span id="id1">[<a class="reference internal" href="bibliography.html#id4">ACBF02</a>]</span></p>
 <p>At time <span class="math notranslate nohighlight">\(t\)</span>, play arm</p>
 <div class="math notranslate nohighlight">
-\[\mathrm{argmax}_{i \in [0, N-1]} \left\{ \hat{\mu}_i(t) + \sqrt{ \frac{
+\[\mathrm{argmax}_{i \in [0, N-1]} \left\{ \bar{\mu}_i(t) + \sqrt{ \frac{
 \alpha  \ln(t) }{T_i(t)} } \right\}\]</div>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.UCB.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">2.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>horizon</strong> – total number of time steps</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 <li><p><strong>alpha</strong> – alpha</p></li>
 </ul>
@@ -348,7 +328,7 @@ remaining probability play the arm with the maximum empirical mean.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.UCB.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -358,7 +338,7 @@ remaining probability play the arm with the maximum empirical mean.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.UCB.UCB">
-<code class="sig-name descname">UCB</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.UCB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB.UCB" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">UCB</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.UCB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB.UCB" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>optimistic estimate of arms’ real means</p>
@@ -368,7 +348,7 @@ remaining probability play the arm with the maximum empirical mean.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.UCB.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
@@ -381,7 +361,7 @@ remaining probability play the arm with the maximum empirical mean.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.UCB.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -395,24 +375,23 @@ remaining probability play the arm with the maximum empirical mean.</p>
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_learner.ThompsonSampling">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.</code><code class="sig-name descname">ThompsonSampling</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prior_dist</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'beta'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_learner.</span></code><code class="sig-name descname"><span class="pre">ThompsonSampling</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prior_dist</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'beta'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_learner.utils.html#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_learner.utils.OrdinaryLearner</span></code></a></p>
-<p>Thompson Sampling policy <a class="bibtex reference internal" href="bibliography.html#agrawal2017near" id="id2">[AG17]</a></p>
+<p>Thompson Sampling policy <span id="id2">[<a class="reference internal" href="bibliography.html#id2">AG17</a>]</span></p>
 <p>Assume a prior distribution for every arm. At time <span class="math notranslate nohighlight">\(t\)</span>, sample a
-virtual mean from the posterior distribution for every arm. Play the arm with
-the maximum sampled virtual mean.</p>
+virtual mean reward from the posterior distribution for every arm. Play the
+arm with the maximum sampled virtual mean reward.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Reward should be Bernoulli when Beta prior is chosen.</p>
 </div>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.ThompsonSampling.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prior_dist</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'beta'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prior_dist</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'beta'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>horizon</strong> – total number of time steps</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 <li><p><strong>prior_dist</strong> – prior distribution of thompson sampling. Only two priors are
 supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
@@ -423,7 +402,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.ThompsonSampling.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -433,7 +412,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.ThompsonSampling.actions_from_beta_prior">
-<code class="sig-name descname">actions_from_beta_prior</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.actions_from_beta_prior"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.actions_from_beta_prior" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions_from_beta_prior</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.actions_from_beta_prior"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.actions_from_beta_prior" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>arm to pull using beta prior</p>
@@ -443,7 +422,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.ThompsonSampling.actions_from_gaussian_prior">
-<code class="sig-name descname">actions_from_gaussian_prior</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.actions_from_gaussian_prior"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.actions_from_gaussian_prior" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions_from_gaussian_prior</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.actions_from_gaussian_prior"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.actions_from_gaussian_prior" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>arm to pull using gaussian prior</p>
@@ -453,7 +432,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.ThompsonSampling.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
@@ -466,7 +445,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.ThompsonSampling.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ts.html#ThompsonSampling.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ThompsonSampling.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -480,18 +459,17 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_learner.Uniform">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.</code><code class="sig-name descname">Uniform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/uniform.html#Uniform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.Uniform" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_learner.</span></code><code class="sig-name descname"><span class="pre">Uniform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/uniform.html#Uniform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.Uniform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_learner.utils.html#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_learner.utils.OrdinaryLearner</span></code></a></p>
 <p>Uniform policy</p>
 <p>Play each arm the same number of times.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.Uniform.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/uniform.html#Uniform.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.Uniform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/uniform.html#Uniform.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.Uniform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>horizon</strong> – total number of time steps</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 </ul>
 </dd>
@@ -500,7 +478,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.Uniform.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/uniform.html#Uniform.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.Uniform.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/uniform.html#Uniform.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.Uniform.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -510,7 +488,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.Uniform.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/uniform.html#Uniform.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.Uniform.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/uniform.html#Uniform.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.Uniform.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
@@ -523,7 +501,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.Uniform.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/uniform.html#Uniform.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.Uniform.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/uniform.html#Uniform.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.Uniform.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -537,25 +515,24 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_learner.UCBV">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.</code><code class="sig-name descname">UCBV</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_learner.</span></code><code class="sig-name descname"><span class="pre">UCBV</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_learner.utils.html#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_learner.utils.OrdinaryLearner</span></code></a></p>
-<p>UCBV policy <a class="bibtex reference internal" href="bibliography.html#audibert2009exploration" id="id3">[AMSzepesvari09]</a></p>
+<p>UCBV policy <span id="id3">[<a class="reference internal" href="bibliography.html#id5">AMSzepesvari09</a>]</span></p>
 <p>At time <span class="math notranslate nohighlight">\(t\)</span>, play arm</p>
 <div class="math notranslate nohighlight">
-\[\mathrm{argmax}_{i \in [0, N-1]} \left\{ \hat{\mu}_i(t) + \sqrt{ \frac{ 2
-\hat{V}_i(t) \ln(t) }{T_i(t)} }+ \frac{ b \ln(t) }{T_i(t)} \right\}\]</div>
+\[\mathrm{argmax}_{i \in [0, N-1]} \left\{ \bar{\mu}_i(t) + \sqrt{ \frac{ 2
+\bar{V}_i(t) \ln(t) }{T_i(t)} }+ \frac{ b \ln(t) }{T_i(t)} \right\}\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Reward has to be bounded within <span class="math notranslate nohighlight">\([0, b]\)</span>.</p>
 </div>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.UCBV.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>arm_num</strong> – number of arms</p></li>
-<li><p><strong>horizon</strong> – total number of time steps</p></li>
 <li><p><strong>name</strong> – alias name</p></li>
 <li><p><strong>b</strong> – upper bound of reward</p></li>
 </ul>
@@ -565,7 +542,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.UCBV.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -575,7 +552,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.UCBV.UCBV">
-<code class="sig-name descname">UCBV</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.UCBV"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV.UCBV" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">UCBV</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.UCBV"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV.UCBV" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>optimistic estimate of arms’ real means using empirical variance</p>
@@ -585,7 +562,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.UCBV.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
@@ -598,7 +575,7 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.UCBV.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucbv.html#UCBV.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCBV.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -612,12 +589,12 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_learner.MOSS">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_learner.</code><code class="sig-name descname">MOSS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_learner.</span></code><code class="sig-name descname"><span class="pre">MOSS</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_learner.utils.html#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_learner.utils.OrdinaryLearner</span></code></a></p>
-<p>MOSS policy <a class="bibtex reference internal" href="bibliography.html#audibert2009minimax" id="id4">[AB09]</a></p>
+<p>MOSS policy <span id="id4">[<a class="reference internal" href="bibliography.html#id3">AB09</a>]</span></p>
 <p>At time <span class="math notranslate nohighlight">\(t\)</span>, play arm</p>
 <div class="math notranslate nohighlight">
-\[\mathrm{argmax}_{i \in [0, N-1]} \left\{ \hat{\mu}_i(t) + \sqrt{
+\[\mathrm{argmax}_{i \in [0, N-1]} \left\{ \bar{\mu}_i(t) + \sqrt{
 \frac{\mathrm{max}(\ln( \frac{T}{N T_i(t)} ), 0 ) }{T_i(t)} } \right\}\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -626,7 +603,7 @@ in [0, 1].</p>
 </div>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.MOSS.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arm_num</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -640,7 +617,7 @@ in [0, 1].</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.MOSS.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -650,17 +627,17 @@ in [0, 1].</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.MOSS.MOSS">
-<code class="sig-name descname">MOSS</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.MOSS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS.MOSS" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">MOSS</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.MOSS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS.MOSS" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>optimistic estimate of arms’ real means using horizon</p>
+<dd class="field-odd"><p>optimistic estimate of arms’ real means</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.MOSS.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
@@ -673,7 +650,7 @@ in [0, 1].</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.MOSS.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/moss.html#MOSS.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.MOSS.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -692,37 +669,29 @@ in [0, 1].</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="banditpylib.learners.ordinary_mnl_learner.html" class="btn btn-neutral float-right" title="banditpylib.learners.ordinary_mnl_learner package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="banditpylib.learners.ordinary_fcbai_learner.html" class="btn btn-neutral float-left" title="banditpylib.learners.ordinary_fcbai_learner package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="banditpylib.learners.ordinary_mnl_learner.html" class="btn btn-neutral float-right" title="banditpylib.learners.ordinary_mnl_learner package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="banditpylib.learners.ordinary_fcbai_learner.html" class="btn btn-neutral float-left" title="banditpylib.learners.ordinary_fcbai_learner package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Chester Holtz, Chao Tao
+        &#169; Copyright 2020, Chester Holtz, Chao Tao, Guangyu Xi.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

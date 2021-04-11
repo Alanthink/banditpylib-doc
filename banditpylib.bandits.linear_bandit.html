@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>banditpylib.bandits.linear_bandit module &mdash; banditpylib 1.0.0 documentation</title>
+  <title>banditpylib.bandits.linear_bandit module &mdash; banditpylib 0.9.0 documentation</title>
   
 
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -29,7 +32,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -50,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> banditpylib
+            <a href="index.html" class="icon icon-home"> banditpylib
           
 
           
@@ -125,6 +127,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -136,7 +140,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/banditpylib.bandits.linear_bandit.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -154,7 +158,7 @@
 <span id="banditpylib-bandits-linear-bandit-module"></span><h1>banditpylib.bandits.linear_bandit module<a class="headerlink" href="#module-banditpylib.bandits.linear_bandit" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.linear_bandit.</code><code class="sig-name descname">LinearBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="p">:</span> <span class="n">List<span class="p">[</span>numpy.ndarray<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">var</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.bandits.linear_bandit.</span></code><code class="sig-name descname"><span class="pre">LinearBandit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf" title="banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf</span></code></a>, <a class="reference internal" href="banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.linear_bandit_itf.LinearBanditItf" title="banditpylib.bandits.linear_bandit_itf.LinearBanditItf"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.linear_bandit_itf.LinearBanditItf</span></code></a></p>
 <p>Finite-armed linear bandit</p>
 <p>Arms are indexed from 0 by default. Each pull of arm <span class="math notranslate nohighlight">\(i\)</span> will generate
@@ -163,7 +167,7 @@ an <cite>i.i.d.</cite> reward from distribution <span class="math notranslate no
 is an unknown parameter and <span class="math notranslate nohighlight">\(\epsilon\)</span> is a zero-mean noise.</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="p">:</span> <span class="n">List<span class="p">[</span>numpy.ndarray<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">theta</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">var</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -178,7 +182,7 @@ is an unknown parameter and <span class="math notranslate nohighlight">\(\epsilo
 
 <dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.feed">
-<code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">actions</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.feed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">feed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.feed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.feed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pull multiple arms</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -193,7 +197,7 @@ second dimension is the number of times this arm will be pulled</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -203,7 +207,7 @@ second dimension is the number of times this arm will be pulled</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.arm_num">
-<code class="sig-name descname">arm_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.arm_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.arm_num" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">arm_num</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.arm_num"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.arm_num" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>total number of arms</p>
@@ -213,7 +217,7 @@ second dimension is the number of times this arm will be pulled</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.total_pulls">
-<code class="sig-name descname">total_pulls</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.total_pulls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.total_pulls" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">total_pulls</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.total_pulls"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.total_pulls" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>total number of pulls so far</p>
@@ -223,7 +227,7 @@ second dimension is the number of times this arm will be pulled</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.features">
-<code class="sig-name descname">features</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>numpy.ndarray<span class="p">]</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.features" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">features</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.features" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>feature vectors</p>
@@ -233,7 +237,7 @@ second dimension is the number of times this arm will be pulled</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.linear_bandit.LinearBandit.regret">
-<code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">goal</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Goal" title="banditpylib.learners.utils.Goal">banditpylib.learners.utils.Goal</a></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.regret" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">regret</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">goal</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Goal" title="banditpylib.learners.utils.Goal"><span class="pre">banditpylib.learners.utils.Goal</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="reference internal" href="_modules/banditpylib/bandits/linear_bandit.html#LinearBandit.regret"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.linear_bandit.LinearBandit.regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>goal</strong> – goal of the learner</p>
@@ -253,28 +257,25 @@ second dimension is the number of times this arm will be pulled</p>
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Chester Holtz, Chao Tao
+        &#169; Copyright 2020, Chester Holtz, Chao Tao, Guangyu Xi.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

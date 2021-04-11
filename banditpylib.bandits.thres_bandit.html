@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>banditpylib.bandits.thres_bandit module &mdash; banditpylib 0.9.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> banditpylib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">banditpylib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>banditpylib.bandits.thres_bandit module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/banditpylib.bandits.thres_bandit.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-banditpylib.bandits.thres_bandit">
+<span id="banditpylib-bandits-thres-bandit-module"></span><h1>banditpylib.bandits.thres_bandit module<a class="headerlink" href="#module-banditpylib.bandits.thres_bandit" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="banditpylib.bandits.thres_bandit.ThresholdingBandit">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.bandits.thres_bandit.</span></code><code class="sig-name descname"><span class="pre">ThresholdingBandit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arms</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm"><span class="pre">banditpylib.arms.utils.Arm</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/thres_bandit.html#ThresholdingBandit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.thres_bandit.ThresholdingBandit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.utils.Bandit</span></code></a></p>
+<p>Thresholding Bandit Environment</p>
+<p>Arms are indexed from 0 by default. Each time the learner pulls arm <span class="math notranslate nohighlight">\(i\)</span>,
+she will obtain an <cite>i.i.d.</cite> reward generated from an <cite>unknown</cite> distribution
+<span class="math notranslate nohighlight">\(\mathcal{D}_i\)</span>. Different from the ordinary MAB, there is a threshold
+parameter <span class="math notranslate nohighlight">\(\theta\)</span>. The learner should try to infer whether an arm’s
+expected reward is above the threshold or not. Besides, the environment also
+accepts a parameter <span class="math notranslate nohighlight">\(\epsilon &gt;= 0\)</span> which is the radius of indifference
+zone meaning that the answers about the arms with expected rewards within
+<span class="math notranslate nohighlight">\([\theta - \epsilon, \theta + \epsilon]\)</span> do not matter.</p>
+<dl class="py method">
+<dt id="banditpylib.bandits.thres_bandit.ThresholdingBandit.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arms</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm"><span class="pre">banditpylib.arms.utils.Arm</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/thres_bandit.html#ThresholdingBandit.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.thres_bandit.ThresholdingBandit.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arms</strong> – arms in thresholding bandit</p></li>
+<li><p><strong>theta</strong> – threshold</p></li>
+<li><p><strong>eps</strong> – radius of indifferent zone</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.thres_bandit.ThresholdingBandit.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/thres_bandit.html#ThresholdingBandit.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.thres_bandit.ThresholdingBandit.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the bandit environment</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function should be called before the start of the game.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.thres_bandit.ThresholdingBandit.arm_num">
+<code class="sig-name descname"><span class="pre">arm_num</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/bandits/thres_bandit.html#ThresholdingBandit.arm_num"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.thres_bandit.ThresholdingBandit.arm_num" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>total number of arms</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.thres_bandit.ThresholdingBandit.feed">
+<code class="sig-name descname"><span class="pre">feed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/bandits/thres_bandit.html#ThresholdingBandit.feed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.thres_bandit.ThresholdingBandit.feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pull multiple arms</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>actions</strong> – for each tuple, the first element is the arm id and the
+second element is the pull times</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>feedback after arms are pulled. For each tuple, the first element is</dt><dd><p>the stochstic rewards.</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.thres_bandit.ThresholdingBandit.context">
+<code class="sig-name descname"><span class="pre">context</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="reference internal" href="_modules/banditpylib/bandits/thres_bandit.html#ThresholdingBandit.context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.thres_bandit.ThresholdingBandit.context" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>current context of the bandit environment</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.thres_bandit.ThresholdingBandit.regret">
+<code class="sig-name descname"><span class="pre">regret</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">goal</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Goal" title="banditpylib.learners.utils.Goal"><span class="pre">banditpylib.learners.utils.Goal</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="reference internal" href="_modules/banditpylib/bandits/thres_bandit.html#ThresholdingBandit.regret"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.thres_bandit.ThresholdingBandit.regret" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>goal</strong> – goal of the learner</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>regret of the learner</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Chester Holtz, Chao Tao, Guangyu Xi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>banditpylib.protocols.single_player &mdash; banditpylib 1.0.0 documentation</title>
+  <title>banditpylib.protocols.single_player &mdash; banditpylib 0.9.0 documentation</title>
   
 
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -29,8 +32,6 @@
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> banditpylib
+            <a href="../../../index.html" class="icon icon-home"> banditpylib
           
 
           
@@ -125,6 +126,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -164,36 +167,45 @@
   <span class="sd">&quot;&quot;&quot;Single player protocol</span>
 
 <span class="sd">  This protocol is used to simulate the ordinary single-player game. It runs in</span>
-<span class="sd">  rounds. During each round, the protocol runs the following steps in sequence.</span>
+<span class="sd">  rounds. During each round, the protocol runs the following steps in sequence:</span>
 
-<span class="sd">  * fetch the state of the environment and ask the learner for actions</span>
-<span class="sd">  * send the actions to the enviroment for execution</span>
-<span class="sd">  * update the learner with the feedback of the environment</span>
+<span class="sd">  * fetch the state of the environment and ask the learner for actions;</span>
+<span class="sd">  * send the actions to the enviroment for execution;</span>
+<span class="sd">  * update the learner with the feedback of the environment.</span>
 
-<span class="sd">  The simulation stops when actions returned by the learner is `None`.</span>
+<span class="sd">  The simulation stopping criteria is one of the following two:</span>
+
+<span class="sd">  * actions returned by the learner is `None`;</span>
+<span class="sd">  * total number of actions achieve `horizon`.</span>
 
 <span class="sd">  .. note::</span>
-<span class="sd">    The total number of rounds shows how adaptive the learner is and it is at</span>
-<span class="sd">    most the total number of actions.</span>
+<span class="sd">    During a round, a learner may want to perform multiple actions, which is</span>
+<span class="sd">    so-called batched learner. The total number of rounds shows how often the</span>
+<span class="sd">    learner wants to communicate with the bandit environment which is at most</span>
+<span class="sd">    `horizon`.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="SinglePlayerProtocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.single_player.html#banditpylib.protocols.SinglePlayerProtocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span>
                <span class="n">learners</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Learner</span><span class="p">],</span>
-               <span class="n">intermediate_regrets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+               <span class="n">intermediate_regrets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+               <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      bandit: bandit environment</span>
 <span class="sd">      learner: learners to be compared with</span>
-<span class="sd">      intermediate_regrets: a list of intermediate times to record</span>
-<span class="sd">        intermediate regrets</span>
+<span class="sd">      intermediate_regrets: a list of rounds. If set, the regrets after these</span>
+<span class="sd">        rounds will be recorded</span>
+<span class="sd">      horizon: horizon of the game (i.e., total number of actions a leaner can</span>
+<span class="sd">        make)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bandit</span><span class="o">=</span><span class="n">bandit</span><span class="p">,</span> <span class="n">learners</span><span class="o">=</span><span class="n">learners</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__intermediate_regrets</span> <span class="o">=</span> \
-        <span class="n">intermediate_regrets</span> <span class="k">if</span> <span class="n">intermediate_regrets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span></div>
+        <span class="n">intermediate_regrets</span> <span class="k">if</span> <span class="n">intermediate_regrets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span> <span class="o">=</span> <span class="n">horizon</span></div>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;default protocol name&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;protocol name&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;single_player_protocol&#39;</span>
 
   <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
@@ -217,22 +229,21 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
     <span class="n">one_trial_data</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="c1"># number of rounds to communicate with the bandit environment</span>
-    <span class="n">adaptive_rounds</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="c1"># total actions executed by the bandit environment</span>
+    <span class="n">rounds</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># number of actions the learner has made</span>
     <span class="n">total_actions</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="nf">record_data</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">add_data</span><span class="p">():</span>
       <span class="n">one_trial_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
           <span class="nb">dict</span><span class="p">({</span>
               <span class="s1">&#39;bandit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
               <span class="s1">&#39;learner&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-              <span class="s1">&#39;rounds&#39;</span><span class="p">:</span> <span class="n">adaptive_rounds</span><span class="p">,</span>
+              <span class="s1">&#39;rounds&#39;</span><span class="p">:</span> <span class="n">rounds</span><span class="p">,</span>
               <span class="s1">&#39;total_actions&#39;</span><span class="p">:</span> <span class="n">total_actions</span><span class="p">,</span>
               <span class="s1">&#39;regret&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">goal</span><span class="p">)</span>
           <span class="p">}))</span>
 
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">while</span> <span class="n">total_actions</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span><span class="p">:</span>
       <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
       <span class="n">actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">actions</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
@@ -241,20 +252,19 @@
         <span class="k">break</span>
 
       <span class="c1"># record intermediate regrets</span>
-      <span class="k">if</span> <span class="n">adaptive_rounds</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__intermediate_regrets</span><span class="p">:</span>
-        <span class="n">record_data</span><span class="p">()</span>
+      <span class="k">if</span> <span class="n">rounds</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__intermediate_regrets</span><span class="p">:</span>
+        <span class="n">add_data</span><span class="p">()</span>
 
       <span class="n">feedback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span>
 
       <span class="k">if</span> <span class="n">feedback</span><span class="p">:</span>
-        <span class="c1"># information update</span>
         <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">:</span>
           <span class="n">total_actions</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
-        <span class="n">adaptive_rounds</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">rounds</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="c1"># record final regret</span>
-    <span class="n">record_data</span><span class="p">()</span>
+    <span class="n">add_data</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">one_trial_data</span></div>
 </pre></div>
 
@@ -262,28 +272,25 @@
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Chester Holtz, Chao Tao
+        &#169; Copyright 2020, Chester Holtz, Chao Tao, Guangyu Xi.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

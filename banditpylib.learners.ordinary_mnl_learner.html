@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>banditpylib.learners.ordinary_mnl_learner package &mdash; banditpylib 1.0.0 documentation</title>
+  <title>banditpylib.learners.ordinary_mnl_learner package &mdash; banditpylib 0.9.0 documentation</title>
   
 
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -29,7 +32,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -52,7 +54,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> banditpylib
+            <a href="index.html" class="icon icon-home"> banditpylib
           
 
           
@@ -139,6 +141,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -156,7 +160,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/banditpylib.learners.ordinary_mnl_learner.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -174,14 +178,14 @@
 <span id="banditpylib-learners-ordinary-mnl-learner-package"></span><h1>banditpylib.learners.ordinary_mnl_learner package<a class="headerlink" href="#module-banditpylib.learners.ordinary_mnl_learner" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_mnl_learner.</code><code class="sig-name descname">OrdinaryMNLLearner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">reward</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward">banditpylib.bandits.ordinary_mnl_bandit.Reward</a></span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">use_local_search</span><span class="p">:</span> <span class="n">bool</span></em>, <em class="sig-param"><span class="n">random_neighbors</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_mnl_learner.</span></code><code class="sig-name descname"><span class="pre">OrdinaryMNLLearner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revenues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_search</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_neighbors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Learner</span></code></a></p>
 <p>Base class for learners in the ordinary mnl bandit</p>
 <p>Product 0 is reserved for non-purchase. And it is assumed that the preference
 parameter for non-purchase is 1.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">reward</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward">banditpylib.bandits.ordinary_mnl_bandit.Reward</a></span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">use_local_search</span><span class="p">:</span> <span class="n">bool</span></em>, <em class="sig-param"><span class="n">random_neighbors</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revenues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_search</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_neighbors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -201,13 +205,13 @@ enabled</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.running_environment">
-<em class="property">property </em><code class="sig-name descname">running_environment</code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.running_environment" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">running_environment</span></code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.running_environment" title="Permalink to this definition">¶</a></dt>
 <dd><p>type of environment the learner works with</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.product_num">
-<code class="sig-name descname">product_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.product_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.product_num" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">product_num</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.product_num"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.product_num" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>product numbers</p>
@@ -217,7 +221,7 @@ enabled</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.revenues">
-<code class="sig-name descname">revenues</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.revenues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.revenues" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">revenues</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.revenues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.revenues" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>revenues of products (product 0 is included)</p>
@@ -227,7 +231,7 @@ enabled</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.card_limit">
-<code class="sig-name descname">card_limit</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.card_limit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.card_limit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">card_limit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.card_limit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.card_limit" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>cardinality limit</p>
@@ -237,7 +241,7 @@ enabled</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.horizon">
-<code class="sig-name descname">horizon</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.horizon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.horizon" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">horizon</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.horizon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.horizon" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>horizon of the learner</p>
@@ -247,25 +251,25 @@ enabled</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.reward">
-<em class="property">property </em><code class="sig-name descname">reward</code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.reward" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">reward</span></code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.reward" title="Permalink to this definition">¶</a></dt>
 <dd><p>goal of the learner</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.use_local_search">
-<em class="property">property </em><code class="sig-name descname">use_local_search</code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.use_local_search" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">use_local_search</span></code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.use_local_search" title="Permalink to this definition">¶</a></dt>
 <dd><p>whether local search is enabled</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.random_neighbors">
-<em class="property">property </em><code class="sig-name descname">random_neighbors</code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.random_neighbors" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">random_neighbors</span></code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.random_neighbors" title="Permalink to this definition">¶</a></dt>
 <dd><p>number of random neighbors to look up when local search is enabled</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.set_horizon">
-<code class="sig-name descname">set_horizon</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.set_horizon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.set_horizon" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_horizon</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.set_horizon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.set_horizon" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>horizon</strong> – new horizon of the learner</p>
@@ -274,22 +278,8 @@ enabled</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.regret">
-<code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bandit</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.regret" title="Permalink to this definition">¶</a></dt>
-<dd><div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This method is deprecated and will be removed in a future version.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>regret compared with the optimal policy</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.goal">
-<em class="property">property </em><code class="sig-name descname">goal</code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.goal" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">goal</span></code><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.goal" title="Permalink to this definition">¶</a></dt>
 <dd><p>goal of the learner</p>
 </dd></dl>
 
@@ -297,12 +287,12 @@ enabled</p></li>
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_mnl_learner.UCB">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_mnl_learner.</code><code class="sig-name descname">UCB</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">reward</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward">banditpylib.bandits.ordinary_mnl_bandit.Reward</a></span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_local_search</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">random_neighbors</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_mnl_learner.</span></code><code class="sig-name descname"><span class="pre">UCB</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revenues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_search</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner" title="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner</span></code></a></p>
-<p>UCB policy <a class="bibtex reference internal" href="bibliography.html#dblp-journals-ior-agrawalagz19" id="id1">[AAGZ19]</a></p>
+<p>UCB policy <span id="id1">[<a class="reference internal" href="bibliography.html#id14">AAGZ19</a>]</span></p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.UCB.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">reward</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward">banditpylib.bandits.ordinary_mnl_bandit.Reward</a></span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_local_search</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">random_neighbors</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revenues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_search</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -322,7 +312,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.UCB.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -332,7 +322,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.UCB.UCB">
-<code class="sig-name descname">UCB</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.UCB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.UCB" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">UCB</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.UCB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.UCB" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>optimistic estimate of preference parameters</p>
@@ -342,7 +332,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.UCB.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>Set<span class="p">[</span>int<span class="p">]</span><span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary mnl bandit which should be <cite>None</cite></p>
@@ -355,7 +345,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.UCB.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ucb.html#UCB.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.UCB.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -369,14 +359,14 @@ used</p></li>
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_mnl_learner.EpsGreedy">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_mnl_learner.</code><code class="sig-name descname">EpsGreedy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">reward</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward">banditpylib.bandits.ordinary_mnl_bandit.Reward</a></span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_local_search</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">random_neighbors</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">eps</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_mnl_learner.</span></code><code class="sig-name descname"><span class="pre">EpsGreedy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revenues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_search</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner" title="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner</span></code></a></p>
 <p>Epsilon-Greedy policy</p>
 <p>With probability <span class="math notranslate nohighlight">\(\frac{\epsilon}{t}\)</span> do uniform sampling and with the
 remaining probability serve the assortment with the maximum empirical reward.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.EpsGreedy.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">reward</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward">banditpylib.bandits.ordinary_mnl_bandit.Reward</a></span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_local_search</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">random_neighbors</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">eps</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revenues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_search</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -397,7 +387,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.EpsGreedy.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -407,7 +397,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.EpsGreedy.em_preference_params">
-<code class="sig-name descname">em_preference_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.em_preference_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.em_preference_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">em_preference_params</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.em_preference_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.em_preference_params" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>empirical estimate of preference parameters</p>
@@ -417,12 +407,12 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.EpsGreedy.select_ramdom_assort">
-<code class="sig-name descname">select_ramdom_assort</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Set<span class="p">[</span>int<span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.select_ramdom_assort"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.select_ramdom_assort" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">select_ramdom_assort</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.select_ramdom_assort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.select_ramdom_assort" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.EpsGreedy.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>Set<span class="p">[</span>int<span class="p">]</span><span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>assortments to serve</p>
@@ -432,7 +422,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.EpsGreedy.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/eps_greedy.html#EpsGreedy.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -446,12 +436,12 @@ used</p></li>
 
 <dl class="py class">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ThompsonSampling">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.learners.ordinary_mnl_learner.</code><code class="sig-name descname">ThompsonSampling</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">reward</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward">banditpylib.bandits.ordinary_mnl_bandit.Reward</a></span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_local_search</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">random_neighbors</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_mnl_learner.</span></code><code class="sig-name descname"><span class="pre">ThompsonSampling</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revenues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_search</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner" title="banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner</span></code></a></p>
-<p>Thompson sampling policy <a class="bibtex reference internal" href="bibliography.html#dblp-conf-colt-agrawalagz17" id="id2">[AAGZ17]</a></p>
+<p>Thompson sampling policy <span id="id2">[<a class="reference internal" href="bibliography.html#id15">AAGZ17</a>]</span></p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">revenues</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">horizon</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">reward</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward">banditpylib.bandits.ordinary_mnl_bandit.Reward</a></span></em>, <em class="sig-param"><span class="n">card_limit</span><span class="o">=</span><span class="default_value">inf</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_local_search</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">random_neighbors</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revenues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_search</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -471,7 +461,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the learner</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -481,7 +471,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.warm_start">
-<code class="sig-name descname">warm_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>Set<span class="p">[</span>int<span class="p">]</span><span class="p">, </span>int<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.warm_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.warm_start" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">warm_start</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.warm_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.warm_start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initial warm start stage</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -492,7 +482,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.within_warm_start">
-<code class="sig-name descname">within_warm_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.within_warm_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.within_warm_start" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">within_warm_start</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.within_warm_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.within_warm_start" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><cite>True</cite> if the learner is still in warm start stage</p>
@@ -502,7 +492,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.correlated_sampling">
-<code class="sig-name descname">correlated_sampling</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.correlated_sampling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.correlated_sampling" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">correlated_sampling</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.correlated_sampling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.correlated_sampling" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>correlated sampling of preference parameters</p>
@@ -512,7 +502,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.actions">
-<code class="sig-name descname">actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>List<span class="p">[</span>Tuple<span class="p">[</span>Set<span class="p">[</span>int<span class="p">]</span><span class="p">, </span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary mnl bandit which should be <cite>None</cite></p>
@@ -525,7 +515,7 @@ used</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">feedback</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_mnl_learner/ts.html#ThompsonSampling.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -544,37 +534,29 @@ used</p></li>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="banditpylib.protocols.html" class="btn btn-neutral float-right" title="banditpylib.protocols package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="banditpylib.learners.ordinary_learner.html" class="btn btn-neutral float-left" title="banditpylib.learners.ordinary_learner package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="banditpylib.protocols.html" class="btn btn-neutral float-right" title="banditpylib.protocols package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="banditpylib.learners.ordinary_learner.html" class="btn btn-neutral float-left" title="banditpylib.learners.ordinary_learner package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Chester Holtz, Chao Tao
+        &#169; Copyright 2020, Chester Holtz, Chao Tao, Guangyu Xi.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

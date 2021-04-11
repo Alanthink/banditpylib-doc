@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>banditpylib.bandits.ordinary_bandit module &mdash; banditpylib 1.0.0 documentation</title>
+  <title>banditpylib.bandits.ordinary_bandit module &mdash; banditpylib 0.9.0 documentation</title>
   
 
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -29,7 +32,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -50,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> banditpylib
+            <a href="index.html" class="icon icon-home"> banditpylib
           
 
           
@@ -125,6 +127,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -136,7 +140,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/banditpylib.bandits.ordinary_bandit.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -154,7 +158,7 @@
 <span id="banditpylib-bandits-ordinary-bandit-module"></span><h1>banditpylib.bandits.ordinary_bandit module<a class="headerlink" href="#module-banditpylib.bandits.ordinary_bandit" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="banditpylib.bandits.ordinary_bandit.OrdinaryBandit">
-<em class="property">class </em><code class="sig-prename descclassname">banditpylib.bandits.ordinary_bandit.</code><code class="sig-name descname">OrdinaryBandit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arms</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm">banditpylib.arms.utils.Arm</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.bandits.ordinary_bandit.</span></code><code class="sig-name descname"><span class="pre">OrdinaryBandit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arms</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm"><span class="pre">banditpylib.arms.utils.Arm</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf" title="banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf</span></code></a></p>
 <p>Ordinary bandit</p>
 <p>Arms are indexed from 0 by default. Each pull of arm <span class="math notranslate nohighlight">\(i\)</span> will generate
@@ -162,7 +166,7 @@ an <cite>i.i.d.</cite> reward from distribution <span class="math notranslate no
 beforehand.</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.ordinary_bandit.OrdinaryBandit.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arms</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm">banditpylib.arms.utils.Arm</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arms</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm" title="banditpylib.arms.utils.Arm"><span class="pre">banditpylib.arms.utils.Arm</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -175,7 +179,7 @@ beforehand.</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.ordinary_bandit.OrdinaryBandit.feed">
-<code class="sig-name descname">feed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">actions</span><span class="p">:</span> <span class="n">List<span class="p">[</span>Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>None<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.feed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">feed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.feed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.feed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pull multiple arms</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -194,7 +198,7 @@ second element is the pull times</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.ordinary_bandit.OrdinaryBandit.reset">
-<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the bandit environment</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -204,7 +208,7 @@ second element is the pull times</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.ordinary_bandit.OrdinaryBandit.arm_num">
-<code class="sig-name descname">arm_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.arm_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.arm_num" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">arm_num</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.arm_num"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.arm_num" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>total number of arms</p>
@@ -214,7 +218,7 @@ second element is the pull times</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.ordinary_bandit.OrdinaryBandit.total_pulls">
-<code class="sig-name descname">total_pulls</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.total_pulls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.total_pulls" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">total_pulls</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.total_pulls"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.total_pulls" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>total number of pulls</p>
@@ -224,7 +228,7 @@ second element is the pull times</p>
 
 <dl class="py method">
 <dt id="banditpylib.bandits.ordinary_bandit.OrdinaryBandit.regret">
-<code class="sig-name descname">regret</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">goal</span><span class="p">:</span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Goal" title="banditpylib.learners.utils.Goal">banditpylib.learners.utils.Goal</a></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.regret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.regret" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">regret</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">goal</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Goal" title="banditpylib.learners.utils.Goal"><span class="pre">banditpylib.learners.utils.Goal</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_bandit.html#OrdinaryBandit.regret"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.regret" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>goal</strong> – goal of the learner</p>
@@ -244,28 +248,25 @@ second element is the pull times</p>
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Chester Holtz, Chao Tao
+        &#169; Copyright 2020, Chester Holtz, Chao Tao, Guangyu Xi.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
