@@ -152,9 +152,10 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.learners.ordinary_learner.eps_greedy_test</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span> <span class="nn">google.protobuf.text_format</span> <span class="k">as</span> <span class="nn">text_format</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">BernoulliArm</span>
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span>
 <span class="kn">from</span> <span class="nn">.eps_greedy</span> <span class="kn">import</span> <span class="n">EpsGreedy</span>
 
 
@@ -166,9 +167,28 @@
     <span class="n">learner</span> <span class="o">=</span> <span class="n">EpsGreedy</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">))</span>
     <span class="n">learner</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
-    <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)):</span>
-      <span class="k">assert</span> <span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span> <span class="o">==</span> <span class="p">[(</span><span class="n">arm_id</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
-      <span class="n">learner</span><span class="o">.</span><span class="n">update</span><span class="p">(([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])],</span> <span class="p">))</span></div></div>
+    <span class="c1"># Pull each arm once during the initial steps</span>
+    <span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">())</span>
+      <span class="k">assert</span> <span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">()</span> <span class="o">==</span> <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span>
+          <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        arm_pulls_pairs &lt;</span>
+<span class="sd">          arm &lt;</span>
+<span class="sd">            id: {arm_id}</span>
+<span class="sd">          &gt;</span>
+<span class="sd">          pulls: 1</span>
+<span class="sd">        &gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arm_id</span><span class="o">=</span><span class="n">time</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Actions</span><span class="p">())</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">()</span>
+      <span class="n">learner</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+          <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span>
+              <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        arm_rewards_pairs &lt;</span>
+<span class="sd">          arm &lt;</span>
+<span class="sd">            id: {arm_id}</span>
+<span class="sd">          &gt;</span>
+<span class="sd">          rewards: 0</span>
+<span class="sd">        &gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arm_id</span><span class="o">=</span><span class="n">time</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Feedback</span><span class="p">()))</span></div></div>
 </pre></div>
 
            </div>

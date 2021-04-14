@@ -152,17 +152,22 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.learners.ordinary_fbbai_learner.sr</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
 
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">PseudoArm</span>
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span>
+<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">argmax_or_min_tuple</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">OrdinaryFBBAILearner</span>
 
 
 <div class="viewcode-block" id="SR"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.sr.html#banditpylib.learners.ordinary_fbbai_learner.SR">[docs]</a><span class="k">class</span> <span class="nc">SR</span><span class="p">(</span><span class="n">OrdinaryFBBAILearner</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Successive rejects policy :cite:`audibert2010best`&quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;Successive rejects policy :cite:`audibert2010best`</span>
+
+<span class="sd">  Eliminate one arm in each round.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="SR.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.sr.html#banditpylib.learners.ordinary_fbbai_learner.SR.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">budget</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
@@ -189,8 +194,7 @@
 <span class="sd">    .. warning::</span>
 <span class="sd">      This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())]</span>
-    <span class="c1"># calculate pulls_per_round</span>
+    <span class="c1"># calculate pulls assigned to each arm per_round</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__pulls_per_round</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">nk</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()):</span>
@@ -198,13 +202,17 @@
           <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__bar_log_K</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">budget</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())</span> <span class="o">/</span>
                     <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">k</span><span class="p">)))</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__pulls_per_round</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nk</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">nk</span><span class="p">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()))</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">PseudoArm</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">PseudoArm</span><span class="p">()</span>
+
     <span class="bp">self</span><span class="o">.</span><span class="n">__budget_left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">budget</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1"># current round</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__round</span> <span class="o">=</span> <span class="mi">1</span></div>
 
-<div class="viewcode-block" id="SR.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.sr.html#banditpylib.learners.ordinary_fbbai_learner.SR.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]:</span>
+<div class="viewcode-block" id="SR.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.sr.html#banditpylib.learners.ordinary_fbbai_learner.SR.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      context: context of the ordinary bandit which should be `None`</span>
@@ -213,38 +221,46 @@
 <span class="sd">      arms to pull</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">del</span> <span class="n">context</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__round</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">():</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">else</span><span class="p">:</span>
+
+    <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__round</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">():</span>
       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__round</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">arm_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pulls_per_round</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__round</span><span class="p">])</span>
-                               <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">:</span>
+          <span class="n">arm_pulls_pair</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+          <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">arm_id</span>
+          <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pulls_per_round</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__round</span><span class="p">]</span>
       <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># use up the left budget when there are only two arms left</span>
+        <span class="c1"># Use up the remaining budget when there are only two arms left</span>
         <span class="n">pulls</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__budget_left</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
         <span class="n">pulls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__budget_left</span> <span class="o">-</span> <span class="n">pulls</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="p">[(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">)[</span><span class="n">i</span><span class="p">],</span> <span class="n">pulls</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                               <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span></div>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+          <span class="n">arm_pulls_pair</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+          <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="n">i</span><span class="p">]</span>
+          <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span> <span class="o">=</span> <span class="n">pulls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">actions</span></div>
 
-<div class="viewcode-block" id="SR.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.sr.html#banditpylib.learners.ordinary_fbbai_learner.SR.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]):</span>
+<div class="viewcode-block" id="SR.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.sr.html#banditpylib.learners.ordinary_fbbai_learner.SR.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Learner update</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      feedback: feedback returned by the bandit environment by executing</span>
 <span class="sd">        :func:`actions`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="p">(</span><span class="n">rewards</span><span class="p">,</span> <span class="n">_</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">feedback</span><span class="p">):</span>
-      <span class="k">if</span> <span class="n">rewards</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">rewards</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__budget_left</span> <span class="o">-=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rewards</span><span class="p">)</span>
-    <span class="c1"># remove the arm with the least mean</span>
-    <span class="n">arm_id_to_remove</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([(</span><span class="n">arm_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">em_mean</span><span class="p">)</span>
-                            <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">],</span>
-                           <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">arm_id_to_remove</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">arm_rewards_pair</span> <span class="ow">in</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">[</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+          <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="p">))</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__budget_left</span> <span class="o">-=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="p">)</span>
+
+    <span class="c1"># Eliminate the arm with the smallest mean reward</span>
+    <span class="n">arm_id_to_remove</span> <span class="o">=</span> <span class="n">argmax_or_min_tuple</span><span class="p">(</span>
+        <span class="p">[(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">em_mean</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">)</span>
+         <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">],</span>
+        <span class="n">find_min</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">[</span><span class="n">arm_id_to_remove</span><span class="p">]</span>
+
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__round</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__round</span> <span class="o">+=</span> <span class="mi">1</span></div>
 
 <div class="viewcode-block" id="SR.best_arm"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.sr.html#banditpylib.learners.ordinary_fbbai_learner.SR.best_arm">[docs]</a>  <span class="k">def</span> <span class="nf">best_arm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>

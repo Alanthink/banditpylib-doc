@@ -161,16 +161,18 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span><span class="p">,</span> <span class="n">ArmPullsPair</span><span class="p">,</span> <span class="n">ArmRewardsPair</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">MaxReward</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Bandit</span>
 
 
-<div class="viewcode-block" id="search"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.search">[docs]</a><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">assortments</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
-           <span class="n">product_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-           <span class="n">next_product_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-           <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
-           <span class="n">card_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
-           <span class="n">restricted_products</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="search"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.search">[docs]</a><span class="k">def</span> <span class="nf">search</span><span class="p">(</span>
+    <span class="n">assortments</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
+    <span class="n">product_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">next_product_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">card_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+    <span class="n">restricted_products</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Find all assortments satisfying cardinality limit</span>
 
 <span class="sd">  Args:</span>
@@ -391,12 +393,13 @@
       <span class="n">restricted_products</span> <span class="o">=</span> <span class="n">best_assortment</span>
 
   <span class="n">assortments</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
-  <span class="n">search</span><span class="p">(</span><span class="n">assortments</span><span class="o">=</span><span class="n">assortments</span><span class="p">,</span>
-         <span class="n">product_num</span><span class="o">=</span><span class="n">product_num</span><span class="p">,</span>
-         <span class="n">next_product_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-         <span class="n">assortment</span><span class="o">=</span><span class="nb">set</span><span class="p">(),</span>
-         <span class="n">card_limit</span><span class="o">=</span><span class="n">card_limit</span><span class="p">,</span>
-         <span class="n">restricted_products</span><span class="o">=</span><span class="n">restricted_products</span><span class="p">)</span>
+  <span class="n">search</span><span class="p">(</span>
+      <span class="n">assortments</span><span class="o">=</span><span class="n">assortments</span><span class="p">,</span>
+      <span class="n">product_num</span><span class="o">=</span><span class="n">product_num</span><span class="p">,</span>
+      <span class="n">next_product_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+      <span class="n">assortment</span><span class="o">=</span><span class="nb">set</span><span class="p">(),</span>
+      <span class="n">card_limit</span><span class="o">=</span><span class="n">card_limit</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+      <span class="n">restricted_products</span><span class="o">=</span><span class="n">restricted_products</span><span class="p">)</span>
   <span class="c1"># sort assortments according to reward value</span>
   <span class="n">sorted_assort</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">assortment</span><span class="p">),</span> <span class="n">assortment</span><span class="p">)</span>
                           <span class="k">for</span> <span class="n">assortment</span> <span class="ow">in</span> <span class="n">assortments</span><span class="p">],</span>
@@ -523,13 +526,14 @@
 
 <span class="sd">  where :math:`S^*` is the optimal assortment.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="OrdinaryMNLBandit.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-               <span class="n">preference_params</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-               <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-               <span class="n">card_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
-               <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-               <span class="n">zero_best_reward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-               <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="OrdinaryMNLBandit.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+      <span class="bp">self</span><span class="p">,</span>
+      <span class="n">preference_params</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+      <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+      <span class="n">card_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+      <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="n">zero_best_reward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+      <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      preference_params: preference parameters (product 0 should be included)</span>
@@ -600,19 +604,18 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;ordinary_mnl_bandit&#39;</span>
 
-  <span class="k">def</span> <span class="nf">_take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">times</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> \
-      <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+  <span class="k">def</span> <span class="nf">_take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_pulls_pair</span><span class="p">:</span> <span class="n">ArmPullsPair</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArmRewardsPair</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Serve one assortment</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      assortment: assortment to serve</span>
-<span class="sd">      times: number of serving times</span>
+<span class="sd">      arm_pulls_pair: assortment and number of serving times</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      feedback by serving `assortment`. The first dimension is the</span>
-<span class="sd">        stochatic rewards, and the second dimension is the choices of the</span>
-<span class="sd">        customer.</span>
+<span class="sd">      feedbacks of the customer</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">ids</span><span class="p">)</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span>
+
     <span class="k">if</span> <span class="ow">not</span> <span class="n">assortment</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Empty assortment!&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">product_id</span> <span class="ow">in</span> <span class="n">assortment</span><span class="p">:</span>
@@ -636,31 +639,33 @@
         <span class="mi">0</span> <span class="k">if</span> <span class="p">(</span><span class="n">sample</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="n">sorted_assort</span><span class="p">[</span><span class="n">sample</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">sample_results</span>
     <span class="p">]</span>
-    <span class="c1"># feedback = (stochastic rewards, choices)</span>
-    <span class="n">feedback</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span><span class="p">[</span><span class="n">choice</span><span class="p">]</span>
-                          <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">]),</span> <span class="n">choices</span><span class="p">)</span>
+
+    <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="n">ArmRewardsPair</span><span class="p">()</span>
+    <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">ids</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">assortment</span><span class="p">))</span>
+    <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span><span class="p">[</span><span class="n">choice</span><span class="p">]</span> <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">]))</span>
+    <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
 
     <span class="c1"># update regret</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">+=</span> \
-        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_reward</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">assortment</span><span class="p">))</span> <span class="o">*</span> <span class="n">times</span>
-    <span class="k">return</span> <span class="n">feedback</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_reward</span> <span class="o">-</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">assortment</span><span class="p">))</span> <span class="o">*</span> <span class="n">times</span>
 
-<div class="viewcode-block" id="OrdinaryMNLBandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> \
-      <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]:</span>
+    <span class="k">return</span> <span class="n">arm_rewards_pair</span>
+
+<div class="viewcode-block" id="OrdinaryMNLBandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">Actions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Feedback</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Serve multiple assortments</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      actions: for each tuple, the first dimension is the assortment to serve</span>
-<span class="sd">        and the second dimension is the number of serving times</span>
+<span class="sd">      actions: actions to perform</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      feedback by taking `actions`. For each tuple, the first dimension is</span>
-<span class="sd">        the stochatic rewards, and the second dimension is the choices of the</span>
-<span class="sd">        customer.</span>
+<span class="sd">      feedback after actions are performed</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">feedback</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">assortment</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">:</span>
-      <span class="n">feedback</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_take_action</span><span class="p">(</span><span class="n">assortment</span><span class="p">,</span> <span class="n">times</span><span class="p">))</span>
+    <span class="n">feedback</span> <span class="o">=</span> <span class="n">Feedback</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">arm_pulls_pair</span> <span class="ow">in</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="p">:</span>
+      <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_take_action</span><span class="p">(</span><span class="n">arm_pulls_pair</span><span class="o">=</span><span class="n">arm_pulls_pair</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="p">:</span>
+        <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">feedback</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLBandit.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

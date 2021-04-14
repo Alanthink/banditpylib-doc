@@ -152,7 +152,10 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.bandits.ordinary_bandit_test</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">BernoulliArm</span>
+<span></span><span class="kn">import</span> <span class="nn">google.protobuf.text_format</span> <span class="k">as</span> <span class="nn">text_format</span>
+
+<span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">BernoulliArm</span>
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">MaxReward</span><span class="p">,</span> <span class="n">BestArmId</span>
 <span class="kn">from</span> <span class="nn">.ordinary_bandit</span> <span class="kn">import</span> <span class="n">OrdinaryBandit</span>
 
@@ -165,7 +168,16 @@
     <span class="n">ordinary_bandit</span> <span class="o">=</span> <span class="n">OrdinaryBandit</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span>
     <span class="n">ordinary_bandit</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
     <span class="c1"># pull arm 0 for 100 times</span>
-    <span class="n">ordinary_bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)])</span>
+    <span class="n">actions</span> <span class="o">=</span> <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      arm_pulls_pairs {</span>
+<span class="sd">        arm {</span>
+<span class="sd">          id: 0</span>
+<span class="sd">        }</span>
+<span class="sd">        pulls: 100</span>
+<span class="sd">      }</span>
+<span class="sd">      &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">Actions</span><span class="p">())</span>
+    <span class="n">ordinary_bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">ordinary_bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">MaxReward</span><span class="p">())</span> <span class="o">==</span> <span class="mi">100</span>
     <span class="k">assert</span> <span class="n">ordinary_bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">BestArmId</span><span class="p">(</span><span class="n">best_arm</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span></div></div>
 </pre></div>

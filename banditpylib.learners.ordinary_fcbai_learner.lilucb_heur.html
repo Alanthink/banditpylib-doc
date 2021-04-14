@@ -159,7 +159,7 @@
 <dt id="banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.</span></code><code class="sig-name descname"><span class="pre">LilUCBHeuristic</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_fcbai_learner.utils.html#banditpylib.learners.ordinary_fcbai_learner.utils.OrdinaryFCBAILearner" title="banditpylib.learners.ordinary_fcbai_learner.utils.OrdinaryFCBAILearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_fcbai_learner.utils.OrdinaryFCBAILearner</span></code></a></p>
-<p>lilUCB heuristic policy <span id="id1">[<a class="reference internal" href="bibliography.html#id9">JMNB14</a>]</span></p>
+<p>LilUCB heuristic policy <span id="id1">[<a class="reference internal" href="bibliography.html#id9">JMNB14</a>]</span></p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.__init__" title="Permalink to this definition">¶</a></dt>
@@ -186,31 +186,8 @@ should output the best arm with probability at least this value.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.confidence_radius">
-<code class="sig-name descname"><span class="pre">confidence_radius</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pulls</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.confidence_radius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.confidence_radius" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>pulls</strong> – number of pulls</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>confidence radius</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.ucb">
-<code class="sig-name descname"><span class="pre">ucb</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.ucb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.ucb" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>upper confidence bound</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt id="banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.actions">
-<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.actions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
@@ -223,7 +200,7 @@ should output the best arm with probability at least this value.</p></li>
 
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.update">
-<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.update" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

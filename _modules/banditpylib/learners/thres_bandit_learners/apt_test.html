@@ -152,24 +152,37 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.learners.thres_bandit_learners.apt_test</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span> <span class="nn">google.protobuf.text_format</span> <span class="k">as</span> <span class="nn">text_format</span>
 
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Feedback</span>
 <span class="kn">from</span> <span class="nn">.apt</span> <span class="kn">import</span> <span class="n">APT</span>
 
 
 <div class="viewcode-block" id="TestAPT"><a class="viewcode-back" href="../../../../banditpylib.learners.thres_bandit_learners.apt_test.html#banditpylib.learners.thres_bandit_learners.apt_test.TestAPT">[docs]</a><span class="k">class</span> <span class="nc">TestAPT</span><span class="p">:</span>
   <span class="sd">&quot;&quot;&quot;Test APT algorithm&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="TestAPT.test_actions"><a class="viewcode-back" href="../../../../banditpylib.learners.thres_bandit_learners.apt_test.html#banditpylib.learners.thres_bandit_learners.apt_test.TestAPT.test_actions">[docs]</a>  <span class="k">def</span> <span class="nf">test_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="c1"># test actions are in the right range</span>
+    <span class="c1"># Test actions are in the right range</span>
     <span class="n">arm_num</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">budget</span> <span class="o">=</span> <span class="mi">15</span>
-    <span class="n">apt</span> <span class="o">=</span> <span class="n">APT</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">apt</span> <span class="o">=</span> <span class="n">APT</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">apt</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">budget</span><span class="p">):</span>
       <span class="n">actions</span> <span class="o">=</span> <span class="n">apt</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span>
-      <span class="k">for</span> <span class="p">(</span><span class="n">arm_id</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">:</span>
-        <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">arm_id</span> <span class="o">&lt;</span> <span class="n">arm_num</span>
-      <span class="n">apt</span><span class="o">.</span><span class="n">update</span><span class="p">([(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]),</span> <span class="kc">None</span><span class="p">)])</span></div></div>
+      <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+
+      <span class="n">arm_id</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span>
+      <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">arm_id</span> <span class="o">&lt;</span> <span class="n">arm_num</span>
+
+      <span class="n">apt</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+          <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span>
+              <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        arm_rewards_pairs &lt;</span>
+<span class="sd">          arm &lt;</span>
+<span class="sd">            id: {arm_id}</span>
+<span class="sd">          &gt;</span>
+<span class="sd">          rewards: 0</span>
+<span class="sd">        &gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arm_id</span><span class="o">=</span><span class="n">arm_id</span><span class="p">),</span> <span class="n">Feedback</span><span class="p">()))</span></div></div>
 </pre></div>
 
            </div>

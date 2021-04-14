@@ -152,18 +152,17 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.learners.ordinary_fcbai_learner.lilucb_heur</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
-
-<span class="kn">import</span> <span class="nn">math</span>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">PseudoArm</span>
-<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">argmax_tuple</span>
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span>
+<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">argmax_or_min_tuple</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">OrdinaryFCBAILearner</span>
 
 
 <div class="viewcode-block" id="LilUCBHeuristic"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic">[docs]</a><span class="k">class</span> <span class="nc">LilUCBHeuristic</span><span class="p">(</span><span class="n">OrdinaryFCBAILearner</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;lilUCB heuristic policy :cite:`jamieson2014lil`&quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;LilUCB heuristic policy :cite:`jamieson2014lil`&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="LilUCBHeuristic.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">confidence</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
@@ -188,16 +187,16 @@
 <span class="sd">      This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())]</span>
-    <span class="c1"># parameters suggested by the paper</span>
+    <span class="c1"># Parameters suggested by the paper</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__beta</span> <span class="o">=</span> <span class="mf">0.5</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__delta</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">confidence</span><span class="p">())</span> <span class="o">/</span> <span class="mi">5</span>
-    <span class="c1"># total number of pulls used</span>
+    <span class="c1"># Total number of pulls used</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s1">&#39;initialization&#39;</span></div>
 
-<div class="viewcode-block" id="LilUCBHeuristic.confidence_radius"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.confidence_radius">[docs]</a>  <span class="k">def</span> <span class="nf">confidence_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">__confidence_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      pulls: number of pulls</span>
@@ -209,19 +208,19 @@
       <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__beta</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">))</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
         <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">)</span> <span class="o">*</span>
-        <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">pulls</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__delta</span><span class="p">)</span> <span class="o">/</span> <span class="n">pulls</span><span class="p">)</span></div>
+        <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">pulls</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__delta</span><span class="p">)</span> <span class="o">/</span> <span class="n">pulls</span><span class="p">)</span>
 
-<div class="viewcode-block" id="LilUCBHeuristic.ucb"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.ucb">[docs]</a>  <span class="k">def</span> <span class="nf">ucb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">__ucb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      upper confidence bound</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-        <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">em_mean</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">confidence_radius</span><span class="p">(</span><span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">())</span>
+        <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">em_mean</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__confidence_radius</span><span class="p">(</span><span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">())</span>
         <span class="k">for</span> <span class="n">pseudo_arm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span>
-    <span class="p">])</span></div>
+    <span class="p">])</span>
 
-<div class="viewcode-block" id="LilUCBHeuristic.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]:</span>
+<div class="viewcode-block" id="LilUCBHeuristic.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      context: context of the ordinary bandit which should be `None`</span>
@@ -230,26 +229,39 @@
 <span class="sd">      arms to pull</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s1">&#39;initialization&#39;</span><span class="p">:</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">arm_id</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())]</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="c1"># self.__stage == &#39;main&#39;</span>
-      <span class="k">for</span> <span class="n">pseudo_arm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="p">(</span>
-            <span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">-</span> <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">())):</span>
-          <span class="k">return</span> <span class="kc">None</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="p">[(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ucb</span><span class="p">())),</span> <span class="mi">1</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span></div>
+      <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
+      <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()):</span>
+        <span class="n">arm_pulls_pair</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+        <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">arm_id</span>
+        <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="k">return</span> <span class="n">actions</span>
 
-<div class="viewcode-block" id="LilUCBHeuristic.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]):</span>
+    <span class="c1"># self.__stage == &#39;main&#39;</span>
+    <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">pseudo_arm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="p">(</span>
+          <span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">-</span> <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">())):</span>
+        <span class="k">return</span> <span class="n">actions</span>
+
+    <span class="n">arm_pulls_pair</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+    <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__ucb</span><span class="p">()))</span>
+    <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">actions</span></div>
+
+<div class="viewcode-block" id="LilUCBHeuristic.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Learner update</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      feedback: feedback returned by the bandit environment by executing</span>
 <span class="sd">        :func:`actions`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="p">(</span><span class="n">rewards</span><span class="p">,</span> <span class="n">_</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">feedback</span><span class="p">):</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">rewards</span><span class="p">)</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rewards</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">arm_rewards_pair</span> <span class="ow">in</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+          <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="p">))</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s1">&#39;initialization&#39;</span><span class="p">:</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s1">&#39;main&#39;</span></div>
 
@@ -258,9 +270,10 @@
 <span class="sd">    Returns:</span>
 <span class="sd">      best arm identified by the learner</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">argmax_tuple</span><span class="p">([(</span><span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">(),</span> <span class="n">arm_id</span><span class="p">)</span>
-                         <span class="k">for</span> <span class="p">(</span><span class="n">arm_id</span><span class="p">,</span>
-                              <span class="n">pseudo_arm</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">)])</span></div></div>
+    <span class="k">return</span> <span class="n">argmax_or_min_tuple</span><span class="p">([</span>
+        <span class="p">(</span><span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">(),</span> <span class="n">arm_id</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">arm_id</span><span class="p">,</span> <span class="n">pseudo_arm</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">)</span>
+    <span class="p">])</span></div></div>
 </pre></div>
 
            </div>

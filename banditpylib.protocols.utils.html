@@ -166,6 +166,19 @@
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt id="banditpylib.protocols.utils.parse_trials_data">
+<code class="sig-prename descclassname"><span class="pre">banditpylib.protocols.utils.</span></code><code class="sig-name descname"><span class="pre">parse_trials_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">data_pb2.Trial</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#parse_trials_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.protocols.utils.parse_trials_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a list of Trial from bytes data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="banditpylib.protocols.utils.trial_data_messages_to_dict">
+<code class="sig-prename descclassname"><span class="pre">banditpylib.protocols.utils.</span></code><code class="sig-name descname"><span class="pre">trial_data_messages_to_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#trial_data_messages_to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.protocols.utils.trial_data_messages_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read file storing a couple of Trial and transform to pandas
+DataFrame</p>
+</dd></dl>
+
 <dl class="py class">
 <dt id="banditpylib.protocols.utils.Protocol">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.protocols.utils.</span></code><code class="sig-name descname"><span class="pre">Protocol</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bandit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit" title="banditpylib.bandits.utils.Bandit"><span class="pre">banditpylib.bandits.utils.Bandit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">learners</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="banditpylib.learners.utils.html#banditpylib.learners.utils.Learner" title="banditpylib.learners.utils.Learner"><span class="pre">banditpylib.learners.utils.Learner</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#Protocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.protocols.utils.Protocol" title="Permalink to this definition">¶</a></dt>

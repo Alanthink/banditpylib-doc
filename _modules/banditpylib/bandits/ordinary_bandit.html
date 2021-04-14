@@ -152,11 +152,10 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.bandits.ordinary_bandit</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">Arm</span>
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span><span class="p">,</span> <span class="n">ArmPullsPair</span><span class="p">,</span> <span class="n">ArmRewardsPair</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">BestArmId</span><span class="p">,</span> <span class="n">MaxReward</span>
 <span class="kn">from</span> <span class="nn">.ordinary_bandit_itf</span> <span class="kn">import</span> <span class="n">OrdinaryBanditItf</span>
 
@@ -192,46 +191,51 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;ordinary_bandit&#39;</span>
 
-  <span class="k">def</span> <span class="nf">_take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> \
-      <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]:</span>
+  <span class="k">def</span> <span class="nf">_take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_pulls_pair</span><span class="p">:</span> <span class="n">ArmPullsPair</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArmRewardsPair</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Pull one arm</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      arm_id: arm to pull</span>
-<span class="sd">      pulls: number of times to pull</span>
+<span class="sd">      arm_pulls_pair: arm and its pulls</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      stochastic rewards after `arm_id` is pulled. The first element is the</span>
-<span class="sd">        stochstic rewards. `None` is returned if `pulls` is less than 1.</span>
+<span class="sd">      arm_rewards_pair: arm and its rewards</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">arm_id</span> <span class="o">=</span> <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span>
+    <span class="n">pulls</span> <span class="o">=</span> <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span>
+
     <span class="k">if</span> <span class="n">arm_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span><span class="p">):</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Arm id </span><span class="si">%d</span><span class="s1"> is out of range [0, </span><span class="si">%d</span><span class="s1">)!&#39;</span> <span class="o">%</span> \
           <span class="p">(</span><span class="n">arm_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span><span class="p">))</span>
+
+    <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="n">ArmRewardsPair</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">pulls</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-      <span class="k">return</span> <span class="kc">None</span>
-    <span class="c1"># empirical rewards when `arm_id` is pulled for `pulls` times</span>
+      <span class="k">return</span> <span class="n">arm_rewards_pair</span>
+
+    <span class="c1"># Empirical rewards when `arm_id is pulled for `pulls` times</span>
     <span class="n">em_rewards</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">pulls</span><span class="o">=</span><span class="n">pulls</span><span class="p">)</span>
+
     <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="n">pulls</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">em_rewards</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">+=</span> <span class="n">pulls</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">em_rewards</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-<div class="viewcode-block" id="OrdinaryBandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.OrdinaryBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> \
-      <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]:</span>
+    <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">arm_id</span>
+    <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">em_rewards</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">arm_rewards_pair</span>
+
+<div class="viewcode-block" id="OrdinaryBandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.OrdinaryBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">Actions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Feedback</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Pull multiple arms</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      actions: for each tuple, the first element is the arm id and the</span>
-<span class="sd">        second element is the pull times</span>
+<span class="sd">      actions: actions to perform</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      feedback after arms are pulled. For each tuple, the first element is</span>
-<span class="sd">        the stochstic rewards.</span>
+<span class="sd">      feedback after actions are performed</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">feedback</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">arm_id</span><span class="p">,</span> <span class="n">pulls</span><span class="p">)</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">:</span>
-      <span class="n">stochastic_rewards</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_take_action</span><span class="p">(</span><span class="n">arm_id</span><span class="o">=</span><span class="n">arm_id</span><span class="p">,</span> <span class="n">pulls</span><span class="o">=</span><span class="n">pulls</span><span class="p">)</span>
-      <span class="k">if</span> <span class="n">stochastic_rewards</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">feedback</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stochastic_rewards</span><span class="p">)</span>
+    <span class="n">feedback</span> <span class="o">=</span> <span class="n">Feedback</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">arm_pulls_pair</span> <span class="ow">in</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="p">:</span>
+      <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_take_action</span><span class="p">(</span><span class="n">arm_pulls_pair</span><span class="o">=</span><span class="n">arm_pulls_pair</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="p">:</span>
+        <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">feedback</span></div>
 
 <div class="viewcode-block" id="OrdinaryBandit.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.OrdinaryBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

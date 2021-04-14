@@ -154,8 +154,11 @@
   <h1>Source code for banditpylib.learners.ordinary_learner.ucb_test</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">MagicMock</span>
 
+<span class="kn">import</span> <span class="nn">google.protobuf.text_format</span> <span class="k">as</span> <span class="nn">text_format</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span>
 <span class="kn">from</span> <span class="nn">.ucb</span> <span class="kn">import</span> <span class="n">UCB</span>
 
 
@@ -163,20 +166,55 @@
   <span class="sd">&quot;&quot;&quot;Test UCB policy&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="TestUCB.test_simple_run"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.ucb_test.html#banditpylib.learners.ordinary_learner.ucb_test.TestUCB.test_simple_run">[docs]</a>  <span class="k">def</span> <span class="nf">test_simple_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">arm_num</span> <span class="o">=</span> <span class="mi">5</span>
-    <span class="n">horizon</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">horizon</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">learner</span> <span class="o">=</span> <span class="n">UCB</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">)</span>
     <span class="n">learner</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
     <span class="n">mock_ucb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="n">learner</span><span class="o">.</span><span class="n">UCB</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">return_value</span><span class="o">=</span><span class="n">mock_ucb</span><span class="p">)</span>
+    <span class="c1"># pylint: disable=protected-access</span>
+    <span class="n">learner</span><span class="o">.</span><span class="n">_UCB__UCB</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">return_value</span><span class="o">=</span><span class="n">mock_ucb</span><span class="p">)</span>
 
-    <span class="c1"># during the first 5 time steps, each arm is pulled once</span>
+    <span class="c1"># During the initial time steps, each arm is pulled once</span>
     <span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">arm_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-      <span class="k">assert</span> <span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span> <span class="o">==</span> <span class="p">[((</span><span class="n">time</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">arm_num</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
-      <span class="n">learner</span><span class="o">.</span><span class="n">update</span><span class="p">(([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])],</span> <span class="p">))</span>
-    <span class="c1"># for the left time steps, arm 0 is always the choice</span>
+      <span class="k">assert</span> <span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">()</span> <span class="o">==</span> <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span>
+          <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        arm_pulls_pairs &lt;</span>
+<span class="sd">          arm &lt;</span>
+<span class="sd">            id: {arm_id}</span>
+<span class="sd">          &gt;</span>
+<span class="sd">          pulls: 1</span>
+<span class="sd">        &gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arm_id</span><span class="o">=</span><span class="n">time</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Actions</span><span class="p">())</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">()</span>
+      <span class="n">learner</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+          <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span>
+              <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        arm_rewards_pairs &lt;</span>
+<span class="sd">          arm &lt;</span>
+<span class="sd">            id: {arm_id}</span>
+<span class="sd">          &gt;</span>
+<span class="sd">          rewards: 0</span>
+<span class="sd">        &gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arm_id</span><span class="o">=</span><span class="n">time</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Feedback</span><span class="p">()))</span>
+    <span class="c1"># For the left time steps, arm 0 is always the choice</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">arm_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">horizon</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-      <span class="k">assert</span> <span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span> <span class="o">==</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
-      <span class="n">learner</span><span class="o">.</span><span class="n">update</span><span class="p">(([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])],</span> <span class="p">))</span></div></div>
+      <span class="k">assert</span> <span class="n">learner</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">()</span> <span class="o">==</span> <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span>
+          <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        arm_pulls_pairs &lt;</span>
+<span class="sd">          arm &lt;</span>
+<span class="sd">            id: 0</span>
+<span class="sd">          &gt;</span>
+<span class="sd">          pulls: 1</span>
+<span class="sd">        &gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">Actions</span><span class="p">())</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">()</span>
+      <span class="n">learner</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+          <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span>
+              <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        arm_rewards_pairs &lt;</span>
+<span class="sd">          arm &lt;</span>
+<span class="sd">            id: 0</span>
+<span class="sd">          &gt;</span>
+<span class="sd">          rewards: 0</span>
+<span class="sd">        &gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">Feedback</span><span class="p">()))</span></div></div>
 </pre></div>
 
            </div>

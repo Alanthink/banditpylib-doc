@@ -156,31 +156,37 @@
   <div class="section" id="module-banditpylib.learners.utils">
 <span id="banditpylib-learners-utils-module"></span><h1>banditpylib.learners.utils module<a class="headerlink" href="#module-banditpylib.learners.utils" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="banditpylib.learners.utils.argmax">
-<code class="sig-prename descclassname"><span class="pre">banditpylib.learners.utils.</span></code><code class="sig-name descname"><span class="pre">argmax</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#argmax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.utils.argmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find index with the highest value</p>
+<dt id="banditpylib.learners.utils.argmax_or_min">
+<code class="sig-prename descclassname"><span class="pre">banditpylib.learners.utils.</span></code><code class="sig-name descname"><span class="pre">argmax_or_min</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">find_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#argmax_or_min"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.utils.argmax_or_min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find index with the highest or smallest value</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>values</strong> – a list of values</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> – a list of values</p></li>
+<li><p><strong>find_min</strong> – whether to select smallest value</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>index with the highest value. When there is a tie, randomly output one of
-the indexes with the highest value.</p>
+<dd class="field-even"><p>index with the highest or smallest value. When there is a tie, randomly
+output one of the indexes.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="banditpylib.learners.utils.argmax_tuple">
-<code class="sig-prename descclassname"><span class="pre">banditpylib.learners.utils.</span></code><code class="sig-name descname"><span class="pre">argmax_tuple</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#argmax_tuple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.utils.argmax_tuple" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the second element of the tuple with the highest value</p>
+<dt id="banditpylib.learners.utils.argmax_or_min_tuple">
+<code class="sig-prename descclassname"><span class="pre">banditpylib.learners.utils.</span></code><code class="sig-name descname"><span class="pre">argmax_or_min_tuple</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">find_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#argmax_or_min_tuple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.utils.argmax_or_min_tuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the second element of the tuple with the highest or smallest value</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>values</strong> – a list of tuples</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> – a list of tuples</p></li>
+<li><p><strong>find_min</strong> – whether to select smallest value</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the second element of the tuple with the highest value. When there is a tie,
-randomly output one of them.</p>
+<dd class="field-even"><p>the second element of the tuple with the highest or smallest value.
+When there is a tie, randomly output one of them.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -347,7 +353,7 @@ is used to pass the feedback of the environment to the learner.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.utils.Learner.actions">
-<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.utils.Learner.actions" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.utils.Learner.actions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Actions of the learner for one round</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -361,7 +367,7 @@ is used to pass the feedback of the environment to the learner.</p>
 
 <dl class="py method">
 <dt id="banditpylib.learners.utils.Learner.update">
-<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.utils.Learner.update" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.utils.Learner.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learner update</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

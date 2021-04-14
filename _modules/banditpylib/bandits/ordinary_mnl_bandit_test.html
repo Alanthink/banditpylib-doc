@@ -155,6 +155,9 @@
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pytest</span>
 
+<span class="kn">import</span> <span class="nn">google.protobuf.text_format</span> <span class="k">as</span> <span class="nn">text_format</span>
+
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">MaxReward</span>
 <span class="kn">from</span> <span class="nn">.ordinary_mnl_bandit</span> <span class="kn">import</span> <span class="n">OrdinaryMNLBandit</span><span class="p">,</span> \
     <span class="n">search</span><span class="p">,</span> <span class="n">search_best_assortment</span><span class="p">,</span> <span class="n">MeanReward</span><span class="p">,</span> <span class="n">CvarReward</span><span class="p">,</span> \
@@ -223,18 +226,18 @@
     <span class="n">reward</span> <span class="o">=</span> <span class="n">CvarReward</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="n">reward</span><span class="o">.</span><span class="n">set_preference_params</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
     <span class="n">reward</span><span class="o">.</span><span class="n">set_revenues</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
-    <span class="c1"># calculate cvar under percentile 0.25</span>
+    <span class="c1"># Calculate cvar under percentile 0.25</span>
     <span class="n">cvar_alpha</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">({</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">})</span>
-    <span class="c1"># upper bound of cvar is 1</span>
+    <span class="c1"># Upper bound of cvar is 1</span>
     <span class="k">assert</span> <span class="n">cvar_alpha</span> <span class="o">&lt;=</span> <span class="mi">1</span>
 
-    <span class="c1"># equivalent to MeanReward</span>
+    <span class="c1"># Equivalent to MeanReward</span>
     <span class="n">reward</span> <span class="o">=</span> <span class="n">CvarReward</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
     <span class="n">reward</span><span class="o">.</span><span class="n">set_preference_params</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
     <span class="n">reward</span><span class="o">.</span><span class="n">set_revenues</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
-    <span class="c1"># calculate cvar under percentile 0.25</span>
+    <span class="c1"># Calculate cvar under percentile 0.25</span>
     <span class="n">cvar_alpha</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">})</span>
-    <span class="c1"># upper bound of cvar is 1</span>
+    <span class="c1"># Upper bound of cvar is 1</span>
     <span class="k">assert</span> <span class="n">cvar_alpha</span> <span class="o">==</span> <span class="mf">0.75</span></div>
 
 <div class="viewcode-block" id="TestOrdinaryMNLBandit.test_regret"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit_test.html#banditpylib.bandits.ordinary_mnl_bandit_test.TestOrdinaryMNLBandit.test_regret">[docs]</a>  <span class="k">def</span> <span class="nf">test_regret</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -244,8 +247,17 @@
     <span class="n">card_limit</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">bandit</span> <span class="o">=</span> <span class="n">OrdinaryMNLBandit</span><span class="p">(</span><span class="n">preference_params</span><span class="p">,</span> <span class="n">revenues</span><span class="p">,</span> <span class="n">card_limit</span><span class="p">)</span>
     <span class="n">bandit</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-    <span class="c1"># serve best assortment {1} for 3 times</span>
-    <span class="n">bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">([({</span><span class="mi">1</span><span class="p">},</span> <span class="mi">3</span><span class="p">)])</span>
+    <span class="c1"># Serve best assortment {1} for 3 times</span>
+    <span class="n">bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span>
+        <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      arm_pulls_pairs {</span>
+<span class="sd">        arm {</span>
+<span class="sd">          ids: 1</span>
+<span class="sd">        }</span>
+<span class="sd">        pulls: 3</span>
+<span class="sd">      }</span>
+<span class="sd">      &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">Actions</span><span class="p">()))</span>
     <span class="k">assert</span> <span class="n">bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">MaxReward</span><span class="p">())</span> <span class="o">==</span> <span class="mf">0.0</span></div>
 
 <div class="viewcode-block" id="TestOrdinaryMNLBandit.test_one_product"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit_test.html#banditpylib.bandits.ordinary_mnl_bandit_test.TestOrdinaryMNLBandit.test_one_product">[docs]</a>  <span class="k">def</span> <span class="nf">test_one_product</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -253,8 +265,18 @@
     <span class="n">revenues</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
     <span class="n">bandit</span> <span class="o">=</span> <span class="n">OrdinaryMNLBandit</span><span class="p">(</span><span class="n">preference_params</span><span class="p">,</span> <span class="n">revenues</span><span class="p">)</span>
     <span class="n">bandit</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-    <span class="c1"># always get no purchase</span>
-    <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">([({</span><span class="mi">1</span><span class="p">},</span> <span class="mi">5</span><span class="p">)])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span></div></div>
+    <span class="c1"># Always get no purchase</span>
+    <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span>
+        <span class="n">bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span>
+            <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span>
+                <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      arm_pulls_pairs {</span>
+<span class="sd">        arm {</span>
+<span class="sd">          ids: 1</span>
+<span class="sd">        }</span>
+<span class="sd">        pulls: 5</span>
+<span class="sd">      }</span>
+<span class="sd">      &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">Actions</span><span class="p">()))</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span></div></div>
 </pre></div>
 
            </div>

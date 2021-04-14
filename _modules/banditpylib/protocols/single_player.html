@@ -152,13 +152,14 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.protocols.single_player</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">absl</span> <span class="kn">import</span> <span class="n">logging</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">Bandit</span>
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Trial</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Learner</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Protocol</span>
 
@@ -175,7 +176,7 @@
 
 <span class="sd">  The simulation stopping criteria is one of the following two:</span>
 
-<span class="sd">  * actions returned by the learner is `None`;</span>
+<span class="sd">  * no actions are returned by the learner;</span>
 <span class="sd">  * total number of actions achieve `horizon`.</span>
 
 <span class="sd">  .. note::</span>
@@ -208,7 +209,7 @@
     <span class="sd">&quot;&quot;&quot;protocol name&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;single_player_protocol&#39;</span>
 
-  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
+  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;One trial of the game</span>
 
 <span class="sd">    This method defines how to run one trial of the game.</span>
@@ -228,27 +229,25 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
-    <span class="n">one_trial_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">trial</span> <span class="o">=</span> <span class="n">Trial</span><span class="p">()</span>
     <span class="n">rounds</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="c1"># number of actions the learner has made</span>
     <span class="n">total_actions</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">add_data</span><span class="p">():</span>
-      <span class="n">one_trial_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-          <span class="nb">dict</span><span class="p">({</span>
-              <span class="s1">&#39;bandit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-              <span class="s1">&#39;learner&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-              <span class="s1">&#39;rounds&#39;</span><span class="p">:</span> <span class="n">rounds</span><span class="p">,</span>
-              <span class="s1">&#39;total_actions&#39;</span><span class="p">:</span> <span class="n">total_actions</span><span class="p">,</span>
-              <span class="s1">&#39;regret&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">goal</span><span class="p">)</span>
-          <span class="p">}))</span>
+      <span class="n">data_item</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">data_items</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+      <span class="n">data_item</span><span class="o">.</span><span class="n">bandit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">name</span>
+      <span class="n">data_item</span><span class="o">.</span><span class="n">learner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">name</span>
+      <span class="n">data_item</span><span class="o">.</span><span class="n">rounds</span> <span class="o">=</span> <span class="n">rounds</span>
+      <span class="n">data_item</span><span class="o">.</span><span class="n">total_actions</span> <span class="o">=</span> <span class="n">total_actions</span>
+      <span class="n">data_item</span><span class="o">.</span><span class="n">regret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">goal</span><span class="p">)</span>
 
     <span class="k">while</span> <span class="n">total_actions</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span><span class="p">:</span>
       <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
       <span class="n">actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">actions</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
-      <span class="c1"># stop the game if actions returned by the learner is None</span>
-      <span class="k">if</span> <span class="n">actions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="c1"># stop the game if no actions are returned by the learner</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="p">:</span>
         <span class="k">break</span>
 
       <span class="c1"># record intermediate regrets</span>
@@ -258,14 +257,13 @@
       <span class="n">feedback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span>
 
-      <span class="k">if</span> <span class="n">feedback</span><span class="p">:</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">:</span>
-          <span class="n">total_actions</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
-        <span class="n">rounds</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="k">for</span> <span class="n">arm_pulls_pair</span> <span class="ow">in</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="p">:</span>
+        <span class="n">total_actions</span> <span class="o">+=</span> <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span>
+      <span class="n">rounds</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="c1"># record final regret</span>
     <span class="n">add_data</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">one_trial_data</span></div>
+    <span class="k">return</span> <span class="n">trial</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">()</span></div>
 </pre></div>
 
            </div>

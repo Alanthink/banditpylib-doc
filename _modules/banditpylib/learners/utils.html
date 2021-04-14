@@ -157,39 +157,41 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span>
 
-<div class="viewcode-block" id="argmax"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.argmax">[docs]</a><span class="k">def</span> <span class="nf">argmax</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-  <span class="sd">&quot;&quot;&quot;Find index with the highest value</span>
+
+<div class="viewcode-block" id="argmax_or_min"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.argmax_or_min">[docs]</a><span class="k">def</span> <span class="nf">argmax_or_min</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">find_min</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+  <span class="sd">&quot;&quot;&quot;Find index with the highest or smallest value</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    values: a list of values</span>
+<span class="sd">    find_min: whether to select smallest value</span>
 
 <span class="sd">  Returns:</span>
-<span class="sd">    index with the highest value. When there is a tie, randomly output one of</span>
-<span class="sd">    the indexes with the highest value.</span>
+<span class="sd">    index with the highest or smallest value. When there is a tie, randomly</span>
+<span class="sd">    output one of the indexes.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">max_value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-  <span class="n">max_value_indexes</span> <span class="o">=</span> <span class="p">[</span>
-      <span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">max_value</span>
-  <span class="p">]</span>
-  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">max_value_indexes</span><span class="p">)</span></div>
+  <span class="n">extremum</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="k">if</span> <span class="n">find_min</span> <span class="k">else</span> <span class="nb">max</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+  <span class="n">indexes</span> <span class="o">=</span> <span class="p">[</span><span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">extremum</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">indexes</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="argmax_tuple"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.argmax_tuple">[docs]</a><span class="k">def</span> <span class="nf">argmax_tuple</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-  <span class="sd">&quot;&quot;&quot;Find the second element of the tuple with the highest value</span>
+<div class="viewcode-block" id="argmax_or_min_tuple"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.argmax_or_min_tuple">[docs]</a><span class="k">def</span> <span class="nf">argmax_or_min_tuple</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span>
+                        <span class="n">find_min</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+  <span class="sd">&quot;&quot;&quot;Find the second element of the tuple with the highest or smallest value</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    values: a list of tuples</span>
+<span class="sd">    find_min: whether to select smallest value</span>
 
 <span class="sd">  Returns:</span>
-<span class="sd">    the second element of the tuple with the highest value. When there is a tie,</span>
-<span class="sd">    randomly output one of them.</span>
+<span class="sd">    the second element of the tuple with the highest or smallest value.</span>
+<span class="sd">    When there is a tie, randomly output one of them.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">max_value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">value</span> <span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">values</span><span class="p">])</span>
-  <span class="n">max_value_indexes</span> <span class="o">=</span> <span class="p">[</span>
-      <span class="n">index</span> <span class="k">for</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="ow">in</span> <span class="n">values</span> <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">max_value</span>
-  <span class="p">]</span>
-  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">max_value_indexes</span><span class="p">)</span></div>
+  <span class="n">extremum</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">value</span> <span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">values</span><span class="p">])</span> <span class="k">if</span> <span class="n">find_min</span> <span class="k">else</span> <span class="nb">max</span><span class="p">(</span>
+      <span class="p">[</span><span class="n">value</span> <span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">values</span><span class="p">])</span>
+  <span class="n">indexes</span> <span class="o">=</span> <span class="p">[</span><span class="n">index</span> <span class="k">for</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="ow">in</span> <span class="n">values</span> <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">extremum</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">indexes</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Goal"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.Goal">[docs]</a><span class="k">class</span> <span class="nc">Goal</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
@@ -311,7 +313,7 @@
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="Learner.actions"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.Learner.actions">[docs]</a>  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Actions of the learner for one round</span>
 
 <span class="sd">    Args:</span>
@@ -322,7 +324,7 @@
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="Learner.update"><a class="viewcode-back" href="../../../banditpylib.learners.utils.html#banditpylib.learners.Learner.update">[docs]</a>  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Learner update</span>
 
 <span class="sd">    Args:</span>

@@ -160,7 +160,7 @@
 
 <div class="viewcode-block" id="ThresBanditLearner"><a class="viewcode-back" href="../../../../banditpylib.learners.thres_bandit_learners.utils.html#banditpylib.learners.thres_bandit_learners.ThresBanditLearner">[docs]</a><span class="k">class</span> <span class="nc">ThresBanditLearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Base class for learners in thresholding bandit&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="ThresBanditLearner.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.thres_bandit_learners.utils.html#banditpylib.learners.thres_bandit_learners.ThresBanditLearner.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">budget</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+<div class="viewcode-block" id="ThresBanditLearner.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.thres_bandit_learners.utils.html#banditpylib.learners.thres_bandit_learners.ThresBanditLearner.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      arm_num: number of arms</span>
@@ -170,11 +170,7 @@
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">arm_num</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of arms </span><span class="si">%d</span><span class="s1"> is less then 2.&#39;</span> <span class="o">%</span> <span class="n">arm_num</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span> <span class="o">=</span> <span class="n">arm_num</span>
-    <span class="k">if</span> <span class="n">budget</span> <span class="o">&lt;</span> <span class="n">arm_num</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Budget </span><span class="si">%d</span><span class="s1"> is less than number of arms </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span> \
-          <span class="p">(</span><span class="n">budget</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__budget</span> <span class="o">=</span> <span class="n">budget</span></div>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span> <span class="o">=</span> <span class="n">arm_num</span></div>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">running_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
@@ -186,14 +182,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">      number of arms</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span></div>
-
-<div class="viewcode-block" id="ThresBanditLearner.budget"><a class="viewcode-back" href="../../../../banditpylib.learners.thres_bandit_learners.utils.html#banditpylib.learners.thres_bandit_learners.ThresBanditLearner.budget">[docs]</a>  <span class="k">def</span> <span class="nf">budget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      budget of the game</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__budget</span></div></div>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span></div></div>
 </pre></div>
 
            </div>
