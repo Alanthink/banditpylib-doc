@@ -178,8 +178,8 @@
 <span id="banditpylib-learners-ordinary-learner-package"></span><h1>banditpylib.learners.ordinary_learner package<a class="headerlink" href="#module-banditpylib.learners.ordinary_learner" title="Permalink to this headline">¶</a></h1>
 <p>Policies for ordinary multi-armed bandit with goal regret minimization.</p>
 <p>We introduce notations in the following.</p>
-<table class="docutils align-default" id="id5">
-<caption><span class="caption-text">Notations</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Notations</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -190,6 +190,16 @@
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(N\)</span></p></td>
 <td><p>total number of arms</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(i_t\)</span></p></td>
+<td><p>arm pulled at time <span class="math notranslate nohighlight">\(t\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(X_i^t\)</span></p></td>
+<td><div class="line-block">
+<div class="line">empirical reward of arm <span class="math notranslate nohighlight">\(i\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>
+if arm <span class="math notranslate nohighlight">\(i\)</span> is pulled</div>
+</div>
+</td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(T_i(t)\)</span></p></td>
 <td><p>number of times arm <span class="math notranslate nohighlight">\(i\)</span> is played before time <span class="math notranslate nohighlight">\(t\)</span></p></td>
@@ -606,6 +616,77 @@ in [0, 1].</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
 <a class="reference internal" href="#banditpylib.learners.ordinary_learner.MOSS.actions" title="banditpylib.learners.ordinary_learner.MOSS.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="banditpylib.learners.ordinary_learner.EXP3">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_learner.</span></code><code class="sig-name descname"><span class="pre">EXP3</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/exp3.html#EXP3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EXP3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_learner.utils.html#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_learner.utils.OrdinaryLearner</span></code></a></p>
+<p>EXP3 policy <span id="id5">[<a class="reference internal" href="bibliography.html#id17">ACesaBianchiFS02</a>]</span></p>
+<p>At time <span class="math notranslate nohighlight">\(t\)</span>, with probability <span class="math notranslate nohighlight">\(\gamma\)</span>, uniformly randomly sample
+an arm to play. With the remaining probability i.e., <span class="math notranslate nohighlight">\((1 - \gamma)\)</span>,
+sample arm <span class="math notranslate nohighlight">\(i\)</span> to play with sampling weight</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left\{
+\begin{array}
+~w_i^{t-1} &amp; \text{if}~i_{t-1} \neq i \\
+w_i^{t-1} \exp\left( \frac{\gamma}{N}
+\frac{X_i^{t-1}}{p_i^{t-1}} \right) &amp; \text{if}~i_{t-1} = i \\
+\end{array}
+\right.\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_i^{t-1}\)</span> and <span class="math notranslate nohighlight">\(p_i^{t-1}\)</span> denote the weight of arm
+<span class="math notranslate nohighlight">\(i\)</span> and the probability to pull arm <span class="math notranslate nohighlight">\(i\)</span> at time <span class="math notranslate nohighlight">\((t-1)\)</span>
+respectively and initially we set <span class="math notranslate nohighlight">\(w_i^0 = 1\)</span> for every arm
+<span class="math notranslate nohighlight">\(i \in [0, N-1]\)</span>.</p>
+<dl class="py method">
+<dt id="banditpylib.learners.ordinary_learner.EXP3.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/exp3.html#EXP3.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EXP3.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arm_num</strong> – number of arms</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
+<li><p><strong>gamma</strong> – probability to do uniform sampling</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.ordinary_learner.EXP3.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/exp3.html#EXP3.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EXP3.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the learner</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function should be called before the start of the game.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.ordinary_learner.EXP3.actions">
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/exp3.html#EXP3.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EXP3.actions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>arms to pull</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.ordinary_learner.EXP3.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/exp3.html#EXP3.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EXP3.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learner update</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.ordinary_learner.EXP3.actions" title="banditpylib.learners.ordinary_learner.EXP3.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
