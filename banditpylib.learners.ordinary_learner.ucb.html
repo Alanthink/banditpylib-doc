@@ -164,8 +164,8 @@
 <p>Upper Confidence Bound policy <span id="id1">[<a class="reference internal" href="bibliography.html#id4">ACBF02</a>]</span></p>
 <p>At time <span class="math notranslate nohighlight">\(t\)</span>, play arm</p>
 <div class="math notranslate nohighlight">
-\[\mathrm{argmax}_{i \in [0, N-1]} \left\{ \bar{\mu}_i(t) + \sqrt{ \frac{
-\alpha  \ln(t) }{T_i(t)} } \right\}\]</div>
+\[\mathrm{argmax}_{i \in \{0, \dots, N-1\}} \left\{ \bar{\mu}_i(t) +
+\sqrt{ \frac{\alpha  \ln(t) }{T_i(t)} } \right\}\]</div>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.ucb.UCB.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ucb.UCB.__init__" title="Permalink to this definition">¶</a></dt>

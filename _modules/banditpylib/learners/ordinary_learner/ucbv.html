@@ -166,8 +166,9 @@
 <span class="sd">  At time :math:`t`, play arm</span>
 
 <span class="sd">  .. math::</span>
-<span class="sd">    \mathrm{argmax}_{i \in [0, N-1]} \left\{ \bar{\mu}_i(t) + \sqrt{ \frac{ 2</span>
-<span class="sd">    \bar{V}_i(t) \ln(t) }{T_i(t)} }+ \frac{ b \ln(t) }{T_i(t)} \right\}</span>
+<span class="sd">    \mathrm{argmax}_{i \in \{0, \dots, N-1\}} \left\{ \bar{\mu}_i(t) +</span>
+<span class="sd">    \sqrt{ \frac{ 2 \bar{V}_i(t) \ln(t) }{T_i(t)} }+</span>
+<span class="sd">    \frac{ b \ln(t) }{T_i(t)} \right\}</span>
 
 <span class="sd">  .. note::</span>
 <span class="sd">    Reward has to be bounded within :math:`[0, b]`.</span>

@@ -321,8 +321,8 @@ remaining probability play the arm with the maximum empirical mean.</p>
 <p>Upper Confidence Bound policy <span id="id1">[<a class="reference internal" href="bibliography.html#id4">ACBF02</a>]</span></p>
 <p>At time <span class="math notranslate nohighlight">\(t\)</span>, play arm</p>
 <div class="math notranslate nohighlight">
-\[\mathrm{argmax}_{i \in [0, N-1]} \left\{ \bar{\mu}_i(t) + \sqrt{ \frac{
-\alpha  \ln(t) }{T_i(t)} } \right\}\]</div>
+\[\mathrm{argmax}_{i \in \{0, \dots, N-1\}} \left\{ \bar{\mu}_i(t) +
+\sqrt{ \frac{\alpha  \ln(t) }{T_i(t)} } \right\}\]</div>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.UCB.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/ucb.html#UCB.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.UCB.__init__" title="Permalink to this definition">¶</a></dt>
@@ -501,8 +501,9 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 <p>UCBV policy <span id="id3">[<a class="reference internal" href="bibliography.html#id5">AMSzepesvari09</a>]</span></p>
 <p>At time <span class="math notranslate nohighlight">\(t\)</span>, play arm</p>
 <div class="math notranslate nohighlight">
-\[\mathrm{argmax}_{i \in [0, N-1]} \left\{ \bar{\mu}_i(t) + \sqrt{ \frac{ 2
-\bar{V}_i(t) \ln(t) }{T_i(t)} }+ \frac{ b \ln(t) }{T_i(t)} \right\}\]</div>
+\[\mathrm{argmax}_{i \in \{0, \dots, N-1\}} \left\{ \bar{\mu}_i(t) +
+\sqrt{ \frac{ 2 \bar{V}_i(t) \ln(t) }{T_i(t)} }+
+\frac{ b \ln(t) }{T_i(t)} \right\}\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Reward has to be bounded within <span class="math notranslate nohighlight">\([0, b]\)</span>.</p>
@@ -565,8 +566,8 @@ supported i.e., <cite>beta</cite> and <cite>gaussian</cite></p></li>
 <p>MOSS policy <span id="id4">[<a class="reference internal" href="bibliography.html#id3">AB09</a>]</span></p>
 <p>At time <span class="math notranslate nohighlight">\(t\)</span>, play arm</p>
 <div class="math notranslate nohighlight">
-\[\mathrm{argmax}_{i \in [0, N-1]} \left\{ \bar{\mu}_i(t) + \sqrt{
-\frac{\mathrm{max}(\ln( \frac{T}{N T_i(t)} ), 0 ) }{T_i(t)} } \right\}\]</div>
+\[\mathrm{argmax}_{i \in \{0, \dots, N-1\}} \left\{ \bar{\mu}_i(t) +
+\sqrt{\frac{\mathrm{max}(\ln( \frac{T}{N T_i(t)} ), 0 ) }{T_i(t)} } \right\}\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>MOSS uses time horizon in its confidence interval. Reward has to be bounded
@@ -642,7 +643,7 @@ w_i^{t-1} \exp\left( \frac{\gamma}{N}
 <p>where <span class="math notranslate nohighlight">\(w_i^{t-1}\)</span> and <span class="math notranslate nohighlight">\(p_i^{t-1}\)</span> denote the weight of arm
 <span class="math notranslate nohighlight">\(i\)</span> and the probability to pull arm <span class="math notranslate nohighlight">\(i\)</span> at time <span class="math notranslate nohighlight">\((t-1)\)</span>
 respectively and initially we set <span class="math notranslate nohighlight">\(w_i^0 = 1\)</span> for every arm
-<span class="math notranslate nohighlight">\(i \in [0, N-1]\)</span>.</p>
+<span class="math notranslate nohighlight">\(i \in \{0, \dots, N-1\}\)</span>.</p>
 <dl class="py method">
 <dt id="banditpylib.learners.ordinary_learner.EXP3.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/exp3.html#EXP3.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.EXP3.__init__" title="Permalink to this definition">¶</a></dt>

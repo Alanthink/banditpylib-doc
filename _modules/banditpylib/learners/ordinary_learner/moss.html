@@ -166,8 +166,8 @@
 <span class="sd">  At time :math:`t`, play arm</span>
 
 <span class="sd">  .. math::</span>
-<span class="sd">    \mathrm{argmax}_{i \in [0, N-1]} \left\{ \bar{\mu}_i(t) + \sqrt{</span>
-<span class="sd">    \frac{\mathrm{max}(\ln( \frac{T}{N T_i(t)} ), 0 ) }{T_i(t)} } \right\}</span>
+<span class="sd">    \mathrm{argmax}_{i \in \{0, \dots, N-1\}} \left\{ \bar{\mu}_i(t) +</span>
+<span class="sd">    \sqrt{\frac{\mathrm{max}(\ln( \frac{T}{N T_i(t)} ), 0 ) }{T_i(t)} } \right\}</span>
 
 <span class="sd">  .. note::</span>
 <span class="sd">    MOSS uses time horizon in its confidence interval. Reward has to be bounded</span>
