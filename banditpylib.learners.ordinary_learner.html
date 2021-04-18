@@ -694,6 +694,65 @@ respectively and initially we set <span class="math notranslate nohighlight">\(w
 
 </dd></dl>
 
+<dl class="py class">
+<dt id="banditpylib.learners.ordinary_learner.ExploreThenCommit">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_learner.</span></code><code class="sig-name descname"><span class="pre">ExploreThenCommit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_prime</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/explore_then_commit.html#ExploreThenCommit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ExploreThenCommit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="banditpylib.learners.ordinary_learner.utils.html#banditpylib.learners.ordinary_learner.utils.OrdinaryLearner" title="banditpylib.learners.ordinary_learner.utils.OrdinaryLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.ordinary_learner.utils.OrdinaryLearner</span></code></a></p>
+<p>Explore-Then-Commit policy</p>
+<p>During the first <span class="math notranslate nohighlight">\(T' \leq T\)</span> time steps, play each arm in a round-robin
+way. Then for the remaining time steps, play the arm with the maximum
+empirical mean consistently.</p>
+<dl class="py method">
+<dt id="banditpylib.learners.ordinary_learner.ExploreThenCommit.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_prime</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/explore_then_commit.html#ExploreThenCommit.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ExploreThenCommit.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arm_num</strong> – number of arms</p></li>
+<li><p><strong>T_prime</strong> – time steps to explore</p></li>
+<li><p><strong>name</strong> – alias name</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.ordinary_learner.ExploreThenCommit.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/explore_then_commit.html#ExploreThenCommit.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ExploreThenCommit.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the learner</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function should be called before the start of the game.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.ordinary_learner.ExploreThenCommit.actions">
+<code class="sig-name descname"><span class="pre">actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/explore_then_commit.html#ExploreThenCommit.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ExploreThenCommit.actions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>arms to pull</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.learners.ordinary_learner.ExploreThenCommit.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_learner/explore_then_commit.html#ExploreThenCommit.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.ExploreThenCommit.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learner update</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
+<a class="reference internal" href="#banditpylib.learners.ordinary_learner.ExploreThenCommit.actions" title="banditpylib.learners.ordinary_learner.ExploreThenCommit.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
