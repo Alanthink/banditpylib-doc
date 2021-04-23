@@ -157,22 +157,98 @@
   <div class="section" id="module-banditpylib.bandits.utils">
 <span id="banditpylib-bandits-utils-module"></span><h1>banditpylib.bandits.utils module<a class="headerlink" href="#module-banditpylib.bandits.utils" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="banditpylib.bandits.utils.Bandit">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.bandits.utils.</span></code><code class="sig-name descname"><span class="pre">Bandit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.utils.Bandit" title="Permalink to this definition">¶</a></dt>
+<dt id="banditpylib.bandits.utils.ContextGenerator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.bandits.utils.</span></code><code class="sig-name descname"><span class="pre">ContextGenerator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#ContextGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.utils.ContextGenerator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>Bandit environment</p>
-<p><a class="reference internal" href="#banditpylib.bandits.utils.Bandit.context" title="banditpylib.bandits.utils.Bandit.context"><code class="xref py py-func docutils literal notranslate"><span class="pre">context()</span></code></a> is used to fetch the current state of the environment.
-<a class="reference internal" href="#banditpylib.bandits.utils.Bandit.feed" title="banditpylib.bandits.utils.Bandit.feed"><code class="xref py py-func docutils literal notranslate"><span class="pre">feed()</span></code></a> is used to pass the actions to the environment for execution.</p>
+<p>Context generator</p>
+<p>This class is used to generate the context of bandit.</p>
 <dl class="py method">
-<dt id="banditpylib.bandits.utils.Bandit.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.utils.Bandit.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="banditpylib.bandits.utils.ContextGenerator.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#ContextGenerator.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.utils.ContextGenerator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – alias name for the bandit environment</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arm_num</strong> – number of actions</p></li>
+<li><p><strong>dimension</strong> – dimension of the context</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt id="banditpylib.bandits.utils.ContextGenerator.name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#banditpylib.bandits.utils.ContextGenerator.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Context generator name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.utils.ContextGenerator.dimension">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">dimension</span></code><a class="headerlink" href="#banditpylib.bandits.utils.ContextGenerator.dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>dimension of the context</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.utils.ContextGenerator.arm_num">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">arm_num</span></code><a class="headerlink" href="#banditpylib.bandits.utils.ContextGenerator.arm_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of actions</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.utils.ContextGenerator.reset">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#ContextGenerator.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.utils.ContextGenerator.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the context generator</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.utils.ContextGenerator.context">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">context</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#ContextGenerator.context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.utils.ContextGenerator.context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+the context and the rewards corresponding to different actions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="banditpylib.bandits.utils.RandomContextGenerator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.bandits.utils.</span></code><code class="sig-name descname"><span class="pre">RandomContextGenerator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#RandomContextGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.utils.RandomContextGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#banditpylib.bandits.utils.ContextGenerator" title="banditpylib.bandits.utils.ContextGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.bandits.utils.ContextGenerator</span></code></a></p>
+<p>Random context generator</p>
+<p>Fill contexts and rewards information with random numbers in [0, 1].</p>
+<dl class="py method">
+<dt id="banditpylib.bandits.utils.RandomContextGenerator.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#RandomContextGenerator.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.utils.RandomContextGenerator.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arm_num</strong> – number of actions</p></li>
+<li><p><strong>dimension</strong> – dimension of the context</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.utils.RandomContextGenerator.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#RandomContextGenerator.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.utils.RandomContextGenerator.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the context generator</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="banditpylib.bandits.utils.RandomContextGenerator.context">
+<code class="sig-name descname"><span class="pre">context</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#RandomContextGenerator.context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.utils.RandomContextGenerator.context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+the context and the rewards corresponding to different actions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="banditpylib.bandits.utils.Bandit">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">banditpylib.bandits.utils.</span></code><code class="sig-name descname"><span class="pre">Bandit</span></code><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#Bandit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.utils.Bandit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Bandit environment</p>
+<p><a class="reference internal" href="#banditpylib.bandits.utils.Bandit.context" title="banditpylib.bandits.utils.Bandit.context"><code class="xref py py-func docutils literal notranslate"><span class="pre">context()</span></code></a> is used to fetch the current state of the environment.
+<a class="reference internal" href="#banditpylib.bandits.utils.Bandit.feed" title="banditpylib.bandits.utils.Bandit.feed"><code class="xref py py-func docutils literal notranslate"><span class="pre">feed()</span></code></a> is used to pass the actions to the environment for execution.</p>
 <dl class="py method">
 <dt id="banditpylib.bandits.utils.Bandit.name">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#banditpylib.bandits.utils.Bandit.name" title="Permalink to this definition">¶</a></dt>

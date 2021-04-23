@@ -533,8 +533,7 @@
       <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
       <span class="n">card_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
       <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-      <span class="n">zero_best_reward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-      <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+      <span class="n">zero_best_reward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      preference_params: preference parameters (product 0 should be included)</span>
@@ -547,9 +546,7 @@
 <span class="sd">        This is useful when data is too large to compute the best assortment.</span>
 <span class="sd">        When best reward is set to zero, the regret equals to the minus total</span>
 <span class="sd">        revenue.</span>
-<span class="sd">      name: alias name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">preference_params</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">revenues</span><span class="p">):</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
           <span class="s1">&#39;Number of preference parameters </span><span class="si">%d</span><span class="s1"> does not equal to number of &#39;</span>

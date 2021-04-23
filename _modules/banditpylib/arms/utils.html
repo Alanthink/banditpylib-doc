@@ -155,7 +155,7 @@
   <h1>Source code for banditpylib.arms.utils</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -187,8 +187,11 @@
     <span class="sd">&quot;&quot;&quot;mean of rewards&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Arm.pull"><a class="viewcode-back" href="../../../banditpylib.arms.utils.html#banditpylib.arms.Arm.pull">[docs]</a>  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Pull the arm</span>
+
+<span class="sd">    When pulls is None, a float number will be returned. Otherwise, a numpy</span>
+<span class="sd">    array will be returned.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      pulls: number of times to pull</span>

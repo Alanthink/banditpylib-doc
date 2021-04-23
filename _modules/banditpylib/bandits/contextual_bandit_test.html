@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>banditpylib.bandits.linear_bandit_itf &mdash; banditpylib 0.9.0 documentation</title>
+  <title>banditpylib.bandits.contextual_bandit_test &mdash; banditpylib 0.9.0 documentation</title>
   
 
   
@@ -137,7 +137,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>banditpylib.bandits.linear_bandit_itf</li>
+      <li>banditpylib.bandits.contextual_bandit_test</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -152,44 +152,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for banditpylib.bandits.linear_bandit_itf</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
+  <h1>Source code for banditpylib.bandits.contextual_bandit_test</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">google.protobuf.text_format</span> <span class="k">as</span> <span class="nn">text_format</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span>
+<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">MaxReward</span>
+<span class="kn">from</span> <span class="nn">.contextual_bandit</span> <span class="kn">import</span> <span class="n">ContextualBandit</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">RandomContextGenerator</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Bandit</span>
 
+<div class="viewcode-block" id="TestLinearBandit"><a class="viewcode-back" href="../../../banditpylib.bandits.contextual_bandit_test.html#banditpylib.bandits.contextual_bandit_test.TestLinearBandit">[docs]</a><span class="k">class</span> <span class="nc">TestLinearBandit</span><span class="p">:</span>
+  <span class="sd">&quot;&quot;&quot;Test linear bandit&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="TestLinearBandit.test_linear_bandit"><a class="viewcode-back" href="../../../banditpylib.bandits.contextual_bandit_test.html#banditpylib.bandits.contextual_bandit_test.TestLinearBandit.test_linear_bandit">[docs]</a>  <span class="k">def</span> <span class="nf">test_linear_bandit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">arm_num</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">dimension</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">contextual_bandit</span> <span class="o">=</span> <span class="n">ContextualBandit</span><span class="p">(</span>
+        <span class="n">RandomContextGenerator</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">))</span>
+    <span class="n">contextual_bandit</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+      <span class="n">contextual_bandit</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+      <span class="n">contextual_bandit</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span>
+          <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span>
+              <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      arm_pulls_pairs {</span>
+<span class="sd">        arm {</span>
+<span class="sd">          ids: 1</span>
+<span class="sd">        }</span>
+<span class="sd">        pulls: 1</span>
+<span class="sd">      }</span>
+<span class="sd">      &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">Actions</span><span class="p">()))</span>
 
-<div class="viewcode-block" id="LinearBanditItf"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.LinearBanditItf">[docs]</a><span class="k">class</span> <span class="nc">LinearBanditItf</span><span class="p">(</span><span class="n">Bandit</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Finite-armed linear bandit interface&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="LinearBanditItf.context"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.LinearBanditItf.context">[docs]</a>  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      current state of the bandit environment</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="kc">None</span></div>
-
-<div class="viewcode-block" id="LinearBanditItf.arm_num"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.LinearBanditItf.arm_num">[docs]</a>  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">arm_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      total number of arms</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-
-<div class="viewcode-block" id="LinearBanditItf.features"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.LinearBanditItf.features">[docs]</a>  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">features</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      feature vectors</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-
-<div class="viewcode-block" id="LinearBanditItf.total_pulls"><a class="viewcode-back" href="../../../banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.LinearBanditItf.total_pulls">[docs]</a>  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">total_pulls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      total number of pulls so far</span>
-<span class="sd">    &quot;&quot;&quot;</span></div></div>
+    <span class="k">assert</span> <span class="n">contextual_bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">MaxReward</span><span class="p">())</span> <span class="o">&lt;=</span> <span class="mi">20</span></div></div>
 </pre></div>
 
            </div>

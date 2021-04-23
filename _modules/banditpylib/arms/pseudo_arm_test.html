@@ -164,8 +164,9 @@
     <span class="n">ber_arm</span> <span class="o">=</span> <span class="n">BernoulliArm</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">ber_arm</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
     <span class="n">em_var</span> <span class="o">=</span> <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">em_var</span>
-    <span class="k">assert</span> <span class="n">em_var</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">,</span> \
-        <span class="p">(</span><span class="s1">&#39;Empirical variance of Bernoulli arm </span><span class="si">%.2f</span><span class="s1"> is greater than 1!&#39;</span> <span class="o">%</span> <span class="n">em_var</span><span class="p">)</span></div></div>
+    <span class="k">assert</span> <span class="n">em_var</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span>
+        <span class="s1">&#39;Empirical variance of Bernoulli arm </span><span class="si">%.2f</span><span class="s1"> should be at most 1.&#39;</span> <span class="o">%</span>
+        <span class="n">em_var</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

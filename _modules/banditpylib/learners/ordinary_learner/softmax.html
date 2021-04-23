@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>banditpylib.learners.ordinary_learner.explore_then_commit &mdash; banditpylib 0.9.0 documentation</title>
+  <title>banditpylib.learners.ordinary_learner.softmax &mdash; banditpylib 0.9.0 documentation</title>
   
 
   
@@ -137,7 +137,7 @@
         
           <li><a href="../../../index.html">Module code</a> &raquo;</li>
         
-      <li>banditpylib.learners.ordinary_learner.explore_then_commit</li>
+      <li>banditpylib.learners.ordinary_learner.softmax</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -152,54 +152,63 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for banditpylib.learners.ordinary_learner.explore_then_commit</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <h1>Source code for banditpylib.learners.ordinary_learner.softmax</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">PseudoArm</span>
 <span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span>
-<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">argmax_or_min_tuple</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">OrdinaryLearner</span>
 
 
-<div class="viewcode-block" id="ExploreThenCommit"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.explore_then_commit.html#banditpylib.learners.ordinary_learner.ExploreThenCommit">[docs]</a><span class="k">class</span> <span class="nc">ExploreThenCommit</span><span class="p">(</span><span class="n">OrdinaryLearner</span><span class="p">):</span>
-  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Explore-Then-Commit policy</span>
+<div class="viewcode-block" id="Softmax"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.softmax.html#banditpylib.learners.ordinary_learner.Softmax">[docs]</a><span class="k">class</span> <span class="nc">Softmax</span><span class="p">(</span><span class="n">OrdinaryLearner</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Softmax policy</span>
 
-<span class="sd">  During the first :math:`T&#39; \leq T` time steps (exploration period), play each</span>
-<span class="sd">  arm in a round-robin way. Then for the remaining time steps, play the arm</span>
-<span class="sd">  with the maximum empirical mean reward within exploration period consistently.</span>
+<span class="sd">  At time :math:`t`, sample arm :math:`i` to play with sampling weight</span>
+
+<span class="sd">  .. math::</span>
+<span class="sd">    \exp\left( \bar{\mu}_i(t) / \gamma \right)</span>
+
+<span class="sd">  where :math:`\gamma` is a parameter to control how much exploration we want.</span>
+
+<span class="sd">  .. note::</span>
+<span class="sd">    When :math:`\gamma` approaches 0, the learner will have an increasing</span>
+<span class="sd">    probability to select the arm with the maximum empirical mean rewards. When</span>
+<span class="sd">    :math:`\gamma` approaches to infinity, the policy of the learner tends to</span>
+<span class="sd">    become uniform sampling.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="ExploreThenCommit.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.explore_then_commit.html#banditpylib.learners.ordinary_learner.ExploreThenCommit.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">T_prime</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Softmax.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.softmax.html#banditpylib.learners.ordinary_learner.Softmax.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      arm_num: number of arms</span>
-<span class="sd">      T_prime: time steps to explore</span>
 <span class="sd">      name: alias name</span>
+<span class="sd">      gamma: gamma</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">T_prime</span> <span class="o">&lt;</span> <span class="n">arm_num</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;T</span><span class="se">\&#39;</span><span class="s1"> is expected to be at least </span><span class="si">%d</span><span class="s1">, got </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span>
-                      <span class="p">(</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">T_prime</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__T_prime</span> <span class="o">=</span> <span class="n">T_prime</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span></div>
+    <span class="k">if</span> <span class="n">gamma</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Gamma </span><span class="si">%.2f</span><span class="s1"> in </span><span class="si">%s</span><span class="s1"> should be greater than 0.&#39;</span> <span class="o">%</span> \
+          <span class="p">(</span><span class="n">gamma</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__gamma</span> <span class="o">=</span> <span class="n">gamma</span></div>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      default learner name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="s1">&#39;explore_then_commit&#39;</span>
+    <span class="k">return</span> <span class="s1">&#39;softmax&#39;</span>
 
-<div class="viewcode-block" id="ExploreThenCommit.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.explore_then_commit.html#banditpylib.learners.ordinary_learner.ExploreThenCommit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Softmax.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.softmax.html#banditpylib.learners.ordinary_learner.Softmax.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Reset the learner</span>
 
 <span class="sd">    .. warning::</span>
 <span class="sd">      This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())]</span>
-    <span class="c1"># Current time step</span>
+    <span class="c1"># current time step</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span></div>
 
-<div class="viewcode-block" id="ExploreThenCommit.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.explore_then_commit.html#banditpylib.learners.ordinary_learner.ExploreThenCommit.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
+<div class="viewcode-block" id="Softmax.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.softmax.html#banditpylib.learners.ordinary_learner.Softmax.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      context: context of the ordinary bandit which should be `None`</span>
@@ -212,15 +221,21 @@
     <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
     <span class="n">arm_pulls_pair</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__T_prime</span><span class="p">:</span>
-      <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">():</span>
+      <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span>
+      <span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+          <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">em_mean</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__gamma</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())</span>
+      <span class="p">])</span>
+      <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">(),</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">weight</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span> <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">actions</span></div>
 
-<div class="viewcode-block" id="ExploreThenCommit.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.explore_then_commit.html#banditpylib.learners.ordinary_learner.ExploreThenCommit.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
+<div class="viewcode-block" id="Softmax.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.softmax.html#banditpylib.learners.ordinary_learner.Softmax.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Learner update</span>
 
 <span class="sd">    Args:</span>
@@ -230,12 +245,7 @@
     <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__T_prime</span><span class="p">:</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">=</span> <span class="n">argmax_or_min_tuple</span><span class="p">([</span>
-          <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">em_mean</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">)</span>
-          <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())</span>
-      <span class="p">])</span></div></div>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">+=</span> <span class="mi">1</span></div></div>
 </pre></div>
 
            </div>

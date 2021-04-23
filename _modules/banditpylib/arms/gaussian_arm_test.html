@@ -167,8 +167,8 @@
         <span class="mi">1</span> <span class="k">if</span> <span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="n">var</span> <span class="o">&lt;=</span> <span class="n">reward</span> <span class="o">&lt;=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">var</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">reward</span> <span class="ow">in</span> <span class="n">rewards</span>
     <span class="p">]</span>
     <span class="k">assert</span> <span class="nb">sum</span><span class="p">(</span><span class="n">prob_within_one_std</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.68</span><span class="p">,</span> <span class="p">(</span>
-        <span class="s1">&#39;Probability of rewards within one std in N(0, 1) </span><span class="si">%.2f</span><span class="s1"> is &#39;</span>
-        <span class="s1">&#39;no greater than 0.68!&#39;</span> <span class="o">%</span> <span class="n">prob_within_one_std</span><span class="p">)</span></div></div>
+        <span class="s1">&#39;Probability of rewards within one std in N(0, 1) </span><span class="si">%.2f</span><span class="s1"> should &#39;</span>
+        <span class="s1">&#39;be at least 0.68!&#39;</span> <span class="o">%</span> <span class="n">prob_within_one_std</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

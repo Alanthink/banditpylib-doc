@@ -160,6 +160,7 @@
  | <a href="#A"><strong>A</strong></a>
  | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
@@ -195,7 +196,11 @@
 </li>
         <li><a href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm.__init__">(banditpylib.arms.utils.Arm method)</a>
 </li>
-        <li><a href="banditpylib.bandits.html#banditpylib.bandits.Bandit.__init__">(banditpylib.bandits.Bandit method)</a>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextGenerator.__init__">(banditpylib.bandits.ContextGenerator method)</a>
+</li>
+        <li><a href="banditpylib.bandits.contextual_bandit.html#banditpylib.bandits.contextual_bandit.ContextualBandit.__init__">(banditpylib.bandits.contextual_bandit.ContextualBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextualBandit.__init__">(banditpylib.bandits.ContextualBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.CvarReward.__init__">(banditpylib.bandits.CvarReward method)</a>
 </li>
@@ -219,13 +224,17 @@
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.__init__">(banditpylib.bandits.OrdinaryMNLBandit method)</a>
 </li>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.RandomContextGenerator.__init__">(banditpylib.bandits.RandomContextGenerator method)</a>
+</li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.Reward.__init__">(banditpylib.bandits.Reward method)</a>
 </li>
         <li><a href="banditpylib.bandits.thres_bandit.html#banditpylib.bandits.thres_bandit.ThresholdingBandit.__init__">(banditpylib.bandits.thres_bandit.ThresholdingBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.__init__">(banditpylib.bandits.ThresholdingBandit method)</a>
 </li>
-        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit.__init__">(banditpylib.bandits.utils.Bandit method)</a>
+        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.ContextGenerator.__init__">(banditpylib.bandits.utils.ContextGenerator method)</a>
+</li>
+        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.RandomContextGenerator.__init__">(banditpylib.bandits.utils.RandomContextGenerator method)</a>
 </li>
         <li><a href="banditpylib.learners.html#banditpylib.learners.AllCorrect.__init__">(banditpylib.learners.AllCorrect method)</a>
 </li>
@@ -284,6 +293,10 @@
         <li><a href="banditpylib.learners.ordinary_learner.moss.html#banditpylib.learners.ordinary_learner.moss.MOSS.__init__">(banditpylib.learners.ordinary_learner.moss.MOSS method)</a>
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.OrdinaryLearner.__init__">(banditpylib.learners.ordinary_learner.OrdinaryLearner method)</a>
+</li>
+        <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.Softmax.__init__">(banditpylib.learners.ordinary_learner.Softmax method)</a>
+</li>
+        <li><a href="banditpylib.learners.ordinary_learner.softmax.html#banditpylib.learners.ordinary_learner.softmax.Softmax.__init__">(banditpylib.learners.ordinary_learner.softmax.Softmax method)</a>
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling.__init__">(banditpylib.learners.ordinary_learner.ThompsonSampling method)</a>
 </li>
@@ -397,6 +410,10 @@
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.moss.html#banditpylib.learners.ordinary_learner.moss.MOSS.actions">(banditpylib.learners.ordinary_learner.moss.MOSS method)</a>
 </li>
+        <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.Softmax.actions">(banditpylib.learners.ordinary_learner.Softmax method)</a>
+</li>
+        <li><a href="banditpylib.learners.ordinary_learner.softmax.html#banditpylib.learners.ordinary_learner.softmax.Softmax.actions">(banditpylib.learners.ordinary_learner.softmax.Softmax method)</a>
+</li>
         <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling.actions">(banditpylib.learners.ordinary_learner.ThompsonSampling method)</a>
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.ts.html#banditpylib.learners.ordinary_learner.ts.ThompsonSampling.actions">(banditpylib.learners.ordinary_learner.ts.ThompsonSampling method)</a>
@@ -474,26 +491,26 @@
         <li><a href="banditpylib.arms.utils.html#banditpylib.arms.utils.Arm">(class in banditpylib.arms.utils)</a>
 </li>
       </ul></li>
-      <li><a href="banditpylib.bandits.linear_bandit.html#banditpylib.bandits.linear_bandit.LinearBandit.arm_num">arm_num() (banditpylib.bandits.linear_bandit.LinearBandit method)</a>
+      <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextGenerator.arm_num">arm_num() (banditpylib.bandits.ContextGenerator property)</a>
 
       <ul>
-        <li><a href="banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.linear_bandit_itf.LinearBanditItf.arm_num">(banditpylib.bandits.linear_bandit_itf.LinearBanditItf method)</a>
+        <li><a href="banditpylib.bandits.contextual_bandit.html#banditpylib.bandits.contextual_bandit.ContextualBandit.arm_num">(banditpylib.bandits.contextual_bandit.ContextualBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextualBandit.arm_num">(banditpylib.bandits.ContextualBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.linear_bandit.html#banditpylib.bandits.linear_bandit.LinearBandit.arm_num">(banditpylib.bandits.linear_bandit.LinearBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBandit.arm_num">(banditpylib.bandits.LinearBandit method)</a>
 </li>
-        <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBanditItf.arm_num">(banditpylib.bandits.LinearBanditItf method)</a>
-</li>
         <li><a href="banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.arm_num">(banditpylib.bandits.ordinary_bandit.OrdinaryBandit method)</a>
 </li>
-        <li><a href="banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf.arm_num">(banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf method)</a>
-</li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.OrdinaryBandit.arm_num">(banditpylib.bandits.OrdinaryBandit method)</a>
-</li>
-        <li><a href="banditpylib.bandits.html#banditpylib.bandits.OrdinaryBanditItf.arm_num">(banditpylib.bandits.OrdinaryBanditItf method)</a>
 </li>
         <li><a href="banditpylib.bandits.thres_bandit.html#banditpylib.bandits.thres_bandit.ThresholdingBandit.arm_num">(banditpylib.bandits.thres_bandit.ThresholdingBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.arm_num">(banditpylib.bandits.ThresholdingBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.ContextGenerator.arm_num">(banditpylib.bandits.utils.ContextGenerator property)</a>
 </li>
         <li><a href="banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.arm_num">(banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner method)</a>
 </li>
@@ -594,17 +611,24 @@
 </li>
       </ul></li>
       <li>
+    banditpylib.bandits.contextual_bandit
+
+      <ul>
+        <li><a href="banditpylib.bandits.contextual_bandit.html#module-banditpylib.bandits.contextual_bandit">module</a>
+</li>
+      </ul></li>
+      <li>
+    banditpylib.bandits.contextual_bandit_test
+
+      <ul>
+        <li><a href="banditpylib.bandits.contextual_bandit_test.html#module-banditpylib.bandits.contextual_bandit_test">module</a>
+</li>
+      </ul></li>
+      <li>
     banditpylib.bandits.linear_bandit
 
       <ul>
         <li><a href="banditpylib.bandits.linear_bandit.html#module-banditpylib.bandits.linear_bandit">module</a>
-</li>
-      </ul></li>
-      <li>
-    banditpylib.bandits.linear_bandit_itf
-
-      <ul>
-        <li><a href="banditpylib.bandits.linear_bandit_itf.html#module-banditpylib.bandits.linear_bandit_itf">module</a>
 </li>
       </ul></li>
       <li>
@@ -619,13 +643,6 @@
 
       <ul>
         <li><a href="banditpylib.bandits.ordinary_bandit.html#module-banditpylib.bandits.ordinary_bandit">module</a>
-</li>
-      </ul></li>
-      <li>
-    banditpylib.bandits.ordinary_bandit_itf
-
-      <ul>
-        <li><a href="banditpylib.bandits.ordinary_bandit_itf.html#module-banditpylib.bandits.ordinary_bandit_itf">module</a>
 </li>
       </ul></li>
       <li>
@@ -817,8 +834,6 @@
         <li><a href="banditpylib.learners.ordinary_learner.exp3_test.html#module-banditpylib.learners.ordinary_learner.exp3_test">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     banditpylib.learners.ordinary_learner.explore_then_commit
 
@@ -826,6 +841,8 @@
         <li><a href="banditpylib.learners.ordinary_learner.explore_then_commit.html#module-banditpylib.learners.ordinary_learner.explore_then_commit">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     banditpylib.learners.ordinary_learner.explore_then_commit_test
 
@@ -845,6 +862,20 @@
 
       <ul>
         <li><a href="banditpylib.learners.ordinary_learner.moss_test.html#module-banditpylib.learners.ordinary_learner.moss_test">module</a>
+</li>
+      </ul></li>
+      <li>
+    banditpylib.learners.ordinary_learner.softmax
+
+      <ul>
+        <li><a href="banditpylib.learners.ordinary_learner.softmax.html#module-banditpylib.learners.ordinary_learner.softmax">module</a>
+</li>
+      </ul></li>
+      <li>
+    banditpylib.learners.ordinary_learner.softmax_test
+
+      <ul>
+        <li><a href="banditpylib.learners.ordinary_learner.softmax_test.html#module-banditpylib.learners.ordinary_learner.softmax_test">module</a>
 </li>
       </ul></li>
       <li>
@@ -1130,17 +1161,25 @@
       <li><a href="banditpylib.bandits.html#banditpylib.bandits.Bandit.context">context() (banditpylib.bandits.Bandit method)</a>
 
       <ul>
-        <li><a href="banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.linear_bandit_itf.LinearBanditItf.context">(banditpylib.bandits.linear_bandit_itf.LinearBanditItf method)</a>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextGenerator.context">(banditpylib.bandits.ContextGenerator method)</a>
 </li>
-        <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBanditItf.context">(banditpylib.bandits.LinearBanditItf method)</a>
+        <li><a href="banditpylib.bandits.contextual_bandit.html#banditpylib.bandits.contextual_bandit.ContextualBandit.context">(banditpylib.bandits.contextual_bandit.ContextualBandit method)</a>
 </li>
-        <li><a href="banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf.context">(banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf method)</a>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextualBandit.context">(banditpylib.bandits.ContextualBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.linear_bandit.html#banditpylib.bandits.linear_bandit.LinearBandit.context">(banditpylib.bandits.linear_bandit.LinearBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBandit.context">(banditpylib.bandits.LinearBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.context">(banditpylib.bandits.ordinary_bandit.OrdinaryBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.OrdinaryMNLBandit.context">(banditpylib.bandits.ordinary_mnl_bandit.OrdinaryMNLBandit method)</a>
 </li>
-        <li><a href="banditpylib.bandits.html#banditpylib.bandits.OrdinaryBanditItf.context">(banditpylib.bandits.OrdinaryBanditItf method)</a>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.OrdinaryBandit.context">(banditpylib.bandits.OrdinaryBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.context">(banditpylib.bandits.OrdinaryMNLBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.RandomContextGenerator.context">(banditpylib.bandits.RandomContextGenerator method)</a>
 </li>
         <li><a href="banditpylib.bandits.thres_bandit.html#banditpylib.bandits.thres_bandit.ThresholdingBandit.context">(banditpylib.bandits.thres_bandit.ThresholdingBandit method)</a>
 </li>
@@ -1148,9 +1187,25 @@
 </li>
         <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit.context">(banditpylib.bandits.utils.Bandit method)</a>
 </li>
+        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.ContextGenerator.context">(banditpylib.bandits.utils.ContextGenerator method)</a>
+</li>
+        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.RandomContextGenerator.context">(banditpylib.bandits.utils.RandomContextGenerator method)</a>
+</li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextGenerator">ContextGenerator (class in banditpylib.bandits)</a>
+
+      <ul>
+        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.ContextGenerator">(class in banditpylib.bandits.utils)</a>
+</li>
+      </ul></li>
+      <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextualBandit">ContextualBandit (class in banditpylib.bandits)</a>
+
+      <ul>
+        <li><a href="banditpylib.bandits.contextual_bandit.html#banditpylib.bandits.contextual_bandit.ContextualBandit">(class in banditpylib.bandits.contextual_bandit)</a>
+</li>
+      </ul></li>
       <li><a href="banditpylib.protocols.html#banditpylib.protocols.Protocol.current_learner">current_learner() (banditpylib.protocols.Protocol property)</a>
 
       <ul>
@@ -1161,6 +1216,18 @@
 
       <ul>
         <li><a href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.CvarReward">(class in banditpylib.bandits.ordinary_mnl_bandit)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextGenerator.dimension">dimension() (banditpylib.bandits.ContextGenerator property)</a>
+
+      <ul>
+        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.ContextGenerator.dimension">(banditpylib.bandits.utils.ContextGenerator property)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -1220,16 +1287,16 @@
       <li><a href="banditpylib.bandits.linear_bandit.html#banditpylib.bandits.linear_bandit.LinearBandit.features">features() (banditpylib.bandits.linear_bandit.LinearBandit method)</a>
 
       <ul>
-        <li><a href="banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.linear_bandit_itf.LinearBanditItf.features">(banditpylib.bandits.linear_bandit_itf.LinearBanditItf method)</a>
-</li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBandit.features">(banditpylib.bandits.LinearBandit method)</a>
-</li>
-        <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBanditItf.features">(banditpylib.bandits.LinearBanditItf method)</a>
 </li>
       </ul></li>
       <li><a href="banditpylib.bandits.html#banditpylib.bandits.Bandit.feed">feed() (banditpylib.bandits.Bandit method)</a>
 
       <ul>
+        <li><a href="banditpylib.bandits.contextual_bandit.html#banditpylib.bandits.contextual_bandit.ContextualBandit.feed">(banditpylib.bandits.contextual_bandit.ContextualBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextualBandit.feed">(banditpylib.bandits.ContextualBandit method)</a>
+</li>
         <li><a href="banditpylib.bandits.linear_bandit.html#banditpylib.bandits.linear_bandit.LinearBandit.feed">(banditpylib.bandits.linear_bandit.LinearBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBandit.feed">(banditpylib.bandits.LinearBandit method)</a>
@@ -1315,18 +1382,12 @@
         <li><a href="banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.html#banditpylib.learners.ordinary_fcbai_learner.lilucb_heur.LilUCBHeuristic">(class in banditpylib.learners.ordinary_fcbai_learner.lilucb_heur)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBandit">LinearBandit (class in banditpylib.bandits)</a>
 
       <ul>
         <li><a href="banditpylib.bandits.linear_bandit.html#banditpylib.bandits.linear_bandit.LinearBandit">(class in banditpylib.bandits.linear_bandit)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBanditItf">LinearBanditItf (class in banditpylib.bandits)</a>
-
-      <ul>
-        <li><a href="banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.linear_bandit_itf.LinearBanditItf">(class in banditpylib.bandits.linear_bandit_itf)</a>
 </li>
       </ul></li>
       <li><a href="banditpylib.bandits.html#banditpylib.bandits.local_search_best_assortment">local_search_best_assortment() (in module banditpylib.bandits)</a>
@@ -1395,15 +1456,15 @@
 </li>
         <li><a href="banditpylib.bandits.html#module-banditpylib.bandits">banditpylib.bandits</a>
 </li>
-        <li><a href="banditpylib.bandits.linear_bandit.html#module-banditpylib.bandits.linear_bandit">banditpylib.bandits.linear_bandit</a>
+        <li><a href="banditpylib.bandits.contextual_bandit.html#module-banditpylib.bandits.contextual_bandit">banditpylib.bandits.contextual_bandit</a>
 </li>
-        <li><a href="banditpylib.bandits.linear_bandit_itf.html#module-banditpylib.bandits.linear_bandit_itf">banditpylib.bandits.linear_bandit_itf</a>
+        <li><a href="banditpylib.bandits.contextual_bandit_test.html#module-banditpylib.bandits.contextual_bandit_test">banditpylib.bandits.contextual_bandit_test</a>
+</li>
+        <li><a href="banditpylib.bandits.linear_bandit.html#module-banditpylib.bandits.linear_bandit">banditpylib.bandits.linear_bandit</a>
 </li>
         <li><a href="banditpylib.bandits.linear_bandit_test.html#module-banditpylib.bandits.linear_bandit_test">banditpylib.bandits.linear_bandit_test</a>
 </li>
         <li><a href="banditpylib.bandits.ordinary_bandit.html#module-banditpylib.bandits.ordinary_bandit">banditpylib.bandits.ordinary_bandit</a>
-</li>
-        <li><a href="banditpylib.bandits.ordinary_bandit_itf.html#module-banditpylib.bandits.ordinary_bandit_itf">banditpylib.bandits.ordinary_bandit_itf</a>
 </li>
         <li><a href="banditpylib.bandits.ordinary_bandit_test.html#module-banditpylib.bandits.ordinary_bandit_test">banditpylib.bandits.ordinary_bandit_test</a>
 </li>
@@ -1466,6 +1527,10 @@
         <li><a href="banditpylib.learners.ordinary_learner.moss.html#module-banditpylib.learners.ordinary_learner.moss">banditpylib.learners.ordinary_learner.moss</a>
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.moss_test.html#module-banditpylib.learners.ordinary_learner.moss_test">banditpylib.learners.ordinary_learner.moss_test</a>
+</li>
+        <li><a href="banditpylib.learners.ordinary_learner.softmax.html#module-banditpylib.learners.ordinary_learner.softmax">banditpylib.learners.ordinary_learner.softmax</a>
+</li>
+        <li><a href="banditpylib.learners.ordinary_learner.softmax_test.html#module-banditpylib.learners.ordinary_learner.softmax_test">banditpylib.learners.ordinary_learner.softmax_test</a>
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.ts.html#module-banditpylib.learners.ordinary_learner.ts">banditpylib.learners.ordinary_learner.ts</a>
 </li>
@@ -1549,11 +1614,15 @@
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.Bandit.name">(banditpylib.bandits.Bandit property)</a>
 </li>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextGenerator.name">(banditpylib.bandits.ContextGenerator property)</a>
+</li>
         <li><a href="banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.ordinary_mnl_bandit.Reward.name">(banditpylib.bandits.ordinary_mnl_bandit.Reward property)</a>
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.Reward.name">(banditpylib.bandits.Reward property)</a>
 </li>
         <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit.name">(banditpylib.bandits.utils.Bandit property)</a>
+</li>
+        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.ContextGenerator.name">(banditpylib.bandits.utils.ContextGenerator property)</a>
 </li>
         <li><a href="banditpylib.learners.html#banditpylib.learners.AllCorrect.name">(banditpylib.learners.AllCorrect property)</a>
 </li>
@@ -1598,12 +1667,6 @@
 
       <ul>
         <li><a href="banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.ordinary_bandit.OrdinaryBandit">(class in banditpylib.bandits.ordinary_bandit)</a>
-</li>
-      </ul></li>
-      <li><a href="banditpylib.bandits.html#banditpylib.bandits.OrdinaryBanditItf">OrdinaryBanditItf (class in banditpylib.bandits)</a>
-
-      <ul>
-        <li><a href="banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf">(class in banditpylib.bandits.ordinary_bandit_itf)</a>
 </li>
       </ul></li>
       <li><a href="banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner">OrdinaryFBBAILearner (class in banditpylib.learners.ordinary_fbbai_learner)</a>
@@ -1712,9 +1775,19 @@
         <li><a href="banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner.random_neighbors">(banditpylib.learners.ordinary_mnl_learner.utils.OrdinaryMNLLearner property)</a>
 </li>
       </ul></li>
+      <li><a href="banditpylib.bandits.html#banditpylib.bandits.RandomContextGenerator">RandomContextGenerator (class in banditpylib.bandits)</a>
+
+      <ul>
+        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.RandomContextGenerator">(class in banditpylib.bandits.utils)</a>
+</li>
+      </ul></li>
       <li><a href="banditpylib.bandits.html#banditpylib.bandits.Bandit.regret">regret() (banditpylib.bandits.Bandit method)</a>
 
       <ul>
+        <li><a href="banditpylib.bandits.contextual_bandit.html#banditpylib.bandits.contextual_bandit.ContextualBandit.regret">(banditpylib.bandits.contextual_bandit.ContextualBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextualBandit.regret">(banditpylib.bandits.ContextualBandit method)</a>
+</li>
         <li><a href="banditpylib.bandits.linear_bandit.html#banditpylib.bandits.linear_bandit.LinearBandit.regret">(banditpylib.bandits.linear_bandit.LinearBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBandit.regret">(banditpylib.bandits.LinearBandit method)</a>
@@ -1741,6 +1814,12 @@
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.Bandit.reset">(banditpylib.bandits.Bandit method)</a>
 </li>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextGenerator.reset">(banditpylib.bandits.ContextGenerator method)</a>
+</li>
+        <li><a href="banditpylib.bandits.contextual_bandit.html#banditpylib.bandits.contextual_bandit.ContextualBandit.reset">(banditpylib.bandits.contextual_bandit.ContextualBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextualBandit.reset">(banditpylib.bandits.ContextualBandit method)</a>
+</li>
         <li><a href="banditpylib.bandits.linear_bandit.html#banditpylib.bandits.linear_bandit.LinearBandit.reset">(banditpylib.bandits.linear_bandit.LinearBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBandit.reset">(banditpylib.bandits.LinearBandit method)</a>
@@ -1753,11 +1832,17 @@
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.reset">(banditpylib.bandits.OrdinaryMNLBandit method)</a>
 </li>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.RandomContextGenerator.reset">(banditpylib.bandits.RandomContextGenerator method)</a>
+</li>
         <li><a href="banditpylib.bandits.thres_bandit.html#banditpylib.bandits.thres_bandit.ThresholdingBandit.reset">(banditpylib.bandits.thres_bandit.ThresholdingBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.reset">(banditpylib.bandits.ThresholdingBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.Bandit.reset">(banditpylib.bandits.utils.Bandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.ContextGenerator.reset">(banditpylib.bandits.utils.ContextGenerator method)</a>
+</li>
+        <li><a href="banditpylib.bandits.utils.html#banditpylib.bandits.utils.RandomContextGenerator.reset">(banditpylib.bandits.utils.RandomContextGenerator method)</a>
 </li>
         <li><a href="banditpylib.learners.html#banditpylib.learners.Learner.reset">(banditpylib.learners.Learner method)</a>
 </li>
@@ -1796,6 +1881,10 @@
         <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.MOSS.reset">(banditpylib.learners.ordinary_learner.MOSS method)</a>
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.moss.html#banditpylib.learners.ordinary_learner.moss.MOSS.reset">(banditpylib.learners.ordinary_learner.moss.MOSS method)</a>
+</li>
+        <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.Softmax.reset">(banditpylib.learners.ordinary_learner.Softmax method)</a>
+</li>
+        <li><a href="banditpylib.learners.ordinary_learner.softmax.html#banditpylib.learners.ordinary_learner.softmax.Softmax.reset">(banditpylib.learners.ordinary_learner.softmax.Softmax method)</a>
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling.reset">(banditpylib.learners.ordinary_learner.ThompsonSampling method)</a>
 </li>
@@ -1942,6 +2031,12 @@
         <li><a href="banditpylib.protocols.single_player.html#banditpylib.protocols.single_player.SinglePlayerProtocol">(class in banditpylib.protocols.single_player)</a>
 </li>
       </ul></li>
+      <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.Softmax">Softmax (class in banditpylib.learners.ordinary_learner)</a>
+
+      <ul>
+        <li><a href="banditpylib.learners.ordinary_learner.softmax.html#banditpylib.learners.ordinary_learner.softmax.Softmax">(class in banditpylib.learners.ordinary_learner.softmax)</a>
+</li>
+      </ul></li>
       <li><a href="banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.SR">SR (class in banditpylib.learners.ordinary_fbbai_learner)</a>
 
       <ul>
@@ -1976,8 +2071,12 @@
 </li>
       <li><a href="banditpylib.arms.pseudo_arm_test.html#banditpylib.arms.pseudo_arm_test.TestPseudoArm.test_empirical_variance">test_empirical_variance() (banditpylib.arms.pseudo_arm_test.TestPseudoArm method)</a>
 </li>
-      <li><a href="banditpylib.bandits.linear_bandit_test.html#banditpylib.bandits.linear_bandit_test.TestLinearBandit.test_linear_bandit">test_linear_bandit() (banditpylib.bandits.linear_bandit_test.TestLinearBandit method)</a>
+      <li><a href="banditpylib.bandits.contextual_bandit_test.html#banditpylib.bandits.contextual_bandit_test.TestLinearBandit.test_linear_bandit">test_linear_bandit() (banditpylib.bandits.contextual_bandit_test.TestLinearBandit method)</a>
+
+      <ul>
+        <li><a href="banditpylib.bandits.linear_bandit_test.html#banditpylib.bandits.linear_bandit_test.TestLinearBandit.test_linear_bandit">(banditpylib.bandits.linear_bandit_test.TestLinearBandit method)</a>
 </li>
+      </ul></li>
       <li><a href="banditpylib.bandits.ordinary_mnl_bandit_test.html#banditpylib.bandits.ordinary_mnl_bandit_test.TestOrdinaryMNLBandit.test_local_search_best_assortment">test_local_search_best_assortment() (banditpylib.bandits.ordinary_mnl_bandit_test.TestOrdinaryMNLBandit method)</a>
 </li>
       <li><a href="banditpylib.bandits.ordinary_mnl_bandit_test.html#banditpylib.bandits.ordinary_mnl_bandit_test.TestOrdinaryMNLBandit.test_one_product">test_one_product() (banditpylib.bandits.ordinary_mnl_bandit_test.TestOrdinaryMNLBandit method)</a>
@@ -2019,6 +2118,8 @@
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.moss_test.html#banditpylib.learners.ordinary_learner.moss_test.TestMOSS.test_simple_run">(banditpylib.learners.ordinary_learner.moss_test.TestMOSS method)</a>
 </li>
+        <li><a href="banditpylib.learners.ordinary_learner.softmax_test.html#banditpylib.learners.ordinary_learner.softmax_test.TestEXP3.test_simple_run">(banditpylib.learners.ordinary_learner.softmax_test.TestEXP3 method)</a>
+</li>
         <li><a href="banditpylib.learners.ordinary_learner.ts_test.html#banditpylib.learners.ordinary_learner.ts_test.TestThompsonSampling.test_simple_run">(banditpylib.learners.ordinary_learner.ts_test.TestThompsonSampling method)</a>
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.ucb_test.html#banditpylib.learners.ordinary_learner.ucb_test.TestUCB.test_simple_run">(banditpylib.learners.ordinary_learner.ucb_test.TestUCB method)</a>
@@ -2051,17 +2152,23 @@
       <ul>
         <li><a href="banditpylib.learners.ordinary_learner.explore_then_commit_test.html#banditpylib.learners.ordinary_learner.explore_then_commit_test.TestEXP3">(class in banditpylib.learners.ordinary_learner.explore_then_commit_test)</a>
 </li>
+        <li><a href="banditpylib.learners.ordinary_learner.softmax_test.html#banditpylib.learners.ordinary_learner.softmax_test.TestEXP3">(class in banditpylib.learners.ordinary_learner.softmax_test)</a>
+</li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="banditpylib.learners.ordinary_fcbai_learner.exp_gap_test.html#banditpylib.learners.ordinary_fcbai_learner.exp_gap_test.TestExpGap">TestExpGap (class in banditpylib.learners.ordinary_fcbai_learner.exp_gap_test)</a>
 </li>
       <li><a href="banditpylib.arms.gaussian_arm_test.html#banditpylib.arms.gaussian_arm_test.TestGaussianArm">TestGaussianArm (class in banditpylib.arms.gaussian_arm_test)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="banditpylib.learners.ordinary_fcbai_learner.lilucb_heur_test.html#banditpylib.learners.ordinary_fcbai_learner.lilucb_heur_test.TestLilUCBHeuristic">TestLilUCBHeuristic (class in banditpylib.learners.ordinary_fcbai_learner.lilucb_heur_test)</a>
 </li>
-      <li><a href="banditpylib.bandits.linear_bandit_test.html#banditpylib.bandits.linear_bandit_test.TestLinearBandit">TestLinearBandit (class in banditpylib.bandits.linear_bandit_test)</a>
+      <li><a href="banditpylib.bandits.contextual_bandit_test.html#banditpylib.bandits.contextual_bandit_test.TestLinearBandit">TestLinearBandit (class in banditpylib.bandits.contextual_bandit_test)</a>
+
+      <ul>
+        <li><a href="banditpylib.bandits.linear_bandit_test.html#banditpylib.bandits.linear_bandit_test.TestLinearBandit">(class in banditpylib.bandits.linear_bandit_test)</a>
 </li>
+      </ul></li>
       <li><a href="banditpylib.learners.ordinary_learner.moss_test.html#banditpylib.learners.ordinary_learner.moss_test.TestMOSS">TestMOSS (class in banditpylib.learners.ordinary_learner.moss_test)</a>
 </li>
       <li><a href="banditpylib.bandits.ordinary_bandit_test.html#banditpylib.bandits.ordinary_bandit_test.TestOrdinaryBandit">TestOrdinaryBandit (class in banditpylib.bandits.ordinary_bandit_test)</a>
@@ -2129,21 +2236,17 @@
       <ul>
         <li><a href="banditpylib.arms.html#banditpylib.arms.PseudoArm.total_pulls">(banditpylib.arms.PseudoArm method)</a>
 </li>
-        <li><a href="banditpylib.bandits.linear_bandit.html#banditpylib.bandits.linear_bandit.LinearBandit.total_pulls">(banditpylib.bandits.linear_bandit.LinearBandit method)</a>
+        <li><a href="banditpylib.bandits.contextual_bandit.html#banditpylib.bandits.contextual_bandit.ContextualBandit.total_pulls">(banditpylib.bandits.contextual_bandit.ContextualBandit method)</a>
 </li>
-        <li><a href="banditpylib.bandits.linear_bandit_itf.html#banditpylib.bandits.linear_bandit_itf.LinearBanditItf.total_pulls">(banditpylib.bandits.linear_bandit_itf.LinearBanditItf method)</a>
+        <li><a href="banditpylib.bandits.html#banditpylib.bandits.ContextualBandit.total_pulls">(banditpylib.bandits.ContextualBandit method)</a>
+</li>
+        <li><a href="banditpylib.bandits.linear_bandit.html#banditpylib.bandits.linear_bandit.LinearBandit.total_pulls">(banditpylib.bandits.linear_bandit.LinearBandit method)</a>
 </li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBandit.total_pulls">(banditpylib.bandits.LinearBandit method)</a>
 </li>
-        <li><a href="banditpylib.bandits.html#banditpylib.bandits.LinearBanditItf.total_pulls">(banditpylib.bandits.LinearBanditItf method)</a>
-</li>
         <li><a href="banditpylib.bandits.ordinary_bandit.html#banditpylib.bandits.ordinary_bandit.OrdinaryBandit.total_pulls">(banditpylib.bandits.ordinary_bandit.OrdinaryBandit method)</a>
 </li>
-        <li><a href="banditpylib.bandits.ordinary_bandit_itf.html#banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf.total_pulls">(banditpylib.bandits.ordinary_bandit_itf.OrdinaryBanditItf method)</a>
-</li>
         <li><a href="banditpylib.bandits.html#banditpylib.bandits.OrdinaryBandit.total_pulls">(banditpylib.bandits.OrdinaryBandit method)</a>
-</li>
-        <li><a href="banditpylib.bandits.html#banditpylib.bandits.OrdinaryBanditItf.total_pulls">(banditpylib.bandits.OrdinaryBanditItf method)</a>
 </li>
       </ul></li>
       <li><a href="banditpylib.arms.pseudo_arm.html#banditpylib.arms.pseudo_arm.PseudoArm.total_rewards">total_rewards() (banditpylib.arms.pseudo_arm.PseudoArm method)</a>
@@ -2236,6 +2339,10 @@
         <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.MOSS.update">(banditpylib.learners.ordinary_learner.MOSS method)</a>
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.moss.html#banditpylib.learners.ordinary_learner.moss.MOSS.update">(banditpylib.learners.ordinary_learner.moss.MOSS method)</a>
+</li>
+        <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.Softmax.update">(banditpylib.learners.ordinary_learner.Softmax method)</a>
+</li>
+        <li><a href="banditpylib.learners.ordinary_learner.softmax.html#banditpylib.learners.ordinary_learner.softmax.Softmax.update">(banditpylib.learners.ordinary_learner.softmax.Softmax method)</a>
 </li>
         <li><a href="banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling.update">(banditpylib.learners.ordinary_learner.ThompsonSampling method)</a>
 </li>

@@ -162,7 +162,7 @@
     <span class="n">ber_arm</span> <span class="o">=</span> <span class="n">BernoulliArm</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="n">set_of_rewards</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ber_arm</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
     <span class="k">assert</span> <span class="n">set_of_rewards</span> <span class="o">==</span> <span class="nb">set</span><span class="p">({</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">}),</span> \
-        <span class="s2">&quot;Some rewards are out of range {0, 1}!&quot;</span></div></div>
+        <span class="s2">&quot;Reward should be either 0 or 1.&quot;</span></div></div>
 </pre></div>
 
            </div>
