@@ -13,6 +13,9 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
 
   
   
@@ -29,6 +32,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -85,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">banditpylib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -167,7 +171,7 @@
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Bandit</span>
 
 
-<div class="viewcode-block" id="search"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.search">[docs]</a><span class="k">def</span> <span class="nf">search</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">search</span><span class="p">(</span>
     <span class="n">assortments</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
     <span class="n">product_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">next_product_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -195,12 +199,12 @@
            <span class="n">assortment</span><span class="o">.</span><span class="n">union</span><span class="p">({</span><span class="n">next_product_id</span><span class="p">}),</span> <span class="n">card_limit</span><span class="p">,</span>
            <span class="n">restricted_products</span><span class="p">)</span>
   <span class="n">search</span><span class="p">(</span><span class="n">assortments</span><span class="p">,</span> <span class="n">product_num</span><span class="p">,</span> <span class="n">next_product_id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">assortment</span><span class="p">,</span> <span class="n">card_limit</span><span class="p">,</span>
-         <span class="n">restricted_products</span><span class="p">)</span></div>
+         <span class="n">restricted_products</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Reward"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.Reward">[docs]</a><span class="k">class</span> <span class="nc">Reward</span><span class="p">:</span>
+<div class="viewcode-block" id="Reward"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.Reward">[docs]</a><span class="k">class</span> <span class="nc">Reward</span><span class="p">:</span>
   <span class="sd">&quot;&quot;&quot;General reward class&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Reward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.Reward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+<div class="viewcode-block" id="Reward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.Reward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      name: alias name</span>
@@ -221,7 +225,7 @@
 <span class="sd">      default reward name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Reward.calc"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.Reward.calc">[docs]</a>  <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="Reward.calc"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.Reward.calc">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
@@ -245,14 +249,14 @@
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Revenues of products are not set yet!&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span>
 
-<div class="viewcode-block" id="Reward.set_preference_params"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.Reward.set_preference_params">[docs]</a>  <span class="k">def</span> <span class="nf">set_preference_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preference_params</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<div class="viewcode-block" id="Reward.set_preference_params"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.Reward.set_preference_params">[docs]</a>  <span class="k">def</span> <span class="nf">set_preference_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preference_params</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      preference_params: preference parameters of products</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span> <span class="o">=</span> <span class="n">preference_params</span></div>
 
-<div class="viewcode-block" id="Reward.set_revenues"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.Reward.set_revenues">[docs]</a>  <span class="k">def</span> <span class="nf">set_revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<div class="viewcode-block" id="Reward.set_revenues"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.Reward.set_revenues">[docs]</a>  <span class="k">def</span> <span class="nf">set_revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      revenues: revenues of products</span>
@@ -260,9 +264,9 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span> <span class="o">=</span> <span class="n">revenues</span></div></div>
 
 
-<div class="viewcode-block" id="MeanReward"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.MeanReward">[docs]</a><span class="k">class</span> <span class="nc">MeanReward</span><span class="p">(</span><span class="n">Reward</span><span class="p">):</span>
+<div class="viewcode-block" id="MeanReward"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.MeanReward">[docs]</a><span class="k">class</span> <span class="nc">MeanReward</span><span class="p">(</span><span class="n">Reward</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Mean reward&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="MeanReward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.MeanReward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="MeanReward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.MeanReward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      name: alias name</span>
@@ -276,7 +280,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;mean_reward&#39;</span>
 
-<div class="viewcode-block" id="MeanReward.calc"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.MeanReward.calc">[docs]</a>  <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="viewcode-block" id="MeanReward.calc"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.MeanReward.calc">[docs]</a>  <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      assortment: assortment to calculate</span>
@@ -293,9 +297,9 @@
     <span class="p">])</span></div></div>
 
 
-<div class="viewcode-block" id="CvarReward"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.CvarReward">[docs]</a><span class="k">class</span> <span class="nc">CvarReward</span><span class="p">(</span><span class="n">Reward</span><span class="p">):</span>
+<div class="viewcode-block" id="CvarReward"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.CvarReward">[docs]</a><span class="k">class</span> <span class="nc">CvarReward</span><span class="p">(</span><span class="n">Reward</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;CVaR reward&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="CvarReward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.CvarReward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="CvarReward.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.CvarReward.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      alpha: percentile of cvar</span>
@@ -322,7 +326,7 @@
     <span class="sd">&quot;&quot;&quot;percentile of cvar&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__alpha</span>
 
-<div class="viewcode-block" id="CvarReward.calc"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.CvarReward.calc">[docs]</a>  <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="viewcode-block" id="CvarReward.calc"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.CvarReward.calc">[docs]</a>  <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      assortment: assortment to calculate</span>
@@ -362,7 +366,7 @@
     <span class="k">return</span> <span class="n">cvar_alpha</span></div></div>
 
 
-<div class="viewcode-block" id="search_best_assortment"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.search_best_assortment">[docs]</a><span class="k">def</span> <span class="nf">search_best_assortment</span><span class="p">(</span><span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
+<div class="viewcode-block" id="search_best_assortment"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.search_best_assortment">[docs]</a><span class="k">def</span> <span class="nf">search_best_assortment</span><span class="p">(</span><span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
                            <span class="n">card_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
                            <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
   <span class="sd">&quot;&quot;&quot;Search assortment with the maximum reward</span>
@@ -412,7 +416,7 @@
   <span class="k">return</span> <span class="n">sorted_assort</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_assort</span><span class="p">))]</span></div>
 
 
-<div class="viewcode-block" id="local_search_best_assortment"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.local_search_best_assortment">[docs]</a><span class="k">def</span> <span class="nf">local_search_best_assortment</span><span class="p">(</span>
+<div class="viewcode-block" id="local_search_best_assortment"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.local_search_best_assortment">[docs]</a><span class="k">def</span> <span class="nf">local_search_best_assortment</span><span class="p">(</span>
     <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
     <span class="n">random_neighbors</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">card_limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -503,7 +507,7 @@
   <span class="k">return</span> <span class="p">(</span><span class="n">best_reward</span><span class="p">,</span> <span class="n">best_assortment</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="OrdinaryMNLBandit"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit">[docs]</a><span class="k">class</span> <span class="nc">OrdinaryMNLBandit</span><span class="p">(</span><span class="n">Bandit</span><span class="p">):</span>
+<div class="viewcode-block" id="OrdinaryMNLBandit"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit">[docs]</a><span class="k">class</span> <span class="nc">OrdinaryMNLBandit</span><span class="p">(</span><span class="n">Bandit</span><span class="p">):</span>
   <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Ordinary MNL bandit</span>
 
 <span class="sd">  There are a total of :math:`N` products, where products are numbered from 1 by</span>
@@ -527,7 +531,7 @@
 
 <span class="sd">  where :math:`S^*` is the optimal assortment.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="OrdinaryMNLBandit.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<div class="viewcode-block" id="OrdinaryMNLBandit.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
       <span class="bp">self</span><span class="p">,</span>
       <span class="n">preference_params</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
       <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -650,7 +654,7 @@
 
     <span class="k">return</span> <span class="n">arm_rewards_pair</span>
 
-<div class="viewcode-block" id="OrdinaryMNLBandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">Actions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Feedback</span><span class="p">:</span>
+<div class="viewcode-block" id="OrdinaryMNLBandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">Actions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Feedback</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Serve multiple assortments</span>
 
 <span class="sd">    Args:</span>
@@ -666,7 +670,7 @@
         <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">feedback</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLBandit.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="OrdinaryMNLBandit.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Reset the bandit environment</span>
 
 <span class="sd">    .. warning::</span>
@@ -674,35 +678,35 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">=</span> <span class="mf">0.0</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLBandit.context"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.context">[docs]</a>  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="OrdinaryMNLBandit.context"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.context">[docs]</a>  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      current state of the ordinary mnl bandit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLBandit.revenues"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.revenues">[docs]</a>  <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="OrdinaryMNLBandit.revenues"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.revenues">[docs]</a>  <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      revenues of products (product 0 is included, which is always 0.0)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLBandit.product_num"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.product_num">[docs]</a>  <span class="k">def</span> <span class="nf">product_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="OrdinaryMNLBandit.product_num"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.product_num">[docs]</a>  <span class="k">def</span> <span class="nf">product_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      number of products (not including product 0)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLBandit.card_limit"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.card_limit">[docs]</a>  <span class="k">def</span> <span class="nf">card_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="viewcode-block" id="OrdinaryMNLBandit.card_limit"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.card_limit">[docs]</a>  <span class="k">def</span> <span class="nf">card_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      cardinality limit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLBandit.regret"><a class="viewcode-back" href="../../../banditpylib.bandits.ordinary_mnl_bandit.html#banditpylib.bandits.OrdinaryMNLBandit.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="viewcode-block" id="OrdinaryMNLBandit.regret"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      goal: goal of the learner</span>

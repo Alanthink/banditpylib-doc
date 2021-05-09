@@ -13,6 +13,9 @@
   
   <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
 
   
   
@@ -29,6 +32,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
@@ -85,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">banditpylib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -157,12 +161,12 @@
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">OrdinaryLearner</span>
 
 
-<div class="viewcode-block" id="Uniform"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.uniform.html#banditpylib.learners.ordinary_learner.Uniform">[docs]</a><span class="k">class</span> <span class="nc">Uniform</span><span class="p">(</span><span class="n">OrdinaryLearner</span><span class="p">):</span>
+<div class="viewcode-block" id="Uniform"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.Uniform">[docs]</a><span class="k">class</span> <span class="nc">Uniform</span><span class="p">(</span><span class="n">OrdinaryLearner</span><span class="p">):</span>
   <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Uniform policy</span>
 
 <span class="sd">  Play each arm the same number of times.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Uniform.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.uniform.html#banditpylib.learners.ordinary_learner.Uniform.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Uniform.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.Uniform.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      arm_num: number of arms</span>
@@ -177,7 +181,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;uniform&#39;</span>
 
-<div class="viewcode-block" id="Uniform.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.uniform.html#banditpylib.learners.ordinary_learner.Uniform.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Uniform.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.Uniform.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Reset the learner</span>
 
 <span class="sd">    .. warning::</span>
@@ -186,7 +190,7 @@
     <span class="c1"># current time step</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span></div>
 
-<div class="viewcode-block" id="Uniform.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.uniform.html#banditpylib.learners.ordinary_learner.Uniform.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
+<div class="viewcode-block" id="Uniform.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.Uniform.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      context: context of the ordinary bandit which should be `None`</span>
@@ -202,7 +206,7 @@
     <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">actions</span></div>
 
-<div class="viewcode-block" id="Uniform.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.uniform.html#banditpylib.learners.ordinary_learner.Uniform.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
+<div class="viewcode-block" id="Uniform.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.Uniform.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Learner update</span>
 
 <span class="sd">    Args:</span>

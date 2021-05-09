@@ -1,7 +1,6 @@
-banditpylib.protocols package
+banditpylib.protocols Package
 =============================
 
-.. automodule:: banditpylib.protocols
-   :members:
-   :undoc-members:
-   :show-inheritance:
+
+.. automodapi:: banditpylib.protocols
+   :no-heading:

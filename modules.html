@@ -7,12 +7,15 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Banditpylib &mdash; banditpylib 0.9.0 documentation</title>
+  <title>banditpylib &mdash; banditpylib 0.9.0 documentation</title>
   
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
 
   
   
@@ -29,6 +32,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -87,7 +91,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="readme_link.html">Readme</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Banditpylib</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">banditpylib</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="banditpylib.html">Subpackages</a></li>
 </ul>
 </li>
@@ -140,7 +144,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Banditpylib</li>
+      <li>banditpylib</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -160,23 +164,79 @@
            <div itemprop="articleBody">
             
   <div class="section" id="banditpylib">
-<h1>Banditpylib<a class="headerlink" href="#banditpylib" title="Permalink to this headline">¶</a></h1>
+<h1>banditpylib<a class="headerlink" href="#banditpylib" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="banditpylib.html">Subpackages</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="banditpylib.arms.html">banditpylib.arms package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="banditpylib.bandits.html">banditpylib.bandits package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="banditpylib.learners.html">banditpylib.learners package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="banditpylib.learners.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="banditpylib.learners.ordinary_fbbai_learner.html">banditpylib.learners.ordinary_fbbai_learner package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="banditpylib.learners.ordinary_fcbai_learner.html">banditpylib.learners.ordinary_fcbai_learner package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="banditpylib.learners.ordinary_learner.html">banditpylib.learners.ordinary_learner package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="banditpylib.learners.ordinary_mnl_learner.html">banditpylib.learners.ordinary_mnl_learner package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="banditpylib.arms.html">banditpylib.arms Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="banditpylib.arms.html#classes">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.arms.Arm.html">Arm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.arms.BernoulliArm.html">BernoulliArm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.arms.GaussianArm.html">GaussianArm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.arms.PseudoArm.html">PseudoArm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="banditpylib.arms.html#class-inheritance-diagram">Class Inheritance Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="banditpylib.bandits.html">banditpylib.bandits Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="banditpylib.bandits.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.search_best_assortment.html">search_best_assortment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.local_search_best_assortment.html">local_search_best_assortment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="banditpylib.bandits.html#classes">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.Bandit.html">Bandit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.OrdinaryBandit.html">OrdinaryBandit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.LinearBandit.html">LinearBandit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.Reward.html">Reward</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.MeanReward.html">MeanReward</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.CvarReward.html">CvarReward</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.OrdinaryMNLBandit.html">OrdinaryMNLBandit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.ThresholdingBandit.html">ThresholdingBandit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.ContextualBandit.html">ContextualBandit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.ContextGenerator.html">ContextGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.bandits.RandomContextGenerator.html">RandomContextGenerator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="banditpylib.bandits.html#class-inheritance-diagram">Class Inheritance Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="banditpylib.learners.html">banditpylib.learners Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="banditpylib.learners.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.learners.argmax_or_min.html">argmax_or_min</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.learners.argmax_or_min_tuple.html">argmax_or_min_tuple</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="banditpylib.learners.html#classes">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.learners.Goal.html">Goal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.learners.BestArmId.html">BestArmId</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.learners.MaxReward.html">MaxReward</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.learners.MaxCorrectAnswers.html">MaxCorrectAnswers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.learners.AllCorrect.html">AllCorrect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.learners.Learner.html">Learner</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="banditpylib.learners.html#class-inheritance-diagram">Class Inheritance Diagram</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="banditpylib.learners.html#subpackages">Subpackages</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="banditpylib.protocols.html">banditpylib.protocols package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="banditpylib.protocols.html">banditpylib.protocols Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="banditpylib.protocols.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.protocols.parse_trials_data.html">parse_trials_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.protocols.trial_data_messages_to_dict.html">trial_data_messages_to_dict</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="banditpylib.protocols.html#classes">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.protocols.Protocol.html">Protocol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/banditpylib.protocols.SinglePlayerProtocol.html">SinglePlayerProtocol</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="banditpylib.protocols.html#class-inheritance-diagram">Class Inheritance Diagram</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

@@ -13,6 +13,9 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
 
   
   
@@ -29,6 +32,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -85,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">banditpylib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -160,12 +164,12 @@
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Arm</span>
 
 
-<div class="viewcode-block" id="BernoulliArm"><a class="viewcode-back" href="../../../banditpylib.arms.bernoulli_arm.html#banditpylib.arms.BernoulliArm">[docs]</a><span class="k">class</span> <span class="nc">BernoulliArm</span><span class="p">(</span><span class="n">Arm</span><span class="p">):</span>
+<div class="viewcode-block" id="BernoulliArm"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.BernoulliArm">[docs]</a><span class="k">class</span> <span class="nc">BernoulliArm</span><span class="p">(</span><span class="n">Arm</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Bernoulli arm</span>
 
 <span class="sd">  Arm with rewards generated from a Bernoulli distribution.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="BernoulliArm.__init__"><a class="viewcode-back" href="../../../banditpylib.arms.bernoulli_arm.html#banditpylib.arms.BernoulliArm.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="BernoulliArm.__init__"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.BernoulliArm.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      mu: mean of rewards</span>
@@ -190,7 +194,7 @@
     <span class="sd">&quot;&quot;&quot;mean of rewards&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__mu</span>
 
-<div class="viewcode-block" id="BernoulliArm.pull"><a class="viewcode-back" href="../../../banditpylib.arms.bernoulli_arm.html#banditpylib.arms.BernoulliArm.pull">[docs]</a>  <span class="k">def</span> <span class="nf">pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<div class="viewcode-block" id="BernoulliArm.pull"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.BernoulliArm.pull">[docs]</a>  <span class="k">def</span> <span class="nf">pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Pull the arm</span>
 
 <span class="sd">    When pulls is None, a float number will be returned. Otherwise, a numpy</span>

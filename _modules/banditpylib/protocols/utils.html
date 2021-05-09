@@ -13,6 +13,9 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
 
   
   
@@ -29,6 +32,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -85,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">banditpylib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -171,17 +175,17 @@
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Learner</span>
 
 
-<div class="viewcode-block" id="time_seed"><a class="viewcode-back" href="../../../banditpylib.protocols.utils.html#banditpylib.protocols.time_seed">[docs]</a><span class="k">def</span> <span class="nf">time_seed</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">time_seed</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
   <span class="sd">&quot;&quot;&quot;Generate random seed using current time</span>
 
 <span class="sd">  Returns:</span>
 <span class="sd">    random seed</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="n">tem_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-  <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="n">tem_time</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">tem_time</span><span class="p">))</span> <span class="o">*</span> <span class="mi">10000000</span><span class="p">)</span></div>
+  <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="n">tem_time</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">tem_time</span><span class="p">))</span> <span class="o">*</span> <span class="mi">10000000</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="parse_trials_data"><a class="viewcode-back" href="../../../banditpylib.protocols.utils.html#banditpylib.protocols.parse_trials_data">[docs]</a><span class="k">def</span> <span class="nf">parse_trials_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Trial</span><span class="p">]:</span>
+<div class="viewcode-block" id="parse_trials_data"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.parse_trials_data">[docs]</a><span class="k">def</span> <span class="nf">parse_trials_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Trial</span><span class="p">]:</span>
   <span class="sd">&quot;&quot;&quot;Retrieve a list of Trial from bytes data</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="n">trials_data</span> <span class="o">=</span> <span class="p">[]</span>
@@ -197,7 +201,7 @@
   <span class="k">return</span> <span class="n">trials_data</span></div>
 
 
-<div class="viewcode-block" id="trial_data_messages_to_dict"><a class="viewcode-back" href="../../../banditpylib.protocols.utils.html#banditpylib.protocols.trial_data_messages_to_dict">[docs]</a><span class="k">def</span> <span class="nf">trial_data_messages_to_dict</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<div class="viewcode-block" id="trial_data_messages_to_dict"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.trial_data_messages_to_dict">[docs]</a><span class="k">def</span> <span class="nf">trial_data_messages_to_dict</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
   <span class="sd">&quot;&quot;&quot;Read file storing a couple of Trial and transform to pandas</span>
 <span class="sd">  DataFrame</span>
 <span class="sd">  &quot;&quot;&quot;</span>
@@ -217,14 +221,14 @@
     <span class="k">return</span> <span class="n">data_df</span></div>
 
 
-<div class="viewcode-block" id="Protocol"><a class="viewcode-back" href="../../../banditpylib.protocols.utils.html#banditpylib.protocols.Protocol">[docs]</a><span class="k">class</span> <span class="nc">Protocol</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<div class="viewcode-block" id="Protocol"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.Protocol">[docs]</a><span class="k">class</span> <span class="nc">Protocol</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Abstract class for a protocol which is used to coordinate the interactions</span>
 <span class="sd">  between the learner and the bandit environment.</span>
 
 <span class="sd">  For each setup, just call :func:`play` to start the game.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Protocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.utils.html#banditpylib.protocols.Protocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span> <span class="n">learners</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Learner</span><span class="p">]):</span>
+<div class="viewcode-block" id="Protocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.Protocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span> <span class="n">learners</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Learner</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      bandit: bandit environment</span>
@@ -279,7 +283,7 @@
       <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
       <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Protocol.play"><a class="viewcode-back" href="../../../banditpylib.protocols.utils.html#banditpylib.protocols.Protocol.play">[docs]</a>  <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trials</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">processes</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Protocol.play"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.Protocol.play">[docs]</a>  <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trials</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">processes</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Start playing the game</span>
 
 <span class="sd">    Args:</span>

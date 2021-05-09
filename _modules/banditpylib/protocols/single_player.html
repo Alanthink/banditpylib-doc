@@ -13,6 +13,9 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
 
   
   
@@ -29,6 +32,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
@@ -85,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">banditpylib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -165,7 +169,7 @@
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Protocol</span>
 
 
-<div class="viewcode-block" id="SinglePlayerProtocol"><a class="viewcode-back" href="../../../banditpylib.protocols.single_player.html#banditpylib.protocols.SinglePlayerProtocol">[docs]</a><span class="k">class</span> <span class="nc">SinglePlayerProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<div class="viewcode-block" id="SinglePlayerProtocol"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.SinglePlayerProtocol">[docs]</a><span class="k">class</span> <span class="nc">SinglePlayerProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Single player protocol</span>
 
 <span class="sd">  This protocol is used to simulate the ordinary single-player game. It runs in</span>
@@ -186,7 +190,7 @@
 <span class="sd">    learner wants to communicate with the bandit environment which is at most</span>
 <span class="sd">    `horizon`.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="SinglePlayerProtocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.single_player.html#banditpylib.protocols.SinglePlayerProtocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="SinglePlayerProtocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.SinglePlayerProtocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span>
                <span class="n">learners</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Learner</span><span class="p">],</span>
                <span class="n">intermediate_regrets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>

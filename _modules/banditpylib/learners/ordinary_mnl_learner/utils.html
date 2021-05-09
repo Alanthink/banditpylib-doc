@@ -13,6 +13,9 @@
   
   <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
 
   
   
@@ -29,6 +32,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
@@ -85,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">Banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">banditpylib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -162,13 +166,13 @@
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Learner</span><span class="p">,</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">MaxReward</span>
 
 
-<div class="viewcode-block" id="OrdinaryMNLLearner"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner">[docs]</a><span class="k">class</span> <span class="nc">OrdinaryMNLLearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
+<div class="viewcode-block" id="OrdinaryMNLLearner"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner">[docs]</a><span class="k">class</span> <span class="nc">OrdinaryMNLLearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Base class for learners in the ordinary mnl bandit</span>
 
 <span class="sd">  Product 0 is reserved for non-purchase. And it is assumed that the preference</span>
 <span class="sd">  parameter for non-purchase is 1.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="OrdinaryMNLLearner.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<div class="viewcode-block" id="OrdinaryMNLLearner.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">use_local_search</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">random_neighbors</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
@@ -206,21 +210,21 @@
     <span class="sd">&quot;&quot;&quot;type of environment the learner works with&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">OrdinaryMNLBandit</span>
 
-<div class="viewcode-block" id="OrdinaryMNLLearner.product_num"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.product_num">[docs]</a>  <span class="k">def</span> <span class="nf">product_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="OrdinaryMNLLearner.product_num"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.product_num">[docs]</a>  <span class="k">def</span> <span class="nf">product_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      product numbers</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLLearner.revenues"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.revenues">[docs]</a>  <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="OrdinaryMNLLearner.revenues"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.revenues">[docs]</a>  <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      revenues of products (product 0 is included)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span></div>
 
-<div class="viewcode-block" id="OrdinaryMNLLearner.card_limit"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.utils.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.card_limit">[docs]</a>  <span class="k">def</span> <span class="nf">card_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="OrdinaryMNLLearner.card_limit"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.card_limit">[docs]</a>  <span class="k">def</span> <span class="nf">card_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      cardinality limit</span>

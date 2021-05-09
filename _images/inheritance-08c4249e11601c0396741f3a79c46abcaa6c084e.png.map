@@ -1,0 +1,14 @@
+<map id="inheritance29b6346802" name="inheritance29b6346802">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,197,77,221"/>
+<area shape="rect" id="node6" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,197,197,221"/>
+<area shape="rect" id="node2" href="#banditpylib.learners.ordinary_learner.EXP3" target="_top" title="EXP3 policy :cite:`DBLP:journals/siamcomp/AuerCFS02`" alt="" coords="447,5,519,29"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner" target="_top" title="Base class for learners in the ordinary multi&#45;armed bandit" alt="" coords="245,197,364,221"/>
+<area shape="rect" id="node4" href="#banditpylib.learners.ordinary_learner.EpsGreedy" target="_top" title="Epsilon&#45;Greedy policy" alt="" coords="439,53,527,77"/>
+<area shape="rect" id="node5" href="#banditpylib.learners.ordinary_learner.ExploreThenCommit" target="_top" title="Explore&#45;Then&#45;Commit policy" alt="" coords="412,101,555,125"/>
+<area shape="rect" id="node7" href="#banditpylib.learners.ordinary_learner.MOSS" target="_top" title="MOSS policy :cite:`audibert2009minimax`" alt="" coords="447,149,519,173"/>
+<area shape="rect" id="node8" href="#banditpylib.learners.ordinary_learner.Softmax" target="_top" title="Softmax policy" alt="" coords="447,197,519,221"/>
+<area shape="rect" id="node9" href="#banditpylib.learners.ordinary_learner.ThompsonSampling" target="_top" title="Thompson Sampling policy :cite:`agrawal2017near`" alt="" coords="413,245,553,269"/>
+<area shape="rect" id="node10" href="#banditpylib.learners.ordinary_learner.UCB" target="_top" title="Upper Confidence Bound policy :cite:`auer2002finite`" alt="" coords="447,293,519,317"/>
+<area shape="rect" id="node11" href="#banditpylib.learners.ordinary_learner.UCBV" target="_top" title="UCBV policy :cite:`audibert2009exploration`" alt="" coords="447,341,519,365"/>
+<area shape="rect" id="node12" href="#banditpylib.learners.ordinary_learner.Uniform" target="_top" title="Uniform policy" alt="" coords="447,389,519,413"/>
+</map>
