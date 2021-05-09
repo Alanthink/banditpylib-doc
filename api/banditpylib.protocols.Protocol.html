@@ -188,7 +188,6 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Abstract class for a protocol which is used to coordinate the interactions
 between the learner and the bandit environment.</p>
-<p>For each setup, just call <a class="reference internal" href="../banditpylib.protocols.html#banditpylib.protocols.Protocol.play" title="banditpylib.protocols.Protocol.play"><code class="xref py py-func docutils literal notranslate"><span class="pre">play()</span></code></a> to start the game.</p>
 <p class="rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -197,13 +196,13 @@ between the learner and the bandit environment.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.protocols.html#banditpylib.protocols.Protocol.bandit" title="banditpylib.protocols.Protocol.bandit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bandit</span></code></a></p></td>
-<td><p>bandit environment the simulator is running in</p></td>
+<td><p>Bandit environment the simulator is using the learners to play with</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../banditpylib.protocols.html#banditpylib.protocols.Protocol.current_learner" title="banditpylib.protocols.Protocol.current_learner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_learner</span></code></a></p></td>
-<td><p>current learner the simulator is using</p></td>
+<td><p>The learner used by the simulator currently</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.protocols.html#banditpylib.protocols.Protocol.name" title="banditpylib.protocols.Protocol.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p>protocol name</p></td>
+<td><p>Protocol name</p></td>
 </tr>
 </tbody>
 </table>
@@ -223,19 +222,19 @@ between the learner and the bandit environment.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.protocols.Protocol.bandit">
 <span class="sig-name descname"><span class="pre">bandit</span></span><a class="headerlink" href="#banditpylib.protocols.Protocol.bandit" title="Permalink to this definition">¶</a></dt>
-<dd><p>bandit environment the simulator is running in</p>
+<dd><p>Bandit environment the simulator is using the learners to play with</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.protocols.Protocol.current_learner">
 <span class="sig-name descname"><span class="pre">current_learner</span></span><a class="headerlink" href="#banditpylib.protocols.Protocol.current_learner" title="Permalink to this definition">¶</a></dt>
-<dd><p>current learner the simulator is using</p>
+<dd><p>The learner used by the simulator currently</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.protocols.Protocol.name">
 <span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#banditpylib.protocols.Protocol.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>protocol name</p>
+<dd><p>Protocol name</p>
 </dd></dl>
 
 <p class="rubric">Methods Documentation</p>
@@ -268,7 +267,7 @@ printed out.</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>bandit</strong> – bandit environment</p></li>
-<li><p><strong>learners</strong> – learners to be compared with</p></li>
+<li><p><strong>learners</strong> – learners used to run simulations</p></li>
 </ul>
 </dd>
 </dl>
@@ -277,19 +276,19 @@ printed out.</p></li>
 <dl class="py property">
 <dt class="sig sig-object py" id="id0">
 <em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
-<dd><p>protocol name</p>
+<dd><p>Protocol name</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="id1">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bandit</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.bandits.utils.Bandit</span></em><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
-<dd><p>bandit environment the simulator is running in</p>
+<dd><p>Bandit environment the simulator is using the learners to play with</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="id2">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">current_learner</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.learners.utils.Learner</span></em><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
-<dd><p>current learner the simulator is using</p>
+<dd><p>The learner used by the simulator currently</p>
 </dd></dl>
 
 <dl class="py method">

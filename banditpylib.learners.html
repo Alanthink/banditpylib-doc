@@ -220,7 +220,7 @@ When there is a tie, randomly output one of them.</p>
 <dt class="sig sig-object py" id="banditpylib.learners.Goal">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.</span></span><span class="sig-name descname"><span class="pre">Goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Goal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.Goal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>Base class for the goal of a learner</p>
+<p>Abstract class for the goal of a learner</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.Goal.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Goal.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.Goal.__init__" title="Permalink to this definition">¶</a></dt>
@@ -234,13 +234,13 @@ When there is a tie, randomly output one of them.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.Goal.name">
 <em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.Goal.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>name of the goal</p>
+<dd><p>Name of the goal</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.Goal.value">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#banditpylib.learners.Goal.value" title="Permalink to this definition">¶</a></dt>
-<dd><p>value obtained by the learner</p>
+<dd><p>Value obtained by the learner</p>
 </dd></dl>
 
 </dd></dl>
@@ -263,7 +263,7 @@ When there is a tie, randomly output one of them.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.BestArmId.name">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.BestArmId.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>name of the goal</p>
+<dd><p>Name of the goal</p>
 </dd></dl>
 
 </dd></dl>
@@ -286,7 +286,7 @@ When there is a tie, randomly output one of them.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.MaxReward.name">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.MaxReward.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>name of the goal</p>
+<dd><p>Name of the goal</p>
 </dd></dl>
 
 </dd></dl>
@@ -296,6 +296,7 @@ When there is a tie, randomly output one of them.</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.</span></span><span class="sig-name descname"><span class="pre">MaxCorrectAnswers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">answers</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#MaxCorrectAnswers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.MaxCorrectAnswers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#banditpylib.learners.Goal" title="banditpylib.learners.utils.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Goal</span></code></a></p>
 <p>Maximize correct answers</p>
+<p>This is used by thresholding bandit learners.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.MaxCorrectAnswers.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">answers</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#MaxCorrectAnswers.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.MaxCorrectAnswers.__init__" title="Permalink to this definition">¶</a></dt>
@@ -309,7 +310,7 @@ When there is a tie, randomly output one of them.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.MaxCorrectAnswers.name">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.MaxCorrectAnswers.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>name of the goal</p>
+<dd><p>Name of the goal</p>
 </dd></dl>
 
 </dd></dl>
@@ -319,6 +320,7 @@ When there is a tie, randomly output one of them.</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.</span></span><span class="sig-name descname"><span class="pre">AllCorrect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">answers</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#AllCorrect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.AllCorrect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#banditpylib.learners.Goal" title="banditpylib.learners.utils.Goal"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Goal</span></code></a></p>
 <p>Make all answers correct</p>
+<p>This is used by thresholding bandit learners.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.AllCorrect.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">answers</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#AllCorrect.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.AllCorrect.__init__" title="Permalink to this definition">¶</a></dt>
@@ -332,7 +334,7 @@ When there is a tie, randomly output one of them.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.AllCorrect.name">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.AllCorrect.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>name of the goal</p>
+<dd><p>Name of the goal</p>
 </dd></dl>
 
 </dd></dl>
@@ -342,8 +344,6 @@ When there is a tie, randomly output one of them.</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.</span></span><span class="sig-name descname"><span class="pre">Learner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.Learner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Abstract class for learners</p>
-<p><a class="reference internal" href="#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> returns the actions the learner wants to take. <a class="reference internal" href="#banditpylib.learners.Learner.update" title="banditpylib.learners.Learner.update"><code class="xref py py-func docutils literal notranslate"><span class="pre">update()</span></code></a>
-is used to pass the feedback of the environment to the learner.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.Learner.__init__" title="Permalink to this definition">¶</a></dt>
@@ -357,13 +357,13 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.name">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.Learner.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>learner name</p>
+<dd><p>Name of the learner</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.running_environment">
 <em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">running_environment</span></span><em class="property"><span class="pre">:</span> <span class="pre">type</span></em><a class="headerlink" href="#banditpylib.learners.Learner.running_environment" title="Permalink to this definition">¶</a></dt>
-<dd><p>type of environment the learner is running in</p>
+<dd><p>Type of bandit environment the learner plays with</p>
 </dd></dl>
 
 <dl class="py method">
@@ -379,10 +379,10 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.actions">
 <em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.Learner.actions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Actions of the learner for one round</p>
+<dd><p>Actions of the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – state of the bandit environment</p>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>actions to take</p>
@@ -393,11 +393,11 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.update">
 <em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/utils.html#Learner.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.Learner.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner update</p>
+<dd><p>Update the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<a class="reference internal" href="#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
+<a class="reference internal" href="#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -405,7 +405,7 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.goal">
 <em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">goal</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.learners.utils.Goal</span></em><a class="headerlink" href="#banditpylib.learners.Learner.goal" title="Permalink to this definition">¶</a></dt>
-<dd><p>goal of the learner</p>
+<dd><p>Goal of the learner</p>
 </dd></dl>
 
 </dd></dl>
@@ -436,7 +436,7 @@ is used to pass the feedback of the environment to the learner.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#banditpylib.learners.Goal" title="banditpylib.learners.Goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Goal</span></code></a>(value)</p></td>
-<td><p>Base class for the goal of a learner</p></td>
+<td><p>Abstract class for the goal of a learner</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#banditpylib.learners.BestArmId" title="banditpylib.learners.BestArmId"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BestArmId</span></code></a>(best_arm)</p></td>
 <td><p>Best arm identification</p></td>
@@ -458,9 +458,9 @@ is used to pass the feedback of the environment to the learner.</p>
 </div>
 <div class="section" id="class-inheritance-diagram">
 <h2>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h2>
-<div class="graphviz"><img src="_images/inheritance-976fb6b67d91a7da49d25ee13c98951dac206b3c.png" alt="Inheritance diagram of banditpylib.learners.utils.Goal, banditpylib.learners.utils.BestArmId, banditpylib.learners.utils.MaxReward, banditpylib.learners.utils.MaxCorrectAnswers, banditpylib.learners.utils.AllCorrect, banditpylib.learners.utils.Learner" usemap="#inheritancede252b99ec" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="_images/inheritance-b340fe5efa614e93367f33aa05511a89fd60964b.png" alt="Inheritance diagram of banditpylib.learners.utils.Goal, banditpylib.learners.utils.BestArmId, banditpylib.learners.utils.MaxReward, banditpylib.learners.utils.MaxCorrectAnswers, banditpylib.learners.utils.AllCorrect, banditpylib.learners.utils.Learner" usemap="#inheritancede252b99ec" class="inheritance graphviz" /></div>
 <map id="inheritancede252b99ec" name="inheritancede252b99ec">
-<area shape="rect" id="node3" href="#banditpylib.learners.Goal" target="_top" title="Base class for the goal of a learner" alt="" coords="125,77,197,101"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.Goal" target="_top" title="Abstract class for the goal of a learner" alt="" coords="125,77,197,101"/>
 <area shape="rect" id="node5" href="#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,125,197,149"/>
 <area shape="rect" id="node2" href="#banditpylib.learners.AllCorrect" target="_top" title="Make all answers correct" alt="" coords="276,5,356,29"/>
 <area shape="rect" id="node4" href="#banditpylib.learners.BestArmId" target="_top" title="Best arm identification" alt="" coords="274,53,358,77"/>

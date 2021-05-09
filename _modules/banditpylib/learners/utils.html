@@ -200,7 +200,7 @@
 
 
 <div class="viewcode-block" id="Goal"><a class="viewcode-back" href="../../../banditpylib.learners.html#banditpylib.learners.Goal">[docs]</a><span class="k">class</span> <span class="nc">Goal</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Base class for the goal of a learner&quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;Abstract class for the goal of a learner&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Goal.__init__"><a class="viewcode-back" href="../../../banditpylib.learners.html#banditpylib.learners.Goal.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
@@ -211,11 +211,11 @@
   <span class="nd">@property</span>
   <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;name of the goal&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Name of the goal&quot;&quot;&quot;</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;value obtained by the learner&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Value obtained by the learner&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__value</span></div>
 
 
@@ -230,7 +230,6 @@
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;name of the goal&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;best_arm_id&#39;</span></div>
 
 
@@ -245,12 +244,14 @@
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;name of the goal&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;reward_maximization&#39;</span></div>
 
 
 <div class="viewcode-block" id="MaxCorrectAnswers"><a class="viewcode-back" href="../../../banditpylib.learners.html#banditpylib.learners.MaxCorrectAnswers">[docs]</a><span class="k">class</span> <span class="nc">MaxCorrectAnswers</span><span class="p">(</span><span class="n">Goal</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Maximize correct answers&quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;Maximize correct answers</span>
+
+<span class="sd">  This is used by thresholding bandit learners.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="MaxCorrectAnswers.__init__"><a class="viewcode-back" href="../../../banditpylib.learners.html#banditpylib.learners.MaxCorrectAnswers.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">answers</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
@@ -260,12 +261,14 @@
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;name of the goal&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;max_correct_answers&#39;</span></div>
 
 
 <div class="viewcode-block" id="AllCorrect"><a class="viewcode-back" href="../../../banditpylib.learners.html#banditpylib.learners.AllCorrect">[docs]</a><span class="k">class</span> <span class="nc">AllCorrect</span><span class="p">(</span><span class="n">Goal</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Make all answers correct&quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;Make all answers correct</span>
+
+<span class="sd">  This is used by thresholding bandit learners.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="AllCorrect.__init__"><a class="viewcode-back" href="../../../banditpylib.learners.html#banditpylib.learners.AllCorrect.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">answers</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
@@ -275,16 +278,11 @@
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;name of the goal&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;make_all_correct&#39;</span></div>
 
 
 <div class="viewcode-block" id="Learner"><a class="viewcode-back" href="../../../banditpylib.learners.html#banditpylib.learners.Learner">[docs]</a><span class="k">class</span> <span class="nc">Learner</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Abstract class for learners</span>
-
-<span class="sd">  :func:`actions` returns the actions the learner wants to take. :func:`update`</span>
-<span class="sd">  is used to pass the feedback of the environment to the learner.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;Abstract class for learners&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Learner.__init__"><a class="viewcode-back" href="../../../banditpylib.learners.html#banditpylib.learners.Learner.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
@@ -294,7 +292,7 @@
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;learner name&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Name of the learner&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
 
   <span class="nd">@abstractmethod</span>
@@ -307,7 +305,7 @@
   <span class="nd">@property</span>
   <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">running_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;type of environment the learner is running in&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Type of bandit environment the learner plays with&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Learner.reset"><a class="viewcode-back" href="../../../banditpylib.learners.html#banditpylib.learners.Learner.reset">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -319,10 +317,10 @@
 
 <div class="viewcode-block" id="Learner.actions"><a class="viewcode-back" href="../../../banditpylib.learners.html#banditpylib.learners.Learner.actions">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Actions of the learner for one round</span>
+    <span class="sd">&quot;&quot;&quot;Actions of the learner</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      context: state of the bandit environment</span>
+<span class="sd">      context: contextual information about the bandit environment</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">      actions to take</span>
@@ -330,17 +328,17 @@
 
 <div class="viewcode-block" id="Learner.update"><a class="viewcode-back" href="../../../banditpylib.learners.html#banditpylib.learners.Learner.update">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Learner update</span>
+    <span class="sd">&quot;&quot;&quot;Update the learner</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      feedback: feedback returned by the bandit environment by executing</span>
-<span class="sd">        :func:`actions`</span>
+<span class="sd">      feedback: feedback returned by the bandit environment after</span>
+<span class="sd">        :func:`actions` is executed</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
   <span class="nd">@property</span>
   <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">goal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Goal</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;goal of the learner&quot;&quot;&quot;</span></div>
+    <span class="sd">&quot;&quot;&quot;Goal of the learner&quot;&quot;&quot;</span></div>
 </pre></div>
 
            </div>

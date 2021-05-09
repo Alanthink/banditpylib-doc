@@ -186,8 +186,7 @@
 
 
 <div class="viewcode-block" id="parse_trials_data"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.parse_trials_data">[docs]</a><span class="k">def</span> <span class="nf">parse_trials_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Trial</span><span class="p">]:</span>
-  <span class="sd">&quot;&quot;&quot;Retrieve a list of Trial from bytes data</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;Retrieve trials data from bytes data&quot;&quot;&quot;</span>
   <span class="n">trials_data</span> <span class="o">=</span> <span class="p">[]</span>
   <span class="n">next_pos</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
   <span class="k">while</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -195,16 +194,14 @@
     <span class="n">next_pos</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">_DecodeVarint32</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
     <span class="n">trial</span><span class="o">.</span><span class="n">ParseFromString</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">pos</span><span class="p">:</span><span class="n">pos</span> <span class="o">+</span> <span class="n">next_pos</span><span class="p">])</span>
 
-    <span class="c1"># use parsed message</span>
+    <span class="c1"># Proceed to next message</span>
     <span class="n">pos</span> <span class="o">+=</span> <span class="n">next_pos</span>
     <span class="n">trials_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">trials_data</span></div>
 
 
 <div class="viewcode-block" id="trial_data_messages_to_dict"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.trial_data_messages_to_dict">[docs]</a><span class="k">def</span> <span class="nf">trial_data_messages_to_dict</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-  <span class="sd">&quot;&quot;&quot;Read file storing a couple of Trial and transform to pandas</span>
-<span class="sd">  DataFrame</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;Read file storing trials data and transform to pandas DataFrame&quot;&quot;&quot;</span>
   <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">trials_data</span> <span class="o">=</span> <span class="n">parse_trials_data</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
@@ -222,17 +219,14 @@
 
 
 <div class="viewcode-block" id="Protocol"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.Protocol">[docs]</a><span class="k">class</span> <span class="nc">Protocol</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Abstract class for a protocol which is used to coordinate the interactions</span>
+  <span class="sd">&quot;&quot;&quot;Abstract class for a protocol which is used to coordinate the interactions</span>
 <span class="sd">  between the learner and the bandit environment.</span>
-
-<span class="sd">  For each setup, just call :func:`play` to start the game.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Protocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.Protocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span> <span class="n">learners</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Learner</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">      bandit: bandit environment</span>
-<span class="sd">      learners: learners to be compared with</span>
+<span class="sd">      learners: learners used to run simulations</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">learner</span> <span class="ow">in</span> <span class="n">learners</span><span class="p">:</span>
       <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bandit</span><span class="p">,</span> <span class="n">learner</span><span class="o">.</span><span class="n">running_environment</span><span class="p">):</span>
@@ -240,22 +234,22 @@
                         <span class="p">(</span><span class="n">learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">bandit</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__bandit</span> <span class="o">=</span> <span class="n">bandit</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__learners</span> <span class="o">=</span> <span class="n">learners</span>
-    <span class="c1"># learner the simulator is currently running</span>
+    <span class="c1"># The learner used by the simulator currently</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span><span class="p">:</span> <span class="n">Learner</span> <span class="o">=</span> <span class="kc">None</span></div>
 
   <span class="nd">@property</span>
   <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;protocol name&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Protocol name&quot;&quot;&quot;</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">bandit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bandit</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;bandit environment the simulator is running in&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Bandit environment the simulator is using the learners to play with&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__bandit</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">current_learner</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Learner</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;current learner the simulator is using&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;The learner used by the simulator currently&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span>
 
   <span class="nd">@abstractmethod</span>
@@ -269,14 +263,14 @@
 <span class="sd">      debug: whether to run the trial in debug mode</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      result of one trial</span>
+<span class="sd">      one trial data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
   <span class="k">def</span> <span class="nf">__write_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Write the result of one trial to file</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      data: result of one trial</span>
+<span class="sd">      data: one trial data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__output_filename</span><span class="p">,</span> <span class="s1">&#39;ab&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
       <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">_VarintBytes</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
@@ -301,7 +295,7 @@
       <span class="n">trials</span> <span class="o">=</span> <span class="mi">1</span>
 
     <span class="k">for</span> <span class="n">learner</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__learners</span><span class="p">:</span>
-      <span class="c1"># set current learner</span>
+      <span class="c1"># Set current learner</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span> <span class="o">=</span> <span class="n">learner</span>
 
       <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;start </span><span class="si">%s</span><span class="se">\&#39;</span><span class="s1">s play with </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
@@ -320,11 +314,11 @@
 
         <span class="n">trial_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
-      <span class="c1"># can not apply for processes any more</span>
+      <span class="c1"># Can not apply for processes any more</span>
       <span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
       <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 
-      <span class="c1"># check if there are exceptions during the trials</span>
+      <span class="c1"># Check if there are exceptions during the trials</span>
       <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">trial_results</span><span class="p">:</span>
         <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 

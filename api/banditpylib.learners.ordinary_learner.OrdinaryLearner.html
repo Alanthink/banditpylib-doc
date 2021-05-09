@@ -188,8 +188,8 @@
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_learner.OrdinaryLearner">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_learner.</span></span><span class="sig-name descname"><span class="pre">OrdinaryLearner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_learner/utils.html#OrdinaryLearner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner" title="banditpylib.learners.utils.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Learner</span></code></a></p>
-<p>Base class for learners in the ordinary multi-armed bandit</p>
-<p>This type of learners aim to maximize the total rewards.</p>
+<p>Abstract class for learners playing with the ordinary multi-armed bandit</p>
+<p>This type of learners aim to maximize the total collected rewards.</p>
 <p class="rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -198,10 +198,10 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.OrdinaryLearner.goal" title="banditpylib.learners.ordinary_learner.OrdinaryLearner.goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">goal</span></code></a></p></td>
-<td><p>goal of the learner</p></td>
+<td><p>Goal of the learner</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.OrdinaryLearner.running_environment" title="banditpylib.learners.ordinary_learner.OrdinaryLearner.running_environment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">running_environment</span></code></a></p></td>
-<td><p>type of environment the learner works with</p></td>
+<td><p>Type of bandit environment the learner plays with</p></td>
 </tr>
 </tbody>
 </table>
@@ -226,14 +226,12 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_learner.OrdinaryLearner.goal">
 <span class="sig-name descname"><span class="pre">goal</span></span><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.goal" title="Permalink to this definition">¶</a></dt>
-<dd><p>goal of the learner</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_learner.OrdinaryLearner.running_environment">
 <span class="sig-name descname"><span class="pre">running_environment</span></span><a class="headerlink" href="#banditpylib.learners.ordinary_learner.OrdinaryLearner.running_environment" title="Permalink to this definition">¶</a></dt>
-<dd><p>type of environment the learner works with</p>
-</dd></dl>
+<dd></dd></dl>
 
 <p class="rubric">Methods Documentation</p>
 <dl class="py method">
@@ -262,7 +260,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="id0">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">running_environment</span></span><em class="property"><span class="pre">:</span> <span class="pre">type</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
-<dd><p>type of environment the learner works with</p>
+<dd><p>Type of bandit environment the learner plays with</p>
 </dd></dl>
 
 <dl class="py method">
@@ -278,7 +276,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="id2">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">goal</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.learners.utils.Goal</span></em><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
-<dd><p>goal of the learner</p>
+<dd><p>Goal of the learner</p>
 </dd></dl>
 
 </dd></dl>

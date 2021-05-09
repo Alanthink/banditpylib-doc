@@ -186,7 +186,7 @@
 <dt class="sig sig-object py" id="banditpylib.bandits.ContextGenerator">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.bandits.</span></span><span class="sig-name descname"><span class="pre">ContextGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/bandits/utils.html#ContextGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ContextGenerator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>Context generator</p>
+<p>Abstract context generator class</p>
 <p>This class is used to generate the context of bandit.</p>
 <p class="rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
@@ -196,10 +196,10 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.bandits.html#banditpylib.bandits.ContextGenerator.arm_num" title="banditpylib.bandits.ContextGenerator.arm_num"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arm_num</span></code></a></p></td>
-<td><p>number of actions</p></td>
+<td><p>Number of actions</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../banditpylib.bandits.html#banditpylib.bandits.ContextGenerator.dimension" title="banditpylib.bandits.ContextGenerator.dimension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dimension</span></code></a></p></td>
-<td><p>dimension of the context</p></td>
+<td><p>Dimension of the context</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.bandits.html#banditpylib.bandits.ContextGenerator.name" title="banditpylib.bandits.ContextGenerator.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
 <td><p>Context generator name</p></td>
@@ -225,13 +225,13 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.bandits.ContextGenerator.arm_num">
 <span class="sig-name descname"><span class="pre">arm_num</span></span><a class="headerlink" href="#banditpylib.bandits.ContextGenerator.arm_num" title="Permalink to this definition">¶</a></dt>
-<dd><p>number of actions</p>
+<dd><p>Number of actions</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.bandits.ContextGenerator.dimension">
 <span class="sig-name descname"><span class="pre">dimension</span></span><a class="headerlink" href="#banditpylib.bandits.ContextGenerator.dimension" title="Permalink to this definition">¶</a></dt>
-<dd><p>dimension of the context</p>
+<dd><p>Dimension of the context</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -276,13 +276,13 @@ the context and the rewards corresponding to different actions</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="id1">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">dimension</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
-<dd><p>dimension of the context</p>
+<dd><p>Dimension of the context</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="id2">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">arm_num</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
-<dd><p>number of actions</p>
+<dd><p>Number of actions</p>
 </dd></dl>
 
 <dl class="py method">

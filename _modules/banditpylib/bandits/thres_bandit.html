@@ -186,7 +186,8 @@
 <span class="sd">      name: alias name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;The number of arms </span><span class="si">%d</span><span class="s1"> is less than 2.&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">))</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of arms is expected at least 2. Got </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                       <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__arms</span> <span class="o">=</span> <span class="n">arms</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span>
     <span class="c1"># Correct answers of all the arms whether its expected rewards is above the</span>
@@ -196,7 +197,9 @@
         <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span><span class="p">)</span>
     <span class="p">]</span>
     <span class="k">if</span> <span class="n">eps</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Radius of indifference zone is less than 0!&#39;</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s1">&#39;Radius of indifference zone is expected at least 0. Got </span><span class="si">%.2f</span><span class="s1">.&#39;</span> <span class="o">%</span>
+          <span class="n">eps</span><span class="p">)</span>
     <span class="c1"># The answer of the learner does not matter if the expected rewards of an</span>
     <span class="c1"># arm is within the range [theta-eps, theta+eps]. Hence weight assigned to</span>
     <span class="c1"># such an arm is 0.</span>
@@ -206,18 +209,9 @@
     <span class="p">]</span></div>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      default bandit name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;thresholding_bandit&#39;</span>
 
 <div class="viewcode-block" id="ThresholdingBandit.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Reset the bandit environment</span>
-
-<span class="sd">    .. warning::</span>
-<span class="sd">      This function should be called before the start of the game.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">=</span> <span class="mi">0</span></div>
 
 <div class="viewcode-block" id="ThresholdingBandit.arm_num"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.arm_num">[docs]</a>  <span class="k">def</span> <span class="nf">arm_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -257,14 +251,6 @@
     <span class="k">return</span> <span class="n">arm_rewards_pair</span>
 
 <div class="viewcode-block" id="ThresholdingBandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">Actions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Feedback</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Pull multiple arms</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">      actions: actions to perform</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">      feedback after actions are performed</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">feedback</span> <span class="o">=</span> <span class="n">Feedback</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">arm_pulls_pair</span> <span class="ow">in</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="p">:</span>
       <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_take_action</span><span class="p">(</span><span class="n">arm_pulls_pair</span><span class="o">=</span><span class="n">arm_pulls_pair</span><span class="p">)</span>
@@ -273,20 +259,9 @@
     <span class="k">return</span> <span class="n">feedback</span></div>
 
 <div class="viewcode-block" id="ThresholdingBandit.context"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.context">[docs]</a>  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      current context of the bandit environment</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="ThresholdingBandit.regret"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      goal: goal of the learner</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">      regret of the learner</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span> <span class="n">MaxCorrectAnswers</span><span class="p">):</span>
       <span class="c1"># Aggregate regret which is equal to the number of wrong answers</span>
       <span class="n">agg_regret</span> <span class="o">=</span> <span class="mi">0</span>

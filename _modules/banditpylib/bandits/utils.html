@@ -168,7 +168,7 @@
 
 
 <div class="viewcode-block" id="ContextGenerator"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ContextGenerator">[docs]</a><span class="k">class</span> <span class="nc">ContextGenerator</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Context generator</span>
+  <span class="sd">&quot;&quot;&quot;Abstract context generator class</span>
 
 <span class="sd">  This class is used to generate the context of bandit.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
@@ -188,12 +188,12 @@
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">dimension</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;dimension of the context&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Dimension of the context&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dimension</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">arm_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;number of actions&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Number of actions&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span>
 
   <span class="nd">@abstractmethod</span>
@@ -228,19 +228,12 @@
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">dimension</span><span class="p">)</span></div>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      default context generator name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;random_context_generator&#39;</span>
 
 <div class="viewcode-block" id="RandomContextGenerator.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.RandomContextGenerator.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Reset the context generator&quot;&quot;&quot;</span></div>
+    <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="RandomContextGenerator.context"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.RandomContextGenerator.context">[docs]</a>  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Returns:</span>
-<span class="sd">      the context and the rewards corresponding to different actions</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dimension</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">))</span></div></div>
 
 

@@ -274,20 +274,9 @@
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      default reward name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;mean_reward&#39;</span>
 
 <div class="viewcode-block" id="MeanReward.calc"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.MeanReward.calc">[docs]</a>  <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      assortment: assortment to calculate</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">      reward of the assortment</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">preference_params_sum</span> <span class="o">=</span> <span class="p">(</span>
         <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">preference_params</span><span class="p">[</span><span class="n">product</span><span class="p">]</span>
              <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">assortment</span><span class="p">])</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">preference_params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -315,39 +304,28 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__alpha</span> <span class="o">=</span> <span class="n">alpha</span> <span class="k">if</span> <span class="n">alpha</span> <span class="o">&lt;=</span> <span class="mf">1.0</span> <span class="k">else</span> <span class="mf">1.0</span></div>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      default reward name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;cvar_reward&#39;</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">alpha</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;percentile of cvar&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Percentile of cvar&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__alpha</span>
 
 <div class="viewcode-block" id="CvarReward.calc"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.CvarReward.calc">[docs]</a>  <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      assortment: assortment to calculate</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">      reward of the assortment</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">preference_params_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
         <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">preference_params</span><span class="p">[</span><span class="n">product</span><span class="p">]</span>
          <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">assortment</span><span class="p">])</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">preference_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="c1"># sort according to revenue of product</span>
+    <span class="c1"># Sort according to revenue of product</span>
     <span class="n">revenue_prob</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span>
         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">revenues</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">preference_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">preference_params_sum</span><span class="p">)</span>
     <span class="p">]</span> <span class="o">+</span> <span class="p">[(</span><span class="bp">self</span><span class="o">.</span><span class="n">revenues</span><span class="p">[</span><span class="n">product</span><span class="p">],</span>
           <span class="bp">self</span><span class="o">.</span><span class="n">preference_params</span><span class="p">[</span><span class="n">product</span><span class="p">]</span> <span class="o">/</span> <span class="n">preference_params_sum</span><span class="p">)</span>
          <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">assortment</span><span class="p">],</span>
                           <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="c1"># the minimum revenue should be 0, which is the revenue of non-purchase</span>
+    <span class="c1"># The minimum revenue should be 0, which is the revenue of non-purchase</span>
     <span class="k">if</span> <span class="n">revenue_prob</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;CVaR calculation error!&#39;</span><span class="p">)</span>
-    <span class="c1"># find the index of revenue_prob such that the accumulate probability is at</span>
+    <span class="c1"># Find the index of revenue_prob such that the accumulate probability is at</span>
     <span class="c1"># least alpha</span>
     <span class="n">accumulate_prob</span> <span class="o">=</span> <span class="n">revenue_prob</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">next_ind</span> <span class="o">=</span> <span class="mi">1</span>
@@ -405,11 +383,11 @@
       <span class="n">assortment</span><span class="o">=</span><span class="nb">set</span><span class="p">(),</span>
       <span class="n">card_limit</span><span class="o">=</span><span class="n">card_limit</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
       <span class="n">restricted_products</span><span class="o">=</span><span class="n">restricted_products</span><span class="p">)</span>
-  <span class="c1"># sort assortments according to reward value</span>
+  <span class="c1"># Sort assortments according to reward value</span>
   <span class="n">sorted_assort</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([(</span><span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">assortment</span><span class="p">),</span> <span class="n">assortment</span><span class="p">)</span>
                           <span class="k">for</span> <span class="n">assortment</span> <span class="ow">in</span> <span class="n">assortments</span><span class="p">],</span>
                          <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-  <span class="c1"># randomly select one assortment with the maximum reward</span>
+  <span class="c1"># Randomly select one assortment with the maximum reward</span>
   <span class="n">ind</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_assort</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
   <span class="k">while</span> <span class="p">(</span><span class="n">ind</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">sorted_assort</span><span class="p">[</span><span class="n">ind</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">sorted_assort</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="mi">0</span><span class="p">]):</span>
     <span class="n">ind</span> <span class="o">-=</span> <span class="mi">1</span>
@@ -444,10 +422,10 @@
 
   <span class="n">product_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">reward</span><span class="o">.</span><span class="n">revenues</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
-  <span class="c1"># all available products</span>
+  <span class="c1"># All available products</span>
   <span class="n">all_products</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">product_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
   <span class="k">if</span> <span class="n">init_assortment</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="c1"># randomly generate an assortment initially</span>
+    <span class="c1"># Randomly generate an assortment initially</span>
     <span class="n">best_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">all_products</span><span class="p">),</span> <span class="n">card_limit</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
     <span class="n">best_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span>
@@ -472,7 +450,7 @@
       <span class="n">operation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">available_operations</span><span class="p">)</span>
 
       <span class="k">if</span> <span class="n">operation</span> <span class="o">==</span> <span class="s1">&#39;replace&#39;</span><span class="p">:</span>
-        <span class="c1"># replace one product</span>
+        <span class="c1"># Replace one product</span>
         <span class="n">product_to_remove</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">))</span>
         <span class="n">product_to_add</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">remaining_products</span><span class="p">))</span>
         <span class="n">new_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span>
@@ -480,14 +458,14 @@
         <span class="n">new_assortment</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">product_to_add</span><span class="p">)</span>
         <span class="n">new_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">new_assortment</span><span class="p">)</span>
       <span class="k">elif</span> <span class="n">operation</span> <span class="o">==</span> <span class="s1">&#39;remove&#39;</span><span class="p">:</span>
-        <span class="c1"># remove one product</span>
+        <span class="c1"># Remove one product</span>
         <span class="n">product_to_remove</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">))</span>
         <span class="n">new_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span>
         <span class="n">new_assortment</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">product_to_remove</span><span class="p">)</span>
         <span class="n">new_reward</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">new_assortment</span><span class="p">)</span>
       <span class="k">else</span><span class="p">:</span>
         <span class="c1"># operation = &#39;add&#39;</span>
-        <span class="c1"># add one product</span>
+        <span class="c1"># Add one product</span>
         <span class="n">product_to_add</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">remaining_products</span><span class="p">))</span>
         <span class="n">new_assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">)</span>
         <span class="n">new_assortment</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">product_to_add</span><span class="p">)</span>
@@ -552,35 +530,36 @@
 <span class="sd">        revenue.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">preference_params</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">revenues</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-          <span class="s1">&#39;Number of preference parameters </span><span class="si">%d</span><span class="s1"> does not equal to number of &#39;</span>
-          <span class="s1">&#39;revenues </span><span class="si">%d</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">preference_params</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">revenues</span><span class="p">)))</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s1">&#39;Number of preference parameters </span><span class="si">%d</span><span class="s1"> is expected equal to number of &#39;</span>
+          <span class="s1">&#39;revenues </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">preference_params</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">revenues</span><span class="p">)))</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">preference_params</span><span class="p">):</span>
       <span class="k">if</span> <span class="n">param</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">param</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;The </span><span class="si">%d</span><span class="s1">-th preference parameter is &#39;</span>
-                        <span class="s1">&#39;out of range [0, 1]&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The </span><span class="si">%d</span><span class="s1">-th preference parameter is &#39;</span>
+                         <span class="s1">&#39;expected within [0, 1].&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">preference_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-          <span class="s1">&#39;The preference parameter of product 0 i.e., </span><span class="si">%.2f</span><span class="s1"> is not 1!&#39;</span> <span class="o">%</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s1">&#39;The preference parameter of product 0 is expected 1. Got </span><span class="si">%.2f</span><span class="s1">.&#39;</span> <span class="o">%</span>
           <span class="n">preference_params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">revenue</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">revenues</span><span class="p">):</span>
       <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">revenue</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;The </span><span class="si">%d</span><span class="s1">-th revenue is no greater than 0!&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The </span><span class="si">%d</span><span class="s1">-th revenue is expected greater than 0.&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">revenues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;The revenue of product 0 i.e., </span><span class="si">%.2f</span><span class="s1"> is not 0!&#39;</span> <span class="o">%</span>
-                      <span class="n">revenues</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The revenue of product 0 is expected 0. Got </span><span class="si">%.2f</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                       <span class="n">revenues</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span> <span class="o">=</span> <span class="n">preference_params</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span> <span class="o">=</span> <span class="n">revenues</span>
-    <span class="c1"># product 0 is reserved for non-purchase</span>
+    <span class="c1"># Product 0 is reserved for non-purchase</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of products </span><span class="si">%d</span><span class="s1"> is 0!&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of products is expected at least 1. Got 0.&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">card_limit</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Cardinality limit </span><span class="si">%d</span><span class="s1"> is less than 1!&#39;</span> <span class="o">%</span> <span class="n">card_limit</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cardinality limit is expected at least 1. Got </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                       <span class="n">card_limit</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">card_limit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span><span class="p">)</span>
 
-    <span class="c1"># maximizing the mean of rewards is the default goal</span>
+    <span class="c1"># Maximizing the rewards is the default goal</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span> <span class="o">=</span> <span class="n">MeanReward</span><span class="p">()</span> <span class="k">if</span> <span class="n">reward</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">set_preference_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">set_revenues</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span><span class="p">)</span>
@@ -593,17 +572,13 @@
           <span class="s1">&#39;Best reward is set to zero. Now the regret equals to the&#39;</span>
           <span class="s1">&#39; minus total revenue.&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="c1"># compute the best assortment</span>
+      <span class="c1"># Compute the best assortment</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__best_reward</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_assort</span> <span class="o">=</span> <span class="n">search_best_assortment</span><span class="p">(</span>
           <span class="n">reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="p">,</span> <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span><span class="p">)</span>
       <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Assortment </span><span class="si">%s</span><span class="s1"> has best reward </span><span class="si">%.2f</span><span class="s1">.&#39;</span><span class="p">,</span>
                    <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_assort</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_reward</span><span class="p">)</span></div>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      default bandit name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;ordinary_mnl_bandit&#39;</span>
 
   <span class="k">def</span> <span class="nf">_take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_pulls_pair</span><span class="p">:</span> <span class="n">ArmPullsPair</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArmRewardsPair</span><span class="p">:</span>
@@ -648,21 +623,13 @@
         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span><span class="p">[</span><span class="n">choice</span><span class="p">]</span> <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">]))</span>
     <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
 
-    <span class="c1"># update regret</span>
+    <span class="c1"># Update regret</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_reward</span> <span class="o">-</span>
                       <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">assortment</span><span class="p">))</span> <span class="o">*</span> <span class="n">times</span>
 
     <span class="k">return</span> <span class="n">arm_rewards_pair</span>
 
 <div class="viewcode-block" id="OrdinaryMNLBandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">Actions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Feedback</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Serve multiple assortments</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">      actions: actions to perform</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">      feedback after actions are performed</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">feedback</span> <span class="o">=</span> <span class="n">Feedback</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">arm_pulls_pair</span> <span class="ow">in</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="p">:</span>
       <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_take_action</span><span class="p">(</span><span class="n">arm_pulls_pair</span><span class="o">=</span><span class="n">arm_pulls_pair</span><span class="p">)</span>
@@ -671,18 +638,9 @@
     <span class="k">return</span> <span class="n">feedback</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLBandit.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Reset the bandit environment</span>
-
-<span class="sd">    .. warning::</span>
-<span class="sd">      This function should be called before the start of the game.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">=</span> <span class="mf">0.0</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLBandit.context"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.context">[docs]</a>  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      current state of the ordinary mnl bandit</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLBandit.revenues"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.revenues">[docs]</a>  <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -707,13 +665,6 @@
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span></div>
 
 <div class="viewcode-block" id="OrdinaryMNLBandit.regret"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.OrdinaryMNLBandit.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      goal: goal of the learner</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">      regret of the learner</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span> <span class="n">MaxReward</span><span class="p">):</span>
       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span>
     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Goal </span><span class="si">%s</span><span class="s1"> is not supported!&#39;</span> <span class="o">%</span> <span class="n">goal</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div></div>

@@ -542,7 +542,7 @@ contextual information about the bandit environment</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.bandits.CvarReward.alpha">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">alpha</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#banditpylib.bandits.CvarReward.alpha" title="Permalink to this definition">¶</a></dt>
-<dd><p>percentile of cvar</p>
+<dd><p>Percentile of cvar</p>
 </dd></dl>
 
 <dl class="py method">
@@ -648,13 +648,12 @@ revenue.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.bandits.OrdinaryMNLBandit.feed">
 <span class="sig-name descname"><span class="pre">feed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Actions</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Feedback</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.feed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.feed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Serve multiple assortments</p>
-<dl class="field-list simple">
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actions</strong> – actions to perform</p>
+<dd class="field-odd"><p><strong>actions</strong> – actions for the bandit environment to execute</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>feedback after actions are performed</p>
+<dd class="field-even"><p>feedback after <cite>actions</cite> are executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -672,11 +671,8 @@ revenue.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.bandits.OrdinaryMNLBandit.context">
 <span class="sig-name descname"><span class="pre">context</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/ordinary_mnl_bandit.html#OrdinaryMNLBandit.context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.context" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>current state of the ordinary mnl bandit</p>
-</dd>
-</dl>
+<dd><p>Returns:
+contextual information about the bandit environment</p>
 </dd></dl>
 
 <dl class="py method">
@@ -775,13 +771,12 @@ zone meaning that the answers about the arms with expected rewards within
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.bandits.ThresholdingBandit.feed">
 <span class="sig-name descname"><span class="pre">feed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Actions</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Feedback</span><a class="reference internal" href="_modules/banditpylib/bandits/thres_bandit.html#ThresholdingBandit.feed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ThresholdingBandit.feed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pull multiple arms</p>
-<dl class="field-list simple">
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actions</strong> – actions to perform</p>
+<dd class="field-odd"><p><strong>actions</strong> – actions for the bandit environment to execute</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>feedback after actions are performed</p>
+<dd class="field-even"><p>feedback after <cite>actions</cite> are executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -789,11 +784,8 @@ zone meaning that the answers about the arms with expected rewards within
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.bandits.ThresholdingBandit.context">
 <span class="sig-name descname"><span class="pre">context</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="reference internal" href="_modules/banditpylib/bandits/thres_bandit.html#ThresholdingBandit.context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ThresholdingBandit.context" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>current context of the bandit environment</p>
-</dd>
-</dl>
+<dd><p>Returns:
+contextual information about the bandit environment</p>
 </dd></dl>
 
 <dl class="py method">
@@ -835,23 +827,19 @@ the learner. The batched version can be defined in a similar way.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.bandits.ContextualBandit.context">
 <span class="sig-name descname"><span class="pre">context</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="_modules/banditpylib/bandits/contextual_bandit.html#ContextualBandit.context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ContextualBandit.context" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>current state of the bandit environment</p>
-</dd>
-</dl>
+<dd><p>Returns:
+contextual information about the bandit environment</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.bandits.ContextualBandit.feed">
 <span class="sig-name descname"><span class="pre">feed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Actions</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Feedback</span><a class="reference internal" href="_modules/banditpylib/bandits/contextual_bandit.html#ContextualBandit.feed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ContextualBandit.feed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pull multiple arms</p>
-<dl class="field-list simple">
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actions</strong> – actions to perform</p>
+<dd class="field-odd"><p><strong>actions</strong> – actions for the bandit environment to execute</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>feedback after actions are performed</p>
+<dd class="field-even"><p>feedback after <cite>actions</cite> are executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -905,7 +893,7 @@ the learner. The batched version can be defined in a similar way.</p>
 <dt class="sig sig-object py" id="banditpylib.bandits.ContextGenerator">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.bandits.</span></span><span class="sig-name descname"><span class="pre">ContextGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/bandits/utils.html#ContextGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.ContextGenerator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>Context generator</p>
+<p>Abstract context generator class</p>
 <p>This class is used to generate the context of bandit.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.bandits.ContextGenerator.__init__">
@@ -929,13 +917,13 @@ the learner. The batched version can be defined in a similar way.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.bandits.ContextGenerator.dimension">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">dimension</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#banditpylib.bandits.ContextGenerator.dimension" title="Permalink to this definition">¶</a></dt>
-<dd><p>dimension of the context</p>
+<dd><p>Dimension of the context</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.bandits.ContextGenerator.arm_num">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">arm_num</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#banditpylib.bandits.ContextGenerator.arm_num" title="Permalink to this definition">¶</a></dt>
-<dd><p>number of actions</p>
+<dd><p>Number of actions</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1040,7 +1028,7 @@ the context and the rewards corresponding to different actions</p>
 <td><p>Finite-armed contextual bandit</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#banditpylib.bandits.ContextGenerator" title="banditpylib.bandits.ContextGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ContextGenerator</span></code></a>(arm_num, dimension)</p></td>
-<td><p>Context generator</p></td>
+<td><p>Abstract context generator class</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#banditpylib.bandits.RandomContextGenerator" title="banditpylib.bandits.RandomContextGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RandomContextGenerator</span></code></a>(arm_num, dimension)</p></td>
 <td><p>Random context generator</p></td>
@@ -1050,10 +1038,10 @@ the context and the rewards corresponding to different actions</p>
 </div>
 <div class="section" id="class-inheritance-diagram">
 <h2>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h2>
-<div class="graphviz"><img src="_images/inheritance-b5d49635a6bfd0ac4b17703999b93b422a037f72.png" alt="Inheritance diagram of banditpylib.bandits.utils.Bandit, banditpylib.bandits.ordinary_bandit.OrdinaryBandit, banditpylib.bandits.linear_bandit.LinearBandit, banditpylib.bandits.ordinary_mnl_bandit.Reward, banditpylib.bandits.ordinary_mnl_bandit.MeanReward, banditpylib.bandits.ordinary_mnl_bandit.CvarReward, banditpylib.bandits.ordinary_mnl_bandit.OrdinaryMNLBandit, banditpylib.bandits.thres_bandit.ThresholdingBandit, banditpylib.bandits.contextual_bandit.ContextualBandit, banditpylib.bandits.utils.ContextGenerator, banditpylib.bandits.utils.RandomContextGenerator" usemap="#inheritancec4dcdd085d" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="_images/inheritance-d6b4d44c4338b8d4ef0f1ff5c5af3e5c63318181.png" alt="Inheritance diagram of banditpylib.bandits.utils.Bandit, banditpylib.bandits.ordinary_bandit.OrdinaryBandit, banditpylib.bandits.linear_bandit.LinearBandit, banditpylib.bandits.ordinary_mnl_bandit.Reward, banditpylib.bandits.ordinary_mnl_bandit.MeanReward, banditpylib.bandits.ordinary_mnl_bandit.CvarReward, banditpylib.bandits.ordinary_mnl_bandit.OrdinaryMNLBandit, banditpylib.bandits.thres_bandit.ThresholdingBandit, banditpylib.bandits.contextual_bandit.ContextualBandit, banditpylib.bandits.utils.ContextGenerator, banditpylib.bandits.utils.RandomContextGenerator" usemap="#inheritancec4dcdd085d" class="inheritance graphviz" /></div>
 <map id="inheritancec4dcdd085d" name="inheritancec4dcdd085d">
 <area shape="rect" id="node2" href="#banditpylib.bandits.Bandit" target="_top" title="Abstract class for bandit environments" alt="" coords="153,125,225,149"/>
-<area shape="rect" id="node3" href="#banditpylib.bandits.ContextGenerator" target="_top" title="Context generator" alt="" coords="125,221,253,245"/>
+<area shape="rect" id="node3" href="#banditpylib.bandits.ContextGenerator" target="_top" title="Abstract context generator class" alt="" coords="125,221,253,245"/>
 <area shape="rect" id="node4" href="#banditpylib.bandits.ContextualBandit" target="_top" title="Finite&#45;armed contextual bandit" alt="" coords="328,5,451,29"/>
 <area shape="rect" id="node7" href="#banditpylib.bandits.LinearBandit" target="_top" title="Finite&#45;armed linear bandit" alt="" coords="341,53,438,77"/>
 <area shape="rect" id="node9" href="#banditpylib.bandits.OrdinaryBandit" target="_top" title="Ordinary bandit" alt="" coords="334,101,445,125"/>

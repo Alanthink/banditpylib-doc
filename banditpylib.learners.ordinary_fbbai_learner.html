@@ -186,8 +186,8 @@
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_fbbai_learner.</span></span><span class="sig-name descname"><span class="pre">OrdinaryFBBAILearner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.html#banditpylib.learners.Learner" title="banditpylib.learners.utils.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Learner</span></code></a></p>
-<p>Base class for best-arm identification learners in the ordinary multi-armed
-bandit</p>
+<p>Abstract class for best-arm identification learners playing with the
+ordinary multi-armed bandit</p>
 <p>This kind of learners aim to identify the best arm with fixed budget.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.__init__">
@@ -206,7 +206,7 @@ bandit</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.running_environment">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">running_environment</span></span><em class="property"><span class="pre">:</span> <span class="pre">type</span></em><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.running_environment" title="Permalink to this definition">¶</a></dt>
-<dd><p>type of environment the learner works with</p>
+<dd><p>Type of bandit environment the learner plays with</p>
 </dd></dl>
 
 <dl class="py method">
@@ -230,16 +230,6 @@ bandit</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.set_budget">
-<span class="sig-name descname"><span class="pre">set_budget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.set_budget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.set_budget" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>budget</strong> – new budget of the learner</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.best_arm">
 <em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">best_arm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/utils.html#OrdinaryFBBAILearner.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.best_arm" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -252,7 +242,7 @@ bandit</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.goal">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">goal</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.learners.utils.Goal</span></em><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.goal" title="Permalink to this definition">¶</a></dt>
-<dd><p>goal of the learner</p>
+<dd><p>Goal of the learner</p>
 </dd></dl>
 
 </dd></dl>
@@ -291,12 +281,13 @@ highest empirical mean.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.Uniform.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.actions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Actions of the learner</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>arms to pull</p>
+<dd class="field-even"><p>actions to take</p>
 </dd>
 </dl>
 </dd></dl>
@@ -304,11 +295,11 @@ highest empirical mean.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.Uniform.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner update</p>
+<dd><p>Update the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.actions" title="banditpylib.learners.ordinary_fbbai_learner.Uniform.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
+<a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.actions" title="banditpylib.learners.ordinary_fbbai_learner.Uniform.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -316,11 +307,8 @@ highest empirical mean.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.Uniform.best_arm">
 <span class="sig-name descname"><span class="pre">best_arm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/uniform.html#Uniform.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform.best_arm" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>best arm identified by the learner</p>
-</dd>
-</dl>
+<dd><p>Returns:
+index of the best arm identified by the learner</p>
 </dd></dl>
 
 </dd></dl>
@@ -360,12 +348,13 @@ than this number</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.SH.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.actions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Actions of the learner</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>arms to pull</p>
+<dd class="field-even"><p>actions to take</p>
 </dd>
 </dl>
 </dd></dl>
@@ -373,11 +362,11 @@ than this number</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.SH.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner update</p>
+<dd><p>Update the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.SH.actions" title="banditpylib.learners.ordinary_fbbai_learner.SH.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
+<a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.SH.actions" title="banditpylib.learners.ordinary_fbbai_learner.SH.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -385,11 +374,8 @@ than this number</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.SH.best_arm">
 <span class="sig-name descname"><span class="pre">best_arm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sh.html#SH.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SH.best_arm" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>best arm identified by the learner</p>
-</dd>
-</dl>
+<dd><p>Returns:
+index of the best arm identified by the learner</p>
 </dd></dl>
 
 </dd></dl>
@@ -427,12 +413,13 @@ than this number</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.SR.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.actions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Actions of the learner</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>arms to pull</p>
+<dd class="field-even"><p>actions to take</p>
 </dd>
 </dl>
 </dd></dl>
@@ -440,11 +427,11 @@ than this number</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.SR.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner update</p>
+<dd><p>Update the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.SR.actions" title="banditpylib.learners.ordinary_fbbai_learner.SR.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
+<a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.SR.actions" title="banditpylib.learners.ordinary_fbbai_learner.SR.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -452,11 +439,8 @@ than this number</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fbbai_learner.SR.best_arm">
 <span class="sig-name descname"><span class="pre">best_arm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="_modules/banditpylib/learners/ordinary_fbbai_learner/sr.html#SR.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fbbai_learner.SR.best_arm" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>best arm identified by the learner</p>
-</dd>
-</dl>
+<dd><p>Returns:
+index of the best arm identified by the learner</p>
 </dd></dl>
 
 </dd></dl>
@@ -470,7 +454,7 @@ than this number</p></li>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner" title="banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrdinaryFBBAILearner</span></code></a>(arm_num, budget, name)</p></td>
-<td><p>Base class for best-arm identification learners in the ordinary multi-armed bandit</p></td>
+<td><p>Abstract class for best-arm identification learners playing with the ordinary multi-armed bandit</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform" title="banditpylib.learners.ordinary_fbbai_learner.Uniform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Uniform</span></code></a>(arm_num, budget, name)</p></td>
 <td><p>Uniform sampling policy</p></td>
@@ -486,10 +470,10 @@ than this number</p></li>
 </div>
 <div class="section" id="class-inheritance-diagram">
 <h2>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h2>
-<div class="graphviz"><img src="_images/inheritance-aa58ac59c8d29342f344a65830a8136101edb9e1.png" alt="Inheritance diagram of banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner, banditpylib.learners.ordinary_fbbai_learner.uniform.Uniform, banditpylib.learners.ordinary_fbbai_learner.sh.SH, banditpylib.learners.ordinary_fbbai_learner.sr.SR" usemap="#inheritancec40bb4c97f" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="_images/inheritance-593e10b83d6cc268a313d7bc6884d1c20b1a477c.png" alt="Inheritance diagram of banditpylib.learners.ordinary_fbbai_learner.utils.OrdinaryFBBAILearner, banditpylib.learners.ordinary_fbbai_learner.uniform.Uniform, banditpylib.learners.ordinary_fbbai_learner.sh.SH, banditpylib.learners.ordinary_fbbai_learner.sr.SR" usemap="#inheritancec40bb4c97f" class="inheritance graphviz" /></div>
 <map id="inheritancec40bb4c97f" name="inheritancec40bb4c97f">
 <area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,53,197,77"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner" target="_top" title="Base class for best&#45;arm identification learners in the ordinary multi&#45;armed" alt="" coords="245,53,402,77"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner" target="_top" title="Abstract class for best&#45;arm identification learners playing with the" alt="" coords="245,53,402,77"/>
 <area shape="rect" id="node4" href="#banditpylib.learners.ordinary_fbbai_learner.SH" target="_top" title="Sequential halving policy :cite:`karnin2013almost`" alt="" coords="450,5,522,29"/>
 <area shape="rect" id="node5" href="#banditpylib.learners.ordinary_fbbai_learner.SR" target="_top" title="Successive rejects policy :cite:`audibert2010best`" alt="" coords="450,53,522,77"/>
 <area shape="rect" id="node6" href="#banditpylib.learners.ordinary_fbbai_learner.Uniform" target="_top" title="Uniform sampling policy" alt="" coords="450,101,522,125"/>

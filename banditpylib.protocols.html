@@ -183,14 +183,13 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="banditpylib.protocols.parse_trials_data">
 <span class="sig-prename descclassname"><span class="pre">banditpylib.protocols.</span></span><span class="sig-name descname"><span class="pre">parse_trials_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">data_pb2.Trial</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#parse_trials_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.protocols.parse_trials_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve a list of Trial from bytes data</p>
+<dd><p>Retrieve trials data from bytes data</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="banditpylib.protocols.trial_data_messages_to_dict">
 <span class="sig-prename descclassname"><span class="pre">banditpylib.protocols.</span></span><span class="sig-name descname"><span class="pre">trial_data_messages_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#trial_data_messages_to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.protocols.trial_data_messages_to_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read file storing a couple of Trial and transform to pandas
-DataFrame</p>
+<dd><p>Read file storing trials data and transform to pandas DataFrame</p>
 </dd></dl>
 
 <dl class="py class">
@@ -199,7 +198,6 @@ DataFrame</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Abstract class for a protocol which is used to coordinate the interactions
 between the learner and the bandit environment.</p>
-<p>For each setup, just call <a class="reference internal" href="#banditpylib.protocols.Protocol.play" title="banditpylib.protocols.Protocol.play"><code class="xref py py-func docutils literal notranslate"><span class="pre">play()</span></code></a> to start the game.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.protocols.Protocol.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bandit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.html#banditpylib.bandits.Bandit" title="banditpylib.bandits.utils.Bandit"><span class="pre">banditpylib.bandits.utils.Bandit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">learners</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="banditpylib.learners.html#banditpylib.learners.Learner" title="banditpylib.learners.utils.Learner"><span class="pre">banditpylib.learners.utils.Learner</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/protocols/utils.html#Protocol.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.protocols.Protocol.__init__" title="Permalink to this definition">¶</a></dt>
@@ -207,7 +205,7 @@ between the learner and the bandit environment.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>bandit</strong> – bandit environment</p></li>
-<li><p><strong>learners</strong> – learners to be compared with</p></li>
+<li><p><strong>learners</strong> – learners used to run simulations</p></li>
 </ul>
 </dd>
 </dl>
@@ -216,19 +214,19 @@ between the learner and the bandit environment.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.protocols.Protocol.name">
 <em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.protocols.Protocol.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>protocol name</p>
+<dd><p>Protocol name</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.protocols.Protocol.bandit">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bandit</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.bandits.utils.Bandit</span></em><a class="headerlink" href="#banditpylib.protocols.Protocol.bandit" title="Permalink to this definition">¶</a></dt>
-<dd><p>bandit environment the simulator is running in</p>
+<dd><p>Bandit environment the simulator is using the learners to play with</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.protocols.Protocol.current_learner">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">current_learner</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.learners.utils.Learner</span></em><a class="headerlink" href="#banditpylib.protocols.Protocol.current_learner" title="Permalink to this definition">¶</a></dt>
-<dd><p>current learner the simulator is using</p>
+<dd><p>The learner used by the simulator currently</p>
 </dd></dl>
 
 <dl class="py method">
@@ -299,7 +297,7 @@ make)</p></li>
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.protocols.SinglePlayerProtocol.name">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.protocols.SinglePlayerProtocol.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>protocol name</p>
+<dd><p>Protocol name</p>
 </dd></dl>
 
 </dd></dl>
@@ -313,10 +311,10 @@ make)</p></li>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#banditpylib.protocols.parse_trials_data" title="banditpylib.protocols.parse_trials_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_trials_data</span></code></a>(data)</p></td>
-<td><p>Retrieve a list of Trial from bytes data</p></td>
+<td><p>Retrieve trials data from bytes data</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#banditpylib.protocols.trial_data_messages_to_dict" title="banditpylib.protocols.trial_data_messages_to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trial_data_messages_to_dict</span></code></a>(filename)</p></td>
-<td><p>Read file storing a couple of Trial and transform to pandas DataFrame</p></td>
+<td><p>Read file storing trials data and transform to pandas DataFrame</p></td>
 </tr>
 </tbody>
 </table>

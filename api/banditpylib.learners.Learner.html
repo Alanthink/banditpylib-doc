@@ -187,8 +187,6 @@
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.</span></span><span class="sig-name descname"><span class="pre">Learner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#Learner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.Learner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Abstract class for learners</p>
-<p><a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> returns the actions the learner wants to take. <a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.update" title="banditpylib.learners.Learner.update"><code class="xref py py-func docutils literal notranslate"><span class="pre">update()</span></code></a>
-is used to pass the feedback of the environment to the learner.</p>
 <p class="rubric">Attributes Summary</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -197,13 +195,13 @@ is used to pass the feedback of the environment to the learner.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.goal" title="banditpylib.learners.Learner.goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">goal</span></code></a></p></td>
-<td><p>goal of the learner</p></td>
+<td><p>Goal of the learner</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.name" title="banditpylib.learners.Learner.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p>learner name</p></td>
+<td><p>Name of the learner</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.running_environment" title="banditpylib.learners.Learner.running_environment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">running_environment</span></code></a></p></td>
-<td><p>type of environment the learner is running in</p></td>
+<td><p>Type of bandit environment the learner plays with</p></td>
 </tr>
 </tbody>
 </table>
@@ -215,13 +213,13 @@ is used to pass the feedback of the environment to the learner.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actions</span></code></a>(context)</p></td>
-<td><p>Actions of the learner for one round</p></td>
+<td><p>Actions of the learner</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.reset" title="banditpylib.learners.Learner.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
 <td><p>Reset the learner</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.update" title="banditpylib.learners.Learner.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(feedback)</p></td>
-<td><p>Learner update</p></td>
+<td><p>Update the learner</p></td>
 </tr>
 </tbody>
 </table>
@@ -229,29 +227,29 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.goal">
 <span class="sig-name descname"><span class="pre">goal</span></span><a class="headerlink" href="#banditpylib.learners.Learner.goal" title="Permalink to this definition">¶</a></dt>
-<dd><p>goal of the learner</p>
+<dd><p>Goal of the learner</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.name">
 <span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#banditpylib.learners.Learner.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>learner name</p>
+<dd><p>Name of the learner</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.running_environment">
 <span class="sig-name descname"><span class="pre">running_environment</span></span><a class="headerlink" href="#banditpylib.learners.Learner.running_environment" title="Permalink to this definition">¶</a></dt>
-<dd><p>type of environment the learner is running in</p>
+<dd><p>Type of bandit environment the learner plays with</p>
 </dd></dl>
 
 <p class="rubric">Methods Documentation</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.actions">
 <em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#Learner.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.Learner.actions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Actions of the learner for one round</p>
+<dd><p>Actions of the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – state of the bandit environment</p>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>actions to take</p>
@@ -272,11 +270,11 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.update">
 <em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#Learner.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.Learner.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner update</p>
+<dd><p>Update the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
+<a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -294,13 +292,13 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="id0">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
-<dd><p>learner name</p>
+<dd><p>Name of the learner</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="id1">
 <em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">running_environment</span></span><em class="property"><span class="pre">:</span> <span class="pre">type</span></em><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
-<dd><p>type of environment the learner is running in</p>
+<dd><p>Type of bandit environment the learner plays with</p>
 </dd></dl>
 
 <dl class="py method">
@@ -316,10 +314,10 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="id3">
 <em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#Learner.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
-<dd><p>Actions of the learner for one round</p>
+<dd><p>Actions of the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – state of the bandit environment</p>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>actions to take</p>
@@ -330,11 +328,11 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="id4">
 <em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#Learner.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner update</p>
+<dd><p>Update the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
+<a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -342,7 +340,7 @@ is used to pass the feedback of the environment to the learner.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="id5">
 <em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">goal</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.learners.utils.Goal</span></em><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
-<dd><p>goal of the learner</p>
+<dd><p>Goal of the learner</p>
 </dd></dl>
 
 </dd></dl>
