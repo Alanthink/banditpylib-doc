@@ -2,6 +2,6 @@
 <area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,29,77,53"/>
 <area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,29,197,53"/>
 <area shape="rect" id="node2" href="#banditpylib.learners.thres_bandit_learner.APT" target="_top" title="Anytime Parameter&#45;free Thresholding algorithm" alt="" coords="433,5,505,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.thres_bandit_learner.ThresBanditLearner" target="_top" title="Base class for learners in thresholding bandit" alt="" coords="245,29,385,53"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.thres_bandit_learner.ThresBanditLearner" target="_top" title="Abstract class for learners playing with thresholding bandit" alt="" coords="245,29,385,53"/>
 <area shape="rect" id="node5" href="#banditpylib.learners.thres_bandit_learner.Uniform" target="_top" title="Uniform Sampling" alt="" coords="433,53,505,77"/>
 </map>

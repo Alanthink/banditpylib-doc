@@ -186,7 +186,7 @@
 <dt class="sig sig-object py" id="banditpylib.learners.thres_bandit_learner.ThresBanditLearner">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.thres_bandit_learner.</span></span><span class="sig-name descname"><span class="pre">ThresBanditLearner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/thres_bandit_learner/utils.html#ThresBanditLearner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.thres_bandit_learner.ThresBanditLearner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="banditpylib.learners.html#banditpylib.learners.Learner" title="banditpylib.learners.utils.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Learner</span></code></a></p>
-<p>Base class for learners in thresholding bandit</p>
+<p>Abstract class for learners playing with thresholding bandit</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.thres_bandit_learner.ThresBanditLearner.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/thres_bandit_learner/utils.html#ThresBanditLearner.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.thres_bandit_learner.ThresBanditLearner.__init__" title="Permalink to this definition">¶</a></dt>
@@ -204,7 +204,7 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.thres_bandit_learner.ThresBanditLearner.running_environment">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">running_environment</span></span><em class="property"><span class="pre">:</span> <span class="pre">type</span></em><a class="headerlink" href="#banditpylib.learners.thres_bandit_learner.ThresBanditLearner.running_environment" title="Permalink to this definition">¶</a></dt>
-<dd><p>type of environment the learner works with</p>
+<dd><p>Type of bandit environment the learner plays with</p>
 </dd></dl>
 
 <dl class="py method">
@@ -253,12 +253,13 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.thres_bandit_learner.APT.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="_modules/banditpylib/learners/thres_bandit_learner/apt.html#APT.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.thres_bandit_learner.APT.actions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Actions of the learner</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – context of the thresholding bandit which should be <cite>None</cite></p>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>arms to pull</p>
+<dd class="field-even"><p>actions to take</p>
 </dd>
 </dl>
 </dd></dl>
@@ -266,11 +267,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.thres_bandit_learner.APT.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/thres_bandit_learner/apt.html#APT.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.thres_bandit_learner.APT.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner update</p>
+<dd><p>Update the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<cite>actions</cite></p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
+<a class="reference internal" href="#banditpylib.learners.thres_bandit_learner.APT.actions" title="banditpylib.learners.thres_bandit_learner.APT.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -317,12 +318,13 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.thres_bandit_learner.Uniform.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="_modules/banditpylib/learners/thres_bandit_learner/uniform.html#Uniform.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.thres_bandit_learner.Uniform.actions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Actions of the learner</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – context of the thresholding bandit which should be <cite>None</cite></p>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>arms to pull</p>
+<dd class="field-even"><p>actions to take</p>
 </dd>
 </dl>
 </dd></dl>
@@ -330,11 +332,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.thres_bandit_learner.Uniform.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/banditpylib/learners/thres_bandit_learner/uniform.html#Uniform.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.thres_bandit_learner.Uniform.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner update</p>
+<dd><p>Update the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<cite>actions</cite></p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
+<a class="reference internal" href="#banditpylib.learners.thres_bandit_learner.Uniform.actions" title="banditpylib.learners.thres_bandit_learner.Uniform.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -356,7 +358,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#banditpylib.learners.thres_bandit_learner.ThresBanditLearner" title="banditpylib.learners.thres_bandit_learner.ThresBanditLearner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThresBanditLearner</span></code></a>(arm_num, name)</p></td>
-<td><p>Base class for learners in thresholding bandit</p></td>
+<td><p>Abstract class for learners playing with thresholding bandit</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#banditpylib.learners.thres_bandit_learner.APT" title="banditpylib.learners.thres_bandit_learner.APT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">APT</span></code></a>(arm_num, theta, eps, name)</p></td>
 <td><p>Anytime Parameter-free Thresholding algorithm <span id="id2">[<a class="reference internal" href="bibliography.html#id16">LGC16</a>]</span></p></td>
@@ -369,11 +371,11 @@
 </div>
 <div class="section" id="class-inheritance-diagram">
 <h2>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h2>
-<div class="graphviz"><img src="_images/inheritance-c67db57591c92a87af379e367bd00073f86eb430.png" alt="Inheritance diagram of banditpylib.learners.thres_bandit_learner.utils.ThresBanditLearner, banditpylib.learners.thres_bandit_learner.apt.APT, banditpylib.learners.thres_bandit_learner.uniform.Uniform" usemap="#inheritance2e58b9e9ba" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="_images/inheritance-2446af4519235829f78cd41f91736b14c5014b86.png" alt="Inheritance diagram of banditpylib.learners.thres_bandit_learner.utils.ThresBanditLearner, banditpylib.learners.thres_bandit_learner.apt.APT, banditpylib.learners.thres_bandit_learner.uniform.Uniform" usemap="#inheritance2e58b9e9ba" class="inheritance graphviz" /></div>
 <map id="inheritance2e58b9e9ba" name="inheritance2e58b9e9ba">
 <area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,29,197,53"/>
 <area shape="rect" id="node2" href="#banditpylib.learners.thres_bandit_learner.APT" target="_top" title="Anytime Parameter&#45;free Thresholding algorithm" alt="" coords="433,5,505,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.thres_bandit_learner.ThresBanditLearner" target="_top" title="Base class for learners in thresholding bandit" alt="" coords="245,29,385,53"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.thres_bandit_learner.ThresBanditLearner" target="_top" title="Abstract class for learners playing with thresholding bandit" alt="" coords="245,29,385,53"/>
 <area shape="rect" id="node5" href="#banditpylib.learners.thres_bandit_learner.Uniform" target="_top" title="Uniform Sampling" alt="" coords="433,53,505,77"/>
 </map></div>
 </div>

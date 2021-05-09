@@ -200,23 +200,13 @@
                      <span class="n">use_local_search</span><span class="o">=</span><span class="n">use_local_search</span><span class="p">,</span>
                      <span class="n">random_neighbors</span><span class="o">=</span><span class="n">random_neighbors</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">eps</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Epsilon </span><span class="si">%.2f</span><span class="s1"> in </span><span class="si">%s</span><span class="s1"> is no greater than 0!&#39;</span> <span class="o">%</span> \
-          <span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">))</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Epsilon is expected greater than 0. Got </span><span class="si">%.2f</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="n">eps</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span> <span class="o">=</span> <span class="n">eps</span></div>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      default learner name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;epsilon_greedy&#39;</span>
 
 <div class="viewcode-block" id="EpsGreedy.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Reset the learner</span>
-
-<span class="sd">    .. warning::</span>
-<span class="sd">      This function should be called before the start of the game.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Current time step</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="c1"># Current episode</span>
@@ -251,10 +241,6 @@
     <span class="k">return</span> <span class="n">assortments</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">assortments</span><span class="p">)))]</span>
 
 <div class="viewcode-block" id="EpsGreedy.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      assortments to serve</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">del</span> <span class="n">context</span>
 
     <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
@@ -294,12 +280,6 @@
     <span class="k">return</span> <span class="n">actions</span></div>
 
 <div class="viewcode-block" id="EpsGreedy.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Learner update</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">      feedback: feedback returned by the bandit environment by executing</span>
-<span class="sd">        :func:`actions`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">__customer_choices</span><span class="p">[</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>

@@ -207,25 +207,20 @@
     <span class="k">return</span> <span class="s1">&#39;thompson_sampling&#39;</span>
 
 <div class="viewcode-block" id="ThompsonSampling.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Reset the learner</span>
-
-<span class="sd">    .. warning::</span>
-<span class="sd">      This function should be called before the start of the game.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># current time step</span>
+    <span class="c1"># Current time step</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="c1"># current episode</span>
+    <span class="c1"># Current episode</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__episode</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="c1"># number of episodes a product is served until the current episode</span>
+    <span class="c1"># Number of episodes a product is served until the current episode</span>
     <span class="c1"># (exclusive)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__serving_episodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">product_num</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="c1"># number of times a product is picked until the current time (exclusive)</span>
+    <span class="c1"># Number of times a product is picked until the current time (exclusive)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__customer_choices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">product_num</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__last_customer_feedback</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1"># flag to denote whether the initial warm start stage has finished</span>
+    <span class="c1"># Flag to denote whether the initial warm start stage has finished</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__done_warm_start</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="c1"># next product to try in the warm start stage</span>
+    <span class="c1"># Next product to try in the warm start stage</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__next_product_in_warm_start</span> <span class="o">=</span> <span class="mi">1</span></div>
 
   <span class="k">def</span> <span class="nf">__warm_start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
@@ -271,13 +266,6 @@
     <span class="k">return</span> <span class="n">sampled_preference_params</span>
 
 <div class="viewcode-block" id="ThompsonSampling.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      context: context of the ordinary mnl bandit which should be `None`</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">      assortments to serve</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">del</span> <span class="n">context</span>
 
     <span class="n">actions</span><span class="p">:</span> <span class="n">Actions</span>
@@ -324,12 +312,6 @@
     <span class="k">return</span> <span class="n">actions</span></div>
 
 <div class="viewcode-block" id="ThompsonSampling.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Learner update</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">      feedback: feedback returned by the bandit environment by executing</span>
-<span class="sd">        :func:`actions`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__customer_choices</span><span class="p">[</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
 

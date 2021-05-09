@@ -188,7 +188,7 @@
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.ordinary_mnl_learner.</span></span><span class="sig-name descname"><span class="pre">OrdinaryMNLLearner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revenues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../banditpylib.bandits.html#banditpylib.bandits.Reward" title="banditpylib.bandits.ordinary_mnl_bandit.Reward"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_search</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_neighbors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_mnl_learner/utils.html#OrdinaryMNLLearner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../banditpylib.learners.html#banditpylib.learners.Learner" title="banditpylib.learners.utils.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">banditpylib.learners.utils.Learner</span></code></a></p>
-<p>Base class for learners in the ordinary mnl bandit</p>
+<p>Abstract class for learners playing with the ordinary mnl bandit</p>
 <p>Product 0 is reserved for non-purchase. And it is assumed that the preference
 parameter for non-purchase is 1.</p>
 <p class="rubric">Attributes Summary</p>
@@ -199,19 +199,19 @@ parameter for non-purchase is 1.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.goal" title="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">goal</span></code></a></p></td>
-<td><p>goal of the learner</p></td>
+<td><p>Goal of the learner</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.random_neighbors" title="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.random_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">random_neighbors</span></code></a></p></td>
-<td><p>number of random neighbors to look up when local search is enabled</p></td>
+<td><p>Number of random neighbors to look up when local search is enabled</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.reward" title="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.reward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reward</span></code></a></p></td>
-<td><p>goal of the learner</p></td>
+<td><p>Reward the learner wants to maximize</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.running_environment" title="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.running_environment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">running_environment</span></code></a></p></td>
-<td><p>type of environment the learner works with</p></td>
+<td><p>Type of bandit environment the learner plays with</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.use_local_search" title="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.use_local_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_local_search</span></code></a></p></td>
-<td><p>whether local search is enabled</p></td>
+<td><p>Whether local search is enabled</p></td>
 </tr>
 </tbody>
 </table>
@@ -252,31 +252,29 @@ parameter for non-purchase is 1.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.goal">
 <span class="sig-name descname"><span class="pre">goal</span></span><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.goal" title="Permalink to this definition">¶</a></dt>
-<dd><p>goal of the learner</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.random_neighbors">
 <span class="sig-name descname"><span class="pre">random_neighbors</span></span><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.random_neighbors" title="Permalink to this definition">¶</a></dt>
-<dd><p>number of random neighbors to look up when local search is enabled</p>
+<dd><p>Number of random neighbors to look up when local search is enabled</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.reward">
 <span class="sig-name descname"><span class="pre">reward</span></span><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.reward" title="Permalink to this definition">¶</a></dt>
-<dd><p>goal of the learner</p>
+<dd><p>Reward the learner wants to maximize</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.running_environment">
 <span class="sig-name descname"><span class="pre">running_environment</span></span><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.running_environment" title="Permalink to this definition">¶</a></dt>
-<dd><p>type of environment the learner works with</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.use_local_search">
 <span class="sig-name descname"><span class="pre">use_local_search</span></span><a class="headerlink" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.use_local_search" title="Permalink to this definition">¶</a></dt>
-<dd><p>whether local search is enabled</p>
+<dd><p>Whether local search is enabled</p>
 </dd></dl>
 
 <p class="rubric">Methods Documentation</p>
@@ -332,7 +330,7 @@ enabled</p></li>
 <dl class="py property">
 <dt class="sig sig-object py" id="id0">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">running_environment</span></span><em class="property"><span class="pre">:</span> <span class="pre">type</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
-<dd><p>type of environment the learner works with</p>
+<dd><p>Type of bandit environment the learner plays with</p>
 </dd></dl>
 
 <dl class="py method">
@@ -368,25 +366,25 @@ enabled</p></li>
 <dl class="py property">
 <dt class="sig sig-object py" id="id4">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">reward</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.bandits.ordinary_mnl_bandit.Reward</span></em><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
-<dd><p>goal of the learner</p>
+<dd><p>Reward the learner wants to maximize</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="id5">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">use_local_search</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
-<dd><p>whether local search is enabled</p>
+<dd><p>Whether local search is enabled</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="id6">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">random_neighbors</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
-<dd><p>number of random neighbors to look up when local search is enabled</p>
+<dd><p>Number of random neighbors to look up when local search is enabled</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="id7">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">goal</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.learners.utils.Goal</span></em><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
-<dd><p>goal of the learner</p>
+<dd><p>Goal of the learner</p>
 </dd></dl>
 
 </dd></dl>

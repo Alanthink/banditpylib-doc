@@ -190,18 +190,9 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__threshold</span> <span class="o">=</span> <span class="n">threshold</span></div>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      default learner name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;exp_gap&#39;</span>
 
 <div class="viewcode-block" id="ExpGap.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.ExpGap.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Reset the learner</span>
-
-<span class="sd">    .. warning::</span>
-<span class="sd">      This function should be called before the start of the game.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">PseudoArm</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()):</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">PseudoArm</span><span class="p">()</span>
@@ -216,7 +207,7 @@
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">stage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;stage of the learner&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Stage of the learner&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span>
 
   <span class="k">def</span> <span class="nf">__median_elimination</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
@@ -244,13 +235,6 @@
     <span class="k">return</span> <span class="n">actions</span>
 
 <div class="viewcode-block" id="ExpGap.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.ExpGap.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      context: context of the ordinary bandit which should be `None`</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">      arms to pull</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
       <span class="k">return</span> <span class="n">Actions</span><span class="p">()</span>
 
@@ -273,12 +257,6 @@
     <span class="k">return</span> <span class="n">actions</span></div>
 
 <div class="viewcode-block" id="ExpGap.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.ExpGap.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Learner update</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">      feedback: feedback returned by the bandit environment by executing</span>
-<span class="sd">        :func:`actions`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s1">&#39;main_loop&#39;</span><span class="p">:</span>
       <span class="k">for</span> <span class="n">arm_rewards_pair</span> <span class="ow">in</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">[</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
@@ -336,10 +314,6 @@
             <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">confidence</span><span class="p">())</span> <span class="o">/</span> <span class="mi">50</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__round</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ExpGap.best_arm"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.ExpGap.best_arm">[docs]</a>  <span class="k">def</span> <span class="nf">best_arm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      best arm identified by the learner</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: I don</span><span class="se">\&#39;</span><span class="s1">t have an answer yet!&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span></div></div>

@@ -197,26 +197,16 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions" title="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actions</span></code></a>([context])</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">param context</dt>
-<dd class="field-odd"><p>context of the ordinary bandit which should be <cite>None</cite></p>
-</dd>
-</dl>
-</p></td>
+<td><p>Actions of the learner</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.best_arm" title="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.best_arm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">best_arm</span></code></a>()</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">returns</dt>
-<dd class="field-odd"><p>best arm identified by the learner</p>
-</dd>
-</dl>
-</p></td>
+<td><p>Returns: index of the best arm identified by the learner</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.reset" title="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
 <td><p>Reset the learner</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.update" title="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(feedback)</p></td>
-<td><p>Learner update</p></td>
+<td><p>Update the learner</p></td>
 </tr>
 </tbody>
 </table>
@@ -224,12 +214,13 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Actions of the learner</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>arms to pull</p>
+<dd class="field-even"><p>actions to take</p>
 </dd>
 </dl>
 </dd></dl>
@@ -237,11 +228,8 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.best_arm">
 <span class="sig-name descname"><span class="pre">best_arm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.best_arm" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>best arm identified by the learner</p>
-</dd>
-</dl>
+<dd><p>Returns:
+index of the best arm identified by the learner</p>
 </dd></dl>
 
 <dl class="py method">
@@ -257,11 +245,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner update</p>
+<dd><p>Update the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<a class="reference internal" href="../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions" title="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
+<a class="reference internal" href="../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions" title="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -294,12 +282,13 @@ should output the best arm with probability at least this value.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="id2">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Actions of the learner</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – context of the ordinary bandit which should be <cite>None</cite></p>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>arms to pull</p>
+<dd class="field-even"><p>actions to take</p>
 </dd>
 </dl>
 </dd></dl>
@@ -307,11 +296,11 @@ should output the best arm with probability at least this value.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="id3">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner update</p>
+<dd><p>Update the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment by executing
-<a class="reference internal" href="../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions" title="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a></p>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
+<a class="reference internal" href="../banditpylib.learners.ordinary_fcbai_learner.html#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions" title="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
 </dd></dl>
@@ -319,11 +308,8 @@ should output the best arm with probability at least this value.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="id4">
 <span class="sig-name descname"><span class="pre">best_arm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>best arm identified by the learner</p>
-</dd>
-</dl>
+<dd><p>Returns:
+index of the best arm identified by the learner</p>
 </dd></dl>
 
 </dd></dl>
