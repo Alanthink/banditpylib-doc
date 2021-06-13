@@ -1,8 +1,0 @@
-<map id="inheritance6f7ea75582" name="inheritance6f7ea75582">
-<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,53,77,77"/>
-<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,53,197,77"/>
-<area shape="rect" id="node2" href="#banditpylib.learners.ordinary_mnl_learner.EpsGreedy" target="_top" title="Epsilon&#45;Greedy policy" alt="" coords="466,5,554,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner" target="_top" title="Abstract class for learners playing with the ordinary mnl bandit" alt="" coords="245,53,392,77"/>
-<area shape="rect" id="node5" href="#banditpylib.learners.ordinary_mnl_learner.ThompsonSampling" target="_top" title="Thompson sampling policy :cite:`DBLP:conf/colt/AgrawalAGZ17`" alt="" coords="440,53,580,77"/>
-<area shape="rect" id="node6" href="#banditpylib.learners.ordinary_mnl_learner.UCB" target="_top" title="UCB policy :cite:`DBLP:journals/ior/AgrawalAGZ19`" alt="" coords="474,101,546,125"/>
-</map>

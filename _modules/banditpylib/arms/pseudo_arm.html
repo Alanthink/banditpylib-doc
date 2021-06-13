@@ -89,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto/banditpylib.html"><code class="docutils literal notranslate"><span class="pre">banditpylib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -157,37 +157,35 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.arms.pseudo_arm</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Arm</span>
 
 
-<div class="viewcode-block" id="PseudoArm"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.PseudoArm">[docs]</a><span class="k">class</span> <span class="nc">PseudoArm</span><span class="p">:</span>
+<div class="viewcode-block" id="PseudoArm"><a class="viewcode-back" href="../../../auto/banditpylib.arms.html#banditpylib.arms.PseudoArm">[docs]</a><span class="k">class</span> <span class="nc">PseudoArm</span><span class="p">(</span><span class="n">Arm</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Pseudo arm</span>
 
-<span class="sd">  This class is used to store empirical information of an arm. Currently, only</span>
-<span class="sd">  the information regarding the first and second moments of empirical rewards</span>
-<span class="sd">  i.e., mean and variance are stored.</span>
+<span class="sd">  This class is used to store empirical information of an arm.</span>
+
+<span class="sd">  :param str name: alias name</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="PseudoArm.__init__"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.PseudoArm.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      name: alias name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="s1">&#39;pseudo_arm&#39;</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span></div>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
-  <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;arm name&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;pseudo_arm&#39;</span>
 
-<div class="viewcode-block" id="PseudoArm.total_pulls"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.PseudoArm.total_pulls">[docs]</a>  <span class="k">def</span> <span class="nf">total_pulls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="PseudoArm.total_pulls"><a class="viewcode-back" href="../../../auto/banditpylib.arms.html#banditpylib.arms.PseudoArm.total_pulls">[docs]</a>  <span class="k">def</span> <span class="nf">total_pulls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      total number of pulls</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span></div>
 
-<div class="viewcode-block" id="PseudoArm.total_rewards"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.PseudoArm.total_rewards">[docs]</a>  <span class="k">def</span> <span class="nf">total_rewards</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="viewcode-block" id="PseudoArm.total_rewards"><a class="viewcode-back" href="../../../auto/banditpylib.arms.html#banditpylib.arms.PseudoArm.total_rewards">[docs]</a>  <span class="k">def</span> <span class="nf">total_rewards</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      total rewards obtained so far</span>
@@ -196,26 +194,35 @@
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">em_mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;empirical mean of rewards&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Empirical mean of rewards&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of pulls is 0. No empirical mean!&#39;</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of pulls is 0. No empirical mean.&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_rewards</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span>
 
   <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">em_var</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;empirical variance of rewards&quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="nf">em_std</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Empirical standard variance of rewards&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of pulls is 0. No empirical variance!&#39;</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of pulls is 0. No empirical standard deviation.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__sum_of_square_reward</span> <span class="o">-</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">__total_rewards</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">em_var</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Empirical variance of rewards&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of pulls is 0. No empirical variance.&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__sum_of_square_reward</span> <span class="o">-</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__total_rewards</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span>
 
-<div class="viewcode-block" id="PseudoArm.reset"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.PseudoArm.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PseudoArm.reset"><a class="viewcode-back" href="../../../auto/banditpylib.arms.html#banditpylib.arms.PseudoArm.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Clear information&quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__total_rewards</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__sum_of_square_reward</span> <span class="o">=</span> <span class="mi">0</span></div>
 
-<div class="viewcode-block" id="PseudoArm.update"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.PseudoArm.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rewards</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<div class="viewcode-block" id="PseudoArm.update"><a class="viewcode-back" href="../../../auto/banditpylib.arms.html#banditpylib.arms.PseudoArm.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rewards</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Update information</span>
 
 <span class="sd">    Args:</span>

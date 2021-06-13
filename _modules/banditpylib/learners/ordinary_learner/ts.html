@@ -89,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../auto/banditpylib.html"><code class="docutils literal notranslate"><span class="pre">banditpylib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -164,33 +164,31 @@
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">OrdinaryLearner</span>
 
 
-<div class="viewcode-block" id="ThompsonSampling"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling">[docs]</a><span class="k">class</span> <span class="nc">ThompsonSampling</span><span class="p">(</span><span class="n">OrdinaryLearner</span><span class="p">):</span>
+<div class="viewcode-block" id="ThompsonSampling"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling">[docs]</a><span class="k">class</span> <span class="nc">ThompsonSampling</span><span class="p">(</span><span class="n">OrdinaryLearner</span><span class="p">):</span>
   <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Thompson Sampling policy :cite:`agrawal2017near`</span>
 
 <span class="sd">  Assume a prior distribution for every arm. At time :math:`t`, sample a</span>
 <span class="sd">  virtual mean reward from the posterior distribution for every arm. Play the</span>
 <span class="sd">  arm with the maximum sampled virtual mean reward.</span>
 
+<span class="sd">  :param int arm_num: number of arms</span>
+<span class="sd">  :param str name: alias name</span>
+<span class="sd">  :param str prior_dist: prior distribution of thompson sampling. Only two</span>
+<span class="sd">    priors are supported i.e., `beta` and `gaussian`</span>
+
 <span class="sd">  .. warning::</span>
 <span class="sd">    Reward should be Bernoulli when Beta prior is chosen.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="ThompsonSampling.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">prior_dist</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;beta&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      arm_num: number of arms</span>
-<span class="sd">      name: alias name</span>
-<span class="sd">      prior_dist: prior distribution of thompson sampling. Only two priors are</span>
-<span class="sd">        supported i.e., `beta` and `gaussian`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">prior_dist</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;beta&#39;</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">prior_dist</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="s1">&#39;beta&#39;</span><span class="p">]:</span>
       <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Prior distribution </span><span class="si">%s</span><span class="s1"> is not supported.&#39;</span> <span class="o">%</span> <span class="n">prior_dist</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__prior_dist</span> <span class="o">=</span> <span class="n">prior_dist</span></div>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__prior_dist</span> <span class="o">=</span> <span class="n">prior_dist</span>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="s1">&#39;thompson_sampling&#39;</span>
 
-<div class="viewcode-block" id="ThompsonSampling.reset"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ThompsonSampling.reset"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())]</span>
     <span class="c1"># Current time step</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span></div>
@@ -223,7 +221,7 @@
       <span class="n">virtual_means</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">virtual_means</span><span class="p">))</span>
 
-<div class="viewcode-block" id="ThompsonSampling.actions"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
+<div class="viewcode-block" id="ThompsonSampling.actions"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="k">del</span> <span class="n">context</span>
 
     <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
@@ -233,7 +231,7 @@
     <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">actions</span></div>
 
-<div class="viewcode-block" id="ThompsonSampling.update"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
+<div class="viewcode-block" id="ThompsonSampling.update"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ThompsonSampling.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
     <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="p">))</span>

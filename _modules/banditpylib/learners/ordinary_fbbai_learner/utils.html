@@ -89,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../auto/banditpylib.html"><code class="docutils literal notranslate"><span class="pre">banditpylib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -159,25 +159,23 @@
   <h1>Source code for banditpylib.learners.ordinary_fbbai_learner.utils</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">OrdinaryBandit</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Learner</span><span class="p">,</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">BestArmId</span>
 
 
-<div class="viewcode-block" id="OrdinaryFBBAILearner"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner">[docs]</a><span class="k">class</span> <span class="nc">OrdinaryFBBAILearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
+<div class="viewcode-block" id="OrdinaryFBBAILearner"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner">[docs]</a><span class="k">class</span> <span class="nc">OrdinaryFBBAILearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Abstract class for best-arm identification learners playing with the</span>
 <span class="sd">  ordinary multi-armed bandit</span>
 
 <span class="sd">  This kind of learners aim to identify the best arm with fixed budget.</span>
+
+<span class="sd">  :param int arm_num: number of arms</span>
+<span class="sd">  :param int budget: total number of pulls</span>
+<span class="sd">  :param Optional[str] name: alias name</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="OrdinaryFBBAILearner.__init__"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">budget</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      arm_num: number of arms</span>
-<span class="sd">      budget: total number of pulls</span>
-<span class="sd">      name: alias name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">budget</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">arm_num</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of arms is expected at least 2. Got </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span>
@@ -186,27 +184,27 @@
     <span class="k">if</span> <span class="n">budget</span> <span class="o">&lt;</span> <span class="n">arm_num</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Budget is expected at least </span><span class="si">%d</span><span class="s1">. Got </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span>
                        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span><span class="p">,</span> <span class="n">budget</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__budget</span> <span class="o">=</span> <span class="n">budget</span></div>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__budget</span> <span class="o">=</span> <span class="n">budget</span>
 
   <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">running_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">running_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">type</span><span class="p">]]:</span>
     <span class="k">return</span> <span class="n">OrdinaryBandit</span>
 
-<div class="viewcode-block" id="OrdinaryFBBAILearner.arm_num"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.arm_num">[docs]</a>  <span class="k">def</span> <span class="nf">arm_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="OrdinaryFBBAILearner.arm_num"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.arm_num">[docs]</a>  <span class="k">def</span> <span class="nf">arm_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      number of arms</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span></div>
 
-<div class="viewcode-block" id="OrdinaryFBBAILearner.budget"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.budget">[docs]</a>  <span class="k">def</span> <span class="nf">budget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="OrdinaryFBBAILearner.budget"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.budget">[docs]</a>  <span class="k">def</span> <span class="nf">budget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      budget of the learner</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__budget</span></div>
 
-<div class="viewcode-block" id="OrdinaryFBBAILearner.best_arm"><a class="viewcode-back" href="../../../../banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.best_arm">[docs]</a>  <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="OrdinaryFBBAILearner.best_arm"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner.best_arm">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">best_arm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>

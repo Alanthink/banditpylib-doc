@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="banditpylib" href="modules.html" />
+    <link rel="next" title="banditpylib" href="auto/banditpylib.html" />
     <link rel="prev" title="Welcome to banditpylib’s documentation!" href="index.html" /> 
 </head>
 
@@ -116,7 +116,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#acknowledgments">Acknowledgments</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto/banditpylib.html"><code class="docutils literal notranslate"><span class="pre">banditpylib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -292,19 +292,19 @@
 <h3>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h3>
 <p>Python version requirement: 3.7 or above.</p>
 <p>Virtual environment: in order not to pollute your own environment, it is suggested to use python virtual environment. The following commands show the details to create and activate a virtual environment.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a virtual environment `.env`</span>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a virtual environment `.env`</span>
 python3 -m venv .env
 <span class="c1"># Activate the environment</span>
 <span class="nb">source</span> .env/bin/activate
 </pre></div>
 </div>
 <p>Then you can run the following command to install the <code class="docutils literal notranslate"><span class="pre">banditpylib</span></code> library.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make install
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>make install
 </pre></div>
 </div>
 <p>After finishing the usage of the library, you can use <code class="docutils literal notranslate"><span class="pre">deactivate</span></code> to deactive the virtual environment and what’s more, you can safely delete the whole <code class="docutils literal notranslate"><span class="pre">.env</span></code> directory for cleanup.</p>
 <p>The following shows other useful make commands.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make <span class="nb">test</span>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>make <span class="nb">test</span>
        run tests
 make lint
        run pylint and mypy
@@ -321,8 +321,7 @@ make fix
 <p>Suppose we want to run algorithms <em>Epsilon Greedy</em>, <em>UCB</em> and <em>Thompson Sampling</em>, which aim to maximize the total rewards, against the ordinary multi-armed bandit environment with 3 <em>Bernoulli</em> arms. The following code blocks show the main logic.</p>
 <div class="section" id="set-up-bandit-environment">
 <h4>Set up bandit environment<a class="headerlink" href="#set-up-bandit-environment" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># type: ignore</span>
-<span class="c1"># Real means of Bernoulli arms</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Real means of Bernoulli arms</span>
 <span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]</span>
 <span class="c1"># Create Bernoulli arms</span>
 <span class="n">arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">BernoulliArm</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span> <span class="k">for</span> <span class="n">mean</span> <span class="ow">in</span> <span class="n">means</span><span class="p">]</span>
@@ -333,8 +332,7 @@ make fix
 </div>
 <div class="section" id="set-up-learners">
 <h4>Set up learners<a class="headerlink" href="#set-up-learners" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># type: ignore</span>
-<span class="c1"># Create learners aiming to maximize the total rewards</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create learners aiming to maximize the total rewards</span>
 <span class="n">learners</span> <span class="o">=</span> <span class="p">[</span><span class="n">EpsGreedy</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)),</span>
             <span class="n">UCB</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)),</span>
             <span class="n">ThompsonSampling</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">))]</span>
@@ -343,8 +341,7 @@ make fix
 </div>
 <div class="section" id="set-up-simulator-and-play-the-game">
 <h4>Set up simulator and play the game<a class="headerlink" href="#set-up-simulator-and-play-the-game" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># type: ignore</span>
-<span class="c1"># Horizon of the game</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Horizon of the game</span>
 <span class="n">horizon</span> <span class="o">=</span> <span class="mi">2000</span>
 <span class="c1"># Record intermediate regrets for each trial</span>
 <span class="n">intermediate_regrets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">horizon</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
@@ -396,7 +393,7 @@ make fix
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="modules.html" class="btn btn-neutral float-right" title="banditpylib" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="auto/banditpylib.html" class="btn btn-neutral float-right" title="banditpylib" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to banditpylib’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

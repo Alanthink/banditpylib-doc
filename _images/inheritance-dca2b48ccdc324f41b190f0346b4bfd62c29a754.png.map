@@ -1,7 +1,0 @@
-<map id="inheritanced5aaea0dc2" name="inheritanced5aaea0dc2">
-<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="15,53,87,77"/>
-<area shape="rect" id="node2" href="#banditpylib.arms.Arm" target="_top" title="Arm" alt="" coords="144,53,216,77"/>
-<area shape="rect" id="node3" href="#banditpylib.arms.BernoulliArm" target="_top" title="Bernoulli arm" alt="" coords="267,29,364,53"/>
-<area shape="rect" id="node4" href="#banditpylib.arms.GaussianArm" target="_top" title="Gaussian arm" alt="" coords="264,77,366,101"/>
-<area shape="rect" id="node5" href="#banditpylib.arms.PseudoArm" target="_top" title="Pseudo arm" alt="" coords="5,5,96,29"/>
-</map>

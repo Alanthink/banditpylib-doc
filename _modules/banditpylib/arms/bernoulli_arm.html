@@ -89,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto/banditpylib.html"><code class="docutils literal notranslate"><span class="pre">banditpylib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -161,55 +161,37 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Arm</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">StochasticArm</span>
 
 
-<div class="viewcode-block" id="BernoulliArm"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.BernoulliArm">[docs]</a><span class="k">class</span> <span class="nc">BernoulliArm</span><span class="p">(</span><span class="n">Arm</span><span class="p">):</span>
+<div class="viewcode-block" id="BernoulliArm"><a class="viewcode-back" href="../../../auto/banditpylib.arms.html#banditpylib.arms.BernoulliArm">[docs]</a><span class="k">class</span> <span class="nc">BernoulliArm</span><span class="p">(</span><span class="n">StochasticArm</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Bernoulli arm</span>
 
 <span class="sd">  Arm with rewards generated from a Bernoulli distribution.</span>
+
+<span class="sd">  :param float mu: mean of rewards</span>
+<span class="sd">  :param str name: alias name</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="BernoulliArm.__init__"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.BernoulliArm.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      mu: mean of rewards</span>
-<span class="sd">      name: alias name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">mu</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Mean of rewards </span><span class="si">%.2f</span><span class="s1"> is less than 0!&#39;</span> <span class="o">%</span> <span class="n">mu</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">mu</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Mean of rewards </span><span class="si">%.2f</span><span class="s1"> is greater than 1!&#39;</span> <span class="o">%</span> <span class="n">mu</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__mu</span> <span class="o">=</span> <span class="n">mu</span></div>
+    <span class="k">if</span> <span class="p">(</span><span class="n">mu</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">mu</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Mean of rewards is expected within [0, 1]. Got </span><span class="si">%.2f</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                      <span class="n">mu</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__mu</span> <span class="o">=</span> <span class="n">mu</span>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      default arm name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;bernoulli_arm&#39;</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;mean of rewards&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__mu</span>
 
-<div class="viewcode-block" id="BernoulliArm.pull"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.BernoulliArm.pull">[docs]</a>  <span class="k">def</span> <span class="nf">pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Pull the arm</span>
-
-<span class="sd">    When pulls is None, a float number will be returned. Otherwise, a numpy</span>
-<span class="sd">    array will be returned.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">      pulls: number of times to pull</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">      stochastic rewards</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="BernoulliArm.pull"><a class="viewcode-back" href="../../../auto/banditpylib.arms.html#banditpylib.arms.BernoulliArm.pull">[docs]</a>  <span class="k">def</span> <span class="nf">pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">pulls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
       <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__mu</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">pulls</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of pulls should be at least 1.&#39;</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of pulls is expected at least 1. Got </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                       <span class="n">pulls</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__mu</span><span class="p">,</span> <span class="n">pulls</span><span class="p">)</span></div></div>
 </pre></div>
 

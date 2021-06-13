@@ -89,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto/banditpylib.html"><code class="docutils literal notranslate"><span class="pre">banditpylib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -185,7 +185,7 @@
   <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="n">tem_time</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">tem_time</span><span class="p">))</span> <span class="o">*</span> <span class="mi">10000000</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="parse_trials_data"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.parse_trials_data">[docs]</a><span class="k">def</span> <span class="nf">parse_trials_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Trial</span><span class="p">]:</span>
+<div class="viewcode-block" id="parse_trials_data"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.parse_trials_data">[docs]</a><span class="k">def</span> <span class="nf">parse_trials_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Trial</span><span class="p">]:</span>
   <span class="sd">&quot;&quot;&quot;Retrieve trials data from bytes data&quot;&quot;&quot;</span>
   <span class="n">trials_data</span> <span class="o">=</span> <span class="p">[]</span>
   <span class="n">next_pos</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
@@ -200,7 +200,7 @@
   <span class="k">return</span> <span class="n">trials_data</span></div>
 
 
-<div class="viewcode-block" id="trial_data_messages_to_dict"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.trial_data_messages_to_dict">[docs]</a><span class="k">def</span> <span class="nf">trial_data_messages_to_dict</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<div class="viewcode-block" id="trial_data_messages_to_dict"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.trial_data_messages_to_dict">[docs]</a><span class="k">def</span> <span class="nf">trial_data_messages_to_dict</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
   <span class="sd">&quot;&quot;&quot;Read file storing trials data and transform to pandas DataFrame&quot;&quot;&quot;</span>
   <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
@@ -218,24 +218,34 @@
     <span class="k">return</span> <span class="n">data_df</span></div>
 
 
-<div class="viewcode-block" id="Protocol"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.Protocol">[docs]</a><span class="k">class</span> <span class="nc">Protocol</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<div class="viewcode-block" id="Protocol"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.Protocol">[docs]</a><span class="k">class</span> <span class="nc">Protocol</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Abstract class for a protocol which is used to coordinate the interactions</span>
 <span class="sd">  between the learner and the bandit environment.</span>
+
+<span class="sd">  :param Bandit bandit: bandit environment</span>
+<span class="sd">  :param List[Learner] learners: learners used to run simulations</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Protocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.Protocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span> <span class="n">learners</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Learner</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      bandit: bandit environment</span>
-<span class="sd">      learners: learners used to run simulations</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span> <span class="n">learners</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Learner</span><span class="p">]):</span>
     <span class="k">for</span> <span class="n">learner</span> <span class="ow">in</span> <span class="n">learners</span><span class="p">:</span>
-      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bandit</span><span class="p">,</span> <span class="n">learner</span><span class="o">.</span><span class="n">running_environment</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Learner </span><span class="si">%s</span><span class="s1"> can not recognize environment </span><span class="si">%s</span><span class="s1">!&#39;</span> <span class="o">%</span>
-                        <span class="p">(</span><span class="n">learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">bandit</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">learner</span><span class="o">.</span><span class="n">running_environment</span><span class="p">,</span> <span class="n">List</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bandit</span><span class="p">,</span> <span class="n">learner</span><span class="o">.</span><span class="n">running_environment</span><span class="p">):</span>
+          <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Learner </span><span class="si">%s</span><span class="s1"> can not recognize environment </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                          <span class="p">(</span><span class="n">learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">bandit</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># learner.running_environment is a list</span>
+        <span class="n">environment_is_recognizable</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">env</span> <span class="ow">in</span> <span class="n">learner</span><span class="o">.</span><span class="n">running_environment</span><span class="p">:</span>
+          <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bandit</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
+            <span class="n">environment_is_recognizable</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">environment_is_recognizable</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Learner </span><span class="si">%s</span><span class="s1"> can not recognize environment </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                          <span class="p">(</span><span class="n">learner</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">bandit</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
     <span class="bp">self</span><span class="o">.</span><span class="n">__bandit</span> <span class="o">=</span> <span class="n">bandit</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__learners</span> <span class="o">=</span> <span class="n">learners</span>
-    <span class="c1"># The learner used by the simulator currently</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span><span class="p">:</span> <span class="n">Learner</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="c1"># The learner simulated currently</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span><span class="p">:</span> <span class="n">Learner</span> <span class="o">=</span> <span class="kc">None</span>
 
   <span class="nd">@property</span>
   <span class="nd">@abstractmethod</span>
@@ -277,7 +287,7 @@
       <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
       <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Protocol.play"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.Protocol.play">[docs]</a>  <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trials</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">processes</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Protocol.play"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.Protocol.play">[docs]</a>  <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trials</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">processes</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Start playing the game</span>
 
 <span class="sd">    Args:</span>

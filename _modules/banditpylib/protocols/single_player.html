@@ -89,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto/banditpylib.html"><code class="docutils literal notranslate"><span class="pre">banditpylib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -169,7 +169,7 @@
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Protocol</span>
 
 
-<div class="viewcode-block" id="SinglePlayerProtocol"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.SinglePlayerProtocol">[docs]</a><span class="k">class</span> <span class="nc">SinglePlayerProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<div class="viewcode-block" id="SinglePlayerProtocol"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.SinglePlayerProtocol">[docs]</a><span class="k">class</span> <span class="nc">SinglePlayerProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Single player protocol</span>
 
 <span class="sd">  This protocol is used to simulate the ordinary single-player game. It runs in</span>
@@ -184,30 +184,29 @@
 <span class="sd">  * no actions are returned by the learner;</span>
 <span class="sd">  * total number of actions achieve `horizon`.</span>
 
+
+<span class="sd">  :param Bandit bandit: bandit environment</span>
+<span class="sd">  :param List[Learner] learner: learners to be compared with</span>
+<span class="sd">  :param List[int] intermediate_regrets: a list of rounds. If set, the regrets</span>
+<span class="sd">    after these rounds will be recorded</span>
+<span class="sd">  :param int horizon: horizon of the game (i.e., total number of actions a</span>
+<span class="sd">    leaner can make)</span>
+
 <span class="sd">  .. note::</span>
 <span class="sd">    During a round, a learner may want to perform multiple actions, which is</span>
 <span class="sd">    so-called batched learner. The total number of rounds shows how often the</span>
 <span class="sd">    learner wants to communicate with the bandit environment which is at most</span>
 <span class="sd">    `horizon`.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="SinglePlayerProtocol.__init__"><a class="viewcode-back" href="../../../banditpylib.protocols.html#banditpylib.protocols.SinglePlayerProtocol.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span>
                <span class="n">learners</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Learner</span><span class="p">],</span>
                <span class="n">intermediate_regrets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      bandit: bandit environment</span>
-<span class="sd">      learner: learners to be compared with</span>
-<span class="sd">      intermediate_regrets: a list of rounds. If set, the regrets after these</span>
-<span class="sd">        rounds will be recorded</span>
-<span class="sd">      horizon: horizon of the game (i.e., total number of actions a leaner can</span>
-<span class="sd">        make)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bandit</span><span class="o">=</span><span class="n">bandit</span><span class="p">,</span> <span class="n">learners</span><span class="o">=</span><span class="n">learners</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__intermediate_regrets</span> <span class="o">=</span> \
         <span class="n">intermediate_regrets</span> <span class="k">if</span> <span class="n">intermediate_regrets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span> <span class="o">=</span> <span class="n">horizon</span></div>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span> <span class="o">=</span> <span class="n">horizon</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>

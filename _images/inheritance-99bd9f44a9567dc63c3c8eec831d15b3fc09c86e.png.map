@@ -1,0 +1,6 @@
+<map id="inheritance4a5e88472f" name="inheritance4a5e88472f">
+<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,5,77,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.ordinary_fbbai_learner.OrdinaryFBBAILearner" target="_top" title="Abstract class for best&#45;arm identification learners playing with the" alt="" coords="245,5,402,29"/>
+<area shape="rect" id="node4" href="#banditpylib.learners.ordinary_fbbai_learner.SH" target="_top" title="Sequential halving policy :cite:`karnin2013almost`" alt="" coords="450,5,522,29"/>
+</map>

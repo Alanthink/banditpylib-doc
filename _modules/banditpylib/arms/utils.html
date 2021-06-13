@@ -89,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto/banditpylib.html"><code class="docutils literal notranslate"><span class="pre">banditpylib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -164,18 +164,17 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="Arm"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.Arm">[docs]</a><span class="k">class</span> <span class="nc">Arm</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Arm&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Arm.__init__"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.Arm.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      name: alias name for the arm</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span></div>
+<div class="viewcode-block" id="Arm"><a class="viewcode-back" href="../../../auto/banditpylib.arms.html#banditpylib.arms.Arm">[docs]</a><span class="k">class</span> <span class="nc">Arm</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Arm</span>
+
+<span class="sd">  :param Optional[str] name: alias name</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;arm name&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Arm name&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
 
   <span class="nd">@abstractmethod</span>
@@ -183,25 +182,34 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      default arm name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="StochasticArm"><a class="viewcode-back" href="../../../auto/banditpylib.arms.html#banditpylib.arms.StochasticArm">[docs]</a><span class="k">class</span> <span class="nc">StochasticArm</span><span class="p">(</span><span class="n">Arm</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Stochastic arm</span>
+
+<span class="sd">  :param Optional[str] name: alias name</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
   <span class="nd">@property</span>
   <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;mean of rewards&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Mean of rewards&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Arm.pull"><a class="viewcode-back" href="../../../banditpylib.arms.html#banditpylib.arms.Arm.pull">[docs]</a>  <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="StochasticArm.pull"><a class="viewcode-back" href="../../../auto/banditpylib.arms.html#banditpylib.arms.StochasticArm.pull">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Pull the arm</span>
 
-<span class="sd">    When pulls is None, a float number will be returned. Otherwise, a numpy</span>
+<span class="sd">    When `pulls` is `None`, a float number will be returned. Otherwise, a numpy</span>
 <span class="sd">    array will be returned.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      pulls: number of times to pull</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">      rewards</span>
+<span class="sd">      stochastic rewards</span>
 <span class="sd">    &quot;&quot;&quot;</span></div></div>
 </pre></div>
 

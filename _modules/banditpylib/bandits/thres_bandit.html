@@ -89,7 +89,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../readme_link.html">Readme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">banditpylib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto/banditpylib.html"><code class="docutils literal notranslate"><span class="pre">banditpylib</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bibliography.html">Bibliography</a></li>
 </ul>
 
@@ -159,13 +159,13 @@
   <h1>Source code for banditpylib.bandits.thres_bandit</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
-<span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">Arm</span>
+<span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">StochasticArm</span>
 <span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span><span class="p">,</span> <span class="n">ArmPullsPair</span><span class="p">,</span> <span class="n">ArmRewardsPair</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">MaxCorrectAnswers</span><span class="p">,</span> <span class="n">AllCorrect</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Bandit</span>
 
 
-<div class="viewcode-block" id="ThresholdingBandit"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit">[docs]</a><span class="k">class</span> <span class="nc">ThresholdingBandit</span><span class="p">(</span><span class="n">Bandit</span><span class="p">):</span>
+<div class="viewcode-block" id="ThresholdingBandit"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit">[docs]</a><span class="k">class</span> <span class="nc">ThresholdingBandit</span><span class="p">(</span><span class="n">Bandit</span><span class="p">):</span>
   <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Thresholding bandit environment</span>
 
 <span class="sd">  Arms are indexed from 0 by default. Each time the learner pulls arm :math:`i`,</span>
@@ -176,15 +176,13 @@
 <span class="sd">  accepts a parameter :math:`\epsilon &gt;= 0` which is the radius of indifference</span>
 <span class="sd">  zone meaning that the answers about the arms with expected rewards within</span>
 <span class="sd">  :math:`[\theta - \epsilon, \theta + \epsilon]` do not matter.</span>
+
+
+<span class="sd">  :param List[StochasticArm] arms: arms in thresholding bandit</span>
+<span class="sd">  :param float theta: threshold</span>
+<span class="sd">  :param float eps: radius of indifferent zone</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="ThresholdingBandit.__init__"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.__init__">[docs]</a>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arms</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Arm</span><span class="p">],</span> <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Args:</span>
-<span class="sd">      arms: arms in thresholding bandit</span>
-<span class="sd">      theta: threshold</span>
-<span class="sd">      eps: radius of indifferent zone</span>
-<span class="sd">      name: alias name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arms</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">StochasticArm</span><span class="p">],</span> <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of arms is expected at least 2. Got </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span>
                        <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">))</span>
@@ -206,15 +204,15 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__weights</span> <span class="o">=</span> <span class="p">[</span>
         <span class="mi">0</span> <span class="k">if</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">eps</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span> <span class="o">&lt;=</span> <span class="n">theta</span> <span class="o">+</span> <span class="n">eps</span> <span class="k">else</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span><span class="p">)</span>
-    <span class="p">]</span></div>
+    <span class="p">]</span>
 
   <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="s1">&#39;thresholding_bandit&#39;</span>
 
-<div class="viewcode-block" id="ThresholdingBandit.reset"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ThresholdingBandit.reset"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">=</span> <span class="mi">0</span></div>
 
-<div class="viewcode-block" id="ThresholdingBandit.arm_num"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.arm_num">[docs]</a>  <span class="k">def</span> <span class="nf">arm_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="ThresholdingBandit.arm_num"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.arm_num">[docs]</a>  <span class="k">def</span> <span class="nf">arm_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns:</span>
 <span class="sd">      total number of arms</span>
@@ -250,7 +248,7 @@
 
     <span class="k">return</span> <span class="n">arm_rewards_pair</span>
 
-<div class="viewcode-block" id="ThresholdingBandit.feed"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">Actions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Feedback</span><span class="p">:</span>
+<div class="viewcode-block" id="ThresholdingBandit.feed"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">Actions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Feedback</span><span class="p">:</span>
     <span class="n">feedback</span> <span class="o">=</span> <span class="n">Feedback</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">arm_pulls_pair</span> <span class="ow">in</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="p">:</span>
       <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_take_action</span><span class="p">(</span><span class="n">arm_pulls_pair</span><span class="o">=</span><span class="n">arm_pulls_pair</span><span class="p">)</span>
@@ -258,10 +256,10 @@
         <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">feedback</span></div>
 
-<div class="viewcode-block" id="ThresholdingBandit.context"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.context">[docs]</a>  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="ThresholdingBandit.context"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.context">[docs]</a>  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="ThresholdingBandit.regret"><a class="viewcode-back" href="../../../banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="viewcode-block" id="ThresholdingBandit.regret"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.ThresholdingBandit.regret">[docs]</a>  <span class="k">def</span> <span class="nf">regret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="n">Goal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span> <span class="n">MaxCorrectAnswers</span><span class="p">):</span>
       <span class="c1"># Aggregate regret which is equal to the number of wrong answers</span>
       <span class="n">agg_regret</span> <span class="o">=</span> <span class="mi">0</span>
