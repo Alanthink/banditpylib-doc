@@ -199,7 +199,7 @@
     <span class="sd">&quot;&quot;&quot;Mean of rewards&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="StochasticArm.pull"><a class="viewcode-back" href="../../../auto/banditpylib.arms.html#banditpylib.arms.StochasticArm.pull">[docs]</a>  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+  <span class="k">def</span> <span class="nf">pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Pull the arm</span>
 
 <span class="sd">    When `pulls` is `None`, a float number will be returned. Otherwise, a numpy</span>

@@ -223,7 +223,7 @@ Gaussian arm</p></li>
 <p>This class is used to store empirical information of an arm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – alias name</p>
+<dd class="field-odd"><p><strong>name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – alias name</p>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
@@ -255,24 +255,16 @@ Gaussian arm</p></li>
 <dd><p>Clear information</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.arms.PseudoArm.total_pulls">
-<span class="sig-name descname"><span class="pre">total_pulls</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="../_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.total_pulls"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.arms.PseudoArm.total_pulls" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>total number of pulls</p>
-</dd>
-</dl>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">total_pulls</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#banditpylib.arms.PseudoArm.total_pulls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total number of pulls</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.arms.PseudoArm.total_rewards">
-<span class="sig-name descname"><span class="pre">total_rewards</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="reference internal" href="../_modules/banditpylib/arms/pseudo_arm.html#PseudoArm.total_rewards"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.arms.PseudoArm.total_rewards" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>total rewards obtained so far</p>
-</dd>
-</dl>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">total_rewards</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#banditpylib.arms.PseudoArm.total_rewards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total rewards obtained so far</p>
 </dd></dl>
 
 <dl class="py method">
@@ -335,7 +327,7 @@ array will be returned.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mu</strong> (<em>float</em>) – mean of rewards</p></li>
-<li><p><strong>name</strong> (<em>str</em>) – alias name</p></li>
+<li><p><strong>name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – alias name</p></li>
 </ul>
 </dd>
 </dl>
@@ -379,7 +371,7 @@ array will be returned.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mu</strong> (<em>float</em>) – mean of rewards</p></li>
 <li><p><strong>std</strong> (<em>float</em>) – standard deviation of rewards</p></li>
-<li><p><strong>name</strong> (<em>str</em>) – alias name</p></li>
+<li><p><strong>name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – alias name</p></li>
 </ul>
 </dd>
 </dl>

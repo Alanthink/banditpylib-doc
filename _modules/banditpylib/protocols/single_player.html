@@ -235,8 +235,7 @@
       <span class="n">data_item</span><span class="o">.</span><span class="n">regret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">goal</span><span class="p">)</span>
 
     <span class="k">while</span> <span class="n">total_actions</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span><span class="p">:</span>
-      <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
-      <span class="n">actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">actions</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+      <span class="n">actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="o">.</span><span class="n">actions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">context</span><span class="p">)</span>
 
       <span class="c1"># Stop the game if no actions are returned by the learner</span>
       <span class="k">if</span> <span class="ow">not</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="p">:</span>

@@ -165,7 +165,7 @@
 
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">OrdinaryMNLBandit</span>
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">Reward</span>
-<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Learner</span><span class="p">,</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">MaxReward</span>
+<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Learner</span><span class="p">,</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">MaximizeTotalRewards</span>
 
 
 <div class="viewcode-block" id="OrdinaryMNLLearner"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner">[docs]</a><span class="k">class</span> <span class="nc">OrdinaryMNLLearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
@@ -211,26 +211,20 @@
   <span class="k">def</span> <span class="nf">running_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">type</span><span class="p">]]:</span>
     <span class="k">return</span> <span class="n">OrdinaryMNLBandit</span>
 
-<div class="viewcode-block" id="OrdinaryMNLLearner.product_num"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.product_num">[docs]</a>  <span class="k">def</span> <span class="nf">product_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      product numbers</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span></div>
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">product_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Product numbers (not including product 0)&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__product_num</span>
 
-<div class="viewcode-block" id="OrdinaryMNLLearner.revenues"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.revenues">[docs]</a>  <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      revenues of products (product 0 is included)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span></div>
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Revenues of products (product 0 is included)&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span>
 
-<div class="viewcode-block" id="OrdinaryMNLLearner.card_limit"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.OrdinaryMNLLearner.card_limit">[docs]</a>  <span class="k">def</span> <span class="nf">card_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      cardinality limit</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span></div>
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">card_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Cardinality limit&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__card_limit</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">reward</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Reward</span><span class="p">:</span>
@@ -249,7 +243,7 @@
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">goal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Goal</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">MaxReward</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">MaximizeTotalRewards</span><span class="p">()</span></div>
 </pre></div>
 
            </div>

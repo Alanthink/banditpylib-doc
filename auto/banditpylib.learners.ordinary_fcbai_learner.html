@@ -215,34 +215,22 @@ algorithm should output the best arm with probability at least this value.</p></
 <map id="inheritance601f5e6ce6" name="inheritance601f5e6ce6">
 <area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
 <area shape="rect" id="node3" href="#banditpylib.learners.ordinary_fcbai_learner.OrdinaryFCBAILearner" target="_top" title="Base class for bai learners in the ordinary multi&#45;armed bandit" alt="" coords="245,5,403,29"/>
-</map><dl class="py method">
+</map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fcbai_learner.OrdinaryFCBAILearner.arm_num">
-<span class="sig-name descname"><span class="pre">arm_num</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_fcbai_learner/utils.html#OrdinaryFCBAILearner.arm_num"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.OrdinaryFCBAILearner.arm_num" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>number of arms</p>
-</dd>
-</dl>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">arm_num</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.OrdinaryFCBAILearner.arm_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of arms</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fcbai_learner.OrdinaryFCBAILearner.best_arm">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">best_arm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_fcbai_learner/utils.html#OrdinaryFCBAILearner.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.OrdinaryFCBAILearner.best_arm" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>index of the best arm identified by the learner</p>
-</dd>
-</dl>
+<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">best_arm</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.OrdinaryFCBAILearner.best_arm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Index of the best arm identified by the learner</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fcbai_learner.OrdinaryFCBAILearner.confidence">
-<span class="sig-name descname"><span class="pre">confidence</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_fcbai_learner/utils.html#OrdinaryFCBAILearner.confidence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.OrdinaryFCBAILearner.confidence" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>confidence level of the learner</p>
-</dd>
-</dl>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">confidence</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.OrdinaryFCBAILearner.confidence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Confidence level of the learner</p>
 </dd></dl>
 
 <dl class="py property">
@@ -296,11 +284,10 @@ than the threshold within median elimination</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fcbai_learner.ExpGap.best_arm">
-<span class="sig-name descname"><span class="pre">best_arm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_fcbai_learner/exp_gap.html#ExpGap.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.ExpGap.best_arm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns:
-index of the best arm identified by the learner</p>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">best_arm</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.ExpGap.best_arm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Index of the best arm identified by the learner</p>
 </dd></dl>
 
 <dl class="py method">
@@ -367,11 +354,10 @@ algorithm should output the best arm with probability at least this value.</p></
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.best_arm">
-<span class="sig-name descname"><span class="pre">best_arm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="reference internal" href="../_modules/banditpylib/learners/ordinary_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.best_arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.best_arm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns:
-index of the best arm identified by the learner</p>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">best_arm</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#banditpylib.learners.ordinary_fcbai_learner.LilUCBHeuristic.best_arm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Index of the best arm identified by the learner</p>
 </dd></dl>
 
 <dl class="py method">

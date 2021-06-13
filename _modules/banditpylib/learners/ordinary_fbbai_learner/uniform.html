@@ -182,7 +182,7 @@
     <span class="k">return</span> <span class="s1">&#39;uniform&#39;</span>
 
 <div class="viewcode-block" id="Uniform.reset"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.Uniform.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">)]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__stop</span> <span class="o">=</span> <span class="kc">False</span></div>
 
@@ -193,10 +193,10 @@
 
     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stop</span><span class="p">:</span>
       <span class="c1"># Make sure each arm is sampled at least once</span>
-      <span class="n">pulls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">budget</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">(),</span>
-                                    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">(),</span>
+      <span class="n">pulls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">budget</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">,</span>
+                                    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">,</span>
                                     <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-      <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()):</span>
+      <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">):</span>
         <span class="n">arm_pulls_pair</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
         <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">arm_id</span>
         <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span> <span class="o">=</span> <span class="n">pulls</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
@@ -213,10 +213,11 @@
       <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">=</span> <span class="n">argmax_or_min</span><span class="p">(</span>
           <span class="p">[</span><span class="n">arm</span><span class="o">.</span><span class="n">em_mean</span> <span class="k">for</span> <span class="n">arm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="Uniform.best_arm"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_fbbai_learner.html#banditpylib.learners.ordinary_fbbai_learner.Uniform.best_arm">[docs]</a>  <span class="k">def</span> <span class="nf">best_arm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">best_arm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;I don</span><span class="se">\&#39;</span><span class="s1">t have an answer yet.&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span></div></div>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span></div>
 </pre></div>
 
            </div>

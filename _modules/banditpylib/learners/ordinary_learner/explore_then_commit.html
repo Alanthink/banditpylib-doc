@@ -188,7 +188,7 @@
     <span class="k">return</span> <span class="s1">&#39;explore_then_commit&#39;</span>
 
 <div class="viewcode-block" id="ExploreThenCommit.reset"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_learner.html#banditpylib.learners.ordinary_learner.ExploreThenCommit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">)]</span>
     <span class="c1"># Current time step</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span></div>
 
@@ -199,7 +199,7 @@
     <span class="n">arm_pulls_pair</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__T_prime</span><span class="p">:</span>
-      <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">()</span>
+      <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span>
     <span class="k">else</span><span class="p">:</span>
       <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span>
 
@@ -214,7 +214,7 @@
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__T_prime</span><span class="p">:</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__best_arm</span> <span class="o">=</span> <span class="n">argmax_or_min_tuple</span><span class="p">([</span>
           <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">em_mean</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">)</span>
-          <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">())</span>
+          <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">)</span>
       <span class="p">])</span></div></div>
 </pre></div>
 
