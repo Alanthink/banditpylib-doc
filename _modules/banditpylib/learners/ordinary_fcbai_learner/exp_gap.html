@@ -157,7 +157,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.learners.ordinary_fcbai_learner.exp_gap</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span>
 
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -177,13 +177,13 @@
 <span class="sd">    this value.</span>
 <span class="sd">  :param int threshold: do uniform sampling when the active arms are no greater</span>
 <span class="sd">    than the threshold within median elimination</span>
-<span class="sd">  :param str name: alias name</span>
+<span class="sd">  :param Optional[str] name: alias name</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                <span class="n">confidence</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-               <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+               <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span><span class="n">confidence</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">threshold</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Thredhold </span><span class="si">%d</span><span class="s1"> is less than 2!&#39;</span> <span class="o">%</span> <span class="n">threshold</span><span class="p">)</span>

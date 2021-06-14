@@ -198,26 +198,15 @@
 
 
 <div class="viewcode-block" id="Reward"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.Reward">[docs]</a><span class="k">class</span> <span class="nc">Reward</span><span class="p">:</span>
-  <span class="sd">&quot;&quot;&quot;General reward class</span>
-
-<span class="sd">  :param Optional[str] name: alias name</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
+  <span class="sd">&quot;&quot;&quot;General reward class&quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
   <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;reward name&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
-
   <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      default reward name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Reward name&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Reward.calc"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.Reward.calc">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -233,14 +222,14 @@
   <span class="k">def</span> <span class="nf">preference_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;preference parameters (product 0 is included)&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Preference parameters are not set yet!&#39;</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Preference parameters are not set yet.&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__preference_params</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;revenues (product 0 is included)&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Revenues of products are not set yet!&#39;</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Revenues of products are not set yet.&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span>
 
 <div class="viewcode-block" id="Reward.set_preference_params"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.Reward.set_preference_params">[docs]</a>  <span class="k">def</span> <span class="nf">set_preference_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preference_params</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
@@ -259,14 +248,12 @@
 
 
 <div class="viewcode-block" id="MeanReward"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.MeanReward">[docs]</a><span class="k">class</span> <span class="nc">MeanReward</span><span class="p">(</span><span class="n">Reward</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Mean reward</span>
+  <span class="sd">&quot;&quot;&quot;Mean reward&quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
-<span class="sd">  :param str name: alias name</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-
-  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="s1">&#39;mean_reward&#39;</span>
 
 <div class="viewcode-block" id="MeanReward.calc"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.MeanReward.calc">[docs]</a>  <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assortment</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -283,19 +270,19 @@
   <span class="sd">&quot;&quot;&quot;CVaR reward</span>
 
 <span class="sd">  :param float alpha: percentile of cvar</span>
-<span class="sd">  :param str name: alias name</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">alpha</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Alpha </span><span class="si">%.2f</span><span class="s1"> is no greater than 0!&#39;</span> <span class="o">%</span> <span class="n">alpha</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Alpha is expected greater than 0. Got </span><span class="si">%.2f</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="n">alpha</span><span class="p">)</span>
     <span class="c1"># alpha is at most 1.0</span>
     <span class="k">if</span> <span class="n">alpha</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">:</span>
-      <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Alpha </span><span class="si">%.2f</span><span class="s1"> is greater than 1! I am setting it to 1.&#39;</span> <span class="o">%</span>
+      <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Alpha </span><span class="si">%.2f</span><span class="s1"> is expected at most 1. I am setting it to 1.&#39;</span> <span class="o">%</span>
                     <span class="n">alpha</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__alpha</span> <span class="o">=</span> <span class="n">alpha</span> <span class="k">if</span> <span class="n">alpha</span> <span class="o">&lt;=</span> <span class="mf">1.0</span> <span class="k">else</span> <span class="mf">1.0</span>
 
-  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="s1">&#39;cvar_reward&#39;</span>
 
   <span class="nd">@property</span>
@@ -336,9 +323,10 @@
     <span class="k">return</span> <span class="n">cvar_alpha</span></div></div>
 
 
-<div class="viewcode-block" id="search_best_assortment"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.search_best_assortment">[docs]</a><span class="k">def</span> <span class="nf">search_best_assortment</span><span class="p">(</span><span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
-                           <span class="n">card_limit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-                           <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+<div class="viewcode-block" id="search_best_assortment"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.search_best_assortment">[docs]</a><span class="k">def</span> <span class="nf">search_best_assortment</span><span class="p">(</span>
+    <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
+    <span class="n">card_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>  <span class="c1"># type: ignore</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
   <span class="sd">&quot;&quot;&quot;Search assortment with the maximum reward</span>
 
 <span class="sd">  Args:</span>

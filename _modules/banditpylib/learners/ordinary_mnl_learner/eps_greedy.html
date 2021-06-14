@@ -157,7 +157,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for banditpylib.learners.ordinary_mnl_learner.eps_greedy</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Set</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Set</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -176,27 +176,28 @@
 <span class="sd">  :param np.ndarray revenues: product revenues</span>
 <span class="sd">  :param Reward reward: reward the learner wants to maximize</span>
 <span class="sd">  :param int card_limit: cardinality constraint</span>
-<span class="sd">  :param str name: alias name</span>
 <span class="sd">  :param bool use_local_search: whether to use local search for searching the</span>
 <span class="sd">    best assortment</span>
 <span class="sd">  :param int random_neighbors: number of random neighbors to look up if local</span>
 <span class="sd">    search is enabled</span>
 <span class="sd">  :param float eps: epsilon</span>
+<span class="sd">  :param Optional[str] name: alias name</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-               <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-               <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
-               <span class="n">card_limit</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
-               <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-               <span class="n">use_local_search</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-               <span class="n">random_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-               <span class="n">eps</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+      <span class="bp">self</span><span class="p">,</span>
+      <span class="n">revenues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+      <span class="n">reward</span><span class="p">:</span> <span class="n">Reward</span><span class="p">,</span>
+      <span class="n">card_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+      <span class="n">use_local_search</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+      <span class="n">random_neighbors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">revenues</span><span class="o">=</span><span class="n">revenues</span><span class="p">,</span>
                      <span class="n">reward</span><span class="o">=</span><span class="n">reward</span><span class="p">,</span>
                      <span class="n">card_limit</span><span class="o">=</span><span class="n">card_limit</span><span class="p">,</span>
-                     <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
                      <span class="n">use_local_search</span><span class="o">=</span><span class="n">use_local_search</span><span class="p">,</span>
-                     <span class="n">random_neighbors</span><span class="o">=</span><span class="n">random_neighbors</span><span class="p">)</span>
+                     <span class="n">random_neighbors</span><span class="o">=</span><span class="n">random_neighbors</span><span class="p">,</span>
+                     <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">eps</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Epsilon is expected greater than 0. Got </span><span class="si">%.2f</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="n">eps</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span> <span class="o">=</span> <span class="n">eps</span>

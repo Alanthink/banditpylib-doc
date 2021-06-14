@@ -195,7 +195,7 @@ Local search assortment with the maximum reward</p></li>
 </ul>
 <dl class="py function">
 <dt class="sig sig-object py" id="banditpylib.bandits.search_best_assortment">
-<span class="sig-prename descclassname"><span class="pre">banditpylib.bandits.</span></span><span class="sig-name descname"><span class="pre">search_best_assortment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#banditpylib.bandits.Reward" title="banditpylib.bandits.ordinary_mnl_bandit_utils.Reward"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit_utils.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/banditpylib/bandits/ordinary_mnl_bandit_utils.html#search_best_assortment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.search_best_assortment" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">banditpylib.bandits.</span></span><span class="sig-name descname"><span class="pre">search_best_assortment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#banditpylib.bandits.Reward" title="banditpylib.bandits.ordinary_mnl_bandit_utils.Reward"><span class="pre">banditpylib.bandits.ordinary_mnl_bandit_utils.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/banditpylib/bandits/ordinary_mnl_bandit_utils.html#search_best_assortment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.search_best_assortment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Search assortment with the maximum reward</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -485,13 +485,8 @@ feature vectors</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.bandits.Reward">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.bandits.</span></span><span class="sig-name descname"><span class="pre">Reward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/bandits/ordinary_mnl_bandit_utils.html#Reward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.Reward" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.bandits.</span></span><span class="sig-name descname"><span class="pre">Reward</span></span><a class="reference internal" href="../_modules/banditpylib/bandits/ordinary_mnl_bandit_utils.html#Reward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.Reward" title="Permalink to this definition">¶</a></dt>
 <dd><p>General reward class</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – alias name</p>
-</dd>
-</dl>
 <p class="rubric">Inheritance</p>
 <div class="graphviz"><img src="../_images/inheritance-432fd03cfe591c34c70cf4ccdb5e0a82fd04091f.png" alt="Inheritance diagram of Reward" usemap="#inheritance026c9e1bd2" class="inheritance graphviz" /></div>
 <map id="inheritance026c9e1bd2" name="inheritance026c9e1bd2">
@@ -511,8 +506,8 @@ feature vectors</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.bandits.Reward.name">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.bandits.Reward.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>reward name</p>
+<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.bandits.Reward.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reward name</p>
 </dd></dl>
 
 <dl class="py property">
@@ -550,13 +545,8 @@ feature vectors</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.bandits.MeanReward">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.bandits.</span></span><span class="sig-name descname"><span class="pre">MeanReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/bandits/ordinary_mnl_bandit_utils.html#MeanReward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.MeanReward" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.bandits.</span></span><span class="sig-name descname"><span class="pre">MeanReward</span></span><a class="reference internal" href="../_modules/banditpylib/bandits/ordinary_mnl_bandit_utils.html#MeanReward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.MeanReward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mean reward</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – alias name</p>
-</dd>
-</dl>
 <p class="rubric">Inheritance</p>
 <div class="graphviz"><img src="../_images/inheritance-b5eccf4bc72214ca13a230fd564387f8b4028a44.png" alt="Inheritance diagram of MeanReward" usemap="#inheritance3d215455e6" class="inheritance graphviz" /></div>
 <map id="inheritance3d215455e6" name="inheritance3d215455e6">
@@ -575,18 +565,21 @@ feature vectors</p>
 </dl>
 </dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="banditpylib.bandits.MeanReward.name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.bandits.MeanReward.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reward name</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.bandits.CvarReward">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.bandits.</span></span><span class="sig-name descname"><span class="pre">CvarReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/bandits/ordinary_mnl_bandit_utils.html#CvarReward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.CvarReward" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.bandits.</span></span><span class="sig-name descname"><span class="pre">CvarReward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/bandits/ordinary_mnl_bandit_utils.html#CvarReward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.CvarReward" title="Permalink to this definition">¶</a></dt>
 <dd><p>CVaR reward</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>alpha</strong> (<em>float</em>) – percentile of cvar</p></li>
-<li><p><strong>name</strong> (<em>str</em>) – alias name</p></li>
-</ul>
+<dd class="field-odd"><p><strong>alpha</strong> (<em>float</em>) – percentile of cvar</p>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
@@ -611,6 +604,12 @@ feature vectors</p>
 <dd class="field-even"><p>reward of the assortment</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="banditpylib.bandits.CvarReward.name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.bandits.CvarReward.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reward name</p>
 </dd></dl>
 
 </dd></dl>
