@@ -268,15 +268,13 @@ Random context generator</p></li>
 <dt class="sig sig-object py" id="banditpylib.bandits.Bandit">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.bandits.</span></span><span class="sig-name descname"><span class="pre">Bandit</span></span><a class="reference internal" href="../_modules/banditpylib/bandits/utils.html#Bandit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.bandits.Bandit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract class for bandit environments</p>
-<p><a class="reference internal" href="#banditpylib.bandits.Bandit.context" title="banditpylib.bandits.Bandit.context"><code class="xref py py-func docutils literal notranslate"><span class="pre">context()</span></code></a> is used to fetch the current state of the environment.
-<a class="reference internal" href="#banditpylib.bandits.Bandit.feed" title="banditpylib.bandits.Bandit.feed"><code class="xref py py-func docutils literal notranslate"><span class="pre">feed()</span></code></a> is used to pass the actions to the environment for execution.</p>
 <p class="rubric">Inheritance</p>
 <div class="graphviz"><img src="../_images/inheritance-1b292ed61af97556e131109d20b0dac8584bc573.png" alt="Inheritance diagram of Bandit" usemap="#inheritanced00a4967e2" class="inheritance graphviz" /></div>
 <map id="inheritanced00a4967e2" name="inheritanced00a4967e2">
 <area shape="rect" id="node2" href="#banditpylib.bandits.Bandit" target="_top" title="Abstract class for bandit environments" alt="" coords="125,5,197,29"/>
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.bandits.Bandit.context">
-<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="pre">:</span> <span class="pre">Any</span></em><a class="headerlink" href="#banditpylib.bandits.Bandit.context" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="pre">:</span> <span class="pre">data_pb2.Context</span></em><a class="headerlink" href="#banditpylib.bandits.Bandit.context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contextual information about the bandit environment</p>
 </dd></dl>
 
@@ -349,7 +347,7 @@ beforehand.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.bandits.OrdinaryBandit.context">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.context" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="pre">:</span> <span class="pre">data_pb2.Context</span></em><a class="headerlink" href="#banditpylib.bandits.OrdinaryBandit.context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contextual information about the bandit environment</p>
 </dd></dl>
 
@@ -428,7 +426,7 @@ noise.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.bandits.LinearBandit.context">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><a class="headerlink" href="#banditpylib.bandits.LinearBandit.context" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="pre">:</span> <span class="pre">data_pb2.Context</span></em><a class="headerlink" href="#banditpylib.bandits.LinearBandit.context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contextual information about the bandit environment</p>
 </dd></dl>
 
@@ -663,7 +661,7 @@ total revenue.</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.bandits.OrdinaryMNLBandit.context">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.context" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="pre">:</span> <span class="pre">data_pb2.Context</span></em><a class="headerlink" href="#banditpylib.bandits.OrdinaryMNLBandit.context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contextual information about the bandit environment</p>
 </dd></dl>
 
@@ -757,7 +755,7 @@ zone meaning that the answers about the arms with expected rewards within
 
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.bandits.ThresholdingBandit.context">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="pre">:</span> <span class="pre">None</span></em><a class="headerlink" href="#banditpylib.bandits.ThresholdingBandit.context" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="pre">:</span> <span class="pre">data_pb2.Context</span></em><a class="headerlink" href="#banditpylib.bandits.ThresholdingBandit.context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contextual information about the bandit environment</p>
 </dd></dl>
 
@@ -833,7 +831,7 @@ the learner. The batched version can be defined in a similar way.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.bandits.ContextualBandit.context">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#banditpylib.bandits.ContextualBandit.context" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">context</span></span><em class="property"><span class="pre">:</span> <span class="pre">data_pb2.Context</span></em><a class="headerlink" href="#banditpylib.bandits.ContextualBandit.context" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contextual information about the bandit environment</p>
 </dd></dl>
 

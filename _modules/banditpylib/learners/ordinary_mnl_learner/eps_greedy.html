@@ -163,7 +163,7 @@
 
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">search_best_assortment</span><span class="p">,</span> <span class="n">Reward</span><span class="p">,</span> <span class="n">search</span><span class="p">,</span> \
     <span class="n">local_search_best_assortment</span>
-<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span>
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Context</span><span class="p">,</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">OrdinaryMNLLearner</span>
 
 
@@ -239,7 +239,7 @@
            <span class="n">card_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">card_limit</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">assortments</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">assortments</span><span class="p">)))]</span>
 
-<div class="viewcode-block" id="EpsGreedy.actions"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
+<div class="viewcode-block" id="EpsGreedy.actions"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.ordinary_mnl_learner.html#banditpylib.learners.ordinary_mnl_learner.EpsGreedy.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="k">del</span> <span class="n">context</span>
 
     <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>

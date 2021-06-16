@@ -164,7 +164,8 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span><span class="p">,</span> <span class="n">ArmPullsPair</span><span class="p">,</span> <span class="n">ArmRewardsPair</span>
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Context</span><span class="p">,</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span><span class="p">,</span> <span class="n">ArmPullsPair</span><span class="p">,</span> \
+    <span class="n">ArmRewardsPair</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">MaximizeTotalRewards</span>
 <span class="kn">from</span> <span class="nn">.ordinary_mnl_bandit_utils</span> <span class="kn">import</span> <span class="n">Reward</span><span class="p">,</span> <span class="n">MeanReward</span><span class="p">,</span> \
     <span class="n">search_best_assortment</span>
@@ -327,8 +328,8 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">=</span> <span class="mf">0.0</span></div>
 
   <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Context</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">Context</span><span class="p">()</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">revenues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>

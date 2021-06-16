@@ -162,7 +162,8 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">GaussianArm</span>
-<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span><span class="p">,</span> <span class="n">ArmPullsPair</span><span class="p">,</span> <span class="n">ArmRewardsPair</span>
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Context</span><span class="p">,</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span><span class="p">,</span> <span class="n">ArmPullsPair</span><span class="p">,</span> \
+    <span class="n">ArmRewardsPair</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">IdentifyBestArm</span><span class="p">,</span> <span class="n">MaximizeTotalRewards</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Bandit</span>
 
@@ -213,8 +214,8 @@
     <span class="k">return</span> <span class="s1">&#39;linear_bandit&#39;</span>
 
   <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Context</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">Context</span><span class="p">()</span>
 
   <span class="k">def</span> <span class="nf">_take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_pulls_pair</span><span class="p">:</span> <span class="n">ArmPullsPair</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArmRewardsPair</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Pull one arm</span>
