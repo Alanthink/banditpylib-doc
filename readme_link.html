@@ -94,9 +94,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#implemented-policies">Implemented Policies</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#single-player-protocol">Single player protocol</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ordinary-bandit">Ordinary bandit</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ordinary-mnl-bandit">Ordinary MNL bandit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-armed-bandit">Multi-armed bandit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mnl-bandit">MNL bandit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#thresholding-bandit">Thresholding bandit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linear-bandit">Linear bandit</a></li>
 </ul>
 </li>
 </ul>
@@ -220,8 +221,8 @@
 <h2>Implemented Policies<a class="headerlink" href="#implemented-policies" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="single-player-protocol">
 <h3>Single player protocol<a class="headerlink" href="#single-player-protocol" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="ordinary-bandit">
-<h4>Ordinary bandit<a class="headerlink" href="#ordinary-bandit" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="multi-armed-bandit">
+<h4>Multi-armed bandit<a class="headerlink" href="#multi-armed-bandit" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
@@ -245,8 +246,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="ordinary-mnl-bandit">
-<h4>Ordinary MNL bandit<a class="headerlink" href="#ordinary-mnl-bandit" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="mnl-bandit">
+<h4>MNL bandit<a class="headerlink" href="#mnl-bandit" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
@@ -279,6 +280,25 @@
 <tbody>
 <tr class="row-even"><td><p>Simple Regret</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Uniform</span></code>, <code class="docutils literal notranslate"><span class="pre">APT</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="linear-bandit">
+<h4>Linear bandit<a class="headerlink" href="#linear-bandit" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Goal</p></th>
+<th class="head"><p>Policies</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Regret Minimization</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LinUCB</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -326,7 +346,7 @@ make fix
 <span class="c1"># Create Bernoulli arms</span>
 <span class="n">arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">BernoulliArm</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span> <span class="k">for</span> <span class="n">mean</span> <span class="ow">in</span> <span class="n">means</span><span class="p">]</span>
 <span class="c1"># Create an ordinary multi-armed bandit environment</span>
-<span class="n">bandit</span> <span class="o">=</span> <span class="n">OrdinaryBandit</span><span class="p">(</span><span class="n">arms</span><span class="o">=</span><span class="n">arms</span><span class="p">)</span>
+<span class="n">bandit</span> <span class="o">=</span> <span class="n">MultiArmedBandit</span><span class="p">(</span><span class="n">arms</span><span class="o">=</span><span class="n">arms</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
