@@ -164,14 +164,10 @@
 
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 <span class="kn">from</span> <span class="nn">absl</span> <span class="kn">import</span> <span class="n">logging</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="kn">import</span> <span class="nn">google.protobuf.json_format</span> <span class="k">as</span> <span class="nn">json_format</span>
-<span class="kn">from</span> <span class="nn">google.protobuf.internal.decoder</span> <span class="kn">import</span> <span class="n">_DecodeVarint32</span>  <span class="c1"># type: ignore</span>
 <span class="kn">from</span> <span class="nn">google.protobuf.internal.encoder</span> <span class="kn">import</span> <span class="n">_VarintBytes</span>  <span class="c1"># type: ignore</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">Bandit</span>
-<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Trial</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Learner</span>
 
 
@@ -183,39 +179,6 @@
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="n">tem_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
   <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="n">tem_time</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">tem_time</span><span class="p">))</span> <span class="o">*</span> <span class="mi">10000000</span><span class="p">)</span>
-
-
-<div class="viewcode-block" id="parse_trials_data"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.parse_trials_data">[docs]</a><span class="k">def</span> <span class="nf">parse_trials_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Trial</span><span class="p">]:</span>
-  <span class="sd">&quot;&quot;&quot;Retrieve trials data from bytes data&quot;&quot;&quot;</span>
-  <span class="n">trials_data</span> <span class="o">=</span> <span class="p">[]</span>
-  <span class="n">next_pos</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-  <span class="k">while</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="n">trial</span> <span class="o">=</span> <span class="n">Trial</span><span class="p">()</span>
-    <span class="n">next_pos</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">_DecodeVarint32</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
-    <span class="n">trial</span><span class="o">.</span><span class="n">ParseFromString</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">pos</span><span class="p">:</span><span class="n">pos</span> <span class="o">+</span> <span class="n">next_pos</span><span class="p">])</span>
-
-    <span class="c1"># Proceed to next message</span>
-    <span class="n">pos</span> <span class="o">+=</span> <span class="n">next_pos</span>
-    <span class="n">trials_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">trials_data</span></div>
-
-
-<div class="viewcode-block" id="trial_data_messages_to_dict"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.trial_data_messages_to_dict">[docs]</a><span class="k">def</span> <span class="nf">trial_data_messages_to_dict</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-  <span class="sd">&quot;&quot;&quot;Read file storing trials data and transform to pandas DataFrame&quot;&quot;&quot;</span>
-  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">trials_data</span> <span class="o">=</span> <span class="n">parse_trials_data</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-    <span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="n">trials_data</span><span class="p">:</span>
-      <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">trial</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
-        <span class="n">tmp_dict</span> <span class="o">=</span> <span class="n">json_format</span><span class="o">.</span><span class="n">MessageToDict</span><span class="p">(</span>
-            <span class="n">result</span><span class="p">,</span>
-            <span class="n">including_default_value_fields</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">tmp_dict</span><span class="p">[</span><span class="s1">&#39;bandit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">bandit</span>
-        <span class="n">tmp_dict</span><span class="p">[</span><span class="s1">&#39;learner&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">learner</span>
-        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp_dict</span><span class="p">)</span>
-    <span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">data_df</span></div>
 
 
 <div class="viewcode-block" id="Protocol"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.Protocol">[docs]</a><span class="k">class</span> <span class="nc">Protocol</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
