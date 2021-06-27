@@ -164,8 +164,8 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Context</span><span class="p">,</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span><span class="p">,</span> <span class="n">ArmPullsPair</span><span class="p">,</span> \
-    <span class="n">ArmRewardsPair</span>
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Context</span><span class="p">,</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span><span class="p">,</span> <span class="n">ArmPull</span><span class="p">,</span> \
+    <span class="n">ArmFeedback</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">MaximizeTotalRewards</span>
 <span class="kn">from</span> <span class="nn">.mnl_bandit_utils</span> <span class="kn">import</span> <span class="n">Reward</span><span class="p">,</span> <span class="n">MeanReward</span><span class="p">,</span> <span class="n">search_best_assortment</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Bandit</span>
@@ -267,17 +267,17 @@
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="s1">&#39;mnl_bandit&#39;</span>
 
-  <span class="k">def</span> <span class="nf">_take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_pulls_pair</span><span class="p">:</span> <span class="n">ArmPullsPair</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArmRewardsPair</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">_take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_pull</span><span class="p">:</span> <span class="n">ArmPull</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ArmFeedback</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Serve one assortment</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      arm_pulls_pair: assortment and number of serving times</span>
+<span class="sd">      arm_pull: assortment and number of serving times</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">      feedbacks of the customer</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-    <span class="n">times</span> <span class="o">=</span> <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span>
+    <span class="n">assortment</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">arm_pull</span><span class="o">.</span><span class="n">times</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">assortment</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Empty assortment!&#39;</span><span class="p">)</span>
@@ -303,24 +303,24 @@
         <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">sample_results</span>
     <span class="p">]</span>
 
-    <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="n">ArmRewardsPair</span><span class="p">()</span>
-    <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">assortment</span><span class="p">))</span>
-    <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+    <span class="n">arm_feedback</span> <span class="o">=</span> <span class="n">ArmFeedback</span><span class="p">()</span>
+    <span class="n">arm_feedback</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">assortment</span><span class="p">))</span>
+    <span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">__revenues</span><span class="p">[</span><span class="n">choice</span><span class="p">]</span> <span class="k">for</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">]))</span>
-    <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
+    <span class="n">arm_feedback</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
 
     <span class="c1"># Update regret</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__regret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__best_reward</span> <span class="o">-</span>
                       <span class="bp">self</span><span class="o">.</span><span class="n">__reward</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">assortment</span><span class="p">))</span> <span class="o">*</span> <span class="n">times</span>
 
-    <span class="k">return</span> <span class="n">arm_rewards_pair</span>
+    <span class="k">return</span> <span class="n">arm_feedback</span>
 
 <div class="viewcode-block" id="MNLBandit.feed"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.MNLBandit.feed">[docs]</a>  <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">Actions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Feedback</span><span class="p">:</span>
     <span class="n">feedback</span> <span class="o">=</span> <span class="n">Feedback</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">arm_pulls_pair</span> <span class="ow">in</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="p">:</span>
-      <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_take_action</span><span class="p">(</span><span class="n">arm_pulls_pair</span><span class="o">=</span><span class="n">arm_pulls_pair</span><span class="p">)</span>
-      <span class="k">if</span> <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="p">:</span>
-        <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">arm_pull</span> <span class="ow">in</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls</span><span class="p">:</span>
+      <span class="n">arm_feedback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_take_action</span><span class="p">(</span><span class="n">arm_pull</span><span class="o">=</span><span class="n">arm_pull</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">:</span>
+        <span class="n">feedback</span><span class="o">.</span><span class="n">arm_feedbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arm_feedback</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">feedback</span></div>
 
 <div class="viewcode-block" id="MNLBandit.reset"><a class="viewcode-back" href="../../../auto/banditpylib.bandits.html#banditpylib.bandits.MNLBandit.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

@@ -207,20 +207,20 @@
 
 <div class="viewcode-block" id="APT.actions"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.thresholding_bandit_learner.html#banditpylib.learners.thresholding_bandit_learner.APT.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
-    <span class="n">arm_pulls_pair</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+    <span class="n">arm_pull</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">:</span>
-      <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">-</span> <span class="mi">1</span>
+      <span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__metrics</span><span class="p">()))</span>
+      <span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__metrics</span><span class="p">()))</span>
 
-    <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">arm_pull</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">actions</span></div>
 
 <div class="viewcode-block" id="APT.update"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.thresholding_bandit_learner.html#banditpylib.learners.thresholding_bandit_learner.APT.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
-    <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="p">))</span>
+    <span class="n">arm_feedback</span> <span class="o">=</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_feedbacks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">+=</span> <span class="mi">1</span></div>
 
   <span class="nd">@property</span>

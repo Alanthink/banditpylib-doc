@@ -206,9 +206,9 @@
     <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">trials_data</span> <span class="o">=</span> <span class="n">parse_trials_data</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
     <span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="n">trials_data</span><span class="p">:</span>
-      <span class="k">for</span> <span class="n">data_item</span> <span class="ow">in</span> <span class="n">trial</span><span class="o">.</span><span class="n">data_items</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">trial</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
         <span class="n">tmp_dict</span> <span class="o">=</span> <span class="n">json_format</span><span class="o">.</span><span class="n">MessageToDict</span><span class="p">(</span>
-            <span class="n">data_item</span><span class="p">,</span>
+            <span class="n">result</span><span class="p">,</span>
             <span class="n">including_default_value_fields</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">preserving_proto_field_name</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">tmp_dict</span><span class="p">[</span><span class="s1">&#39;bandit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">bandit</span>

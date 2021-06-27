@@ -234,21 +234,21 @@
     <span class="k">del</span> <span class="n">context</span>
 
     <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
-    <span class="n">arm_pulls_pair</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls_pairs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+    <span class="n">arm_pull</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
 
     <span class="n">ucb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__LinUCB</span><span class="p">()</span>
-    <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ucb</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ucb</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 
-    <span class="n">arm_pulls_pair</span><span class="o">.</span><span class="n">pulls</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">arm_pull</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">actions</span></div>
 
 <div class="viewcode-block" id="LinUCB.update"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.linear_bandit_learner.html#banditpylib.learners.linear_bandit_learner.LinUCB.update">[docs]</a>  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
-    <span class="n">arm_rewards_pair</span> <span class="o">=</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_rewards_pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">arm_feedback</span> <span class="o">=</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_feedbacks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="n">pulled_arm_index</span> <span class="o">=</span> <span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span>
+    <span class="n">pulled_arm_index</span> <span class="o">=</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span>
 
     <span class="c1"># Xt: reward observed at t</span>
-    <span class="n">Xt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_rewards_pair</span><span class="o">.</span><span class="n">rewards</span><span class="p">)</span>
+    <span class="n">Xt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">)</span>
     <span class="c1"># At: feature of arm played at t</span>
     <span class="n">At</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__feature_matrix</span><span class="p">[:,</span> <span class="n">pulled_arm_index</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
