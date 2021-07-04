@@ -191,9 +191,9 @@
 <li><p><a class="reference internal" href="#banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner" title="banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">MABFixedConfidenceBAILearner</span></code></a>:
 Base class for bai learners in the ordinary multi-armed bandit</p></li>
 <li><p><a class="reference internal" href="#banditpylib.learners.mab_fcbai_learner.ExpGap" title="banditpylib.learners.mab_fcbai_learner.ExpGap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpGap</span></code></a>:
-Exponential-gap elimination policy <span id="id1">[<a class="reference internal" href="../bibliography.html#id8">KKS13</a>]</span></p></li>
+Exponential-gap elimination policy <span id="id1">[<a class="reference internal" href="../bibliography.html#id8" title="Zohar Karnin, Tomer Koren, and Oren Somekh. Almost optimal exploration in multi-armed bandits. In ICML. 2013.">KKS13</a>]</span></p></li>
 <li><p><a class="reference internal" href="#banditpylib.learners.mab_fcbai_learner.LilUCBHeuristic" title="banditpylib.learners.mab_fcbai_learner.LilUCBHeuristic"><code class="xref py py-class docutils literal notranslate"><span class="pre">LilUCBHeuristic</span></code></a>:
-LilUCB heuristic policy <span id="id2">[<a class="reference internal" href="../bibliography.html#id9">JMNB14</a>]</span></p></li>
+LilUCB heuristic policy <span id="id2">[<a class="reference internal" href="../bibliography.html#id9" title="Kevin Jamieson, Matthew Malloy, Robert Nowak, and Sébastien Bubeck. Lil’ucb: an optimal exploration algorithm for multi-armed bandits. In COLT. 2014.">JMNB14</a>]</span></p></li>
 </ul>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner">
@@ -211,10 +211,11 @@ algorithm should output the best arm with probability at least this value.</p></
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-d4cfcf6c56c21c58058d3aae3103cf73a7531d3b.png" alt="Inheritance diagram of MABFixedConfidenceBAILearner" usemap="#inheritance2c9ec194d3" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-899539ef079f813acd86dda2f13ff1862cdb2fd3.png" alt="Inheritance diagram of MABFixedConfidenceBAILearner" usemap="#inheritance2c9ec194d3" class="inheritance graphviz" /></div>
 <map id="inheritance2c9ec194d3" name="inheritance2c9ec194d3">
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner" target="_top" title="Base class for bai learners in the ordinary multi&#45;armed bandit" alt="" coords="245,5,463,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner" target="_top" title="Base class for bai learners in the ordinary multi&#45;armed bandit" alt="" coords="436,5,655,31"/>
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner.arm_num">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">arm_num</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner.arm_num" title="Permalink to this definition">¶</a></dt>
@@ -250,7 +251,7 @@ algorithm should output the best arm with probability at least this value.</p></
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fcbai_learner.ExpGap">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.mab_fcbai_learner.</span></span><span class="sig-name descname"><span class="pre">ExpGap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/mab_fcbai_learner/exp_gap.html#ExpGap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mab_fcbai_learner.ExpGap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Exponential-gap elimination policy <span id="id3">[<a class="reference internal" href="../bibliography.html#id8">KKS13</a>]</span></p>
+<dd><p>Exponential-gap elimination policy <span id="id3">[<a class="reference internal" href="../bibliography.html#id8" title="Zohar Karnin, Tomer Koren, and Oren Somekh. Almost optimal exploration in multi-armed bandits. In ICML. 2013.">KKS13</a>]</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -265,11 +266,12 @@ than the threshold within median elimination</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-4c7b8180870077143415073a87faa6a472b82aaa.png" alt="Inheritance diagram of ExpGap" usemap="#inheritancef59f447f43" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-72eeae02f2bd6dc8c1ca733d01aeb1c72f5538af.png" alt="Inheritance diagram of ExpGap" usemap="#inheritancef59f447f43" class="inheritance graphviz" /></div>
 <map id="inheritancef59f447f43" name="inheritancef59f447f43">
-<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node2" href="#banditpylib.learners.mab_fcbai_learner.ExpGap" target="_top" title="Exponential&#45;gap elimination policy :cite:`karnin2013almost`" alt="" coords="511,5,583,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner" target="_top" title="Base class for bai learners in the ordinary multi&#45;armed bandit" alt="" coords="245,5,463,29"/>
+<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="123,5,194,30"/>
+<area shape="rect" id="node2" href="#banditpylib.learners.mab_fcbai_learner.ExpGap" target="_top" title="Exponential&#45;gap elimination policy :cite:`karnin2013almost`" alt="" coords="692,5,763,30"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner" target="_top" title="Base class for bai learners in the ordinary multi&#45;armed bandit" alt="" coords="429,5,645,30"/>
+<area shape="rect" id="node5" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="242,5,382,30"/>
 </map><dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fcbai_learner.ExpGap.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/mab_fcbai_learner/exp_gap.html#ExpGap.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mab_fcbai_learner.ExpGap.actions" title="Permalink to this definition">¶</a></dt>
@@ -323,7 +325,7 @@ than the threshold within median elimination</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fcbai_learner.LilUCBHeuristic">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.mab_fcbai_learner.</span></span><span class="sig-name descname"><span class="pre">LilUCBHeuristic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/mab_fcbai_learner/lilucb_heur.html#LilUCBHeuristic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mab_fcbai_learner.LilUCBHeuristic" title="Permalink to this definition">¶</a></dt>
-<dd><p>LilUCB heuristic policy <span id="id4">[<a class="reference internal" href="../bibliography.html#id9">JMNB14</a>]</span></p>
+<dd><p>LilUCB heuristic policy <span id="id4">[<a class="reference internal" href="../bibliography.html#id9" title="Kevin Jamieson, Matthew Malloy, Robert Nowak, and Sébastien Bubeck. Lil’ucb: an optimal exploration algorithm for multi-armed bandits. In COLT. 2014.">JMNB14</a>]</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -335,11 +337,12 @@ algorithm should output the best arm with probability at least this value.</p></
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-6f7930b28d5af097bf74fd562a33c525ac71d8aa.png" alt="Inheritance diagram of LilUCBHeuristic" usemap="#inheritance1ae2a31455" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-04500c98c25a59ab46c150a40ac26b07b1d56997.png" alt="Inheritance diagram of LilUCBHeuristic" usemap="#inheritance1ae2a31455" class="inheritance graphviz" /></div>
 <map id="inheritance1ae2a31455" name="inheritance1ae2a31455">
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node4" href="#banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner" target="_top" title="Base class for bai learners in the ordinary multi&#45;armed bandit" alt="" coords="245,5,463,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mab_fcbai_learner.LilUCBHeuristic" target="_top" title="LilUCB heuristic policy :cite:`jamieson2014lil`" alt="" coords="511,5,626,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="117,5,184,29"/>
+<area shape="rect" id="node5" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="229,5,362,29"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.mab_fcbai_learner.LilUCBHeuristic" target="_top" title="LilUCB heuristic policy :cite:`jamieson2014lil`" alt="" coords="655,5,763,29"/>
+<area shape="rect" id="node4" href="#banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner" target="_top" title="Base class for bai learners in the ordinary multi&#45;armed bandit" alt="" coords="406,5,610,29"/>
 </map><dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fcbai_learner.LilUCBHeuristic.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/mab_fcbai_learner/lilucb_heur.html#LilUCBHeuristic.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mab_fcbai_learner.LilUCBHeuristic.actions" title="Permalink to this definition">¶</a></dt>

@@ -163,10 +163,10 @@
 
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">MultiArmedBandit</span>
 <span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Arm</span>
-<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Learner</span><span class="p">,</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">IdentifyBestArm</span>
+<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">SinglePlayerLearner</span><span class="p">,</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">IdentifyBestArm</span>
 
 
-<div class="viewcode-block" id="MABFixedBudgetBAILearner"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mab_fbbai_learner.html#banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner">[docs]</a><span class="k">class</span> <span class="nc">MABFixedBudgetBAILearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
+<div class="viewcode-block" id="MABFixedBudgetBAILearner"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mab_fbbai_learner.html#banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner">[docs]</a><span class="k">class</span> <span class="nc">MABFixedBudgetBAILearner</span><span class="p">(</span><span class="n">SinglePlayerLearner</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Abstract class for best-arm identification learners playing with the</span>
 <span class="sd">  ordinary multi-armed bandit</span>
 

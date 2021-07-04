@@ -163,10 +163,10 @@
 
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">MultiArmedBandit</span>
 <span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Arm</span>
-<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Learner</span><span class="p">,</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">IdentifyBestArm</span>
+<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">SinglePlayerLearner</span><span class="p">,</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">IdentifyBestArm</span>
 
 
-<div class="viewcode-block" id="MABFixedConfidenceBAILearner"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mab_fcbai_learner.html#banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner">[docs]</a><span class="k">class</span> <span class="nc">MABFixedConfidenceBAILearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
+<div class="viewcode-block" id="MABFixedConfidenceBAILearner"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mab_fcbai_learner.html#banditpylib.learners.mab_fcbai_learner.MABFixedConfidenceBAILearner">[docs]</a><span class="k">class</span> <span class="nc">MABFixedConfidenceBAILearner</span><span class="p">(</span><span class="n">SinglePlayerLearner</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Base class for bai learners in the ordinary multi-armed bandit</span>
 
 <span class="sd">  This learner aims to identify the best arm with fixed confidence.</span>

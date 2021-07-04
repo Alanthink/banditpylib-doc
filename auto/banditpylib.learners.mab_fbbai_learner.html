@@ -193,9 +193,9 @@ Abstract class for best-arm identification learners playing with the</p></li>
 <li><p><a class="reference internal" href="#banditpylib.learners.mab_fbbai_learner.Uniform" title="banditpylib.learners.mab_fbbai_learner.Uniform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Uniform</span></code></a>:
 Uniform sampling policy</p></li>
 <li><p><a class="reference internal" href="#banditpylib.learners.mab_fbbai_learner.SH" title="banditpylib.learners.mab_fbbai_learner.SH"><code class="xref py py-class docutils literal notranslate"><span class="pre">SH</span></code></a>:
-Sequential halving policy <span id="id1">[<a class="reference internal" href="../bibliography.html#id8">KKS13</a>]</span></p></li>
+Sequential halving policy <span id="id1">[<a class="reference internal" href="../bibliography.html#id8" title="Zohar Karnin, Tomer Koren, and Oren Somekh. Almost optimal exploration in multi-armed bandits. In ICML. 2013.">KKS13</a>]</span></p></li>
 <li><p><a class="reference internal" href="#banditpylib.learners.mab_fbbai_learner.SR" title="banditpylib.learners.mab_fbbai_learner.SR"><code class="xref py py-class docutils literal notranslate"><span class="pre">SR</span></code></a>:
-Successive rejects policy <span id="id2">[<a class="reference internal" href="../bibliography.html#id7">AB10</a>]</span></p></li>
+Successive rejects policy <span id="id2">[<a class="reference internal" href="../bibliography.html#id7" title="Jean-Yves Audibert and Sébastien Bubeck. Best arm identification in multi-armed bandits. In COLT. 2010.">AB10</a>]</span></p></li>
 </ul>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner">
@@ -213,10 +213,11 @@ ordinary multi-armed bandit</p>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-8b57bb0adf62c8aa4e885c5f6feedb8abf408b2c.png" alt="Inheritance diagram of MABFixedBudgetBAILearner" usemap="#inheritance0f09aec021" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-8e24f7592fba51aaef2ab162c54484f86f070515.png" alt="Inheritance diagram of MABFixedBudgetBAILearner" usemap="#inheritance0f09aec021" class="inheritance graphviz" /></div>
 <map id="inheritance0f09aec021" name="inheritance0f09aec021">
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner" target="_top" title="Abstract class for best&#45;arm identification learners playing with the" alt="" coords="245,5,438,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner" target="_top" title="Abstract class for best&#45;arm identification learners playing with the" alt="" coords="436,5,629,31"/>
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner.arm_num">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">arm_num</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner.arm_num" title="Permalink to this definition">¶</a></dt>
@@ -265,11 +266,12 @@ highest empirical mean.</p>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-12de1a2d351e67b9696fceb91df5ba8b10c64f30.png" alt="Inheritance diagram of Uniform" usemap="#inheritance41aced8c18" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-da4337c7929fa1d0965f0bd0259c72ae6056fed1.png" alt="Inheritance diagram of Uniform" usemap="#inheritance41aced8c18" class="inheritance graphviz" /></div>
 <map id="inheritance41aced8c18" name="inheritance41aced8c18">
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner" target="_top" title="Abstract class for best&#45;arm identification learners playing with the" alt="" coords="245,5,438,29"/>
-<area shape="rect" id="node4" href="#banditpylib.learners.mab_fbbai_learner.Uniform" target="_top" title="Uniform sampling policy" alt="" coords="486,5,558,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner" target="_top" title="Abstract class for best&#45;arm identification learners playing with the" alt="" coords="436,5,629,31"/>
+<area shape="rect" id="node5" href="#banditpylib.learners.mab_fbbai_learner.Uniform" target="_top" title="Uniform sampling policy" alt="" coords="677,5,749,31"/>
 </map><dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fbbai_learner.Uniform.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/mab_fbbai_learner/uniform.html#Uniform.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mab_fbbai_learner.Uniform.actions" title="Permalink to this definition">¶</a></dt>
@@ -317,7 +319,7 @@ highest empirical mean.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fbbai_learner.SH">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.mab_fbbai_learner.</span></span><span class="sig-name descname"><span class="pre">SH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/mab_fbbai_learner/sh.html#SH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mab_fbbai_learner.SH" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sequential halving policy <span id="id3">[<a class="reference internal" href="../bibliography.html#id8">KKS13</a>]</span></p>
+<dd><p>Sequential halving policy <span id="id3">[<a class="reference internal" href="../bibliography.html#id8" title="Zohar Karnin, Tomer Koren, and Oren Somekh. Almost optimal exploration in multi-armed bandits. In ICML. 2013.">KKS13</a>]</span></p>
 <p>Eliminate half of the remaining arms in each round.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -331,11 +333,12 @@ greater than this number</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-518ad3229264d4870fb1c328b961ae7cbf688edd.png" alt="Inheritance diagram of SH" usemap="#inheritance4a5e88472f" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-09facc125a2f1eb8a04b4ac42de23a2eb1f7d31d.png" alt="Inheritance diagram of SH" usemap="#inheritance4a5e88472f" class="inheritance graphviz" /></div>
 <map id="inheritance4a5e88472f" name="inheritance4a5e88472f">
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner" target="_top" title="Abstract class for best&#45;arm identification learners playing with the" alt="" coords="245,5,438,29"/>
-<area shape="rect" id="node4" href="#banditpylib.learners.mab_fbbai_learner.SH" target="_top" title="Sequential halving policy :cite:`karnin2013almost`" alt="" coords="486,5,558,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner" target="_top" title="Abstract class for best&#45;arm identification learners playing with the" alt="" coords="436,5,629,31"/>
+<area shape="rect" id="node5" href="#banditpylib.learners.mab_fbbai_learner.SH" target="_top" title="Sequential halving policy :cite:`karnin2013almost`" alt="" coords="677,5,749,31"/>
 </map><dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fbbai_learner.SH.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/mab_fbbai_learner/sh.html#SH.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mab_fbbai_learner.SH.actions" title="Permalink to this definition">¶</a></dt>
@@ -383,7 +386,7 @@ greater than this number</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fbbai_learner.SR">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.mab_fbbai_learner.</span></span><span class="sig-name descname"><span class="pre">SR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/mab_fbbai_learner/sr.html#SR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mab_fbbai_learner.SR" title="Permalink to this definition">¶</a></dt>
-<dd><p>Successive rejects policy <span id="id4">[<a class="reference internal" href="../bibliography.html#id7">AB10</a>]</span></p>
+<dd><p>Successive rejects policy <span id="id4">[<a class="reference internal" href="../bibliography.html#id7" title="Jean-Yves Audibert and Sébastien Bubeck. Best arm identification in multi-armed bandits. In COLT. 2010.">AB10</a>]</span></p>
 <p>Eliminate one arm in each round.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -395,11 +398,12 @@ greater than this number</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-f453b61f147a56ab0a8e06048e920b66c23dee33.png" alt="Inheritance diagram of SR" usemap="#inheritance76302b6b31" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-127028033f08420b41505dcb4dbaa7db1ae7283a.png" alt="Inheritance diagram of SR" usemap="#inheritance76302b6b31" class="inheritance graphviz" /></div>
 <map id="inheritance76302b6b31" name="inheritance76302b6b31">
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner" target="_top" title="Abstract class for best&#45;arm identification learners playing with the" alt="" coords="245,5,438,29"/>
-<area shape="rect" id="node4" href="#banditpylib.learners.mab_fbbai_learner.SR" target="_top" title="Successive rejects policy :cite:`audibert2010best`" alt="" coords="486,5,558,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.mab_fbbai_learner.MABFixedBudgetBAILearner" target="_top" title="Abstract class for best&#45;arm identification learners playing with the" alt="" coords="436,5,629,31"/>
+<area shape="rect" id="node5" href="#banditpylib.learners.mab_fbbai_learner.SR" target="_top" title="Successive rejects policy :cite:`audibert2010best`" alt="" coords="677,5,749,31"/>
 </map><dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_fbbai_learner.SR.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/mab_fbbai_learner/sr.html#SR.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mab_fbbai_learner.SR.actions" title="Permalink to this definition">¶</a></dt>

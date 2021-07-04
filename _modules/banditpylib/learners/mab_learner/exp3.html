@@ -203,9 +203,9 @@
     <span class="k">return</span> <span class="s1">&#39;exp3&#39;</span>
 
 <div class="viewcode-block" id="EXP3.reset"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mab_learner.html#banditpylib.learners.mab_learner.EXP3.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">)</span></div>
     <span class="c1"># Current time step</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span></div>
+    <span class="c1"># self.__time = 1</span>
 
 <div class="viewcode-block" id="EXP3.actions"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mab_learner.html#banditpylib.learners.mab_learner.EXP3.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="k">del</span> <span class="n">context</span>
@@ -225,8 +225,8 @@
     <span class="n">reward</span> <span class="o">=</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">estimated_mean</span> <span class="o">=</span> <span class="n">reward</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__probabilities</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__weights</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__gamma</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span> <span class="o">*</span>
-                                     <span class="n">estimated_mean</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">+=</span> <span class="mi">1</span></div></div>
+                                     <span class="n">estimated_mean</span><span class="p">)</span></div></div>
+    <span class="c1"># self.__time += 1</span>
 </pre></div>
 
            </div>

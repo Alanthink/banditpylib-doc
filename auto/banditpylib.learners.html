@@ -230,6 +230,8 @@ Maximize correct answers</p></li>
 Make all answers correct</p></li>
 <li><p><a class="reference internal" href="#banditpylib.learners.Learner" title="banditpylib.learners.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a>:
 Abstract class for learners</p></li>
+<li><p><a class="reference internal" href="#banditpylib.learners.SinglePlayerLearner" title="banditpylib.learners.SinglePlayerLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglePlayerLearner</span></code></a>:
+Abstract class for single player learners</p></li>
 </ul>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.Goal">
@@ -238,7 +240,7 @@ Abstract class for learners</p></li>
 <p class="rubric">Inheritance</p>
 <div class="graphviz"><img src="../_images/inheritance-96a4c026070cc39c1870be28b4748469cc381e3c.png" alt="Inheritance diagram of Goal" usemap="#inheritance775e243261" class="inheritance graphviz" /></div>
 <map id="inheritance775e243261" name="inheritance775e243261">
-<area shape="rect" id="node2" href="#banditpylib.learners.Goal" target="_top" title="Abstract class for the goal of a learner" alt="" coords="125,5,197,29"/>
+<area shape="rect" id="node2" href="#banditpylib.learners.Goal" target="_top" title="Abstract class for the goal of a learner" alt="" coords="125,5,197,31"/>
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.Goal.name">
 <em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.Goal.name" title="Permalink to this definition">¶</a></dt>
@@ -259,8 +261,8 @@ Abstract class for learners</p></li>
 <p class="rubric">Inheritance</p>
 <div class="graphviz"><img src="../_images/inheritance-3e469c927c15fd0777b4da73d8b1238f02df2131.png" alt="Inheritance diagram of IdentifyBestArm" usemap="#inheritance74245d6ce0" class="inheritance graphviz" /></div>
 <map id="inheritance74245d6ce0" name="inheritance74245d6ce0">
-<area shape="rect" id="node2" href="#banditpylib.learners.Goal" target="_top" title="Abstract class for the goal of a learner" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.IdentifyBestArm" target="_top" title="Best arm identification" alt="" coords="245,5,361,29"/>
+<area shape="rect" id="node2" href="#banditpylib.learners.Goal" target="_top" title="Abstract class for the goal of a learner" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.IdentifyBestArm" target="_top" title="Best arm identification" alt="" coords="245,5,361,31"/>
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.IdentifyBestArm.name">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.IdentifyBestArm.name" title="Permalink to this definition">¶</a></dt>
@@ -276,8 +278,8 @@ Abstract class for learners</p></li>
 <p class="rubric">Inheritance</p>
 <div class="graphviz"><img src="../_images/inheritance-f4d1c9d2689adf5bbf69c142abae369b7518e73d.png" alt="Inheritance diagram of MaximizeTotalRewards" usemap="#inheritancef6938f20c8" class="inheritance graphviz" /></div>
 <map id="inheritancef6938f20c8" name="inheritancef6938f20c8">
-<area shape="rect" id="node2" href="#banditpylib.learners.Goal" target="_top" title="Abstract class for the goal of a learner" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.MaximizeTotalRewards" target="_top" title="Reward maximization" alt="" coords="245,5,404,29"/>
+<area shape="rect" id="node2" href="#banditpylib.learners.Goal" target="_top" title="Abstract class for the goal of a learner" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.MaximizeTotalRewards" target="_top" title="Reward maximization" alt="" coords="245,5,404,31"/>
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.MaximizeTotalRewards.name">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.MaximizeTotalRewards.name" title="Permalink to this definition">¶</a></dt>
@@ -299,8 +301,8 @@ Abstract class for learners</p></li>
 <p class="rubric">Inheritance</p>
 <div class="graphviz"><img src="../_images/inheritance-053f9927a44052300b496e0ec4437418aa06e915.png" alt="Inheritance diagram of MaximizeCorrectAnswers" usemap="#inheritance3ca1b5b1fb" class="inheritance graphviz" /></div>
 <map id="inheritance3ca1b5b1fb" name="inheritance3ca1b5b1fb">
-<area shape="rect" id="node2" href="#banditpylib.learners.Goal" target="_top" title="Abstract class for the goal of a learner" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.MaximizeCorrectAnswers" target="_top" title="Maximize correct answers" alt="" coords="245,5,418,29"/>
+<area shape="rect" id="node2" href="#banditpylib.learners.Goal" target="_top" title="Abstract class for the goal of a learner" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.MaximizeCorrectAnswers" target="_top" title="Maximize correct answers" alt="" coords="245,5,419,31"/>
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.MaximizeCorrectAnswers.name">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.MaximizeCorrectAnswers.name" title="Permalink to this definition">¶</a></dt>
@@ -322,8 +324,8 @@ Abstract class for learners</p></li>
 <p class="rubric">Inheritance</p>
 <div class="graphviz"><img src="../_images/inheritance-388636b83865bd9a0c3c1fe22196c2bab601af0b.png" alt="Inheritance diagram of MakeAllAnswersCorrect" usemap="#inheritance3251d9ea83" class="inheritance graphviz" /></div>
 <map id="inheritance3251d9ea83" name="inheritance3251d9ea83">
-<area shape="rect" id="node2" href="#banditpylib.learners.Goal" target="_top" title="Abstract class for the goal of a learner" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.MakeAllAnswersCorrect" target="_top" title="Make all answers correct" alt="" coords="245,5,409,29"/>
+<area shape="rect" id="node2" href="#banditpylib.learners.Goal" target="_top" title="Abstract class for the goal of a learner" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.MakeAllAnswersCorrect" target="_top" title="Make all answers correct" alt="" coords="245,5,409,31"/>
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.MakeAllAnswersCorrect.name">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.MakeAllAnswersCorrect.name" title="Permalink to this definition">¶</a></dt>
@@ -344,22 +346,8 @@ Abstract class for learners</p></li>
 <p class="rubric">Inheritance</p>
 <div class="graphviz"><img src="../_images/inheritance-f2a46ed06f215d3d3a260e1b46c14da79249e0b2.png" alt="Inheritance diagram of Learner" usemap="#inheritanced4a169dbd2" class="inheritance graphviz" /></div>
 <map id="inheritanced4a169dbd2" name="inheritanced4a169dbd2">
-<area shape="rect" id="node2" href="#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-</map><dl class="py method">
-<dt class="sig sig-object py" id="banditpylib.learners.Learner.actions">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#Learner.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.Learner.actions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Actions of the learner</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>actions to take</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
+<area shape="rect" id="node2" href="#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+</map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.Learner.goal">
 <em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">goal</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.learners.utils.Goal</span></em><a class="headerlink" href="#banditpylib.learners.Learner.goal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Goal of the learner</p>
@@ -387,14 +375,44 @@ Abstract class for learners</p></li>
 <dd><p>Type of bandit environment the learner plays with</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="banditpylib.learners.SinglePlayerLearner">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.</span></span><span class="sig-name descname"><span class="pre">SinglePlayerLearner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#SinglePlayerLearner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.SinglePlayerLearner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for single player learners</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – alias name</p>
+</dd>
+</dl>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-1f3ccb2a25dfc1413898811cbc055407ead5334e.png" alt="Inheritance diagram of SinglePlayerLearner" usemap="#inheritance73e3fd7332" class="inheritance graphviz" /></div>
+<map id="inheritance73e3fd7332" name="inheritance73e3fd7332">
+<area shape="rect" id="node2" href="#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="banditpylib.learners.SinglePlayerLearner.actions">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#SinglePlayerLearner.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.SinglePlayerLearner.actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actions of the learner</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>actions to take</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
-<dt class="sig sig-object py" id="banditpylib.learners.Learner.update">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#Learner.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.Learner.update" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="banditpylib.learners.SinglePlayerLearner.update">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#SinglePlayerLearner.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.SinglePlayerLearner.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the learner</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
-<a class="reference internal" href="#banditpylib.learners.Learner.actions" title="banditpylib.learners.Learner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
+<a class="reference internal" href="#banditpylib.learners.SinglePlayerLearner.actions" title="banditpylib.learners.SinglePlayerLearner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
 </dd></dl>

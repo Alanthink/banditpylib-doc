@@ -253,11 +253,6 @@
 <span class="sd">      default learner name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-  <span class="nd">@property</span>
-  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">running_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">type</span><span class="p">]]:</span>
-    <span class="sd">&quot;&quot;&quot;Type of bandit environment the learner plays with&quot;&quot;&quot;</span>
-
 <div class="viewcode-block" id="Learner.reset"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.Learner.reset">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Reset the learner</span>
@@ -266,7 +261,26 @@
 <span class="sd">      This function should be called before the start of the game.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
-<div class="viewcode-block" id="Learner.actions"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.Learner.actions">[docs]</a>  <span class="nd">@abstractmethod</span>
+  <span class="nd">@property</span>
+  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">running_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">type</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Type of bandit environment the learner plays with&quot;&quot;&quot;</span>
+
+  <span class="nd">@property</span>
+  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">goal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Goal</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Goal of the learner&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="SinglePlayerLearner"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner">[docs]</a><span class="k">class</span> <span class="nc">SinglePlayerLearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Abstract class for single player learners</span>
+
+<span class="sd">  :param Optional[str] name: alias name</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SinglePlayerLearner.actions"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner.actions">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Actions of the learner</span>
 
@@ -277,19 +291,14 @@
 <span class="sd">      actions to take</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
-<div class="viewcode-block" id="Learner.update"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.Learner.update">[docs]</a>  <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="SinglePlayerLearner.update"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner.update">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Update the learner</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      feedback: feedback returned by the bandit environment after</span>
 <span class="sd">        :func:`actions` is executed</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-
-  <span class="nd">@property</span>
-  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">goal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Goal</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Goal of the learner&quot;&quot;&quot;</span></div>
+<span class="sd">    &quot;&quot;&quot;</span></div></div>
 </pre></div>
 
            </div>

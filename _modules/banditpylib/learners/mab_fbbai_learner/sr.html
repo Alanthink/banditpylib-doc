@@ -236,8 +236,7 @@
 
     <span class="c1"># Eliminate the arm with the smallest mean reward</span>
     <span class="n">arm_id_to_remove</span> <span class="o">=</span> <span class="n">argmax_or_min_tuple</span><span class="p">(</span>
-        <span class="p">[(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">em_mean</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">)</span>
-         <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">],</span>
+        <span class="p">[(</span><span class="n">arm</span><span class="o">.</span><span class="n">em_mean</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">arm_id</span><span class="p">,</span> <span class="n">arm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span>
         <span class="n">find_min</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">[</span><span class="n">arm_id_to_remove</span><span class="p">]</span>
 

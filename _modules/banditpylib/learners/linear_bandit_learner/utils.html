@@ -160,10 +160,10 @@
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">LinearBandit</span>
-<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Learner</span><span class="p">,</span> <span class="n">MaximizeTotalRewards</span><span class="p">,</span> <span class="n">Goal</span>
+<span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">SinglePlayerLearner</span><span class="p">,</span> <span class="n">MaximizeTotalRewards</span><span class="p">,</span> <span class="n">Goal</span>
 
 
-<div class="viewcode-block" id="LinearBanditLearner"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.linear_bandit_learner.html#banditpylib.learners.linear_bandit_learner.LinearBanditLearner">[docs]</a><span class="k">class</span> <span class="nc">LinearBanditLearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
+<div class="viewcode-block" id="LinearBanditLearner"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.linear_bandit_learner.html#banditpylib.learners.linear_bandit_learner.LinearBanditLearner">[docs]</a><span class="k">class</span> <span class="nc">LinearBanditLearner</span><span class="p">(</span><span class="n">SinglePlayerLearner</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Abstract class for learners playing with linear bandit</span>
 
 <span class="sd">  :param int arm_num: number of arms</span>

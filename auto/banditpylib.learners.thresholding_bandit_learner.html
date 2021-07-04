@@ -208,10 +208,11 @@ Uniform Sampling</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-a41cec3fd38d21aebc08d8353bc49e024d68ca11.png" alt="Inheritance diagram of ThresholdingBanditLearner" usemap="#inheritance6cda6f4766" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-beb79ab41bf2eb5944432c1502f2f6ed1c3bd63c.png" alt="Inheritance diagram of ThresholdingBanditLearner" usemap="#inheritance6cda6f4766" class="inheritance graphviz" /></div>
 <map id="inheritance6cda6f4766" name="inheritance6cda6f4766">
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.thresholding_bandit_learner.ThresholdingBanditLearner" target="_top" title="Abstract class for learners playing with thresholding bandit" alt="" coords="245,5,428,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node3" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
+<area shape="rect" id="node4" href="#banditpylib.learners.thresholding_bandit_learner.ThresholdingBanditLearner" target="_top" title="Abstract class for learners playing with thresholding bandit" alt="" coords="436,5,619,31"/>
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.thresholding_bandit_learner.ThresholdingBanditLearner.arm_num">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">arm_num</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#banditpylib.learners.thresholding_bandit_learner.ThresholdingBanditLearner.arm_num" title="Permalink to this definition">¶</a></dt>
@@ -230,7 +231,7 @@ Uniform Sampling</p></li>
 <dt class="sig sig-object py" id="banditpylib.learners.thresholding_bandit_learner.APT">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.thresholding_bandit_learner.</span></span><span class="sig-name descname"><span class="pre">APT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/thresholding_bandit_learner/apt.html#APT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.thresholding_bandit_learner.APT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Anytime Parameter-free Thresholding algorithm
-<span id="id1">[<a class="reference internal" href="../bibliography.html#id16">LGC16</a>]</span></p>
+<span id="id1">[<a class="reference internal" href="../bibliography.html#id16" title="Andrea Locatelli, Maurilio Gutzeit, and Alexandra Carpentier. An optimal algorithm for the thresholding bandit problem. In ICML, volume 48, 1690–1698. 2016.">LGC16</a>]</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -242,11 +243,12 @@ Uniform Sampling</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-e7043dc44f73982a70a495c133955d0acd2c026c.png" alt="Inheritance diagram of APT" usemap="#inheritance878959ae6e" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-cfe3735f729cb6729c9c2272bc2462af01fe0aa6.png" alt="Inheritance diagram of APT" usemap="#inheritance878959ae6e" class="inheritance graphviz" /></div>
 <map id="inheritance878959ae6e" name="inheritance878959ae6e">
-<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node2" href="#banditpylib.learners.thresholding_bandit_learner.APT" target="_top" title="Anytime Parameter&#45;free Thresholding algorithm" alt="" coords="476,5,548,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.thresholding_bandit_learner.ThresholdingBanditLearner" target="_top" title="Abstract class for learners playing with thresholding bandit" alt="" coords="245,5,428,29"/>
+<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node2" href="#banditpylib.learners.thresholding_bandit_learner.APT" target="_top" title="Anytime Parameter&#45;free Thresholding algorithm" alt="" coords="667,5,739,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.thresholding_bandit_learner.ThresholdingBanditLearner" target="_top" title="Abstract class for learners playing with thresholding bandit" alt="" coords="436,5,619,31"/>
+<area shape="rect" id="node5" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
 </map><dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.thresholding_bandit_learner.APT.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/thresholding_bandit_learner/apt.html#APT.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.thresholding_bandit_learner.APT.actions" title="Permalink to this definition">¶</a></dt>
@@ -307,11 +309,12 @@ Uniform Sampling</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-669d76a4397a7de70c20a6fae821b42cf6c32418.png" alt="Inheritance diagram of Uniform" usemap="#inheritance41aced8c18" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-55a864f006252622f4e1adc834dcfd78babd663d.png" alt="Inheritance diagram of Uniform" usemap="#inheritance41aced8c18" class="inheritance graphviz" /></div>
 <map id="inheritance41aced8c18" name="inheritance41aced8c18">
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.thresholding_bandit_learner.ThresholdingBanditLearner" target="_top" title="Abstract class for learners playing with thresholding bandit" alt="" coords="245,5,428,29"/>
-<area shape="rect" id="node4" href="#banditpylib.learners.thresholding_bandit_learner.Uniform" target="_top" title="Uniform Sampling" alt="" coords="476,5,548,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node3" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
+<area shape="rect" id="node4" href="#banditpylib.learners.thresholding_bandit_learner.ThresholdingBanditLearner" target="_top" title="Abstract class for learners playing with thresholding bandit" alt="" coords="436,5,619,31"/>
+<area shape="rect" id="node5" href="#banditpylib.learners.thresholding_bandit_learner.Uniform" target="_top" title="Uniform Sampling" alt="" coords="667,5,739,31"/>
 </map><dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.thresholding_bandit_learner.Uniform.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/thresholding_bandit_learner/uniform.html#Uniform.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.thresholding_bandit_learner.Uniform.actions" title="Permalink to this definition">¶</a></dt>

@@ -210,9 +210,9 @@
 
 <div class="viewcode-block" id="ThompsonSampling.reset"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mnl_bandit_learner.html#banditpylib.learners.mnl_bandit_learner.ThompsonSampling.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="c1"># Current time step</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># self.__time = 1</span>
     <span class="c1"># Current episode</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__episode</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># self.__episode = 1</span>
     <span class="c1"># Number of episodes a product is served until the current episode</span>
     <span class="c1"># (exclusive)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__serving_episodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">product_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
@@ -308,7 +308,7 @@
       <span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">best_assortment</span><span class="p">))</span>
       <span class="n">arm_pull</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="mi">1</span>
 
-      <span class="bp">self</span><span class="o">.</span><span class="n">__first_step_after_warm_start</span> <span class="o">=</span> <span class="kc">False</span>
+      <span class="c1"># self.__first_step_after_warm_start = False</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="n">actions</span>
     <span class="k">return</span> <span class="n">actions</span></div>
@@ -326,9 +326,9 @@
           <span class="bp">self</span><span class="o">.</span><span class="n">__next_product_in_warm_start</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">product_num</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__done_warm_start</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span> <span class="o">=</span> <span class="kc">None</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">__episode</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__last_customer_feedback</span> <span class="o">=</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">+=</span> <span class="mi">1</span></div></div>
+      <span class="c1"># self.__episode += 1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__last_customer_feedback</span> <span class="o">=</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div></div>
+    <span class="c1"># self.__time += 1</span>
 </pre></div>
 
            </div>

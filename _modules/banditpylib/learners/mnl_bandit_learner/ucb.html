@@ -203,7 +203,7 @@
 
 <div class="viewcode-block" id="UCB.reset"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mnl_bandit_learner.html#banditpylib.learners.mnl_bandit_learner.UCB.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="c1"># Current time step</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># self.__time = 1</span>
     <span class="c1"># Current episode</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__episode</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="c1"># Number of episodes a product is served until the current episode</span>
@@ -266,7 +266,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__customer_choices</span><span class="p">[</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">__last_customer_feedback</span> <span class="o">=</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># self.__time += 1</span>
     <span class="k">if</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
       <span class="k">for</span> <span class="n">product_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__last_actions</span><span class="o">.</span><span class="n">arm_pulls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__serving_episodes</span><span class="p">[</span><span class="n">product_id</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>

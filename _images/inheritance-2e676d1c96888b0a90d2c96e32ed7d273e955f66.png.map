@@ -1,6 +1,0 @@
-<map id="inheritance65526f78f5" name="inheritance65526f78f5">
-<area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,5,77,29"/>
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mab_learner.MABLearner" target="_top" title="Abstract class for learners playing with the ordinary multi&#45;armed bandit" alt="" coords="245,5,342,29"/>
-<area shape="rect" id="node4" href="#banditpylib.learners.mab_learner.UCBV" target="_top" title="UCBV policy :cite:`audibert2009exploration`" alt="" coords="390,5,462,29"/>
-</map>

@@ -192,11 +192,11 @@
 <li><p><a class="reference internal" href="#banditpylib.learners.mnl_bandit_learner.MNLBanditLearner" title="banditpylib.learners.mnl_bandit_learner.MNLBanditLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">MNLBanditLearner</span></code></a>:
 Abstract class for learners playing with mnl bandit</p></li>
 <li><p><a class="reference internal" href="#banditpylib.learners.mnl_bandit_learner.UCB" title="banditpylib.learners.mnl_bandit_learner.UCB"><code class="xref py py-class docutils literal notranslate"><span class="pre">UCB</span></code></a>:
-UCB policy <span id="id1">[<a class="reference internal" href="../bibliography.html#id14">AAGZ19</a>]</span></p></li>
+UCB policy <span id="id1">[<a class="reference internal" href="../bibliography.html#id14" title="Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, and Assaf Zeevi. Mnl-bandit: A dynamic learning approach to assortment selection. Operations Research, 67(5):1453–1485, 2019.">AAGZ19</a>]</span></p></li>
 <li><p><a class="reference internal" href="#banditpylib.learners.mnl_bandit_learner.EpsGreedy" title="banditpylib.learners.mnl_bandit_learner.EpsGreedy"><code class="xref py py-class docutils literal notranslate"><span class="pre">EpsGreedy</span></code></a>:
 Epsilon-Greedy policy</p></li>
 <li><p><a class="reference internal" href="#banditpylib.learners.mnl_bandit_learner.ThompsonSampling" title="banditpylib.learners.mnl_bandit_learner.ThompsonSampling"><code class="xref py py-class docutils literal notranslate"><span class="pre">ThompsonSampling</span></code></a>:
-Thompson sampling policy <span id="id2">[<a class="reference internal" href="../bibliography.html#id15">AAGZ17</a>]</span></p></li>
+Thompson sampling policy <span id="id2">[<a class="reference internal" href="../bibliography.html#id15" title="Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, and Assaf Zeevi. Thompson sampling for the mnl-bandit. In COLT. 2017.">AAGZ17</a>]</span></p></li>
 </ul>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.mnl_bandit_learner.MNLBanditLearner">
@@ -219,10 +219,11 @@ search is enabled</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-47a09c564b265ff9294709cee680aab5bd53b8f7.png" alt="Inheritance diagram of MNLBanditLearner" usemap="#inheritanced20ef85745" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-45c8d1fd5a7a27ec2b9e4f345d00d491ebc2d90b.png" alt="Inheritance diagram of MNLBanditLearner" usemap="#inheritanced20ef85745" class="inheritance graphviz" /></div>
 <map id="inheritanced20ef85745" name="inheritanced20ef85745">
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mnl_bandit_learner.MNLBanditLearner" target="_top" title="Abstract class for learners playing with mnl bandit" alt="" coords="245,5,379,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.mnl_bandit_learner.MNLBanditLearner" target="_top" title="Abstract class for learners playing with mnl bandit" alt="" coords="436,5,569,31"/>
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.mnl_bandit_learner.MNLBanditLearner.card_limit">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">card_limit</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#banditpylib.learners.mnl_bandit_learner.MNLBanditLearner.card_limit" title="Permalink to this definition">¶</a></dt>
@@ -276,7 +277,7 @@ search is enabled</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.mnl_bandit_learner.UCB">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.mnl_bandit_learner.</span></span><span class="sig-name descname"><span class="pre">UCB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revenues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.html#banditpylib.bandits.Reward" title="banditpylib.bandits.mnl_bandit_utils.Reward"><span class="pre">banditpylib.bandits.mnl_bandit_utils.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_search</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_neighbors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/mnl_bandit_learner/ucb.html#UCB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mnl_bandit_learner.UCB" title="Permalink to this definition">¶</a></dt>
-<dd><p>UCB policy <span id="id3">[<a class="reference internal" href="../bibliography.html#id14">AAGZ19</a>]</span></p>
+<dd><p>UCB policy <span id="id3">[<a class="reference internal" href="../bibliography.html#id14" title="Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, and Assaf Zeevi. Mnl-bandit: A dynamic learning approach to assortment selection. Operations Research, 67(5):1453–1485, 2019.">AAGZ19</a>]</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -292,11 +293,12 @@ search is enabled</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-fe3d8b7a604c2dc3ad03382bb27aa729eacb004b.png" alt="Inheritance diagram of UCB" usemap="#inheritance413d02b453" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-344a81e6ee50774d7518260ce2fdf9a3ef47bd01.png" alt="Inheritance diagram of UCB" usemap="#inheritance413d02b453" class="inheritance graphviz" /></div>
 <map id="inheritance413d02b453" name="inheritance413d02b453">
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mnl_bandit_learner.MNLBanditLearner" target="_top" title="Abstract class for learners playing with mnl bandit" alt="" coords="245,5,379,29"/>
-<area shape="rect" id="node4" href="#banditpylib.learners.mnl_bandit_learner.UCB" target="_top" title="UCB policy :cite:`DBLP:journals/ior/AgrawalAGZ19`" alt="" coords="427,5,499,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.mnl_bandit_learner.MNLBanditLearner" target="_top" title="Abstract class for learners playing with mnl bandit" alt="" coords="436,5,569,31"/>
+<area shape="rect" id="node5" href="#banditpylib.learners.mnl_bandit_learner.UCB" target="_top" title="UCB policy :cite:`DBLP:journals/ior/AgrawalAGZ19`" alt="" coords="617,5,689,31"/>
 </map><dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.mnl_bandit_learner.UCB.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/mnl_bandit_learner/ucb.html#UCB.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mnl_bandit_learner.UCB.actions" title="Permalink to this definition">¶</a></dt>
@@ -357,11 +359,12 @@ search is enabled</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-f6073a12a30d7f3d8f6a79cdf737bdacc8e51275.png" alt="Inheritance diagram of EpsGreedy" usemap="#inheritancea66095a0ad" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-d4d04f5e736dbe00bfed35f5c6cb8ffe125a9fd1.png" alt="Inheritance diagram of EpsGreedy" usemap="#inheritancea66095a0ad" class="inheritance graphviz" /></div>
 <map id="inheritancea66095a0ad" name="inheritancea66095a0ad">
-<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node2" href="#banditpylib.learners.mnl_bandit_learner.EpsGreedy" target="_top" title="Epsilon&#45;Greedy policy" alt="" coords="427,5,515,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mnl_bandit_learner.MNLBanditLearner" target="_top" title="Abstract class for learners playing with mnl bandit" alt="" coords="245,5,379,29"/>
+<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node2" href="#banditpylib.learners.mnl_bandit_learner.EpsGreedy" target="_top" title="Epsilon&#45;Greedy policy" alt="" coords="617,5,707,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.mnl_bandit_learner.MNLBanditLearner" target="_top" title="Abstract class for learners playing with mnl bandit" alt="" coords="436,5,569,31"/>
+<area shape="rect" id="node5" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
 </map><dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.mnl_bandit_learner.EpsGreedy.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/mnl_bandit_learner/eps_greedy.html#EpsGreedy.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mnl_bandit_learner.EpsGreedy.actions" title="Permalink to this definition">¶</a></dt>
@@ -403,7 +406,7 @@ search is enabled</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.mnl_bandit_learner.ThompsonSampling">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.mnl_bandit_learner.</span></span><span class="sig-name descname"><span class="pre">ThompsonSampling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">revenues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.html#banditpylib.bandits.Reward" title="banditpylib.bandits.mnl_bandit_utils.Reward"><span class="pre">banditpylib.bandits.mnl_bandit_utils.Reward</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_limit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_search</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_neighbors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/mnl_bandit_learner/ts.html#ThompsonSampling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mnl_bandit_learner.ThompsonSampling" title="Permalink to this definition">¶</a></dt>
-<dd><p>Thompson sampling policy <span id="id4">[<a class="reference internal" href="../bibliography.html#id15">AAGZ17</a>]</span></p>
+<dd><p>Thompson sampling policy <span id="id4">[<a class="reference internal" href="../bibliography.html#id15" title="Shipra Agrawal, Vashist Avadhanula, Vineet Goyal, and Assaf Zeevi. Thompson sampling for the mnl-bandit. In COLT. 2017.">AAGZ17</a>]</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -420,11 +423,12 @@ search is enabled</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-0f92bd1a84369402ca9b3000dcda3c33025f5612.png" alt="Inheritance diagram of ThompsonSampling" usemap="#inheritance2a64f91a10" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-048272b032ede4defe2843a537e807641e93a726.png" alt="Inheritance diagram of ThompsonSampling" usemap="#inheritance2a64f91a10" class="inheritance graphviz" /></div>
 <map id="inheritance2a64f91a10" name="inheritance2a64f91a10">
-<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,29"/>
-<area shape="rect" id="node3" href="#banditpylib.learners.mnl_bandit_learner.MNLBanditLearner" target="_top" title="Abstract class for learners playing with mnl bandit" alt="" coords="245,5,379,29"/>
-<area shape="rect" id="node4" href="#banditpylib.learners.mnl_bandit_learner.ThompsonSampling" target="_top" title="Thompson sampling policy :cite:`DBLP:conf/colt/AgrawalAGZ17`" alt="" coords="427,5,566,29"/>
+<area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node4" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" target="_top" title="Abstract class for single player learners" alt="" coords="245,5,388,31"/>
+<area shape="rect" id="node3" href="#banditpylib.learners.mnl_bandit_learner.MNLBanditLearner" target="_top" title="Abstract class for learners playing with mnl bandit" alt="" coords="436,5,569,31"/>
+<area shape="rect" id="node5" href="#banditpylib.learners.mnl_bandit_learner.ThompsonSampling" target="_top" title="Thompson sampling policy :cite:`DBLP:conf/colt/AgrawalAGZ17`" alt="" coords="617,5,757,31"/>
 </map><dl class="py method">
 <dt class="sig sig-object py" id="banditpylib.learners.mnl_bandit_learner.ThompsonSampling.actions">
 <span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/mnl_bandit_learner/ts.html#ThompsonSampling.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mnl_bandit_learner.ThompsonSampling.actions" title="Permalink to this definition">¶</a></dt>

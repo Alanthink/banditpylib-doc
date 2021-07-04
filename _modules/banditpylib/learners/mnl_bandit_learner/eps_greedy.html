@@ -209,7 +209,7 @@
     <span class="c1"># Current time step</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="c1"># Current episode</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__episode</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># self.__episode = 1</span>
     <span class="c1"># Number of episodes a product is served until the current episode</span>
     <span class="c1"># (exclusive)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__serving_episodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">product_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
@@ -286,8 +286,8 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">customer_feedbacks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
       <span class="k">for</span> <span class="n">product_id</span> <span class="ow">in</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">set</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__serving_episodes</span><span class="p">[</span><span class="n">product_id</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">__episode</span> <span class="o">+=</span> <span class="mi">1</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__serving_episodes</span><span class="p">[</span><span class="n">product_id</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span></div></div>
+      <span class="c1"># self.__episode += 1</span>
 </pre></div>
 
            </div>
