@@ -158,7 +158,8 @@
             
   <h1>Source code for banditpylib.learners.utils</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span> <span class="k">as</span> <span class="n">dcopy</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Context</span><span class="p">,</span> <span class="n">Arm</span><span class="p">,</span> <span class="n">Actions</span><span class="p">,</span> <span class="n">Feedback</span>
 
@@ -299,6 +300,161 @@
 <span class="sd">      feedback: feedback returned by the bandit environment after</span>
 <span class="sd">        :func:`actions` is executed</span>
 <span class="sd">    &quot;&quot;&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="CollaborativeAgent"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeAgent">[docs]</a><span class="k">class</span> <span class="nc">CollaborativeAgent</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Abstract class for collaborative agents</span>
+
+<span class="sd">  :param Optional[str] name: alias name</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Name of the agent&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+
+  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      default agent name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CollaborativeAgent.reset"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeAgent.reset">[docs]</a>  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reset the agent</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">      This function should be called before the start of each game.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="CollaborativeAgent.set_input_arms"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeAgent.set_input_arms">[docs]</a>  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">set_input_arms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arms</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Assign a set of arms to the agent</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      arms: arm indices that have been assigned</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="CollaborativeAgent.actions"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeAgent.actions">[docs]</a>  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Actions of the agent</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      context: contextual information about the bandit environment</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      actions to take</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="CollaborativeAgent.update"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeAgent.update">[docs]</a>  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Update the agent</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      feedback: feedback returned by the bandit environment after</span>
+<span class="sd">        :func:`actions` is executed</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="CollaborativeAgent.broadcast"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeAgent.broadcast">[docs]</a>  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">broadcast</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Broadcast information learnt in the current round</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      arm ids, corresponding average rewards seen, and numbers of pulls used to</span>
+<span class="sd">        deduce average rewards</span>
+<span class="sd">    &quot;&quot;&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="CollaborativeMaster"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeMaster">[docs]</a><span class="k">class</span> <span class="nc">CollaborativeMaster</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Abstract class for collaborative masters that handle arm assignment and</span>
+<span class="sd">  elimination</span>
+
+<span class="sd">  :param Optional[str] name: alias name</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Name of the master&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+
+  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      default master name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CollaborativeMaster.reset"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeMaster.reset">[docs]</a>  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reset the master</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">      This function should be called before the start of each game.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="CollaborativeMaster.initial_arm_assignment"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeMaster.initial_arm_assignment">[docs]</a>  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">initial_arm_assignment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;The arm assignment before the first round</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      arm assignment per agent for all agents</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="CollaborativeMaster.elimination"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeMaster.elimination">[docs]</a>  <span class="nd">@abstractmethod</span>
+  <span class="k">def</span> <span class="nf">elimination</span><span class="p">(</span>
+      <span class="bp">self</span><span class="p">,</span> <span class="n">agent_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+      <span class="n">messages</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span>
+                                          <span class="nb">int</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Update the set of active arms based on some criteria and return arm</span>
+<span class="sd">    assignment</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      agent_ids: list of agents that will be assigned arms</span>
+<span class="sd">      messages: dict of messages broadcasted from agents</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      arm assignment per agent</span>
+<span class="sd">    &quot;&quot;&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="CollaborativeLearner"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeLearner">[docs]</a><span class="k">class</span> <span class="nc">CollaborativeLearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Abstract class for collaborative learners</span>
+
+<span class="sd">  :param CollaborativeAgent agent: one instance of a collaborative agent</span>
+<span class="sd">  :param CollaboratveMaster master: instance of a collaborative master</span>
+<span class="sd">  :param int num_agents: total number of agents involved</span>
+<span class="sd">  :param Optional[str] name: alias name</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+               <span class="n">agent</span><span class="p">:</span> <span class="n">CollaborativeAgent</span><span class="p">,</span>
+               <span class="n">master</span><span class="p">:</span> <span class="n">CollaborativeMaster</span><span class="p">,</span>
+               <span class="n">num_agents</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__agents</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_agents</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__agents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dcopy</span><span class="p">(</span><span class="n">agent</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__master</span> <span class="o">=</span> <span class="n">master</span>
+
+<div class="viewcode-block" id="CollaborativeLearner.reset"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeLearner.reset">[docs]</a>  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__agents</span><span class="p">:</span>
+      <span class="n">agent</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__master</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span></div>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">agents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">CollaborativeAgent</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Involved agents&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__agents</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">master</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CollaborativeMaster</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Controlling master&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__master</span></div>
 </pre></div>
 
            </div>

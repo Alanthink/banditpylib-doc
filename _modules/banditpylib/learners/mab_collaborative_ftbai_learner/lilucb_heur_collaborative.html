@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>banditpylib.learners.mab_collaborative_ftbai_learner.lilucb_heur_collaborative &mdash; banditpylib 0.9.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> banditpylib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme_link.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../auto/banditpylib.html"><code class="docutils literal notranslate"><span class="pre">banditpylib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bibliography.html">Bibliography</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">banditpylib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>banditpylib.learners.mab_collaborative_ftbai_learner.lilucb_heur_collaborative</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for banditpylib.learners.mab_collaborative_ftbai_learner.lilucb_heur_collaborative</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Implementation of the Collaborative Learning Algorithm</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span> <span class="k">as</span> <span class="n">dcopy</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Feedback</span><span class="p">,</span> <span class="n">Actions</span>
+<span class="kn">from</span> <span class="nn">banditpylib.arms</span> <span class="kn">import</span> <span class="n">PseudoArm</span>
+<span class="kn">from</span> <span class="nn">banditpylib</span> <span class="kn">import</span> <span class="n">argmax_or_min_tuple</span>
+<span class="kn">from</span> <span class="nn">banditpylib.learners.mab_fcbai_learner</span> <span class="kn">import</span> <span class="n">MABFixedConfidenceBAILearner</span>
+
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">MABCollaborativeFixedTimeBAIAgent</span><span class="p">,</span> \
+    <span class="n">MABCollaborativeFixedTimeBAIMaster</span><span class="p">,</span> <span class="n">MABCollaborativeFixedTimeBAILearner</span>
+
+
+<span class="k">class</span> <span class="nc">CentralizedLilUCBHeuristic</span><span class="p">(</span><span class="n">MABFixedConfidenceBAILearner</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;LilUCB heuristic policy :cite:`jamieson2014lil`</span>
+<span class="sd">  Modified implementation to supplement CollaborativeAgent</span>
+<span class="sd">  along with additional functionality to work on only a subset of arms</span>
+
+<span class="sd">  :param int arm_num: number of arms of the bandit</span>
+<span class="sd">  :param float confidence: confidence level. It should be within (0, 1). The</span>
+<span class="sd">    algorithm should output the best arm with probability at least this value.</span>
+<span class="sd">  :param np.ndarray assigned_arms: arm indices the learner has to work with</span>
+<span class="sd">  :param str name: alias name</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+               <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">confidence</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+               <span class="n">assigned_arms</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+               <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">assigned_arms</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">arm_num</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">assigned_arms</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">arm_num</span><span class="p">,</span> <span class="p">(</span>
+        <span class="s2">&quot;assigned arms should be a subset of [arm_num]</span><span class="se">\n</span><span class="s2">Received: &quot;</span> <span class="o">+</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">assigned_arms</span><span class="p">))</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span><span class="n">confidence</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">assigned_arms</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span> <span class="o">=</span> <span class="n">assigned_arms</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">arm_num</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;lilUCB_heur_collaborative&#39;</span>
+
+  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># create only as many local arms as num_assigned_arms</span>
+    <span class="c1"># entire algo behaves as if there are just num_assigned_arms in the bandit</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span> <span class="o">=</span> <span class="p">[</span><span class="n">PseudoArm</span><span class="p">()</span> <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span><span class="p">]</span>
+    <span class="c1"># Parameters suggested by the paper</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__beta</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__delta</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">confidence</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+    <span class="c1"># Total number of pulls used</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s1">&#39;initialization&#39;</span>
+
+  <span class="k">def</span> <span class="nf">__confidence_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">      pulls: number of pulls</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      confidence radius</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">pulls</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__beta</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">))</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+        <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">)</span> <span class="o">*</span>
+        <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">pulls</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__delta</span><span class="p">)</span> <span class="o">/</span> <span class="n">pulls</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__ucb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      upper confidence bound</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">em_mean</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__confidence_radius</span><span class="p">(</span><span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">pseudo_arm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span>
+    <span class="p">])</span>
+
+  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
+    <span class="k">del</span> <span class="n">context</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s1">&#39;initialization&#39;</span><span class="p">:</span>
+      <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>  <span class="c1"># default state is normal</span>
+
+      <span class="c1"># 1 pull each for every assigned arm</span>
+      <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span><span class="p">:</span>
+        <span class="n">arm_pull</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+        <span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">arm_id</span>
+        <span class="n">arm_pull</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="k">return</span> <span class="n">actions</span>
+
+    <span class="c1"># self.__stage == &#39;main&#39;</span>
+    <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">pseudo_arm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span> <span class="o">&gt;=</span> <span class="p">(</span>
+          <span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__a</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">-</span> <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="n">actions</span>
+
+    <span class="n">arm_pull</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+
+    <span class="c1"># map local arm index to the bandits arm index</span>
+    <span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__ucb</span><span class="p">()))]</span>
+    <span class="n">arm_pull</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">actions</span>
+
+  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">arm_feedback</span> <span class="ow">in</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_feedbacks</span><span class="p">:</span>
+      <span class="c1"># reverse map from bandit index to local index</span>
+      <span class="n">pseudo_arm_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span> <span class="o">==</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">pseudo_arm_index</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+          <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">))</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s1">&#39;initialization&#39;</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s1">&#39;main&#39;</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">best_arm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="c1"># map best arm local index to actual bandit index</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span><span class="p">[</span><span class="n">argmax_or_min_tuple</span><span class="p">([</span>
+        <span class="p">(</span><span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">arm_id</span><span class="p">,</span> <span class="n">pseudo_arm</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">)</span>
+    <span class="p">])]</span>
+
+  <span class="k">def</span> <span class="nf">get_total_pulls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span>
+
+
+<span class="k">class</span> <span class="nc">LilUCBHeuristicAgent</span><span class="p">(</span><span class="n">MABCollaborativeFixedTimeBAIAgent</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Implementation of agent of the Collaborative Learning Algorithm\</span>
+<span class="sd">  Uses LilUCBHeuristic as the central algorithm</span>
+
+<span class="sd">  :param int arm_num: number of arms of the bandit</span>
+<span class="sd">  :param int rounds: number of rounds of communication allowed</span>
+<span class="sd">    (this agent uses one more)</span>
+<span class="sd">  :param int horizon: maximum number of pulls the agent can make</span>
+<span class="sd">    (over all rounds combined)</span>
+<span class="sd">  :param Optional[str] name: alias name</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+               <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">rounds</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">arm_num</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of arms is expected at least 2. Got </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                       <span class="n">arm_num</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rounds</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of rounds is expected at least 2. Got </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                       <span class="n">rounds</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span> <span class="o">=</span> <span class="n">arm_num</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__comm_rounds</span> <span class="o">=</span> <span class="n">rounds</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span> <span class="o">=</span> <span class="n">horizon</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__num_pulls_learning</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">horizon</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__comm_rounds</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;lilUCBHeur_collaborative_agent&quot;</span>
+
+  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__round_num</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s2">&quot;unassigned&quot;</span>
+    <span class="c1"># True if action forwarded from central algo</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo_action_taken</span> <span class="o">=</span> <span class="kc">False</span>
+
+  <span class="k">def</span> <span class="nf">__complete_round</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__round_num</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo_action_taken</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__round_num</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">__comm_rounds</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s2">&quot;unassigned&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s2">&quot;termination&quot;</span>
+
+  <span class="k">def</span> <span class="nf">set_input_arms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arms</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+    <span class="k">if</span> <span class="n">arms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="c1"># terminate since there is only one active arm</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__learning_arm</span> <span class="o">=</span> <span class="n">arms</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s2">&quot;termination&quot;</span>
+      <span class="k">return</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span>
+    <span class="c1"># confidence of 0.01 suggested in the paper</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo</span> <span class="o">=</span> <span class="n">CentralizedLilUCBHeuristic</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span>
+                                                     <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s2">&quot;unassigned&quot;</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s2">&quot;preparation&quot;</span>
+
+  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
+    <span class="c1"># a core assumption is all non-empty actions immediately receive feedback</span>
+    <span class="c1"># and hence stage is changed here and not when feedback is received</span>
+    <span class="k">del</span> <span class="n">context</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s2">&quot;unassigned&quot;</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No arms assigned to agent &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="c1"># in preparation:</span>
+    <span class="c1">#   if only one arm is assigned, proceed to learning</span>
+    <span class="c1">#   else if central_algo is running, forward its actions</span>
+    <span class="c1">#   and get best arm when central_algo completes</span>
+    <span class="c1">#   but interrupt central algo after T/2 pulls</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s2">&quot;preparation&quot;</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s2">&quot;learning&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__learning_arm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo</span><span class="o">.</span><span class="n">get_total_pulls</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s2">&quot;learning&quot;</span>
+        <span class="c1"># use whatever best_arm the central algo outputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__learning_arm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo</span><span class="o">.</span><span class="n">best_arm</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span>
+
+      <span class="n">central_algo_actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">central_algo_actions</span><span class="o">.</span><span class="n">arm_pulls</span><span class="p">:</span>
+        <span class="c1"># central algo terminated before T/2 pulls</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s2">&quot;learning&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__learning_arm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo</span><span class="o">.</span><span class="n">best_arm</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo_action_taken</span> <span class="o">=</span> <span class="kc">True</span>
+      <span class="k">return</span> <span class="n">central_algo_actions</span>
+
+    <span class="c1"># in learning:</span>
+    <span class="c1">#   if learning_arm is none, do no pulls and move to communication</span>
+    <span class="c1">#   else pull learning_arm and move to communication</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s2">&quot;learning&quot;</span><span class="p">:</span>
+      <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s2">&quot;communication&quot;</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__learning_arm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">actions</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">Actions</span><span class="o">.</span><span class="n">WAIT</span>
+        <span class="k">return</span> <span class="n">actions</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">arm_pull</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+        <span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__learning_arm</span>  <span class="c1"># pylint: disable=protobuf-type-error</span>
+        <span class="n">arm_pull</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__num_pulls_learning</span>
+        <span class="k">return</span> <span class="n">actions</span>
+
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s2">&quot;communication&quot;</span><span class="p">:</span>
+      <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
+      <span class="n">actions</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">Actions</span><span class="o">.</span><span class="n">WAIT</span>
+      <span class="k">return</span> <span class="n">actions</span>
+
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s2">&quot;termination&quot;</span><span class="p">:</span>
+      <span class="n">actions</span> <span class="o">=</span> <span class="n">Actions</span><span class="p">()</span>
+      <span class="n">actions</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">Actions</span><span class="o">.</span><span class="n">STOP</span>
+      <span class="k">return</span> <span class="n">actions</span>
+
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">+</span>
+                      <span class="s2">&quot; does not allow actions to be played&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">:</span> <span class="n">Feedback</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__learning_mean</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># default in case learning_arm is None</span>
+    <span class="n">num_pulls</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">arm_feedback</span> <span class="ow">in</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_feedbacks</span><span class="p">:</span>
+      <span class="n">num_pulls</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo_action_taken</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">num_pulls</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="c1"># non-zero pulls not by central_algo =&gt; learning step was done</span>
+      <span class="k">for</span> <span class="n">arm_feedback</span> <span class="ow">in</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_feedbacks</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">__learning_arm</span><span class="p">:</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">__learning_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">__pulls_used</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">)</span>
+    <span class="c1"># else ignore feedback (which is empty)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">__central_algo_action_taken</span> <span class="o">=</span> <span class="kc">False</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">best_arm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="c1"># returns arm that the agent chose (could be None)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">!=</span> <span class="s2">&quot;termination&quot;</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: I don</span><span class="se">\&#39;</span><span class="s1">t have an answer yet!&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__learning_arm</span>
+
+  <span class="k">def</span> <span class="nf">broadcast</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">!=</span> <span class="s2">&quot;communication&quot;</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: I can</span><span class="se">\&#39;</span><span class="s1">t broadcast in stage </span><span class="si">%s</span><span class="s1">!&#39;</span>\
+        <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span><span class="p">))</span>
+    <span class="n">return_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__learning_arm</span><span class="p">:</span>
+      <span class="n">return_dict</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__learning_arm</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__learning_mean</span><span class="p">,</span>
+                                          <span class="bp">self</span><span class="o">.</span><span class="n">__pulls_used</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__complete_round</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">return_dict</span>
+
+
+<span class="k">class</span> <span class="nc">LilUCBHeuristicMaster</span><span class="p">(</span><span class="n">MABCollaborativeFixedTimeBAIMaster</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Implementation of master in Collaborative Learning Algorithm</span>
+
+<span class="sd">  :param int arm_num: number of arms of the bandit</span>
+<span class="sd">  :param int rounds: number of rounds of communication allowed</span>
+<span class="sd">    (this agent uses one more)</span>
+<span class="sd">  :param int horizon: maximum number of pulls the agent can make</span>
+<span class="sd">    (over all rounds combined)</span>
+<span class="sd">  :param int num_agents: number of agents</span>
+<span class="sd">  :param Optional[str] name: alias name</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+               <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">rounds</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">num_agents</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">arm_num</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of arms is expected at least 2. Got </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                       <span class="n">arm_num</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rounds</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of rounds is expected at least 2. Got </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                       <span class="n">rounds</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span> <span class="o">=</span> <span class="n">arm_num</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__comm_rounds</span> <span class="o">=</span> <span class="n">rounds</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__T</span> <span class="o">=</span> <span class="n">horizon</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__num_agents</span> <span class="o">=</span> <span class="n">num_agents</span>
+
+  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;lilUCBHeur_collaborative_master&quot;</span>
+
+  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__arm_num</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">__assign_arms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+    <span class="n">agent_arm_assignment</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">random_round</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+      <span class="c1"># if x = 19.3</span>
+      <span class="c1"># rounded to 19 with probability 0.7</span>
+      <span class="c1"># rounded to 20 with probability 0.3</span>
+      <span class="n">frac_x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">frac_x</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="c1"># use -1 as the first arm if there is only 1 active arm</span>
+      <span class="n">agent_arm_assignment</span> <span class="o">=</span> <span class="p">{}</span>
+      <span class="k">for</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="n">agent_ids</span><span class="p">:</span>
+        <span class="n">agent_arm_assignment</span><span class="p">[</span><span class="n">agent_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+      <span class="k">return</span> <span class="n">agent_arm_assignment</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">agent_ids</span><span class="p">):</span>
+      <span class="n">arms_assign_list</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">num_agents_per_arm</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">agent_ids</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">)</span>
+
+      <span class="c1"># match agent to all but the last arm</span>
+      <span class="k">for</span> <span class="n">arm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">arms_assign_list</span> <span class="o">+=</span> <span class="p">[[</span><span class="n">arm</span><span class="p">]]</span> <span class="o">*</span> \
+          <span class="n">random_round</span><span class="p">(</span><span class="n">num_agents_per_arm</span><span class="p">)</span>
+
+      <span class="c1"># match remaining agents to last arm</span>
+      <span class="n">arms_assign_list</span> <span class="o">+=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]]</span> <span class="o">*</span> \
+        <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">agent_ids</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms_assign_list</span><span class="p">))</span>
+      <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">arms_assign_list</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">agent_ids</span><span class="p">):</span>
+        <span class="n">agent_arm_assignment</span><span class="p">[</span><span class="n">agent_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">arms_assign_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">active_arms_copy</span> <span class="o">=</span> <span class="n">dcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">)</span>
+      <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">active_arms_copy</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="n">agent_ids</span><span class="p">:</span>
+        <span class="n">agent_arm_assignment</span><span class="p">[</span><span class="n">agent_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+      <span class="c1"># assign atleast 1 arm per agent</span>
+      <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">arm</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">active_arms_copy</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">agent_ids</span><span class="p">)]):</span>
+        <span class="n">agent_arm_assignment</span><span class="p">[</span><span class="n">agent_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arm</span><span class="p">)</span>
+
+      <span class="c1"># assign remaining arms</span>
+      <span class="n">num_arms_per_agent</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">active_arms_copy</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">agent_ids</span><span class="p">))</span>\
+      <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">agent_ids</span><span class="p">)</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">agent_ids</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="n">agent_ids</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_arms_copy</span><span class="p">):</span>
+          <span class="k">break</span>
+        <span class="n">num_arms</span> <span class="o">=</span> <span class="n">random_round</span><span class="p">(</span><span class="n">num_arms_per_agent</span><span class="p">)</span>
+        <span class="n">agent_arm_assignment</span><span class="p">[</span><span class="n">agent_id</span><span class="p">]</span> <span class="o">+=</span> <span class="n">active_arms_copy</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">num_arms</span><span class="p">]</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="n">num_arms</span>
+      <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_arms_copy</span><span class="p">):</span>
+        <span class="n">agent_arm_assignment</span><span class="p">[</span><span class="n">agent_ids</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">active_arms_copy</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">agent_arm_assignment</span>
+
+  <span class="k">def</span> <span class="nf">initial_arm_assignment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assign_arms</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__num_agents</span><span class="p">)))</span>
+
+  <span class="k">def</span> <span class="nf">elimination</span><span class="p">(</span>
+      <span class="bp">self</span><span class="p">,</span> <span class="n">agent_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+      <span class="n">messages</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span>
+                                          <span class="nb">int</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+
+    <span class="n">aggregate_messages</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="n">messages</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+      <span class="n">message_from_agent</span> <span class="o">=</span> <span class="n">messages</span><span class="p">[</span><span class="n">agent_id</span><span class="p">]</span>
+      <span class="k">for</span> <span class="n">arm_id</span> <span class="ow">in</span> <span class="n">message_from_agent</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">arm_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">aggregate_messages</span><span class="p">:</span>
+          <span class="n">aggregate_messages</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">arm_info</span> <span class="o">=</span> <span class="n">message_from_agent</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span>
+        <span class="n">new_pulls</span> <span class="o">=</span> <span class="n">aggregate_messages</span><span class="p">[</span><span class="n">arm_id</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">arm_info</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">new_em_mean_reward</span> <span class="o">=</span> <span class="p">(</span><span class="n">aggregate_messages</span><span class="p">[</span><span class="n">arm_id</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> \
+         <span class="n">aggregate_messages</span><span class="p">[</span><span class="n">arm_id</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">arm_info</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">arm_info</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">new_pulls</span>
+        <span class="n">aggregate_messages</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_em_mean_reward</span><span class="p">,</span> <span class="n">new_pulls</span><span class="p">)</span>
+
+    <span class="n">accumulated_arm_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">aggregate_messages</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+    <span class="n">accumulated_em_mean_rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">aggregate_messages</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+                 <span class="n">aggregate_messages</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
+
+    <span class="c1"># elimination</span>
+    <span class="n">confidence_radius</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__comm_rounds</span> <span class="o">*</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__num_agents</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__comm_rounds</span><span class="p">)</span> <span class="o">/</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__T</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__num_agents</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span><span class="p">))))</span>
+    <span class="n">highest_em_reward</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">accumulated_em_mean_rewards</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__active_arms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="n">accumulated_arm_ids</span><span class="p">[</span><span class="n">accumulated_em_mean_rewards</span> <span class="o">&gt;=</span> <span class="n">highest_em_reward</span> <span class="o">-</span>
+                            <span class="mi">2</span> <span class="o">*</span> <span class="n">confidence_radius</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assign_arms</span><span class="p">(</span><span class="n">agent_ids</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="LilUCBHeuristicCollaborative"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mab_collaborative_ftbai_learner.html#banditpylib.learners.mab_collaborative_ftbai_learner.LilUCBHeuristicCollaborative">[docs]</a><span class="k">class</span> <span class="nc">LilUCBHeuristicCollaborative</span><span class="p">(</span><span class="n">MABCollaborativeFixedTimeBAILearner</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Colaborative learners using lilucb heuristic as centralized policy</span>
+
+<span class="sd">  :param int num_agents: number of agents</span>
+<span class="sd">  :param int arm_num: number of arms of the bandit</span>
+<span class="sd">  :param int rounds: number of rounds of communication allowed</span>
+<span class="sd">  :param int horizon: maximum number of pulls the agent can make</span>
+<span class="sd">    (over all rounds combined)</span>
+<span class="sd">  :param Optional[str] name: alias name</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+               <span class="n">num_agents</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">arm_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">rounds</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+               <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">agent</span><span class="o">=</span><span class="n">LilUCBHeuristicAgent</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span>
+                                                <span class="n">rounds</span><span class="o">=</span><span class="n">rounds</span><span class="p">,</span>
+                                                <span class="n">horizon</span><span class="o">=</span><span class="n">horizon</span><span class="p">),</span>
+                     <span class="n">master</span><span class="o">=</span><span class="n">LilUCBHeuristicMaster</span><span class="p">(</span><span class="n">arm_num</span><span class="o">=</span><span class="n">arm_num</span><span class="p">,</span>
+                                                  <span class="n">rounds</span><span class="o">=</span><span class="n">rounds</span><span class="p">,</span>
+                                                  <span class="n">horizon</span><span class="o">=</span><span class="n">horizon</span><span class="p">,</span>
+                                                  <span class="n">num_agents</span><span class="o">=</span><span class="n">num_agents</span><span class="p">),</span>
+                     <span class="n">num_agents</span><span class="o">=</span><span class="n">num_agents</span><span class="p">,</span>
+                     <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Chester Holtz, Chao Tao, Guangyu Xi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

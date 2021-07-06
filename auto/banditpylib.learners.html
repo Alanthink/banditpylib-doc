@@ -192,6 +192,10 @@
 <li class="toctree-l2"><a class="reference internal" href="banditpylib.learners.linear_bandit_learner.html#classes">Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="banditpylib.learners.mab_collaborative_ftbai_learner.html"><code class="docutils literal notranslate"><span class="pre">banditpylib.learners.mab_collaborative_ftbai_learner</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="banditpylib.learners.mab_collaborative_ftbai_learner.html#classes">Classes</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="banditpylib.learners.mab_fbbai_learner.html"><code class="docutils literal notranslate"><span class="pre">banditpylib.learners.mab_fbbai_learner</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="banditpylib.learners.mab_fbbai_learner.html#classes">Classes</a></li>
 </ul>
@@ -232,6 +236,12 @@ Make all answers correct</p></li>
 Abstract class for learners</p></li>
 <li><p><a class="reference internal" href="#banditpylib.learners.SinglePlayerLearner" title="banditpylib.learners.SinglePlayerLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglePlayerLearner</span></code></a>:
 Abstract class for single player learners</p></li>
+<li><p><a class="reference internal" href="#banditpylib.learners.CollaborativeLearner" title="banditpylib.learners.CollaborativeLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">CollaborativeLearner</span></code></a>:
+Abstract class for collaborative learners</p></li>
+<li><p><a class="reference internal" href="#banditpylib.learners.CollaborativeAgent" title="banditpylib.learners.CollaborativeAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">CollaborativeAgent</span></code></a>:
+Abstract class for collaborative agents</p></li>
+<li><p><a class="reference internal" href="#banditpylib.learners.CollaborativeMaster" title="banditpylib.learners.CollaborativeMaster"><code class="xref py py-class docutils literal notranslate"><span class="pre">CollaborativeMaster</span></code></a>:
+Abstract class for collaborative masters that handle arm assignment and</p></li>
 </ul>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.Goal">
@@ -415,6 +425,193 @@ Abstract class for single player learners</p></li>
 <a class="reference internal" href="#banditpylib.learners.SinglePlayerLearner.actions" title="banditpylib.learners.SinglePlayerLearner.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
 </dd>
 </dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeLearner">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.</span></span><span class="sig-name descname"><span class="pre">CollaborativeLearner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#banditpylib.learners.CollaborativeAgent" title="banditpylib.learners.utils.CollaborativeAgent"><span class="pre">banditpylib.learners.utils.CollaborativeAgent</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">master</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#banditpylib.learners.CollaborativeMaster" title="banditpylib.learners.utils.CollaborativeMaster"><span class="pre">banditpylib.learners.utils.CollaborativeMaster</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_agents</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeLearner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeLearner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for collaborative learners</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent</strong> (<a class="reference internal" href="#banditpylib.learners.CollaborativeAgent" title="banditpylib.learners.CollaborativeAgent"><em>CollaborativeAgent</em></a>) – one instance of a collaborative agent</p></li>
+<li><p><strong>master</strong> (<em>CollaboratveMaster</em>) – instance of a collaborative master</p></li>
+<li><p><strong>num_agents</strong> (<em>int</em>) – total number of agents involved</p></li>
+<li><p><strong>name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – alias name</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-4f870be52cea4bd682cba6e0cfb4b352dc3c1e69.png" alt="Inheritance diagram of CollaborativeLearner" usemap="#inheritanceb915b34895" class="inheritance graphviz" /></div>
+<map id="inheritanceb915b34895" name="inheritanceb915b34895">
+<area shape="rect" id="node3" href="#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node2" href="#banditpylib.learners.CollaborativeLearner" target="_top" title="Abstract class for collaborative learners" alt="" coords="245,5,391,31"/>
+</map><dl class="py property">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeLearner.agents">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">agents</span></span><em class="property"><span class="pre">:</span> <span class="pre">List[banditpylib.learners.utils.CollaborativeAgent]</span></em><a class="headerlink" href="#banditpylib.learners.CollaborativeLearner.agents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Involved agents</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeLearner.master">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">master</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.learners.utils.CollaborativeMaster</span></em><a class="headerlink" href="#banditpylib.learners.CollaborativeLearner.master" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controlling master</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeLearner.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeLearner.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeLearner.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the learner</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function should be called before the start of the game.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeAgent">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.</span></span><span class="sig-name descname"><span class="pre">CollaborativeAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for collaborative agents</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – alias name</p>
+</dd>
+</dl>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-d6a0c6454c32c45e31eb1a52ce7415ebbc23ea41.png" alt="Inheritance diagram of CollaborativeAgent" usemap="#inheritance13304fd30d" class="inheritance graphviz" /></div>
+<map id="inheritance13304fd30d" name="inheritance13304fd30d">
+<area shape="rect" id="node2" href="#banditpylib.learners.CollaborativeAgent" target="_top" title="Abstract class for collaborative agents" alt="" coords="125,5,260,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeAgent.actions">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Context</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">data_pb2.Actions</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeAgent.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeAgent.actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actions of the agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>context</strong> – contextual information about the bandit environment</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>actions to take</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeAgent.broadcast">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">broadcast</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeAgent.broadcast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeAgent.broadcast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Broadcast information learnt in the current round</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>arm ids, corresponding average rewards seen, and numbers of pulls used to</dt><dd><p>deduce average rewards</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeAgent.name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.CollaborativeAgent.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the agent</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeAgent.reset">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeAgent.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeAgent.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the agent</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function should be called before the start of each game.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeAgent.set_input_arms">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">set_input_arms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arms</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeAgent.set_input_arms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeAgent.set_input_arms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign a set of arms to the agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>arms</strong> – arm indices that have been assigned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeAgent.update">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">data_pb2.Feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeAgent.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeAgent.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>feedback</strong> – feedback returned by the bandit environment after
+<a class="reference internal" href="#banditpylib.learners.CollaborativeAgent.actions" title="banditpylib.learners.CollaborativeAgent.actions"><code class="xref py py-func docutils literal notranslate"><span class="pre">actions()</span></code></a> is executed</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeMaster">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.</span></span><span class="sig-name descname"><span class="pre">CollaborativeMaster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeMaster"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeMaster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class for collaborative masters that handle arm assignment and
+elimination</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – alias name</p>
+</dd>
+</dl>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-588a62476b5dbbf4a59ad8f2484c6f382481bb6d.png" alt="Inheritance diagram of CollaborativeMaster" usemap="#inheritanceef5e730c1b" class="inheritance graphviz" /></div>
+<map id="inheritanceef5e730c1b" name="inheritanceef5e730c1b">
+<area shape="rect" id="node2" href="#banditpylib.learners.CollaborativeMaster" target="_top" title="Abstract class for collaborative masters that handle arm assignment and" alt="" coords="125,5,265,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeMaster.elimination">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">elimination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeMaster.elimination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeMaster.elimination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the set of active arms based on some criteria and return arm
+assignment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent_ids</strong> – list of agents that will be assigned arms</p></li>
+<li><p><strong>messages</strong> – dict of messages broadcasted from agents</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>arm assignment per agent</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeMaster.initial_arm_assignment">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">initial_arm_assignment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeMaster.initial_arm_assignment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeMaster.initial_arm_assignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>The arm assignment before the first round</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>arm assignment per agent for all agents</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeMaster.name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.learners.CollaborativeMaster.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the master</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="banditpylib.learners.CollaborativeMaster.reset">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/utils.html#CollaborativeMaster.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.CollaborativeMaster.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the master</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function should be called before the start of each game.</p>
+</div>
 </dd></dl>
 
 </dd></dl>

@@ -179,16 +179,18 @@
 <span id="banditpylib-protocols"></span><h1><code class="docutils literal notranslate"><span class="pre">banditpylib.protocols</span></code><a class="headerlink" href="#module-banditpylib.protocols" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#classes" id="id1">Classes</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id3">Classes</a></p></li>
 </ul>
 </div>
 <div class="section" id="classes">
-<h2><a class="toc-backref" href="#id1">Classes</a><a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Classes</a><a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#banditpylib.protocols.Protocol" title="banditpylib.protocols.Protocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></a>:
 Abstract class for a protocol which is used to coordinate the interactions</p></li>
 <li><p><a class="reference internal" href="#banditpylib.protocols.SinglePlayerProtocol" title="banditpylib.protocols.SinglePlayerProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglePlayerProtocol</span></code></a>:
 Single player protocol</p></li>
+<li><p><a class="reference internal" href="#banditpylib.protocols.CollaborativeLearningProtocol" title="banditpylib.protocols.CollaborativeLearningProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">CollaborativeLearningProtocol</span></code></a>:
+Collaborative learning protocol <span id="id1">[<a class="reference internal" href="../bibliography.html#id18" title="Chao Tao, Qin Zhang, and Yuan Zhou. Collaborative learning with limited interaction: tight bounds for distributed exploration in multi-armed bandits. 2019. arXiv:1904.03293.">TZZ19</a>]</span></p></li>
 </ul>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.protocols.Protocol">
@@ -251,7 +253,7 @@ printed out.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.protocols.SinglePlayerProtocol">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.protocols.</span></span><span class="sig-name descname"><span class="pre">SinglePlayerProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bandit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.html#banditpylib.bandits.Bandit" title="banditpylib.bandits.utils.Bandit"><span class="pre">banditpylib.bandits.utils.Bandit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">learners</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" title="banditpylib.learners.utils.SinglePlayerLearner"><span class="pre">banditpylib.learners.utils.SinglePlayerLearner</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intermediate_regrets</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/protocols/single_player.html#SinglePlayerProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.protocols.SinglePlayerProtocol" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.protocols.</span></span><span class="sig-name descname"><span class="pre">SinglePlayerProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bandit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.html#banditpylib.bandits.Bandit" title="banditpylib.bandits.utils.Bandit"><span class="pre">banditpylib.bandits.utils.Bandit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">learners</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="banditpylib.learners.html#banditpylib.learners.SinglePlayerLearner" title="banditpylib.learners.utils.SinglePlayerLearner"><span class="pre">banditpylib.learners.utils.SinglePlayerLearner</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intermediate_regrets</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/protocols/single_player_protocol.html#SinglePlayerProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.protocols.SinglePlayerProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Single player protocol</p>
 <p>This protocol is used to simulate the ordinary single-player game. It runs in
 rounds. During each round, the protocol runs the following steps in sequence:</p>
@@ -292,6 +294,57 @@ learner wants to communicate with the bandit environment which is at most
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.protocols.SinglePlayerProtocol.name">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.protocols.SinglePlayerProtocol.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Protocol name</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="banditpylib.protocols.CollaborativeLearningProtocol">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.protocols.</span></span><span class="sig-name descname"><span class="pre">CollaborativeLearningProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bandit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="banditpylib.bandits.html#banditpylib.bandits.Bandit" title="banditpylib.bandits.utils.Bandit"><span class="pre">banditpylib.bandits.utils.Bandit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">learners</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="banditpylib.learners.html#banditpylib.learners.CollaborativeLearner" title="banditpylib.learners.utils.CollaborativeLearner"><span class="pre">banditpylib.learners.utils.CollaborativeLearner</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/protocols/collaborative_learning_protocol.html#CollaborativeLearningProtocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.protocols.CollaborativeLearningProtocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collaborative learning protocol <span id="id2">[<a class="reference internal" href="../bibliography.html#id18" title="Chao Tao, Qin Zhang, and Yuan Zhou. Collaborative learning with limited interaction: tight bounds for distributed exploration in multi-armed bandits. 2019. arXiv:1904.03293.">TZZ19</a>]</span></p>
+<p>This protocol is used to simulate the multi-agent game
+as discussed in the paper. It runs in rounds. During each round,
+the protocol runs the following steps in sequence:</p>
+<ul class="simple">
+<li><p>select an agent;</p></li>
+<li><p>fetch the state of the environment and ask the agent for actions;</p></li>
+<li><p>send the actions to the enviroment for execution;</p></li>
+<li><p>update the agent with the corresponding feedback of the environment;</p></li>
+<li><p>repeat the above steps until every agent enters the WAIT or STOP state;</p></li>
+<li><p>if there is at least one agent in WAIT state, then receive information
+broadcasted from every waiting agent and send them to master to decide
+arm assignment of next round.</p></li>
+</ul>
+<p>The simulation stopping criteria is:</p>
+<ul class="simple">
+<li><p>every agent enters STOP state.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bandit</strong> (<a class="reference internal" href="banditpylib.bandits.html#banditpylib.bandits.Bandit" title="banditpylib.bandits.Bandit"><em>Bandit</em></a>) – bandit environment</p></li>
+<li><p><strong>learners</strong> (<em>List</em><em>[</em><a class="reference internal" href="banditpylib.learners.html#banditpylib.learners.CollaborativeLearner" title="banditpylib.learners.CollaborativeLearner"><em>CollaborativeLearner</em></a><em>]</em>) – learners that will be compared</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each agent interacts with an independent bandit environment.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each action counts as a timestep. The time (or sample) complexity equals to
+the maximum number of pulls used by the agents.</p>
+</div>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-4e87fb2cfcd29409ba961494ae453fea4bb246ec.png" alt="Inheritance diagram of CollaborativeLearningProtocol" usemap="#inheritance77fdf43b62" class="inheritance graphviz" /></div>
+<map id="inheritance77fdf43b62" name="inheritance77fdf43b62">
+<area shape="rect" id="node3" href="#banditpylib.protocols.Protocol" target="_top" title="Abstract class for a protocol which is used to coordinate the interactions" alt="" coords="125,5,197,31"/>
+<area shape="rect" id="node2" href="#banditpylib.protocols.CollaborativeLearningProtocol" target="_top" title="Collaborative learning protocol :cite:`tao2019collaborative`" alt="" coords="245,5,445,31"/>
+</map><dl class="py property">
+<dt class="sig sig-object py" id="banditpylib.protocols.CollaborativeLearningProtocol.name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#banditpylib.protocols.CollaborativeLearningProtocol.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Protocol name</p>
 </dd></dl>
 
