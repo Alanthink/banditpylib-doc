@@ -176,18 +176,17 @@
 <span class="sd">  as discussed in the paper. It runs in rounds. During each round,</span>
 <span class="sd">  the protocol runs the following steps in sequence:</span>
 
-<span class="sd">  * select an agent;</span>
-<span class="sd">  * fetch the state of the environment and ask the agent for actions;</span>
-<span class="sd">  * send the actions to the enviroment for execution;</span>
-<span class="sd">  * update the agent with the corresponding feedback of the environment;</span>
-<span class="sd">  * repeat the above steps until every agent enters the WAIT or STOP state;</span>
-<span class="sd">  * if there is at least one agent in WAIT state, then receive information</span>
+<span class="sd">  - For each agent,</span>
+
+<span class="sd">    * fetch the state of the corresponding environment and ask the agent for </span>
+<span class="sd">      actions;</span>
+<span class="sd">    * send the actions to the enviroment for execution;</span>
+<span class="sd">    * update the agent with the feedback of the environment;</span>
+<span class="sd">    * repeat the above steps until the agent enters the `WAIT` or `STOP` state.</span>
+
+<span class="sd">  - If there is at least one agent in `WAIT` state, then receive information</span>
 <span class="sd">    broadcasted from every waiting agent and send them to master to decide</span>
-<span class="sd">    arm assignment of next round.</span>
-
-<span class="sd">  The simulation stopping criteria is:</span>
-
-<span class="sd">  * every agent enters STOP state.</span>
+<span class="sd">    arm assignment of next round. Otherwise, stop the simulaiton.</span>
 
 <span class="sd">  :param Bandit bandit: bandit environment</span>
 <span class="sd">  :param List[CollaborativeLearner] learners: learners that will be compared</span>
@@ -198,6 +197,10 @@
 <span class="sd">  .. note::</span>
 <span class="sd">    Each action counts as a timestep. The time (or sample) complexity equals to</span>
 <span class="sd">    the maximum number of pulls used by the agents.</span>
+
+<span class="sd">  .. note::</span>
+<span class="sd">    According to the protocol, number of rounds always equals to number of</span>
+<span class="sd">    communication rounds plus one.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bandit</span><span class="p">:</span> <span class="n">Bandit</span><span class="p">,</span> <span class="n">learners</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">CollaborativeLearner</span><span class="p">]):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bandit</span><span class="o">=</span><span class="n">bandit</span><span class="p">,</span> <span class="n">learners</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="n">List</span><span class="p">[</span><span class="n">Learner</span><span class="p">],</span> <span class="n">learners</span><span class="p">))</span>
@@ -271,8 +274,7 @@
         <span class="n">accumulated_messages</span><span class="p">[</span><span class="n">agent_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">message_from_agent</span>
 
       <span class="c1"># Send info to master for elimination to get arm assignment for next round</span>
-      <span class="n">agent_arm_assignment</span> <span class="o">=</span> <span class="n">master</span><span class="o">.</span><span class="n">elimination</span><span class="p">(</span><span class="n">agent_in_wait_ids</span><span class="p">,</span>
-                                                <span class="n">accumulated_messages</span><span class="p">)</span>
+      <span class="n">agent_arm_assignment</span> <span class="o">=</span> <span class="n">master</span><span class="o">.</span><span class="n">elimination</span><span class="p">(</span><span class="n">accumulated_messages</span><span class="p">)</span>
       <span class="k">for</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="n">agent_arm_assignment</span><span class="p">:</span>
         <span class="n">agents</span><span class="p">[</span><span class="n">agent_id</span><span class="p">]</span><span class="o">.</span><span class="n">set_input_arms</span><span class="p">(</span><span class="n">agent_arm_assignment</span><span class="p">[</span><span class="n">agent_id</span><span class="p">])</span>
       <span class="n">communication_rounds</span> <span class="o">+=</span> <span class="mi">1</span>

@@ -194,7 +194,8 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__delta</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">confidence</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
     <span class="c1"># Total number of pulls used</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s1">&#39;initialization&#39;</span></div>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s1">&#39;initialization&#39;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__ucb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">arm_num</span><span class="p">)</span></div>
 
   <span class="k">def</span> <span class="nf">__confidence_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -210,15 +211,13 @@
         <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">)</span> <span class="o">*</span>
         <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">pulls</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__delta</span><span class="p">)</span> <span class="o">/</span> <span class="n">pulls</span><span class="p">)</span>
 
-  <span class="k">def</span> <span class="nf">__ucb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">__update_ucb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      upper confidence bound</span>
+<span class="sd">    Args:</span>
+<span class="sd">      arm_id: index of the arm whose ucb has to be updated</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-        <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">em_mean</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__confidence_radius</span><span class="p">(</span><span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">pseudo_arm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span>
-    <span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__ucb</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">em_mean</span> <span class="o">+</span>\
+      <span class="bp">self</span><span class="o">.</span><span class="n">__confidence_radius</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">)</span>
 
 <div class="viewcode-block" id="LilUCBHeuristic.actions"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mab_fcbai_learner.html#banditpylib.learners.mab_fcbai_learner.LilUCBHeuristic.actions">[docs]</a>  <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s1">&#39;initialization&#39;</span><span class="p">:</span>
@@ -238,7 +237,7 @@
         <span class="k">return</span> <span class="n">actions</span>
 
     <span class="n">arm_pull</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-    <span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__ucb</span><span class="p">()))</span>
+    <span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__ucb</span><span class="p">))</span>
     <span class="n">arm_pull</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">actions</span></div>
@@ -247,6 +246,7 @@
     <span class="k">for</span> <span class="n">arm_feedback</span> <span class="ow">in</span> <span class="n">feedback</span><span class="o">.</span><span class="n">arm_feedbacks</span><span class="p">:</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
           <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">))</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__update_ucb</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s1">&#39;initialization&#39;</span><span class="p">:</span>

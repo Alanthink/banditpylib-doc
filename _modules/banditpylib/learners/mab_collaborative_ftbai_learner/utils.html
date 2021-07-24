@@ -159,6 +159,7 @@
   <h1>Source code for banditpylib.learners.mab_collaborative_ftbai_learner.utils</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">cast</span>
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
+<span class="kn">import</span> <span class="nn">random</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">MultiArmedBandit</span>
 <span class="kn">from</span> <span class="nn">banditpylib.data_pb2</span> <span class="kn">import</span> <span class="n">Arm</span>
@@ -219,12 +220,10 @@
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">goal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Goal</span><span class="p">:</span>
     <span class="n">arm</span> <span class="o">=</span> <span class="n">Arm</span><span class="p">()</span>
-    <span class="n">best_arm</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">MABCollaborativeFixedTimeBAIAgent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">best_arm</span>
-    <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-      <span class="k">if</span> <span class="n">best_arm</span> <span class="o">!=</span> <span class="n">cast</span><span class="p">(</span><span class="n">MABCollaborativeFixedTimeBAIAgent</span><span class="p">,</span> <span class="n">agent</span><span class="p">)</span><span class="o">.</span><span class="n">best_arm</span><span class="p">:</span>
-        <span class="n">best_arm</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># implies regret of 1</span>
-        <span class="k">break</span>
-    <span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">best_arm</span>
+    <span class="n">best_arms</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">:</span>
+      <span class="n">best_arms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="n">MABCollaborativeFixedTimeBAIAgent</span><span class="p">,</span> <span class="n">agent</span><span class="p">)</span><span class="o">.</span><span class="n">best_arm</span><span class="p">)</span>
+    <span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">best_arms</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">IdentifyBestArm</span><span class="p">(</span><span class="n">best_arm</span><span class="o">=</span><span class="n">arm</span><span class="p">)</span></div>
 </pre></div>
 

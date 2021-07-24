@@ -215,6 +215,7 @@
     <span class="c1"># Total number of pulls used</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">=</span> <span class="s1">&#39;initialization&#39;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__ucb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span><span class="p">))</span>
 
   <span class="k">def</span> <span class="nf">__confidence_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulls</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -230,15 +231,13 @@
         <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">)</span> <span class="o">*</span>
         <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">pulls</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">__delta</span><span class="p">)</span> <span class="o">/</span> <span class="n">pulls</span><span class="p">)</span>
 
-  <span class="k">def</span> <span class="nf">__ucb</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">__update_ucb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arm_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns:</span>
-<span class="sd">      upper confidence bound</span>
+<span class="sd">    Args:</span>
+<span class="sd">      arm_id: index of the arm whose ucb has to be updated</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-        <span class="n">pseudo_arm</span><span class="o">.</span><span class="n">em_mean</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__confidence_radius</span><span class="p">(</span><span class="n">pseudo_arm</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">pseudo_arm</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span>
-    <span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__ucb</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">em_mean</span> <span class="o">+</span>\
+      <span class="bp">self</span><span class="o">.</span><span class="n">__confidence_radius</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">arm_id</span><span class="p">]</span><span class="o">.</span><span class="n">total_pulls</span><span class="p">)</span>
 
   <span class="k">def</span> <span class="nf">actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Actions</span><span class="p">:</span>
     <span class="k">del</span> <span class="n">context</span>
@@ -263,7 +262,7 @@
     <span class="n">arm_pull</span> <span class="o">=</span> <span class="n">actions</span><span class="o">.</span><span class="n">arm_pulls</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
 
     <span class="c1"># map local arm index to the bandits arm index</span>
-    <span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__ucb</span><span class="p">()))]</span>
+    <span class="n">arm_pull</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__ucb</span><span class="p">))]</span>
     <span class="n">arm_pull</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">actions</span>
@@ -275,6 +274,7 @@
           <span class="bp">self</span><span class="o">.</span><span class="n">__assigned_arms</span> <span class="o">==</span> <span class="n">arm_feedback</span><span class="o">.</span><span class="n">arm</span><span class="o">.</span><span class="n">id</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__pseudo_arms</span><span class="p">[</span><span class="n">pseudo_arm_index</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
           <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">))</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">__update_ucb</span><span class="p">(</span><span class="n">pseudo_arm_index</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">__total_pulls</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arm_feedback</span><span class="o">.</span><span class="n">rewards</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stage</span> <span class="o">==</span> <span class="s1">&#39;initialization&#39;</span><span class="p">:</span>
@@ -549,9 +549,9 @@
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assign_arms</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__num_agents</span><span class="p">)))</span>
 
   <span class="k">def</span> <span class="nf">elimination</span><span class="p">(</span>
-      <span class="bp">self</span><span class="p">,</span> <span class="n">agent_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
-      <span class="n">messages</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span>
-                                          <span class="nb">int</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+      <span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span>
+                                     <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span>
+                                           <span class="nb">int</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
 
     <span class="n">aggregate_messages</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="n">messages</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -580,7 +580,7 @@
         <span class="n">accumulated_arm_ids</span><span class="p">[</span><span class="n">accumulated_em_mean_rewards</span> <span class="o">&gt;=</span> <span class="n">highest_em_reward</span> <span class="o">-</span>
                             <span class="mi">2</span> <span class="o">*</span> <span class="n">confidence_radius</span><span class="p">])</span>
 
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assign_arms</span><span class="p">(</span><span class="n">agent_ids</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__assign_arms</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">messages</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
 
 
 <div class="viewcode-block" id="LilUCBHeuristicCollaborative"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mab_collaborative_ftbai_learner.html#banditpylib.learners.mab_collaborative_ftbai_learner.LilUCBHeuristicCollaborative">[docs]</a><span class="k">class</span> <span class="nc">LilUCBHeuristicCollaborative</span><span class="p">(</span><span class="n">MABCollaborativeFixedTimeBAILearner</span><span class="p">):</span>

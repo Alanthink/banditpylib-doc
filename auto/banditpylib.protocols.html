@@ -307,18 +307,18 @@ learner wants to communicate with the bandit environment which is at most
 as discussed in the paper. It runs in rounds. During each round,
 the protocol runs the following steps in sequence:</p>
 <ul class="simple">
-<li><p>select an agent;</p></li>
-<li><p>fetch the state of the environment and ask the agent for actions;</p></li>
+<li><p>For each agent,</p>
+<ul>
+<li><p>fetch the state of the corresponding environment and ask the agent for
+actions;</p></li>
 <li><p>send the actions to the enviroment for execution;</p></li>
-<li><p>update the agent with the corresponding feedback of the environment;</p></li>
-<li><p>repeat the above steps until every agent enters the WAIT or STOP state;</p></li>
-<li><p>if there is at least one agent in WAIT state, then receive information
-broadcasted from every waiting agent and send them to master to decide
-arm assignment of next round.</p></li>
+<li><p>update the agent with the feedback of the environment;</p></li>
+<li><p>repeat the above steps until the agent enters the <cite>WAIT</cite> or <cite>STOP</cite> state.</p></li>
 </ul>
-<p>The simulation stopping criteria is:</p>
-<ul class="simple">
-<li><p>every agent enters STOP state.</p></li>
+</li>
+<li><p>If there is at least one agent in <cite>WAIT</cite> state, then receive information
+broadcasted from every waiting agent and send them to master to decide
+arm assignment of next round. Otherwise, stop the simulaiton.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -336,6 +336,11 @@ arm assignment of next round.</p></li>
 <p class="admonition-title">Note</p>
 <p>Each action counts as a timestep. The time (or sample) complexity equals to
 the maximum number of pulls used by the agents.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>According to the protocol, number of rounds always equals to number of
+communication rounds plus one.</p>
 </div>
 <p class="rubric">Inheritance</p>
 <div class="graphviz"><img src="../_images/inheritance-4e87fb2cfcd29409ba961494ae453fea4bb246ec.png" alt="Inheritance diagram of CollaborativeLearningProtocol" usemap="#inheritance77fdf43b62" class="inheritance graphviz" /></div>

@@ -407,15 +407,14 @@
 
 <div class="viewcode-block" id="CollaborativeMaster.elimination"><a class="viewcode-back" href="../../../auto/banditpylib.learners.html#banditpylib.learners.CollaborativeMaster.elimination">[docs]</a>  <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">elimination</span><span class="p">(</span>
-      <span class="bp">self</span><span class="p">,</span> <span class="n">agent_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
-      <span class="n">messages</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span>
-                                          <span class="nb">int</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+      <span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span>
+                                     <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span>
+                                           <span class="nb">int</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;Update the set of active arms based on some criteria and return arm</span>
 <span class="sd">    assignment</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">      agent_ids: list of agents that will be assigned arms</span>
-<span class="sd">      messages: dict of messages broadcasted from agents</span>
+<span class="sd">      messages: dict of messages broadcasted from agents, where key is agent_id</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">      arm assignment per agent</span>
