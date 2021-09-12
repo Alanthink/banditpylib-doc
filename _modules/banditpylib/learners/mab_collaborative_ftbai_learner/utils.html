@@ -168,9 +168,8 @@
 
 
 <span class="k">class</span> <span class="nc">MABCollaborativeFixedTimeBAIAgent</span><span class="p">(</span><span class="n">CollaborativeAgent</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Abstract agent identify the best arm with fixed time</span>
-
-<span class="sd">  This agent aims to identify the best arm with other agents.</span>
+  <span class="sd">&quot;&quot;&quot;Abstract agent to identify the best arm with fixed time in the ordinary</span>
+<span class="sd">  multi-armed bandit environment</span>
 
 <span class="sd">  :param Optional[str] name: alias name</span>
 <span class="sd">  &quot;&quot;&quot;</span>
@@ -184,7 +183,8 @@
 
 
 <span class="k">class</span> <span class="nc">MABCollaborativeFixedTimeBAIMaster</span><span class="p">(</span><span class="n">CollaborativeMaster</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Abstract master to identify the best arm with fixed time</span>
+  <span class="sd">&quot;&quot;&quot;Abstract master to identify the best arm with fixed time in the ordinary</span>
+<span class="sd">  multi-armed bandit environment</span>
 
 <span class="sd">  :param Optional[str] name: alias name</span>
 <span class="sd">  &quot;&quot;&quot;</span>
@@ -193,7 +193,8 @@
 
 
 <div class="viewcode-block" id="MABCollaborativeFixedTimeBAILearner"><a class="viewcode-back" href="../../../../auto/banditpylib.learners.mab_collaborative_ftbai_learner.html#banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner">[docs]</a><span class="k">class</span> <span class="nc">MABCollaborativeFixedTimeBAILearner</span><span class="p">(</span><span class="n">CollaborativeLearner</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Learner that puts the agents and master together</span>
+  <span class="sd">&quot;&quot;&quot;Collaborative fixed-time learner aiming to identify the best arm in the</span>
+<span class="sd">  ordinary multi-armed bandit environment</span>
 
 <span class="sd">  :param CollaborativeAgent agent: one instance of an agent</span>
 <span class="sd">  :param CollaboratveMaster master: instance of the master</span>
@@ -209,9 +210,6 @@
                      <span class="n">master</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="n">CollaborativeMaster</span><span class="p">,</span> <span class="n">master</span><span class="p">),</span>
                      <span class="n">num_agents</span><span class="o">=</span><span class="n">num_agents</span><span class="p">,</span>
                      <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-
-  <span class="k">def</span> <span class="nf">_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s1">&#39;collaborative_learner&#39;</span>
 
   <span class="nd">@property</span>
   <span class="k">def</span> <span class="nf">running_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">type</span><span class="p">]]:</span>

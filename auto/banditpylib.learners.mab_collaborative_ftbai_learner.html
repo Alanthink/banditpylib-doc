@@ -189,14 +189,15 @@
 <h2><a class="toc-backref" href="#id1">Classes</a><a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner" title="banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">MABCollaborativeFixedTimeBAILearner</span></code></a>:
-Learner that puts the agents and master together</p></li>
+Collaborative fixed-time learner aiming to identify the best arm in the</p></li>
 <li><p><a class="reference internal" href="#banditpylib.learners.mab_collaborative_ftbai_learner.LilUCBHeuristicCollaborative" title="banditpylib.learners.mab_collaborative_ftbai_learner.LilUCBHeuristicCollaborative"><code class="xref py py-class docutils literal notranslate"><span class="pre">LilUCBHeuristicCollaborative</span></code></a>:
-Colaborative learners using lilucb heuristic as centralized policy</p></li>
+Colaborative learner using lilucb heuristic as centralized policy</p></li>
 </ul>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.mab_collaborative_ftbai_learner.</span></span><span class="sig-name descname"><span class="pre">MABCollaborativeFixedTimeBAILearner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">banditpylib.learners.mab_collaborative_ftbai_learner.utils.MABCollaborativeFixedTimeBAIAgent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">master</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">banditpylib.learners.mab_collaborative_ftbai_learner.utils.MABCollaborativeFixedTimeBAIMaster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_agents</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/mab_collaborative_ftbai_learner/utils.html#MABCollaborativeFixedTimeBAILearner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Learner that puts the agents and master together</p>
+<dd><p>Collaborative fixed-time learner aiming to identify the best arm in the
+ordinary multi-armed bandit environment</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -208,11 +209,11 @@ Colaborative learners using lilucb heuristic as centralized policy</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-9befac51e8fa8a32b80e7b6eec546e2d9bfa8670.png" alt="Inheritance diagram of MABCollaborativeFixedTimeBAILearner" usemap="#inheritance8d4bea5357" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-bc79757fcb7ac544b0ffc4049221288dc47900c4.png" alt="Inheritance diagram of MABCollaborativeFixedTimeBAILearner" usemap="#inheritance8d4bea5357" class="inheritance graphviz" /></div>
 <map id="inheritance8d4bea5357" name="inheritance8d4bea5357">
 <area shape="rect" id="node3" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="125,5,197,31"/>
 <area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.CollaborativeLearner" target="_top" title="Abstract class for collaborative learners" alt="" coords="245,5,391,31"/>
-<area shape="rect" id="node4" href="#banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner" target="_top" title="Learner that puts the agents and master together" alt="" coords="439,5,696,31"/>
+<area shape="rect" id="node4" href="#banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner" target="_top" title="Collaborative fixed&#45;time learner aiming to identify the best arm in the" alt="" coords="439,5,696,31"/>
 </map><dl class="py property">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner.goal">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">goal</span></span><em class="property"><span class="pre">:</span> <span class="pre">banditpylib.learners.utils.Goal</span></em><a class="headerlink" href="#banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner.goal" title="Permalink to this definition">¶</a></dt>
@@ -230,13 +231,13 @@ Colaborative learners using lilucb heuristic as centralized policy</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="banditpylib.learners.mab_collaborative_ftbai_learner.LilUCBHeuristicCollaborative">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">banditpylib.learners.mab_collaborative_ftbai_learner.</span></span><span class="sig-name descname"><span class="pre">LilUCBHeuristicCollaborative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_agents</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arm_num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rounds</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/banditpylib/learners/mab_collaborative_ftbai_learner/lilucb_heur_collaborative.html#LilUCBHeuristicCollaborative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#banditpylib.learners.mab_collaborative_ftbai_learner.LilUCBHeuristicCollaborative" title="Permalink to this definition">¶</a></dt>
-<dd><p>Colaborative learners using lilucb heuristic as centralized policy</p>
+<dd><p>Colaborative learner using lilucb heuristic as centralized policy</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>num_agents</strong> (<em>int</em>) – number of agents</p></li>
 <li><p><strong>arm_num</strong> (<em>int</em>) – number of arms of the bandit</p></li>
-<li><p><strong>rounds</strong> (<em>int</em>) – number of rounds of communication allowed</p></li>
+<li><p><strong>rounds</strong> (<em>int</em>) – number of total rounds allowed</p></li>
 <li><p><strong>horizon</strong> (<em>int</em>) – maximum number of pulls the agent can make
 (over all rounds combined)</p></li>
 <li><p><strong>name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – alias name</p></li>
@@ -244,12 +245,12 @@ Colaborative learners using lilucb heuristic as centralized policy</p></li>
 </dd>
 </dl>
 <p class="rubric">Inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-79a7c8bd0c248f36b1fb63f4bf4bed5289689ffc.png" alt="Inheritance diagram of LilUCBHeuristicCollaborative" usemap="#inheritance5a779eef1c" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-ce55049318c3e8909bc1b0ead50b096eab136b7e.png" alt="Inheritance diagram of LilUCBHeuristicCollaborative" usemap="#inheritance5a779eef1c" class="inheritance graphviz" /></div>
 <map id="inheritance5a779eef1c" name="inheritance5a779eef1c">
 <area shape="rect" id="node3" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="102,4,161,25"/>
 <area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.CollaborativeLearner" target="_top" title="Abstract class for collaborative learners" alt="" coords="200,4,318,25"/>
-<area shape="rect" id="node5" href="#banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner" target="_top" title="Learner that puts the agents and master together" alt="" coords="357,4,567,25"/>
-<area shape="rect" id="node4" href="#banditpylib.learners.mab_collaborative_ftbai_learner.LilUCBHeuristicCollaborative" target="_top" title="Colaborative learners using lilucb heuristic as centralized policy" alt="" coords="606,4,764,25"/>
+<area shape="rect" id="node5" href="#banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner" target="_top" title="Collaborative fixed&#45;time learner aiming to identify the best arm in the" alt="" coords="357,4,567,25"/>
+<area shape="rect" id="node4" href="#banditpylib.learners.mab_collaborative_ftbai_learner.LilUCBHeuristicCollaborative" target="_top" title="Colaborative learner using lilucb heuristic as centralized policy" alt="" coords="606,4,764,25"/>
 </map></dd></dl>
 
 </div>

@@ -166,6 +166,7 @@
 <span class="kn">from</span> <span class="nn">absl</span> <span class="kn">import</span> <span class="n">logging</span>
 
 <span class="kn">from</span> <span class="nn">google.protobuf.internal.encoder</span> <span class="kn">import</span> <span class="n">_VarintBytes</span>  <span class="c1"># type: ignore</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">banditpylib.bandits</span> <span class="kn">import</span> <span class="n">Bandit</span>
 <span class="kn">from</span> <span class="nn">banditpylib.learners</span> <span class="kn">import</span> <span class="n">Learner</span>
@@ -182,8 +183,8 @@
 
 
 <div class="viewcode-block" id="Protocol"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.Protocol">[docs]</a><span class="k">class</span> <span class="nc">Protocol</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Abstract class for a protocol which is used to coordinate the interactions</span>
-<span class="sd">  between the learner and the bandit environment.</span>
+  <span class="sd">&quot;&quot;&quot;Abstract class for a communication protocol which defines the principles of</span>
+<span class="sd">  the interactions between the learner and the bandit environment.</span>
 
 <span class="sd">  :param Bandit bandit: bandit environment</span>
 <span class="sd">  :param List[Learner] learners: learners used to run simulations</span>
@@ -207,8 +208,6 @@
 
     <span class="bp">self</span><span class="o">.</span><span class="n">__bandit</span> <span class="o">=</span> <span class="n">bandit</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">__learners</span> <span class="o">=</span> <span class="n">learners</span>
-    <span class="c1"># The learner simulated currently</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span><span class="p">:</span> <span class="n">Learner</span> <span class="o">=</span> <span class="kc">None</span>
 
   <span class="nd">@property</span>
   <span class="nd">@abstractmethod</span>
@@ -216,17 +215,32 @@
     <span class="sd">&quot;&quot;&quot;Protocol name&quot;&quot;&quot;</span>
 
   <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">bandit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bandit</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Bandit environment the simulator is using the learners to play with&quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="nf">_bandit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bandit</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Bandit environment&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__bandit</span>
 
   <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">current_learner</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Learner</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;The learner used by the simulator currently&quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="nf">_current_learner</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Learner</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;The learner in simulation currently&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__current_learner</span>
 
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">_horizon</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Horizon of the game&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">_intermediate_horizons</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Horizons used to report intermediate regrets&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__intermediate_horizons</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">_debug</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Debug mode&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__debug</span>
+
   <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;One trial of the game</span>
 
 <span class="sd">    This method defines how to run one trial of the game.</span>
@@ -250,22 +264,37 @@
       <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
       <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Protocol.play"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.Protocol.play">[docs]</a>  <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trials</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">processes</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Protocol.play"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.Protocol.play">[docs]</a>  <span class="k">def</span> <span class="nf">play</span><span class="p">(</span>
+      <span class="bp">self</span><span class="p">,</span>
+      <span class="n">trials</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+      <span class="n">output_filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+      <span class="n">processes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+      <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+      <span class="c1"># pylint: disable=dangerous-default-value</span>
+      <span class="n">intermediate_horizons</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+      <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
     <span class="sd">&quot;&quot;&quot;Start playing the game</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      trials: number of repetitions</span>
-<span class="sd">      output_filename: name of the file used to dump the results</span>
+<span class="sd">      output_filename: name of the file used to dump the simulation results</span>
 <span class="sd">      processes: maximum number of processes to run. -1 means no limit</span>
 <span class="sd">      debug: debug mode. When it is set to `True`, `trials` will be</span>
 <span class="sd">        automatically set to 1 and debug information of the trial will be</span>
 <span class="sd">        printed out.</span>
+<span class="sd">      intermediate_horizons: report intermediate regrets after these horizons</span>
+<span class="sd">      horizon: horizon of the game. Different protocols may have different</span>
+<span class="sd">        interpretations.</span>
 
 <span class="sd">    .. warning::</span>
 <span class="sd">      By default, `output_filename` will be opened with mode `a`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
       <span class="n">trials</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">__debug</span> <span class="o">=</span> <span class="n">debug</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__horizon</span> <span class="o">=</span> <span class="n">horizon</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__intermediate_horizons</span> <span class="o">=</span> <span class="n">intermediate_horizons</span>
 
     <span class="k">for</span> <span class="n">learner</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__learners</span><span class="p">:</span>
       <span class="c1"># Set current learner</span>
@@ -282,7 +311,7 @@
       <span class="n">trial_results</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">trials</span><span class="p">):</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_one_trial</span><span class="p">,</span>
-                                  <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">time_seed</span><span class="p">(),</span> <span class="n">debug</span><span class="p">],</span>
+                                  <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">time_seed</span><span class="p">()],</span>
                                   <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__write_to_file</span><span class="p">)</span>
 
         <span class="n">trial_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>

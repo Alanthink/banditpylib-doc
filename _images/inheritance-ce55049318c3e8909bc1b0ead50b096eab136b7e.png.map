@@ -2,6 +2,6 @@
 <area shape="rect" id="node1" title="Helper class that provides a standard way to create an ABC using" alt="" coords="4,4,63,25"/>
 <area shape="rect" id="node3" href="banditpylib.learners.html#banditpylib.learners.Learner" target="_top" title="Abstract class for learners" alt="" coords="102,4,161,25"/>
 <area shape="rect" id="node2" href="banditpylib.learners.html#banditpylib.learners.CollaborativeLearner" target="_top" title="Abstract class for collaborative learners" alt="" coords="200,4,318,25"/>
-<area shape="rect" id="node5" href="#banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner" target="_top" title="Learner that puts the agents and master together" alt="" coords="357,4,567,25"/>
-<area shape="rect" id="node4" href="#banditpylib.learners.mab_collaborative_ftbai_learner.LilUCBHeuristicCollaborative" target="_top" title="Colaborative learners using lilucb heuristic as centralized policy" alt="" coords="606,4,764,25"/>
+<area shape="rect" id="node5" href="#banditpylib.learners.mab_collaborative_ftbai_learner.MABCollaborativeFixedTimeBAILearner" target="_top" title="Collaborative fixed&#45;time learner aiming to identify the best arm in the" alt="" coords="357,4,567,25"/>
+<area shape="rect" id="node4" href="#banditpylib.learners.mab_collaborative_ftbai_learner.LilUCBHeuristicCollaborative" target="_top" title="Colaborative learner using lilucb heuristic as centralized policy" alt="" coords="606,4,764,25"/>
 </map>

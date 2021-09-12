@@ -172,31 +172,32 @@
 <div class="viewcode-block" id="CollaborativeLearningProtocol"><a class="viewcode-back" href="../../../auto/banditpylib.protocols.html#banditpylib.protocols.CollaborativeLearningProtocol">[docs]</a><span class="k">class</span> <span class="nc">CollaborativeLearningProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Collaborative learning protocol :cite:`tao2019collaborative`</span>
 
-<span class="sd">  This protocol is used to simulate the multi-agent game</span>
-<span class="sd">  as discussed in the paper. It runs in rounds. During each round,</span>
-<span class="sd">  the protocol runs the following steps in sequence:</span>
+<span class="sd">  This class defines the communication protocol for the collaborative learning</span>
+<span class="sd">  multi-agent game as discussed in the reference paper. The game runs in</span>
+<span class="sd">  rounds. During each round, the protocol runs the following steps in sequence:</span>
 
 <span class="sd">  - For each agent,</span>
 
-<span class="sd">    * fetch the state of the corresponding environment and ask the agent for </span>
-<span class="sd">      actions;</span>
-<span class="sd">    * send the actions to the enviroment for execution;</span>
-<span class="sd">    * update the agent with the feedback of the environment;</span>
+<span class="sd">    * fetch the state of the corresponding bandit environment and ask the agent</span>
+<span class="sd">      for actions;</span>
+<span class="sd">    * send the actions to the bandit environment for execution;</span>
+<span class="sd">    * update the agent with the feedback of the bandit environment;</span>
 <span class="sd">    * repeat the above steps until the agent enters the `WAIT` or `STOP` state.</span>
 
-<span class="sd">  - If there is at least one agent in `WAIT` state, then receive information</span>
+<span class="sd">  - If there is at least one agent in `WAIT` state, then fetch information</span>
 <span class="sd">    broadcasted from every waiting agent and send them to master to decide</span>
-<span class="sd">    arm assignment of next round. Otherwise, stop the simulaiton.</span>
+<span class="sd">    arm assignment of next round. Otherwise, stop the game.</span>
 
 <span class="sd">  :param Bandit bandit: bandit environment</span>
 <span class="sd">  :param List[CollaborativeLearner] learners: learners that will be compared</span>
+<span class="sd">    with</span>
 
 <span class="sd">  .. note::</span>
 <span class="sd">    Each agent interacts with an independent bandit environment.</span>
 
 <span class="sd">  .. note::</span>
 <span class="sd">    Each action counts as a timestep. The time (or sample) complexity equals to</span>
-<span class="sd">    the maximum number of pulls used by the agents.</span>
+<span class="sd">    the maximum number of pulls across different agents.</span>
 
 <span class="sd">  .. note::</span>
 <span class="sd">    According to the protocol, number of rounds always equals to number of</span>
@@ -209,23 +210,23 @@
   <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="s1">&#39;collaborative_learning_protocol&#39;</span>
 
-  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">_one_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_debug</span><span class="p">:</span>
       <span class="n">logging</span><span class="o">.</span><span class="n">set_verbosity</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_seed</span><span class="p">)</span>
 
     <span class="c1"># Initialization</span>
-    <span class="n">current_learner</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">CollaborativeLearner</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_learner</span><span class="p">)</span>
+    <span class="n">current_learner</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">CollaborativeLearner</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_learner</span><span class="p">)</span>
     <span class="n">current_learner</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
     <span class="n">agents</span> <span class="o">=</span> <span class="n">current_learner</span><span class="o">.</span><span class="n">agents</span>
     <span class="n">bandits</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">master</span> <span class="o">=</span> <span class="n">current_learner</span><span class="o">.</span><span class="n">master</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">agents</span><span class="p">)):</span>
-      <span class="n">bandits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="p">))</span>
+      <span class="n">bandits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bandit</span><span class="p">))</span>
       <span class="n">bandits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
     <span class="n">trial</span> <span class="o">=</span> <span class="n">Trial</span><span class="p">()</span>
-    <span class="n">trial</span><span class="o">.</span><span class="n">bandit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">trial</span><span class="o">.</span><span class="n">bandit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bandit</span><span class="o">.</span><span class="n">name</span>
     <span class="n">trial</span><span class="o">.</span><span class="n">learner</span> <span class="o">=</span> <span class="n">current_learner</span><span class="o">.</span><span class="n">name</span>
 
     <span class="n">communication_rounds</span><span class="p">,</span> <span class="n">total_pulls</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
@@ -283,7 +284,7 @@
     <span class="n">result</span> <span class="o">=</span> <span class="n">trial</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
     <span class="n">result</span><span class="o">.</span><span class="n">rounds</span> <span class="o">=</span> <span class="n">communication_rounds</span>
     <span class="n">result</span><span class="o">.</span><span class="n">total_actions</span> <span class="o">=</span> <span class="n">total_pulls</span>
-    <span class="n">result</span><span class="o">.</span><span class="n">regret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">current_learner</span><span class="o">.</span><span class="n">goal</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">regret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bandit</span><span class="o">.</span><span class="n">regret</span><span class="p">(</span><span class="n">current_learner</span><span class="o">.</span><span class="n">goal</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">trial</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">()</span></div>
 </pre></div>
